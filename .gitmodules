@@ -16,3 +16,6 @@
 [submodule "subscription-worker"]
 	path = subscription-worker
 	url = https://github.com/nifyacorp/subscription-worker.git
+[submodule "frontend"]
+	path = frontend
+	url = https://github.com/nifyacorp/main_page.git
