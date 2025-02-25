@@ -1,82 +1,126 @@
-# Backend Services Collection
+# NIFYA Microservices Collection
 
-A collection of microservices that power the backend implementation of [Your Website Name].
+A collection of independent microservices that power the backend implementation of NIFYA platform.
 
-## Overview
+## ⚠️ IMPORTANT: Repository Structure ⚠️
 
-This repository contains the API services, data processing modules, and infrastructure configuration needed to run the backend of [Your Website Name]. The backend is built as a collection of services that work together to provide the complete functionality required by the frontend.
+**This is NOT a monolithic application. This is a repository of repositories (monorepo) containing multiple INDEPENDENT microservices.**
 
-## Project Structure
+Each directory at the root level represents a completely independent service with its own:
+- Dependencies (package.json)
+- Runtime environment
+- Database connections
+- Deployment pipeline
+- Scalability parameters
 
-This repository is structured as follows:
-- Backend services (root directory)
-- Frontend application (submodule at `./frontend`)
+These services should NEVER be merged together or refactored into a monolithic structure.
 
-## Services
+## Microservices Overview
 
-- **Authentication Service**: Handles user authentication and authorization
-- **User Service**: Manages user data and profiles
-- **[Other Service Name]**: [Brief description]
-- **[Other Service Name]**: [Brief description]
+- **Authentication-Service/** - Handles user authentication and token management
+- **backend/** - Main API gateway service
+- **boe-parser/** - Service for parsing BOE (Boletín Oficial del Estado) data
+- **doga-parser/** - Service for parsing DOGA (Diario Oficial de Galicia) data
+- **email-notification/** - Service for sending emails and notifications
+- **subscription-worker/** - Service for managing user subscriptions
+- **frontend/** - Frontend application (incorporated as a submodule from https://github.com/nifyacorp/main_page)
 
-## Technology Stack
+Each service is designed to be deployed independently to Google Cloud Run.
 
-- **Runtime**: Node.js
-- **API Framework**: Express.js
-- **Database**: [Database Name - e.g., MongoDB, PostgreSQL]
-- **Caching**: [Caching Solution - e.g., Redis]
-- **Authentication**: [Auth Method - e.g., JWT, OAuth]
-- **Deployment**: [Deployment Platform - e.g., Docker, Kubernetes, AWS]
+## Deployment Architecture
 
-## Installation 
+This project follows a strict microservices architecture pattern:
 
-### Clone with Submodules
-
-## Adding Frontend as a Submodule
-
-I'll help you incorporate the front-end repository (https://github.com/nifyacorp/main_page) as a Git submodule in your backend project. This is a good approach for managing separate repositories that are part of the same application. 
-
-# Terminal Commands to Add the Frontend Submodule
-
-Let me provide you with the specific terminal commands to add the frontend as a submodule. But first, let's fix the README which seems to have some of my explanation text in it.
-
-## Fixing the README
-
-```markdown:README.md
-# Backend Services Collection
-
-A collection of microservices that power the backend implementation of [Your Website Name].
-
-## Overview
-
-This repository contains the API services, data processing modules, and infrastructure configuration needed to run the backend of [Your Website Name]. The backend is built as a collection of services that work together to provide the complete functionality required by the frontend.
-
-## Project Structure
-
-This repository is structured as follows:
-- Backend services (root directory)
-- Frontend application (submodule at `./frontend`)
-
-## Services
-
-- **Authentication Service**: Handles user authentication and authorization
-- **User Service**: Manages user data and profiles
-- **[Other Service Name]**: [Brief description]
-- **[Other Service Name]**: [Brief description]
+- Each service has its own independent codebase and should be modified separately
+- Services communicate with each other via HTTP/REST APIs only
+- Each service is separately containerized and deployed to Google Cloud Run
+- Services can scale independently based on demand
+- Authentication is handled by the dedicated Authentication-Service
 
 ## Technology Stack
 
 - **Runtime**: Node.js
 - **API Framework**: Express.js
-- **Database**: [Database Name - e.g., MongoDB, PostgreSQL]
-- **Caching**: [Caching Solution - e.g., Redis]
-- **Authentication**: [Auth Method - e.g., JWT, OAuth]
-- **Deployment**: [Deployment Platform - e.g., Docker, Kubernetes, AWS]
+- **Databases**: MongoDB, PostgreSQL (varies by service)
+- **Deployment**: Google Cloud Run
+- **CI/CD**: GitHub Actions
+- **Frontend**: React deployed to Netlify at https://clever-kelpie-60c3a6.netlify.app/
 
-## Installation 
+## Development Guidelines
 
-### Clone with Submodules
+### ⚠️ Working with Individual Services
 
-## Adding Frontend as a Submodule
+Each service MUST be treated as an independent application:
 
-I'll help you incorporate the front-end repository (https://github.com/nifyacorp/main_page) as a Git submodule in your backend project. This is a good approach for managing separate repositories that are part of the same application. 
+```bash
+# Navigate to a specific service
+cd Authentication-Service
+
+# Install dependencies for that service only
+npm install
+
+# Run that service locally
+npm run dev
+
+# Make changes only to this specific service
+# DO NOT modify shared code across services as they are independent
+```
+
+### Code Modification Guidelines
+
+When modifying code:
+- Always make changes within a single service directory
+- Never create dependencies between services except through their published APIs
+- Each service should have its own environment variables
+- Each service should have its own database connections
+- Never refactor across service boundaries
+
+### Working with the Frontend Submodule
+
+The frontend is maintained as a Git submodule:
+
+```bash
+# Clone with submodules
+git clone --recurse-submodules https://github.com/your-org/NIFYA-Master.git
+
+# Or if already cloned, initialize submodules
+git submodule update --init --recursive
+
+# Navigate to frontend
+cd frontend
+
+# Install dependencies
+npm install
+
+# Run frontend locally
+npm run dev
+```
+
+### CORS Configuration
+
+When developing locally, ensure each service has proper CORS configuration to allow requests from:
+- https://clever-kelpie-60c3a6.netlify.app (production frontend)
+- http://localhost:5173 (Vite development server)
+
+The frontend connects to each service independently, not through a unified API gateway.
+
+## Deployment
+
+Each service MUST be deployed to Google Cloud Run independently:
+
+```bash
+# Example deployment to Google Cloud Run
+cd Authentication-Service
+
+# Build the container
+gcloud builds submit --tag gcr.io/project-id/auth-service
+
+# Deploy to Cloud Run
+gcloud run deploy auth-service --image gcr.io/project-id/auth-service --platform managed
+```
+
+## Service Communication
+
+Services communicate with each other through their public APIs only. Direct database or file system sharing between services is prohibited by design.
+
+This ensures proper service isolation and allows for independent scaling and deployment.
