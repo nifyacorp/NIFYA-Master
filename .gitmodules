@@ -1,0 +1,18 @@
+[submodule "Authentication-Service"]
+	path = Authentication-Service
+	url = https://github.com/nifyacorp/Authentication-Service.git
+[submodule "email-notification"]
+	path = email-notification
+	url = https://github.com/nifyacorp/email-notification.git
+[submodule "doga-parser"]
+	path = doga-parser
+	url = https://github.com/nifyacorp/doga-parser.git
+[submodule "boe-parser"]
+	path = boe-parser
+	url = https://github.com/nifyacorp/boe-parser.git
+[submodule "backend"]
+	path = backend
+	url = https://github.com/nifyacorp/backend.git
+[submodule "subscription-worker"]
+	path = subscription-worker
+	url = https://github.com/nifyacorp/subscription-worker.git
