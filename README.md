@@ -22,6 +22,7 @@ These services should NEVER be merged together or refactored into a monolithic s
 - **boe-parser/** - Service for parsing BOE (Boletín Oficial del Estado) data
 - **doga-parser/** - Service for parsing DOGA (Diario Oficial de Galicia) data
 - **email-notification/** - Service for sending emails and notifications
+- **notification-worker/** - Service for managing notifications and alerts
 - **subscription-worker/** - Service for managing user subscriptions
 - **frontend/** - Frontend application (incorporated as a submodule from https://github.com/nifyacorp/main_page)
 
