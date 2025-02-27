@@ -28,6 +28,49 @@ These services should NEVER be merged together or refactored into a monolithic s
 
 Each service is designed to be deployed independently to Google Cloud Run.
 
+## System Architecture and Workflow
+
+The NIFYA system follows a microservices architecture with distinct components that work together to provide subscription-based notifications for official bulletins and other data sources. Here's how the components interact:
+
+### 1. Templates and Subscriptions Flow
+
+**Templates** are pre-defined subscription patterns stored in the **backend** service:
+- Built-in templates are defined in code (`backend/src/core/subscription/data/built-in-templates.js`)
+- Custom templates can be created by users and stored in the database
+- Templates specify a data source type (e.g., BOE, real estate), keywords/prompts, and frequency
+
+**Subscriptions** are created when users select a template:
+- Users can customize the prompts or frequency when subscribing
+- Subscriptions are stored in the database with reference to their template type
+- Each subscription is tied to a specific user and includes processing metadata
+
+### 2. Subscription Processing Flow
+
+**Subscription Worker** handles the execution of subscriptions:
+- Triggered manually via the "Procesar" button in frontend or on a schedule
+- When triggered, the backend sends a request to the subscription-worker
+- The worker retrieves the subscription details including type, prompts, and frequency
+- Based on the subscription type, it determines which parser to use (e.g., BOE)
+
+**Parsing Process**:
+- The subscription worker sends the prompts to the appropriate parser (e.g., BOE-Parser)
+- The parser analyzes the latest publications for matches against the prompts
+- Matches are processed and published to Google Cloud Pub/Sub as messages
+- Each message contains details about the match, source document, and subscription context
+
+### 3. Notification Flow
+
+**Notification Worker** processes the messages from Pub/Sub:
+- Listens continuously for new messages
+- Validates and processes incoming messages based on their type
+- Creates notifications in the database for each match
+- Enriches notification content with type-specific metadata
+- Handles errors and publishes failed messages to a Dead Letter Queue
+
+**User Notifications**:
+- The frontend polls for new notifications for the logged-in user
+- Email notifications can be sent via the email-notification service
+
 ## Deployment Architecture
 
 This project follows a strict microservices architecture pattern:
