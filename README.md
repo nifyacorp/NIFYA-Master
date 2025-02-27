@@ -55,8 +55,8 @@ The NIFYA system follows a microservices architecture with distinct components t
 **Parsing Process**:
 - The subscription worker sends the prompts to the appropriate parser (e.g., BOE-Parser)
 - The parser analyzes the latest publications for matches against the prompts
-- Matches are processed and published to Google Cloud Pub/Sub as messages
-- Each message contains details about the match, source document, and subscription context
+- Matches are returned to the Subscription Worker for processing
+- The Subscription Worker then publishes matches to Google Cloud Pub/Sub as notification messages
 
 ### 3. Notification Flow
 
@@ -70,6 +70,18 @@ The NIFYA system follows a microservices architecture with distinct components t
 **User Notifications**:
 - The frontend polls for new notifications for the logged-in user
 - Email notifications can be sent via the email-notification service
+
+### 4. Component Responsibilities
+
+The system follows a clear separation of responsibilities:
+
+- **BOE/DOGA Parser Services**: Focus solely on content analysis - search through publications with provided prompts and return matches. They do not create notifications or interact with the notification system directly.
+
+- **Subscription Worker**: Orchestrates the entire process - retrieves subscription details, calls appropriate parsers, publishes notification messages to Pub/Sub, and updates subscription processing status.
+
+- **Notification Worker**: Processes notification messages, creates database entries, and triggers email notifications when appropriate.
+
+This architecture ensures loose coupling between components and allows each service to focus on its core responsibility.
 
 ## Deployment Architecture
 
