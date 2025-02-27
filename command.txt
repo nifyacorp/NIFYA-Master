@@ -1,0 +1,14 @@
+gcloud scheduler jobs create http notification-worker-warmup \
+  --project=delta-entity-447812-p2 \
+  --location=us-central1 \
+  --schedule="*/4 * * * *" \
+  --time-zone="Etc/UTC" \
+  --uri="https://notification-worker-415554190254.us-central1.run.app/health" \
+  --http-method=GET \
+  --headers="User-Agent=Cloud-Scheduler-Warmup" \
+  --max-retry-attempts=1 \
+  --max-retry-duration=10s \
+  --min-backoff=5s \
+  --max-backoff=30s \
+  --max-doublings=2 \
+  --description="Job to keep notification-worker warm by hitting health endpoint every 4 minutes" 
