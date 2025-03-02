@@ -2,10 +2,11 @@
 
 ## Documentation & Standardization
 
-- [ ] **Create a system architecture diagram**
+- [x] **Create a system architecture diagram**
   - Document all service connections including REST endpoints and PubSub topics
   - Include authentication flows and database access patterns
   - Store in a central location accessible to all team members
+  - ✅ *Completed: See `docs/system-architecture.md` for the comprehensive architecture documentation*
 
 - [ ] **Standardize environment variables across services**
   - [ ] Create a `.env.example` file for each submodule with all required variables
