@@ -15,6 +15,58 @@ A comprehensive platform for intelligent notifications powered by AI. NIFYA prov
 - **Email Notifications**: Working with HTML templates and user preferences
 - **Current Focus**: Bug fixes and performance optimization across services
 
+## 🧪 Testing & Debugging
+
+For testing and debugging purposes, use the test credentials stored in the `test-credentials.md` file (gitignored). This file contains a test account that can be used across all environments.
+
+- Test site: https://clever-kelpie-60c3a6.netlify.app/
+- Comprehensive testing documentation available in [testing-documentation.md](testing-documentation.md)
+
+### Automated Testing
+
+The repository includes automated testing scripts:
+- `debug-website.js`: Runs a comprehensive test of the website and generates a detailed bug report
+- `route-testing-script.js`: Tests all application routes and produces screenshots with error logs
+
+#### Running Tests
+
+You can run all tests using the provided test runner scripts:
+
+**For Linux/Mac:**
+```bash
+# Make the script executable
+chmod +x run-tests.sh
+
+# Run all tests
+./run-tests.sh
+```
+
+**For Windows:**
+```powershell
+# Run all tests
+.\run-tests.ps1
+```
+
+Or run individual test scripts:
+```bash
+# Install dependencies
+npm install puppeteer
+
+# Run the debug script
+node debug-website.js
+
+# Run the route testing script
+node route-testing-script.js
+```
+
+Test results are stored in:
+- Bug reports: `bugs-report.md`
+- Route test results: `route-test-results/`
+
+### Common Issues
+
+For common issues and their solutions, refer to the [testing documentation](testing-documentation.md#common-issues-and-solutions).
+
 ## 🏛️ System Architecture
 
 NIFYA is built with a microservices architecture where specialized services handle specific domains of functionality:
@@ -322,3 +374,59 @@ If the subscription processing isn't working correctly, follow these steps:
 3. **Incorrect Endpoint Construction**:
    - The worker must use the correct path to communicate with the BOE Parser
    - Solution: Verify that the worker is using `/analyze-text` endpoint
+
+# NIFYA Repository Compendium
+
+This project is a compendium of interconnected repositories that work together to provide the NIFYA service. Each subservice has its own build and deployment pipeline.
+
+## Development Workflow
+
+1. Make changes to the relevant subservice code
+2. Commit your changes to the repository
+3. Push/sync your changes to trigger the build process
+4. Monitor the build process in the deployment platform
+
+## Subservices and Deployment URLs
+
+| Service | Description | Deployment URL |
+|---------|-------------|----------------|
+| Frontend | User interface and client-side application | https://clever-kelpie-60c3a6.netlify.app |
+| Authentication Service | Handles user authentication and authorization | https://authentication-service-415554190254.us-central1.run.app |
+| Backend | Core API and business logic | https://backend-415554190254.us-central1.run.app |
+| Subscription Worker | Manages subscription processing | https://subscription-worker-415554190254.us-central1.run.app |
+| BOE Parser | AI-powered analysis of Spanish Official Bulletin (BOE) | https://boe-parser-415554190254.us-central1.run.app |
+| DOGA Parser | AI-powered analysis of Galician Official Bulletin (DOGA) | https://doga-parser-415554190254.us-central1.run.app |
+| Notification Worker | Processes notification messages and stores them in the database | https://notification-worker-415554190254.us-central1.run.app |
+| Email Notification | Sends email summaries of notifications to users | https://email-notification-415554190254.us-central1.run.app |
+
+## Build Process
+
+Each subservice has an independent build process triggered by changes to its respective code:
+
+1. Code changes are committed and pushed to the repository
+2. CI/CD pipeline detects changes and initiates the build process
+3. Tests are run to ensure code quality
+4. If tests pass, the service is built and deployed to its respective environment
+5. Deployment status can be monitored in the deployment platform
+
+## Testing
+
+Before deploying changes, it's recommended to run the automated test suite to verify functionality:
+
+```bash
+# Run the test suite for the frontend
+cd frontend
+npm test
+
+# Test the subscription flow
+node fix-subscription-form.js
+```
+
+## Troubleshooting
+
+If you encounter issues with the build process:
+
+1. Check the build logs in the CI/CD platform
+2. Verify that all dependencies are correctly specified
+3. Ensure that tests are passing locally before pushing changes
+4. Check for any API compatibility issues between services
