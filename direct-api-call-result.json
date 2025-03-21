@@ -1,0 +1,13 @@
+{
+  "status": 401,
+  "data": {
+    "error": "MISSING_HEADERS",
+    "message": "Invalid Authorization header format. Must be: Bearer <token>",
+    "status": 401,
+    "details": {
+      "providedHeader": "null"
+    },
+    "timestamp": "2025-03-21T23:43:02.809Z"
+  },
+  "success": true
+}

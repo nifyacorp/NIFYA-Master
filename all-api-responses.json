@@ -1,0 +1,123 @@
+{
+  "https://clever-kelpie-60c3a6.netlify.app/api/v1/users/me": {
+    "status": 200,
+    "headers": {
+      "access-control-allow-credentials": "true",
+      "age": "0",
+      "alt-svc": "h3=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000",
+      "cache-status": "\"Netlify Edge\"; fwd=miss",
+      "content-length": "343",
+      "content-type": "application/json; charset=utf-8",
+      "date": "Fri, 21 Mar 2025 23:42:56 GMT",
+      "netlify-vary": "query",
+      "server": "Netlify",
+      "strict-transport-security": "max-age=31536000; includeSubDomains; preload",
+      "vary": "Origin",
+      "x-cloud-trace-context": "3e11b3faec4a74452544c682aec03489",
+      "x-nf-request-id": "01JPXHD7SEC59R1MTS1ZH0SN7F"
+    },
+    "data": {
+      "profile": {
+        "id": "65c6074d-dbc4-4091-8e45-b6aecffd9ab9",
+        "email": "ratonxi@gmail.com",
+        "name": "Test",
+        "avatar": null,
+        "bio": null,
+        "theme": "",
+        "language": "",
+        "emailNotifications": true,
+        "notificationEmail": "ratonxi@gmail.com",
+        "lastLogin": "2025-03-06T23:05:29.919Z",
+        "emailVerified": true,
+        "subscriptionCount": 5,
+        "notificationCount": 0,
+        "lastNotification": null
+      }
+    }
+  },
+  "https://clever-kelpie-60c3a6.netlify.app/api/v1/notifications?page=1&limit=1&unread=true": {
+    "status": 200,
+    "headers": {
+      "access-control-allow-credentials": "true",
+      "age": "0",
+      "alt-svc": "h3=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000",
+      "cache-status": "\"Netlify Edge\"; fwd=miss",
+      "content-length": "60",
+      "content-type": "application/json; charset=utf-8",
+      "date": "Fri, 21 Mar 2025 23:42:56 GMT",
+      "netlify-vary": "query",
+      "server": "Netlify",
+      "strict-transport-security": "max-age=31536000; includeSubDomains; preload",
+      "vary": "Origin",
+      "x-cloud-trace-context": "9ed5af6bf14a41fa2544c682aec03c94",
+      "x-nf-request-id": "01JPXHD7SBFYKANGMSK72SM91W"
+    },
+    "data": {
+      "notifications": [],
+      "total": 0,
+      "unread": 0,
+      "page": 1,
+      "limit": 1
+    }
+  },
+  "https://clever-kelpie-60c3a6.netlify.app/api/v1/subscriptions": {
+    "status": 200,
+    "headers": {
+      "access-control-allow-credentials": "true",
+      "age": "0",
+      "alt-svc": "h3=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000",
+      "cache-status": "\"Netlify Edge\"; fwd=miss",
+      "content-length": "108",
+      "content-type": "application/json; charset=utf-8",
+      "date": "Fri, 21 Mar 2025 23:42:56 GMT",
+      "netlify-vary": "query",
+      "server": "Netlify",
+      "strict-transport-security": "max-age=31536000; includeSubDomains; preload",
+      "vary": "Origin",
+      "x-cloud-trace-context": "fe1e61b0c5559c942544c682aec03f25",
+      "x-nf-request-id": "01JPXHD7SG4X74S4VX1XHB1YQ7"
+    },
+    "data": {
+      "status": "success",
+      "data": {
+        "subscriptions": [],
+        "pagination": {
+          "total": 0,
+          "page": 1,
+          "limit": 20,
+          "totalPages": 0
+        }
+      }
+    }
+  },
+  "https://clever-kelpie-60c3a6.netlify.app/api/v1/subscriptions/stats": {
+    "status": 200,
+    "headers": {
+      "access-control-allow-credentials": "true",
+      "age": "0",
+      "alt-svc": "h3=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000",
+      "cache-status": "\"Netlify Edge\"; fwd=miss",
+      "content-length": "96",
+      "content-type": "application/json; charset=utf-8",
+      "date": "Fri, 21 Mar 2025 23:42:56 GMT",
+      "netlify-vary": "query",
+      "server": "Netlify",
+      "strict-transport-security": "max-age=31536000; includeSubDomains; preload",
+      "vary": "Origin",
+      "x-cloud-trace-context": "3f38d46aa1363a922544c682aec03473",
+      "x-nf-request-id": "01JPXHD7SHJ46JMKDNFKDPGBWM"
+    },
+    "data": {
+      "total": 5,
+      "active": 5,
+      "inactive": 0,
+      "bySource": {
+        "BOE": 5
+      },
+      "byFrequency": {
+        "daily": 4,
+        "immediate": 1
+      }
+    }
+  }
+}

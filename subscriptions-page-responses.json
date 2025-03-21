@@ -1,0 +1,62 @@
+{
+  "https://clever-kelpie-60c3a6.netlify.app/api/v1/subscriptions": {
+    "status": 200,
+    "headers": {
+      "access-control-allow-credentials": "true",
+      "age": "0",
+      "alt-svc": "h3=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000",
+      "cache-status": "\"Netlify Edge\"; fwd=miss",
+      "content-length": "108",
+      "content-type": "application/json; charset=utf-8",
+      "date": "Fri, 21 Mar 2025 23:42:50 GMT",
+      "netlify-vary": "query",
+      "server": "Netlify",
+      "strict-transport-security": "max-age=31536000; includeSubDomains; preload",
+      "vary": "Origin",
+      "x-cloud-trace-context": "c0ddebada6fe9a3390abe0a38e925bfe",
+      "x-nf-request-id": "01JPXHD1P7TH4S5AQV3XR9HRN1"
+    },
+    "data": {
+      "status": "success",
+      "data": {
+        "subscriptions": [],
+        "pagination": {
+          "total": 0,
+          "page": 1,
+          "limit": 20,
+          "totalPages": 0
+        }
+      }
+    }
+  },
+  "https://clever-kelpie-60c3a6.netlify.app/api/v1/subscriptions/stats": {
+    "status": 200,
+    "headers": {
+      "access-control-allow-credentials": "true",
+      "age": "0",
+      "alt-svc": "h3=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000",
+      "cache-status": "\"Netlify Edge\"; fwd=miss",
+      "content-length": "96",
+      "content-type": "application/json; charset=utf-8",
+      "date": "Fri, 21 Mar 2025 23:42:50 GMT",
+      "netlify-vary": "query",
+      "server": "Netlify",
+      "strict-transport-security": "max-age=31536000; includeSubDomains; preload",
+      "vary": "Origin",
+      "x-cloud-trace-context": "a45bb4ac990d396a90abe0a38e925e37",
+      "x-nf-request-id": "01JPXHD1P8PDDJV5RKKZE3ZA3H"
+    },
+    "data": {
+      "total": 5,
+      "active": 5,
+      "inactive": 0,
+      "bySource": {
+        "BOE": 5
+      },
+      "byFrequency": {
+        "daily": 4,
+        "immediate": 1
+      }
+    }
+  }
+}

@@ -3,7 +3,7 @@
     "type": "log",
     "text": "Auth URL being used: (Using Netlify redirects)",
     "location": {
-      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-LSofOa8R.js",
+      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-BLKOrhch.js",
       "lineNumber": 316,
       "columnNumber": 1224
     }
@@ -12,7 +12,7 @@
     "type": "log",
     "text": "Backend URL being used: (Using Netlify redirects)",
     "location": {
-      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-LSofOa8R.js",
+      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-BLKOrhch.js",
       "lineNumber": 316,
       "columnNumber": 4608
     }
@@ -21,7 +21,7 @@
     "type": "log",
     "text": "Using Netlify redirects: true",
     "location": {
-      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-LSofOa8R.js",
+      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-BLKOrhch.js",
       "lineNumber": 321,
       "columnNumber": 5240
     }
@@ -30,7 +30,7 @@
     "type": "log",
     "text": "API base URL being used: /api",
     "location": {
-      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-LSofOa8R.js",
+      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-BLKOrhch.js",
       "lineNumber": 321,
       "columnNumber": 5299
     }
@@ -39,7 +39,7 @@
     "type": "log",
     "text": "Environment variables:",
     "location": {
-      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-LSofOa8R.js",
+      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-BLKOrhch.js",
       "lineNumber": 364,
       "columnNumber": 34804
     }
@@ -48,7 +48,7 @@
     "type": "log",
     "text": "VITE_AUTH_URL: https://authentication-service-415554190254.us-central1.run.app",
     "location": {
-      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-LSofOa8R.js",
+      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-BLKOrhch.js",
       "lineNumber": 364,
       "columnNumber": 34842
     }
@@ -57,7 +57,7 @@
     "type": "log",
     "text": "VITE_BACKEND_URL: https://backend-415554190254.us-central1.run.app",
     "location": {
-      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-LSofOa8R.js",
+      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-BLKOrhch.js",
       "lineNumber": 364,
       "columnNumber": 34938
     }
@@ -66,7 +66,7 @@
     "type": "log",
     "text": "VITE_SUBSCRIPTION_WORKER: https://subscription-worker-415554190254.us-central1.run.app",
     "location": {
-      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-LSofOa8R.js",
+      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-BLKOrhch.js",
       "lineNumber": 364,
       "columnNumber": 35022
     }
@@ -75,7 +75,7 @@
     "type": "log",
     "text": "VITE_ENV: production",
     "location": {
-      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-LSofOa8R.js",
+      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-BLKOrhch.js",
       "lineNumber": 364,
       "columnNumber": 35126
     }
@@ -84,7 +84,7 @@
     "type": "log",
     "text": "Application starting...",
     "location": {
-      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-LSofOa8R.js",
+      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-BLKOrhch.js",
       "lineNumber": 364,
       "columnNumber": 35454
     }
@@ -93,7 +93,7 @@
     "type": "log",
     "text": "Creating React root...",
     "location": {
-      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-LSofOa8R.js",
+      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-BLKOrhch.js",
       "lineNumber": 364,
       "columnNumber": 35585
     }
@@ -102,7 +102,7 @@
     "type": "log",
     "text": "Rendering application...",
     "location": {
-      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-LSofOa8R.js",
+      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-BLKOrhch.js",
       "lineNumber": 364,
       "columnNumber": 35637
     }
@@ -111,7 +111,7 @@
     "type": "log",
     "text": "Application rendered successfully",
     "location": {
-      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-LSofOa8R.js",
+      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-BLKOrhch.js",
       "lineNumber": 364,
       "columnNumber": 35783
     }
@@ -120,7 +120,7 @@
     "type": "log",
     "text": "App: Rendering routes",
     "location": {
-      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-LSofOa8R.js",
+      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-BLKOrhch.js",
       "lineNumber": 364,
       "columnNumber": 31657
     }
@@ -129,7 +129,7 @@
     "type": "log",
     "text": "Auth state in header updated: JSHandle@object",
     "location": {
-      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-LSofOa8R.js",
+      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-BLKOrhch.js",
       "lineNumber": 364,
       "columnNumber": 23469
     }
@@ -138,7 +138,7 @@
     "type": "startGroup",
     "text": "Notifications API - list",
     "location": {
-      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-LSofOa8R.js",
+      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-BLKOrhch.js",
       "lineNumber": 316,
       "columnNumber": 77318
     }
@@ -147,7 +147,7 @@
     "type": "log",
     "text": "Listing notifications with options: JSHandle@object",
     "location": {
-      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-LSofOa8R.js",
+      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-BLKOrhch.js",
       "lineNumber": 316,
       "columnNumber": 77360
     }
@@ -156,7 +156,7 @@
     "type": "startGroup",
     "text": "🌐 API Request: GET /api/v1/notifications?page=1&limit=1&unread=true",
     "location": {
-      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-LSofOa8R.js",
+      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-BLKOrhch.js",
       "lineNumber": 316,
       "columnNumber": 4767
     }
@@ -165,7 +165,7 @@
     "type": "log",
     "text": "Request details: JSHandle@object",
     "location": {
-      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-LSofOa8R.js",
+      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-BLKOrhch.js",
       "lineNumber": 316,
       "columnNumber": 4810
     }
@@ -174,7 +174,7 @@
     "type": "log",
     "text": "Auth headers: JSHandle@object",
     "location": {
-      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-LSofOa8R.js",
+      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-BLKOrhch.js",
       "lineNumber": 316,
       "columnNumber": 5158
     }
@@ -183,7 +183,7 @@
     "type": "log",
     "text": "Final request options: JSHandle@object",
     "location": {
-      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-LSofOa8R.js",
+      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-BLKOrhch.js",
       "lineNumber": 316,
       "columnNumber": 5351
     }
@@ -192,7 +192,7 @@
     "type": "log",
     "text": "AuthContext: Checking auth state JSHandle@object",
     "location": {
-      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-LSofOa8R.js",
+      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-BLKOrhch.js",
       "lineNumber": 316,
       "columnNumber": 90484
     }
@@ -201,7 +201,7 @@
     "type": "log",
     "text": "AuthContext: No valid auth tokens found",
     "location": {
-      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-LSofOa8R.js",
+      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-BLKOrhch.js",
       "lineNumber": 316,
       "columnNumber": 91075
     }
@@ -217,7 +217,7 @@
     "type": "log",
     "text": "Response received: JSHandle@object",
     "location": {
-      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-LSofOa8R.js",
+      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-BLKOrhch.js",
       "lineNumber": 316,
       "columnNumber": 5520
     }
@@ -226,7 +226,7 @@
     "type": "log",
     "text": "Parsed JSON response: JSHandle@object",
     "location": {
-      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-LSofOa8R.js",
+      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-BLKOrhch.js",
       "lineNumber": 316,
       "columnNumber": 5780
     }
@@ -235,7 +235,7 @@
     "type": "error",
     "text": "API error response: MISSING_HEADERS",
     "location": {
-      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-LSofOa8R.js",
+      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-BLKOrhch.js",
       "lineNumber": 316,
       "columnNumber": 7185
     }
@@ -244,7 +244,7 @@
     "type": "log",
     "text": "Final API response object: JSHandle@object",
     "location": {
-      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-LSofOa8R.js",
+      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-BLKOrhch.js",
       "lineNumber": 316,
       "columnNumber": 7231
     }
@@ -253,7 +253,7 @@
     "type": "endGroup",
     "text": "console.groupEnd",
     "location": {
-      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-LSofOa8R.js",
+      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-BLKOrhch.js",
       "lineNumber": 316,
       "columnNumber": 7334
     }
@@ -262,7 +262,7 @@
     "type": "log",
     "text": "Raw API response received: JSHandle@object",
     "location": {
-      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-LSofOa8R.js",
+      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-BLKOrhch.js",
       "lineNumber": 316,
       "columnNumber": 77739
     }
@@ -271,7 +271,7 @@
     "type": "error",
     "text": "Invalid response format - missing notifications array JSHandle@object",
     "location": {
-      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-LSofOa8R.js",
+      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-BLKOrhch.js",
       "lineNumber": 316,
       "columnNumber": 77958
     }
@@ -280,7 +280,7 @@
     "type": "startGroup",
     "text": "🔑 Login Process",
     "location": {
-      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-LSofOa8R.js",
+      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-BLKOrhch.js",
       "lineNumber": 316,
       "columnNumber": 3535
     }
@@ -289,7 +289,7 @@
     "type": "log",
     "text": "Login attempt: JSHandle@object",
     "location": {
-      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-LSofOa8R.js",
+      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-BLKOrhch.js",
       "lineNumber": 316,
       "columnNumber": 3569
     }
@@ -298,7 +298,7 @@
     "type": "startGroup",
     "text": "🔐 Auth Service Request",
     "location": {
-      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-LSofOa8R.js",
+      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-BLKOrhch.js",
       "lineNumber": 316,
       "columnNumber": 1355
     }
@@ -307,7 +307,7 @@
     "type": "log",
     "text": "Request Details: JSHandle@object",
     "location": {
-      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-LSofOa8R.js",
+      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-BLKOrhch.js",
       "lineNumber": 316,
       "columnNumber": 1396
     }
@@ -316,7 +316,7 @@
     "type": "log",
     "text": "Response: JSHandle@object",
     "location": {
-      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-LSofOa8R.js",
+      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-BLKOrhch.js",
       "lineNumber": 316,
       "columnNumber": 2174
     }
@@ -325,7 +325,7 @@
     "type": "startGroup",
     "text": "🔑 Processing Auth Tokens",
     "location": {
-      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-LSofOa8R.js",
+      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-BLKOrhch.js",
       "lineNumber": 316,
       "columnNumber": 2342
     }
@@ -334,7 +334,7 @@
     "type": "log",
     "text": "Extracted user ID from token: 65c6074d-dbc4-4091-8e45-b6aecffd9ab9",
     "location": {
-      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-LSofOa8R.js",
+      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-BLKOrhch.js",
       "lineNumber": 316,
       "columnNumber": 2715
     }
@@ -343,7 +343,7 @@
     "type": "endGroup",
     "text": "console.groupEnd",
     "location": {
-      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-LSofOa8R.js",
+      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-BLKOrhch.js",
       "lineNumber": 316,
       "columnNumber": 3290
     }
@@ -352,7 +352,7 @@
     "type": "endGroup",
     "text": "console.groupEnd",
     "location": {
-      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-LSofOa8R.js",
+      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-BLKOrhch.js",
       "lineNumber": 316,
       "columnNumber": 3316
     }
@@ -361,7 +361,7 @@
     "type": "endGroup",
     "text": "console.groupEnd",
     "location": {
-      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-LSofOa8R.js",
+      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-BLKOrhch.js",
       "lineNumber": 316,
       "columnNumber": 3701
     }
@@ -370,7 +370,7 @@
     "type": "log",
     "text": "Auth URL being used: (Using Netlify redirects)",
     "location": {
-      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-LSofOa8R.js",
+      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-BLKOrhch.js",
       "lineNumber": 316,
       "columnNumber": 1224
     }
@@ -379,7 +379,7 @@
     "type": "log",
     "text": "Backend URL being used: (Using Netlify redirects)",
     "location": {
-      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-LSofOa8R.js",
+      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-BLKOrhch.js",
       "lineNumber": 316,
       "columnNumber": 4608
     }
@@ -388,7 +388,7 @@
     "type": "log",
     "text": "Using Netlify redirects: true",
     "location": {
-      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-LSofOa8R.js",
+      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-BLKOrhch.js",
       "lineNumber": 321,
       "columnNumber": 5240
     }
@@ -397,7 +397,7 @@
     "type": "log",
     "text": "API base URL being used: /api",
     "location": {
-      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-LSofOa8R.js",
+      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-BLKOrhch.js",
       "lineNumber": 321,
       "columnNumber": 5299
     }
@@ -406,7 +406,7 @@
     "type": "log",
     "text": "Environment variables:",
     "location": {
-      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-LSofOa8R.js",
+      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-BLKOrhch.js",
       "lineNumber": 364,
       "columnNumber": 34804
     }
@@ -415,7 +415,7 @@
     "type": "log",
     "text": "VITE_AUTH_URL: https://authentication-service-415554190254.us-central1.run.app",
     "location": {
-      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-LSofOa8R.js",
+      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-BLKOrhch.js",
       "lineNumber": 364,
       "columnNumber": 34842
     }
@@ -424,7 +424,7 @@
     "type": "log",
     "text": "VITE_BACKEND_URL: https://backend-415554190254.us-central1.run.app",
     "location": {
-      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-LSofOa8R.js",
+      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-BLKOrhch.js",
       "lineNumber": 364,
       "columnNumber": 34938
     }
@@ -433,7 +433,7 @@
     "type": "log",
     "text": "VITE_SUBSCRIPTION_WORKER: https://subscription-worker-415554190254.us-central1.run.app",
     "location": {
-      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-LSofOa8R.js",
+      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-BLKOrhch.js",
       "lineNumber": 364,
       "columnNumber": 35022
     }
@@ -442,7 +442,7 @@
     "type": "log",
     "text": "VITE_ENV: production",
     "location": {
-      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-LSofOa8R.js",
+      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-BLKOrhch.js",
       "lineNumber": 364,
       "columnNumber": 35126
     }
@@ -451,7 +451,7 @@
     "type": "log",
     "text": "Application starting...",
     "location": {
-      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-LSofOa8R.js",
+      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-BLKOrhch.js",
       "lineNumber": 364,
       "columnNumber": 35454
     }
@@ -460,7 +460,7 @@
     "type": "log",
     "text": "Creating React root...",
     "location": {
-      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-LSofOa8R.js",
+      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-BLKOrhch.js",
       "lineNumber": 364,
       "columnNumber": 35585
     }
@@ -469,7 +469,7 @@
     "type": "log",
     "text": "Rendering application...",
     "location": {
-      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-LSofOa8R.js",
+      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-BLKOrhch.js",
       "lineNumber": 364,
       "columnNumber": 35637
     }
@@ -478,7 +478,7 @@
     "type": "log",
     "text": "Application rendered successfully",
     "location": {
-      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-LSofOa8R.js",
+      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-BLKOrhch.js",
       "lineNumber": 364,
       "columnNumber": 35783
     }
@@ -487,7 +487,7 @@
     "type": "log",
     "text": "App: Rendering routes",
     "location": {
-      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-LSofOa8R.js",
+      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-BLKOrhch.js",
       "lineNumber": 364,
       "columnNumber": 31657
     }
@@ -496,7 +496,7 @@
     "type": "log",
     "text": "Auth state in header updated: JSHandle@object",
     "location": {
-      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-LSofOa8R.js",
+      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-BLKOrhch.js",
       "lineNumber": 364,
       "columnNumber": 23469
     }
@@ -505,7 +505,7 @@
     "type": "startGroup",
     "text": "Notifications API - list",
     "location": {
-      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-LSofOa8R.js",
+      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-BLKOrhch.js",
       "lineNumber": 316,
       "columnNumber": 77318
     }
@@ -514,7 +514,7 @@
     "type": "log",
     "text": "Listing notifications with options: JSHandle@object",
     "location": {
-      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-LSofOa8R.js",
+      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-BLKOrhch.js",
       "lineNumber": 316,
       "columnNumber": 77360
     }
@@ -523,7 +523,7 @@
     "type": "startGroup",
     "text": "🌐 API Request: GET /api/v1/notifications?page=1&limit=1&unread=true",
     "location": {
-      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-LSofOa8R.js",
+      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-BLKOrhch.js",
       "lineNumber": 316,
       "columnNumber": 4767
     }
@@ -532,7 +532,7 @@
     "type": "log",
     "text": "Request details: JSHandle@object",
     "location": {
-      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-LSofOa8R.js",
+      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-BLKOrhch.js",
       "lineNumber": 316,
       "columnNumber": 4810
     }
@@ -541,7 +541,7 @@
     "type": "log",
     "text": "Auth headers: JSHandle@object",
     "location": {
-      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-LSofOa8R.js",
+      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-BLKOrhch.js",
       "lineNumber": 316,
       "columnNumber": 5158
     }
@@ -550,7 +550,7 @@
     "type": "log",
     "text": "Final request options: JSHandle@object",
     "location": {
-      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-LSofOa8R.js",
+      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-BLKOrhch.js",
       "lineNumber": 316,
       "columnNumber": 5351
     }
@@ -559,7 +559,7 @@
     "type": "log",
     "text": "AuthContext: Checking auth state JSHandle@object",
     "location": {
-      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-LSofOa8R.js",
+      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-BLKOrhch.js",
       "lineNumber": 316,
       "columnNumber": 90484
     }
@@ -568,7 +568,7 @@
     "type": "startGroup",
     "text": "👤 Get User Profile",
     "location": {
-      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-LSofOa8R.js",
+      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-BLKOrhch.js",
       "lineNumber": 316,
       "columnNumber": 74328
     }
@@ -577,7 +577,7 @@
     "type": "log",
     "text": "Fetching user profile...",
     "location": {
-      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-LSofOa8R.js",
+      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-BLKOrhch.js",
       "lineNumber": 316,
       "columnNumber": 74365
     }
@@ -586,7 +586,7 @@
     "type": "startGroup",
     "text": "🌐 API Request: GET /api/v1/users/me",
     "location": {
-      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-LSofOa8R.js",
+      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-BLKOrhch.js",
       "lineNumber": 316,
       "columnNumber": 4767
     }
@@ -595,7 +595,7 @@
     "type": "log",
     "text": "Request details: JSHandle@object",
     "location": {
-      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-LSofOa8R.js",
+      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-BLKOrhch.js",
       "lineNumber": 316,
       "columnNumber": 4810
     }
@@ -604,7 +604,7 @@
     "type": "log",
     "text": "Auth headers: JSHandle@object",
     "location": {
-      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-LSofOa8R.js",
+      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-BLKOrhch.js",
       "lineNumber": 316,
       "columnNumber": 5158
     }
@@ -613,7 +613,7 @@
     "type": "log",
     "text": "Final request options: JSHandle@object",
     "location": {
-      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-LSofOa8R.js",
+      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-BLKOrhch.js",
       "lineNumber": 316,
       "columnNumber": 5351
     }
@@ -622,7 +622,7 @@
     "type": "log",
     "text": "Response received: JSHandle@object",
     "location": {
-      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-LSofOa8R.js",
+      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-BLKOrhch.js",
       "lineNumber": 316,
       "columnNumber": 5520
     }
@@ -631,7 +631,7 @@
     "type": "log",
     "text": "Parsed JSON response: JSHandle@object",
     "location": {
-      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-LSofOa8R.js",
+      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-BLKOrhch.js",
       "lineNumber": 316,
       "columnNumber": 5780
     }
@@ -640,7 +640,7 @@
     "type": "log",
     "text": "Final API response object: JSHandle@object",
     "location": {
-      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-LSofOa8R.js",
+      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-BLKOrhch.js",
       "lineNumber": 316,
       "columnNumber": 7231
     }
@@ -649,7 +649,7 @@
     "type": "endGroup",
     "text": "console.groupEnd",
     "location": {
-      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-LSofOa8R.js",
+      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-BLKOrhch.js",
       "lineNumber": 316,
       "columnNumber": 7334
     }
@@ -658,7 +658,7 @@
     "type": "endGroup",
     "text": "console.groupEnd",
     "location": {
-      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-LSofOa8R.js",
+      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-BLKOrhch.js",
       "lineNumber": 316,
       "columnNumber": 74451
     }
@@ -667,7 +667,7 @@
     "type": "log",
     "text": "AuthContext: User loaded from API JSHandle@object",
     "location": {
-      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-LSofOa8R.js",
+      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-BLKOrhch.js",
       "lineNumber": 316,
       "columnNumber": 90655
     }
@@ -676,7 +676,7 @@
     "type": "log",
     "text": "Auth state in header updated: JSHandle@object",
     "location": {
-      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-LSofOa8R.js",
+      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-BLKOrhch.js",
       "lineNumber": 364,
       "columnNumber": 23469
     }
@@ -685,25 +685,25 @@
     "type": "log",
     "text": "Notifications API - list",
     "location": {
-      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-LSofOa8R.js",
+      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-BLKOrhch.js",
       "lineNumber": 322,
-      "columnNumber": 41633
+      "columnNumber": 41923
     }
   },
   {
     "type": "log",
     "text": "Listing notifications with options: JSHandle@object",
     "location": {
-      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-LSofOa8R.js",
+      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-BLKOrhch.js",
       "lineNumber": 322,
-      "columnNumber": 41673
+      "columnNumber": 41963
     }
   },
   {
     "type": "startGroup",
     "text": "Notifications API - list",
     "location": {
-      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-LSofOa8R.js",
+      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-BLKOrhch.js",
       "lineNumber": 316,
       "columnNumber": 77318
     }
@@ -712,7 +712,7 @@
     "type": "log",
     "text": "Listing notifications with options: JSHandle@object",
     "location": {
-      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-LSofOa8R.js",
+      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-BLKOrhch.js",
       "lineNumber": 316,
       "columnNumber": 77360
     }
@@ -721,7 +721,7 @@
     "type": "startGroup",
     "text": "🌐 API Request: GET /api/v1/notifications?page=1&limit=1&unread=true",
     "location": {
-      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-LSofOa8R.js",
+      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-BLKOrhch.js",
       "lineNumber": 316,
       "columnNumber": 4767
     }
@@ -730,7 +730,7 @@
     "type": "log",
     "text": "Request details: JSHandle@object",
     "location": {
-      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-LSofOa8R.js",
+      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-BLKOrhch.js",
       "lineNumber": 316,
       "columnNumber": 4810
     }
@@ -739,7 +739,7 @@
     "type": "log",
     "text": "Auth headers: JSHandle@object",
     "location": {
-      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-LSofOa8R.js",
+      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-BLKOrhch.js",
       "lineNumber": 316,
       "columnNumber": 5158
     }
@@ -748,7 +748,7 @@
     "type": "log",
     "text": "Final request options: JSHandle@object",
     "location": {
-      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-LSofOa8R.js",
+      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-BLKOrhch.js",
       "lineNumber": 316,
       "columnNumber": 5351
     }
@@ -757,7 +757,7 @@
     "type": "startGroup",
     "text": "🔒 User Profile Flow",
     "location": {
-      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-LSofOa8R.js",
+      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-BLKOrhch.js",
       "lineNumber": 324,
       "columnNumber": 82089
     }
@@ -766,7 +766,7 @@
     "type": "log",
     "text": "Step 1: Checking authentication state",
     "location": {
-      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-LSofOa8R.js",
+      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-BLKOrhch.js",
       "lineNumber": 324,
       "columnNumber": 82127
     }
@@ -775,7 +775,7 @@
     "type": "log",
     "text": "Current auth state: JSHandle@object",
     "location": {
-      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-LSofOa8R.js",
+      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-BLKOrhch.js",
       "lineNumber": 324,
       "columnNumber": 82227
     }
@@ -784,7 +784,7 @@
     "type": "log",
     "text": "Step 2: Fetching user profile from API",
     "location": {
-      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-LSofOa8R.js",
+      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-BLKOrhch.js",
       "lineNumber": 324,
       "columnNumber": 82416
     }
@@ -793,7 +793,7 @@
     "type": "log",
     "text": "Making request to /api/users/me endpoint",
     "location": {
-      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-LSofOa8R.js",
+      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-BLKOrhch.js",
       "lineNumber": 324,
       "columnNumber": 82470
     }
@@ -802,7 +802,7 @@
     "type": "startGroup",
     "text": "👤 Get User Profile",
     "location": {
-      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-LSofOa8R.js",
+      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-BLKOrhch.js",
       "lineNumber": 316,
       "columnNumber": 74328
     }
@@ -811,7 +811,7 @@
     "type": "log",
     "text": "Fetching user profile...",
     "location": {
-      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-LSofOa8R.js",
+      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-BLKOrhch.js",
       "lineNumber": 316,
       "columnNumber": 74365
     }
@@ -820,7 +820,7 @@
     "type": "startGroup",
     "text": "🌐 API Request: GET /api/v1/users/me",
     "location": {
-      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-LSofOa8R.js",
+      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-BLKOrhch.js",
       "lineNumber": 316,
       "columnNumber": 4767
     }
@@ -829,7 +829,7 @@
     "type": "log",
     "text": "Request details: JSHandle@object",
     "location": {
-      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-LSofOa8R.js",
+      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-BLKOrhch.js",
       "lineNumber": 316,
       "columnNumber": 4810
     }
@@ -838,7 +838,7 @@
     "type": "log",
     "text": "Auth headers: JSHandle@object",
     "location": {
-      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-LSofOa8R.js",
+      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-BLKOrhch.js",
       "lineNumber": 316,
       "columnNumber": 5158
     }
@@ -847,7 +847,7 @@
     "type": "log",
     "text": "Final request options: JSHandle@object",
     "location": {
-      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-LSofOa8R.js",
+      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-BLKOrhch.js",
       "lineNumber": 316,
       "columnNumber": 5351
     }
@@ -856,7 +856,7 @@
     "type": "log",
     "text": "Request details: JSHandle@object",
     "location": {
-      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-LSofOa8R.js",
+      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-BLKOrhch.js",
       "lineNumber": 321,
       "columnNumber": 5801
     }
@@ -865,7 +865,7 @@
     "type": "log",
     "text": "Auth headers: JSHandle@object",
     "location": {
-      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-LSofOa8R.js",
+      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-BLKOrhch.js",
       "lineNumber": 321,
       "columnNumber": 5879
     }
@@ -874,7 +874,7 @@
     "type": "log",
     "text": "Final request options: JSHandle@object",
     "location": {
-      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-LSofOa8R.js",
+      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-BLKOrhch.js",
       "lineNumber": 321,
       "columnNumber": 6002
     }
@@ -883,7 +883,7 @@
     "type": "log",
     "text": "Request details: JSHandle@object",
     "location": {
-      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-LSofOa8R.js",
+      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-BLKOrhch.js",
       "lineNumber": 321,
       "columnNumber": 5801
     }
@@ -892,7 +892,7 @@
     "type": "log",
     "text": "Auth headers: JSHandle@object",
     "location": {
-      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-LSofOa8R.js",
+      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-BLKOrhch.js",
       "lineNumber": 321,
       "columnNumber": 5879
     }
@@ -901,7 +901,7 @@
     "type": "log",
     "text": "Final request options: JSHandle@object",
     "location": {
-      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-LSofOa8R.js",
+      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-BLKOrhch.js",
       "lineNumber": 321,
       "columnNumber": 6002
     }
@@ -910,7 +910,7 @@
     "type": "log",
     "text": "Request details: JSHandle@object",
     "location": {
-      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-LSofOa8R.js",
+      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-BLKOrhch.js",
       "lineNumber": 321,
       "columnNumber": 5801
     }
@@ -919,7 +919,7 @@
     "type": "log",
     "text": "Auth headers: JSHandle@object",
     "location": {
-      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-LSofOa8R.js",
+      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-BLKOrhch.js",
       "lineNumber": 321,
       "columnNumber": 5879
     }
@@ -928,7 +928,7 @@
     "type": "log",
     "text": "Final request options: JSHandle@object",
     "location": {
-      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-LSofOa8R.js",
+      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-BLKOrhch.js",
       "lineNumber": 321,
       "columnNumber": 6002
     }
@@ -937,7 +937,7 @@
     "type": "log",
     "text": "Request details: JSHandle@object",
     "location": {
-      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-LSofOa8R.js",
+      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-BLKOrhch.js",
       "lineNumber": 321,
       "columnNumber": 5801
     }
@@ -946,7 +946,7 @@
     "type": "log",
     "text": "Auth headers: JSHandle@object",
     "location": {
-      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-LSofOa8R.js",
+      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-BLKOrhch.js",
       "lineNumber": 321,
       "columnNumber": 5879
     }
@@ -955,7 +955,7 @@
     "type": "log",
     "text": "Final request options: JSHandle@object",
     "location": {
-      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-LSofOa8R.js",
+      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-BLKOrhch.js",
       "lineNumber": 321,
       "columnNumber": 6002
     }
@@ -964,7 +964,7 @@
     "type": "log",
     "text": "Response received: JSHandle@object",
     "location": {
-      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-LSofOa8R.js",
+      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-BLKOrhch.js",
       "lineNumber": 316,
       "columnNumber": 5520
     }
@@ -973,7 +973,7 @@
     "type": "log",
     "text": "Parsed JSON response: JSHandle@object",
     "location": {
-      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-LSofOa8R.js",
+      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-BLKOrhch.js",
       "lineNumber": 316,
       "columnNumber": 5780
     }
@@ -982,7 +982,7 @@
     "type": "log",
     "text": "Processing notification response: JSHandle@object",
     "location": {
-      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-LSofOa8R.js",
+      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-BLKOrhch.js",
       "lineNumber": 316,
       "columnNumber": 6434
     }
@@ -991,7 +991,7 @@
     "type": "log",
     "text": "Final API response object: JSHandle@object",
     "location": {
-      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-LSofOa8R.js",
+      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-BLKOrhch.js",
       "lineNumber": 316,
       "columnNumber": 7231
     }
@@ -1000,7 +1000,7 @@
     "type": "endGroup",
     "text": "console.groupEnd",
     "location": {
-      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-LSofOa8R.js",
+      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-BLKOrhch.js",
       "lineNumber": 316,
       "columnNumber": 7334
     }
@@ -1009,7 +1009,7 @@
     "type": "log",
     "text": "Raw API response received: JSHandle@object",
     "location": {
-      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-LSofOa8R.js",
+      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-BLKOrhch.js",
       "lineNumber": 316,
       "columnNumber": 77739
     }
@@ -1018,7 +1018,7 @@
     "type": "log",
     "text": "Processed notifications: JSHandle@object",
     "location": {
-      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-LSofOa8R.js",
+      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-BLKOrhch.js",
       "lineNumber": 316,
       "columnNumber": 78275
     }
@@ -1027,7 +1027,7 @@
     "type": "log",
     "text": "Returning processed notifications response",
     "location": {
-      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-LSofOa8R.js",
+      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-BLKOrhch.js",
       "lineNumber": 316,
       "columnNumber": 78548
     }
@@ -1036,7 +1036,7 @@
     "type": "endGroup",
     "text": "console.groupEnd",
     "location": {
-      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-LSofOa8R.js",
+      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-BLKOrhch.js",
       "lineNumber": 316,
       "columnNumber": 78606
     }
@@ -1045,7 +1045,7 @@
     "type": "log",
     "text": "Response received: JSHandle@object",
     "location": {
-      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-LSofOa8R.js",
+      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-BLKOrhch.js",
       "lineNumber": 321,
       "columnNumber": 6207
     }
@@ -1054,7 +1054,7 @@
     "type": "log",
     "text": "Parsed JSON response: JSHandle@object",
     "location": {
-      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-LSofOa8R.js",
+      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-BLKOrhch.js",
       "lineNumber": 321,
       "columnNumber": 6276
     }
@@ -1063,7 +1063,7 @@
     "type": "log",
     "text": "Final API response object: JSHandle@object",
     "location": {
-      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-LSofOa8R.js",
+      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-BLKOrhch.js",
       "lineNumber": 321,
       "columnNumber": 6351
     }
@@ -1072,16 +1072,16 @@
     "type": "log",
     "text": "Subscriptions API response: JSHandle@object",
     "location": {
-      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-LSofOa8R.js",
+      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-BLKOrhch.js",
       "lineNumber": 321,
-      "columnNumber": 7978
+      "columnNumber": 7990
     }
   },
   {
     "type": "log",
     "text": "Response received: JSHandle@object",
     "location": {
-      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-LSofOa8R.js",
+      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-BLKOrhch.js",
       "lineNumber": 321,
       "columnNumber": 6207
     }
@@ -1090,7 +1090,7 @@
     "type": "log",
     "text": "Parsed JSON response: JSHandle@object",
     "location": {
-      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-LSofOa8R.js",
+      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-BLKOrhch.js",
       "lineNumber": 321,
       "columnNumber": 6276
     }
@@ -1099,7 +1099,7 @@
     "type": "log",
     "text": "Final API response object: JSHandle@object",
     "location": {
-      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-LSofOa8R.js",
+      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-BLKOrhch.js",
       "lineNumber": 321,
       "columnNumber": 6351
     }
@@ -1108,43 +1108,43 @@
     "type": "log",
     "text": "Processing notification response: JSHandle@object",
     "location": {
-      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-LSofOa8R.js",
+      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-BLKOrhch.js",
       "lineNumber": 322,
-      "columnNumber": 41786
+      "columnNumber": 42076
     }
   },
   {
     "type": "log",
     "text": "Raw API response received: JSHandle@object",
     "location": {
-      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-LSofOa8R.js",
+      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-BLKOrhch.js",
       "lineNumber": 322,
-      "columnNumber": 41870
+      "columnNumber": 42160
     }
   },
   {
     "type": "log",
     "text": "Processed notifications: JSHandle@object",
     "location": {
-      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-LSofOa8R.js",
+      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-BLKOrhch.js",
       "lineNumber": 322,
-      "columnNumber": 41947
+      "columnNumber": 42237
     }
   },
   {
     "type": "log",
     "text": "Returning processed notifications response",
     "location": {
-      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-LSofOa8R.js",
+      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-BLKOrhch.js",
       "lineNumber": 322,
-      "columnNumber": 42099
+      "columnNumber": 42389
     }
   },
   {
     "type": "log",
     "text": "Request details: JSHandle@object",
     "location": {
-      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-LSofOa8R.js",
+      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-BLKOrhch.js",
       "lineNumber": 321,
       "columnNumber": 5801
     }
@@ -1153,7 +1153,7 @@
     "type": "log",
     "text": "Auth headers: JSHandle@object",
     "location": {
-      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-LSofOa8R.js",
+      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-BLKOrhch.js",
       "lineNumber": 321,
       "columnNumber": 5879
     }
@@ -1162,7 +1162,7 @@
     "type": "log",
     "text": "Final request options: JSHandle@object",
     "location": {
-      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-LSofOa8R.js",
+      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-BLKOrhch.js",
       "lineNumber": 321,
       "columnNumber": 6002
     }
@@ -1171,70 +1171,16 @@
     "type": "log",
     "text": "Response received: JSHandle@object",
     "location": {
-      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-LSofOa8R.js",
-      "lineNumber": 321,
-      "columnNumber": 6207
-    }
-  },
-  {
-    "type": "log",
-    "text": "Parsed JSON response: JSHandle@object",
-    "location": {
-      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-LSofOa8R.js",
-      "lineNumber": 321,
-      "columnNumber": 6276
-    }
-  },
-  {
-    "type": "log",
-    "text": "Final API response object: JSHandle@object",
-    "location": {
-      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-LSofOa8R.js",
-      "lineNumber": 321,
-      "columnNumber": 6351
-    }
-  },
-  {
-    "type": "log",
-    "text": "Response received: JSHandle@object",
-    "location": {
-      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-LSofOa8R.js",
+      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-BLKOrhch.js",
       "lineNumber": 316,
       "columnNumber": 5520
     }
   },
   {
     "type": "log",
-    "text": "Response received: JSHandle@object",
-    "location": {
-      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-LSofOa8R.js",
-      "lineNumber": 321,
-      "columnNumber": 6207
-    }
-  },
-  {
-    "type": "log",
     "text": "Parsed JSON response: JSHandle@object",
     "location": {
-      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-LSofOa8R.js",
-      "lineNumber": 321,
-      "columnNumber": 6276
-    }
-  },
-  {
-    "type": "log",
-    "text": "Final API response object: JSHandle@object",
-    "location": {
-      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-LSofOa8R.js",
-      "lineNumber": 321,
-      "columnNumber": 6351
-    }
-  },
-  {
-    "type": "log",
-    "text": "Parsed JSON response: JSHandle@object",
-    "location": {
-      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-LSofOa8R.js",
+      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-BLKOrhch.js",
       "lineNumber": 316,
       "columnNumber": 5780
     }
@@ -1243,7 +1189,7 @@
     "type": "log",
     "text": "Final API response object: JSHandle@object",
     "location": {
-      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-LSofOa8R.js",
+      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-BLKOrhch.js",
       "lineNumber": 316,
       "columnNumber": 7231
     }
@@ -1252,7 +1198,7 @@
     "type": "endGroup",
     "text": "console.groupEnd",
     "location": {
-      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-LSofOa8R.js",
+      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-BLKOrhch.js",
       "lineNumber": 316,
       "columnNumber": 7334
     }
@@ -1261,7 +1207,7 @@
     "type": "endGroup",
     "text": "console.groupEnd",
     "location": {
-      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-LSofOa8R.js",
+      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-BLKOrhch.js",
       "lineNumber": 316,
       "columnNumber": 74451
     }
@@ -1270,7 +1216,7 @@
     "type": "log",
     "text": "Step 3: Processing API response",
     "location": {
-      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-LSofOa8R.js",
+      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-BLKOrhch.js",
       "lineNumber": 324,
       "columnNumber": 82762
     }
@@ -1279,7 +1225,7 @@
     "type": "log",
     "text": "Response data: JSHandle@object",
     "location": {
-      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-LSofOa8R.js",
+      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-BLKOrhch.js",
       "lineNumber": 324,
       "columnNumber": 82809
     }
@@ -1288,7 +1234,7 @@
     "type": "log",
     "text": "Step 3 Success: Valid profile data received",
     "location": {
-      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-LSofOa8R.js",
+      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-BLKOrhch.js",
       "lineNumber": 324,
       "columnNumber": 82941
     }
@@ -1297,7 +1243,7 @@
     "type": "log",
     "text": "✅ Profile fetch completed successfully",
     "location": {
-      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-LSofOa8R.js",
+      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-BLKOrhch.js",
       "lineNumber": 324,
       "columnNumber": 83131
     }
@@ -1306,7 +1252,7 @@
     "type": "endGroup",
     "text": "console.groupEnd",
     "location": {
-      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-LSofOa8R.js",
+      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-BLKOrhch.js",
       "lineNumber": 324,
       "columnNumber": 83185
     }
@@ -1315,7 +1261,7 @@
     "type": "log",
     "text": "Response received: JSHandle@object",
     "location": {
-      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-LSofOa8R.js",
+      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-BLKOrhch.js",
       "lineNumber": 321,
       "columnNumber": 6207
     }
@@ -1324,7 +1270,7 @@
     "type": "log",
     "text": "Parsed JSON response: JSHandle@object",
     "location": {
-      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-LSofOa8R.js",
+      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-BLKOrhch.js",
       "lineNumber": 321,
       "columnNumber": 6276
     }
@@ -1333,7 +1279,7 @@
     "type": "log",
     "text": "Final API response object: JSHandle@object",
     "location": {
-      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-LSofOa8R.js",
+      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-BLKOrhch.js",
       "lineNumber": 321,
       "columnNumber": 6351
     }
@@ -1342,7 +1288,61 @@
     "type": "log",
     "text": "Response received: JSHandle@object",
     "location": {
-      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-LSofOa8R.js",
+      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-BLKOrhch.js",
+      "lineNumber": 321,
+      "columnNumber": 6207
+    }
+  },
+  {
+    "type": "log",
+    "text": "Parsed JSON response: JSHandle@object",
+    "location": {
+      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-BLKOrhch.js",
+      "lineNumber": 321,
+      "columnNumber": 6276
+    }
+  },
+  {
+    "type": "log",
+    "text": "Final API response object: JSHandle@object",
+    "location": {
+      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-BLKOrhch.js",
+      "lineNumber": 321,
+      "columnNumber": 6351
+    }
+  },
+  {
+    "type": "log",
+    "text": "Response received: JSHandle@object",
+    "location": {
+      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-BLKOrhch.js",
+      "lineNumber": 321,
+      "columnNumber": 6207
+    }
+  },
+  {
+    "type": "log",
+    "text": "Parsed JSON response: JSHandle@object",
+    "location": {
+      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-BLKOrhch.js",
+      "lineNumber": 321,
+      "columnNumber": 6276
+    }
+  },
+  {
+    "type": "log",
+    "text": "Final API response object: JSHandle@object",
+    "location": {
+      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-BLKOrhch.js",
+      "lineNumber": 321,
+      "columnNumber": 6351
+    }
+  },
+  {
+    "type": "log",
+    "text": "Response received: JSHandle@object",
+    "location": {
+      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-BLKOrhch.js",
       "lineNumber": 316,
       "columnNumber": 5520
     }
@@ -1351,7 +1351,7 @@
     "type": "log",
     "text": "Parsed JSON response: JSHandle@object",
     "location": {
-      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-LSofOa8R.js",
+      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-BLKOrhch.js",
       "lineNumber": 316,
       "columnNumber": 5780
     }
@@ -1360,7 +1360,7 @@
     "type": "log",
     "text": "Processing notification response: JSHandle@object",
     "location": {
-      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-LSofOa8R.js",
+      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-BLKOrhch.js",
       "lineNumber": 316,
       "columnNumber": 6434
     }
@@ -1369,7 +1369,7 @@
     "type": "log",
     "text": "Final API response object: JSHandle@object",
     "location": {
-      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-LSofOa8R.js",
+      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-BLKOrhch.js",
       "lineNumber": 316,
       "columnNumber": 7231
     }
@@ -1378,7 +1378,7 @@
     "type": "endGroup",
     "text": "console.groupEnd",
     "location": {
-      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-LSofOa8R.js",
+      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-BLKOrhch.js",
       "lineNumber": 316,
       "columnNumber": 7334
     }
@@ -1387,7 +1387,7 @@
     "type": "log",
     "text": "Raw API response received: JSHandle@object",
     "location": {
-      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-LSofOa8R.js",
+      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-BLKOrhch.js",
       "lineNumber": 316,
       "columnNumber": 77739
     }
@@ -1396,7 +1396,7 @@
     "type": "log",
     "text": "Processed notifications: JSHandle@object",
     "location": {
-      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-LSofOa8R.js",
+      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-BLKOrhch.js",
       "lineNumber": 316,
       "columnNumber": 78275
     }
@@ -1405,7 +1405,7 @@
     "type": "log",
     "text": "Returning processed notifications response",
     "location": {
-      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-LSofOa8R.js",
+      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-BLKOrhch.js",
       "lineNumber": 316,
       "columnNumber": 78548
     }
@@ -1414,7 +1414,7 @@
     "type": "endGroup",
     "text": "console.groupEnd",
     "location": {
-      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-LSofOa8R.js",
+      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-BLKOrhch.js",
       "lineNumber": 316,
       "columnNumber": 78606
     }
@@ -1423,7 +1423,7 @@
     "type": "log",
     "text": "Auth URL being used: (Using Netlify redirects)",
     "location": {
-      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-LSofOa8R.js",
+      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-BLKOrhch.js",
       "lineNumber": 316,
       "columnNumber": 1224
     }
@@ -1432,7 +1432,7 @@
     "type": "log",
     "text": "Backend URL being used: (Using Netlify redirects)",
     "location": {
-      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-LSofOa8R.js",
+      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-BLKOrhch.js",
       "lineNumber": 316,
       "columnNumber": 4608
     }
@@ -1441,7 +1441,7 @@
     "type": "log",
     "text": "Using Netlify redirects: true",
     "location": {
-      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-LSofOa8R.js",
+      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-BLKOrhch.js",
       "lineNumber": 321,
       "columnNumber": 5240
     }
@@ -1450,7 +1450,7 @@
     "type": "log",
     "text": "API base URL being used: /api",
     "location": {
-      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-LSofOa8R.js",
+      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-BLKOrhch.js",
       "lineNumber": 321,
       "columnNumber": 5299
     }
@@ -1459,7 +1459,7 @@
     "type": "log",
     "text": "Environment variables:",
     "location": {
-      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-LSofOa8R.js",
+      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-BLKOrhch.js",
       "lineNumber": 364,
       "columnNumber": 34804
     }
@@ -1468,7 +1468,7 @@
     "type": "log",
     "text": "VITE_AUTH_URL: https://authentication-service-415554190254.us-central1.run.app",
     "location": {
-      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-LSofOa8R.js",
+      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-BLKOrhch.js",
       "lineNumber": 364,
       "columnNumber": 34842
     }
@@ -1477,7 +1477,7 @@
     "type": "log",
     "text": "VITE_BACKEND_URL: https://backend-415554190254.us-central1.run.app",
     "location": {
-      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-LSofOa8R.js",
+      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-BLKOrhch.js",
       "lineNumber": 364,
       "columnNumber": 34938
     }
@@ -1486,7 +1486,7 @@
     "type": "log",
     "text": "VITE_SUBSCRIPTION_WORKER: https://subscription-worker-415554190254.us-central1.run.app",
     "location": {
-      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-LSofOa8R.js",
+      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-BLKOrhch.js",
       "lineNumber": 364,
       "columnNumber": 35022
     }
@@ -1495,7 +1495,7 @@
     "type": "log",
     "text": "VITE_ENV: production",
     "location": {
-      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-LSofOa8R.js",
+      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-BLKOrhch.js",
       "lineNumber": 364,
       "columnNumber": 35126
     }
@@ -1504,7 +1504,7 @@
     "type": "log",
     "text": "Application starting...",
     "location": {
-      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-LSofOa8R.js",
+      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-BLKOrhch.js",
       "lineNumber": 364,
       "columnNumber": 35454
     }
@@ -1513,7 +1513,7 @@
     "type": "log",
     "text": "Creating React root...",
     "location": {
-      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-LSofOa8R.js",
+      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-BLKOrhch.js",
       "lineNumber": 364,
       "columnNumber": 35585
     }
@@ -1522,7 +1522,7 @@
     "type": "log",
     "text": "Rendering application...",
     "location": {
-      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-LSofOa8R.js",
+      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-BLKOrhch.js",
       "lineNumber": 364,
       "columnNumber": 35637
     }
@@ -1531,7 +1531,7 @@
     "type": "log",
     "text": "Application rendered successfully",
     "location": {
-      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-LSofOa8R.js",
+      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-BLKOrhch.js",
       "lineNumber": 364,
       "columnNumber": 35783
     }
@@ -1540,7 +1540,7 @@
     "type": "log",
     "text": "App: Rendering routes",
     "location": {
-      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-LSofOa8R.js",
+      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-BLKOrhch.js",
       "lineNumber": 364,
       "columnNumber": 31657
     }
@@ -1549,7 +1549,7 @@
     "type": "log",
     "text": "Auth state in header updated: JSHandle@object",
     "location": {
-      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-LSofOa8R.js",
+      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-BLKOrhch.js",
       "lineNumber": 364,
       "columnNumber": 23469
     }
@@ -1558,7 +1558,7 @@
     "type": "startGroup",
     "text": "Notifications API - list",
     "location": {
-      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-LSofOa8R.js",
+      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-BLKOrhch.js",
       "lineNumber": 316,
       "columnNumber": 77318
     }
@@ -1567,7 +1567,7 @@
     "type": "log",
     "text": "Listing notifications with options: JSHandle@object",
     "location": {
-      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-LSofOa8R.js",
+      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-BLKOrhch.js",
       "lineNumber": 316,
       "columnNumber": 77360
     }
@@ -1576,7 +1576,7 @@
     "type": "startGroup",
     "text": "🌐 API Request: GET /api/v1/notifications?page=1&limit=1&unread=true",
     "location": {
-      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-LSofOa8R.js",
+      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-BLKOrhch.js",
       "lineNumber": 316,
       "columnNumber": 4767
     }
@@ -1585,7 +1585,7 @@
     "type": "log",
     "text": "Request details: JSHandle@object",
     "location": {
-      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-LSofOa8R.js",
+      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-BLKOrhch.js",
       "lineNumber": 316,
       "columnNumber": 4810
     }
@@ -1594,7 +1594,7 @@
     "type": "log",
     "text": "Auth headers: JSHandle@object",
     "location": {
-      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-LSofOa8R.js",
+      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-BLKOrhch.js",
       "lineNumber": 316,
       "columnNumber": 5158
     }
@@ -1603,7 +1603,7 @@
     "type": "log",
     "text": "Final request options: JSHandle@object",
     "location": {
-      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-LSofOa8R.js",
+      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-BLKOrhch.js",
       "lineNumber": 316,
       "columnNumber": 5351
     }
@@ -1612,7 +1612,7 @@
     "type": "log",
     "text": "AuthContext: Checking auth state JSHandle@object",
     "location": {
-      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-LSofOa8R.js",
+      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-BLKOrhch.js",
       "lineNumber": 316,
       "columnNumber": 90484
     }
@@ -1621,7 +1621,7 @@
     "type": "startGroup",
     "text": "👤 Get User Profile",
     "location": {
-      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-LSofOa8R.js",
+      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-BLKOrhch.js",
       "lineNumber": 316,
       "columnNumber": 74328
     }
@@ -1630,7 +1630,7 @@
     "type": "log",
     "text": "Fetching user profile...",
     "location": {
-      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-LSofOa8R.js",
+      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-BLKOrhch.js",
       "lineNumber": 316,
       "columnNumber": 74365
     }
@@ -1639,7 +1639,7 @@
     "type": "startGroup",
     "text": "🌐 API Request: GET /api/v1/users/me",
     "location": {
-      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-LSofOa8R.js",
+      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-BLKOrhch.js",
       "lineNumber": 316,
       "columnNumber": 4767
     }
@@ -1648,7 +1648,7 @@
     "type": "log",
     "text": "Request details: JSHandle@object",
     "location": {
-      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-LSofOa8R.js",
+      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-BLKOrhch.js",
       "lineNumber": 316,
       "columnNumber": 4810
     }
@@ -1657,7 +1657,7 @@
     "type": "log",
     "text": "Auth headers: JSHandle@object",
     "location": {
-      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-LSofOa8R.js",
+      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-BLKOrhch.js",
       "lineNumber": 316,
       "columnNumber": 5158
     }
@@ -1666,7 +1666,7 @@
     "type": "log",
     "text": "Final request options: JSHandle@object",
     "location": {
-      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-LSofOa8R.js",
+      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-BLKOrhch.js",
       "lineNumber": 316,
       "columnNumber": 5351
     }
@@ -1675,7 +1675,7 @@
     "type": "log",
     "text": "Response received: JSHandle@object",
     "location": {
-      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-LSofOa8R.js",
+      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-BLKOrhch.js",
       "lineNumber": 316,
       "columnNumber": 5520
     }
@@ -1684,7 +1684,7 @@
     "type": "log",
     "text": "Parsed JSON response: JSHandle@object",
     "location": {
-      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-LSofOa8R.js",
+      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-BLKOrhch.js",
       "lineNumber": 316,
       "columnNumber": 5780
     }
@@ -1693,7 +1693,7 @@
     "type": "log",
     "text": "Final API response object: JSHandle@object",
     "location": {
-      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-LSofOa8R.js",
+      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-BLKOrhch.js",
       "lineNumber": 316,
       "columnNumber": 7231
     }
@@ -1702,7 +1702,7 @@
     "type": "endGroup",
     "text": "console.groupEnd",
     "location": {
-      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-LSofOa8R.js",
+      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-BLKOrhch.js",
       "lineNumber": 316,
       "columnNumber": 7334
     }
@@ -1711,7 +1711,7 @@
     "type": "endGroup",
     "text": "console.groupEnd",
     "location": {
-      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-LSofOa8R.js",
+      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-BLKOrhch.js",
       "lineNumber": 316,
       "columnNumber": 74451
     }
@@ -1720,7 +1720,7 @@
     "type": "log",
     "text": "AuthContext: User loaded from API JSHandle@object",
     "location": {
-      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-LSofOa8R.js",
+      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-BLKOrhch.js",
       "lineNumber": 316,
       "columnNumber": 90655
     }
@@ -1729,16 +1729,34 @@
     "type": "log",
     "text": "Auth state in header updated: JSHandle@object",
     "location": {
-      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-LSofOa8R.js",
+      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-BLKOrhch.js",
       "lineNumber": 364,
       "columnNumber": 23469
+    }
+  },
+  {
+    "type": "log",
+    "text": "Notifications API - list",
+    "location": {
+      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-BLKOrhch.js",
+      "lineNumber": 322,
+      "columnNumber": 41923
+    }
+  },
+  {
+    "type": "log",
+    "text": "Listing notifications with options: JSHandle@object",
+    "location": {
+      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-BLKOrhch.js",
+      "lineNumber": 322,
+      "columnNumber": 41963
     }
   },
   {
     "type": "startGroup",
     "text": "Notifications API - list",
     "location": {
-      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-LSofOa8R.js",
+      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-BLKOrhch.js",
       "lineNumber": 316,
       "columnNumber": 77318
     }
@@ -1747,7 +1765,7 @@
     "type": "log",
     "text": "Listing notifications with options: JSHandle@object",
     "location": {
-      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-LSofOa8R.js",
+      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-BLKOrhch.js",
       "lineNumber": 316,
       "columnNumber": 77360
     }
@@ -1756,7 +1774,7 @@
     "type": "startGroup",
     "text": "🌐 API Request: GET /api/v1/notifications?page=1&limit=1&unread=true",
     "location": {
-      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-LSofOa8R.js",
+      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-BLKOrhch.js",
       "lineNumber": 316,
       "columnNumber": 4767
     }
@@ -1765,7 +1783,7 @@
     "type": "log",
     "text": "Request details: JSHandle@object",
     "location": {
-      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-LSofOa8R.js",
+      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-BLKOrhch.js",
       "lineNumber": 316,
       "columnNumber": 4810
     }
@@ -1774,7 +1792,7 @@
     "type": "log",
     "text": "Auth headers: JSHandle@object",
     "location": {
-      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-LSofOa8R.js",
+      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-BLKOrhch.js",
       "lineNumber": 316,
       "columnNumber": 5158
     }
@@ -1783,7 +1801,7 @@
     "type": "log",
     "text": "Final request options: JSHandle@object",
     "location": {
-      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-LSofOa8R.js",
+      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-BLKOrhch.js",
       "lineNumber": 316,
       "columnNumber": 5351
     }
@@ -1792,7 +1810,7 @@
     "type": "startGroup",
     "text": "🔒 User Profile Flow",
     "location": {
-      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-LSofOa8R.js",
+      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-BLKOrhch.js",
       "lineNumber": 324,
       "columnNumber": 82089
     }
@@ -1801,7 +1819,7 @@
     "type": "log",
     "text": "Step 1: Checking authentication state",
     "location": {
-      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-LSofOa8R.js",
+      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-BLKOrhch.js",
       "lineNumber": 324,
       "columnNumber": 82127
     }
@@ -1810,7 +1828,7 @@
     "type": "log",
     "text": "Current auth state: JSHandle@object",
     "location": {
-      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-LSofOa8R.js",
+      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-BLKOrhch.js",
       "lineNumber": 324,
       "columnNumber": 82227
     }
@@ -1819,7 +1837,7 @@
     "type": "log",
     "text": "Step 2: Fetching user profile from API",
     "location": {
-      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-LSofOa8R.js",
+      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-BLKOrhch.js",
       "lineNumber": 324,
       "columnNumber": 82416
     }
@@ -1828,7 +1846,7 @@
     "type": "log",
     "text": "Making request to /api/users/me endpoint",
     "location": {
-      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-LSofOa8R.js",
+      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-BLKOrhch.js",
       "lineNumber": 324,
       "columnNumber": 82470
     }
@@ -1837,7 +1855,7 @@
     "type": "startGroup",
     "text": "👤 Get User Profile",
     "location": {
-      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-LSofOa8R.js",
+      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-BLKOrhch.js",
       "lineNumber": 316,
       "columnNumber": 74328
     }
@@ -1846,7 +1864,7 @@
     "type": "log",
     "text": "Fetching user profile...",
     "location": {
-      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-LSofOa8R.js",
+      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-BLKOrhch.js",
       "lineNumber": 316,
       "columnNumber": 74365
     }
@@ -1855,7 +1873,7 @@
     "type": "startGroup",
     "text": "🌐 API Request: GET /api/v1/users/me",
     "location": {
-      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-LSofOa8R.js",
+      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-BLKOrhch.js",
       "lineNumber": 316,
       "columnNumber": 4767
     }
@@ -1864,7 +1882,7 @@
     "type": "log",
     "text": "Request details: JSHandle@object",
     "location": {
-      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-LSofOa8R.js",
+      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-BLKOrhch.js",
       "lineNumber": 316,
       "columnNumber": 4810
     }
@@ -1873,7 +1891,7 @@
     "type": "log",
     "text": "Auth headers: JSHandle@object",
     "location": {
-      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-LSofOa8R.js",
+      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-BLKOrhch.js",
       "lineNumber": 316,
       "columnNumber": 5158
     }
@@ -1882,52 +1900,124 @@
     "type": "log",
     "text": "Final request options: JSHandle@object",
     "location": {
-      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-LSofOa8R.js",
+      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-BLKOrhch.js",
       "lineNumber": 316,
       "columnNumber": 5351
-    }
-  },
-  {
-    "type": "startGroup",
-    "text": "🌐 API Request: GET /api/v1/templates?page=1&limit=20",
-    "location": {
-      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-LSofOa8R.js",
-      "lineNumber": 316,
-      "columnNumber": 4767
     }
   },
   {
     "type": "log",
     "text": "Request details: JSHandle@object",
     "location": {
-      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-LSofOa8R.js",
-      "lineNumber": 316,
-      "columnNumber": 4810
+      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-BLKOrhch.js",
+      "lineNumber": 321,
+      "columnNumber": 5801
     }
   },
   {
     "type": "log",
     "text": "Auth headers: JSHandle@object",
     "location": {
-      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-LSofOa8R.js",
-      "lineNumber": 316,
-      "columnNumber": 5158
+      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-BLKOrhch.js",
+      "lineNumber": 321,
+      "columnNumber": 5879
     }
   },
   {
     "type": "log",
     "text": "Final request options: JSHandle@object",
     "location": {
-      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-LSofOa8R.js",
-      "lineNumber": 316,
-      "columnNumber": 5351
+      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-BLKOrhch.js",
+      "lineNumber": 321,
+      "columnNumber": 6002
+    }
+  },
+  {
+    "type": "log",
+    "text": "Request details: JSHandle@object",
+    "location": {
+      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-BLKOrhch.js",
+      "lineNumber": 321,
+      "columnNumber": 5801
+    }
+  },
+  {
+    "type": "log",
+    "text": "Auth headers: JSHandle@object",
+    "location": {
+      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-BLKOrhch.js",
+      "lineNumber": 321,
+      "columnNumber": 5879
+    }
+  },
+  {
+    "type": "log",
+    "text": "Final request options: JSHandle@object",
+    "location": {
+      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-BLKOrhch.js",
+      "lineNumber": 321,
+      "columnNumber": 6002
+    }
+  },
+  {
+    "type": "log",
+    "text": "Request details: JSHandle@object",
+    "location": {
+      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-BLKOrhch.js",
+      "lineNumber": 321,
+      "columnNumber": 5801
+    }
+  },
+  {
+    "type": "log",
+    "text": "Auth headers: JSHandle@object",
+    "location": {
+      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-BLKOrhch.js",
+      "lineNumber": 321,
+      "columnNumber": 5879
+    }
+  },
+  {
+    "type": "log",
+    "text": "Final request options: JSHandle@object",
+    "location": {
+      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-BLKOrhch.js",
+      "lineNumber": 321,
+      "columnNumber": 6002
+    }
+  },
+  {
+    "type": "log",
+    "text": "Request details: JSHandle@object",
+    "location": {
+      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-BLKOrhch.js",
+      "lineNumber": 321,
+      "columnNumber": 5801
+    }
+  },
+  {
+    "type": "log",
+    "text": "Auth headers: JSHandle@object",
+    "location": {
+      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-BLKOrhch.js",
+      "lineNumber": 321,
+      "columnNumber": 5879
+    }
+  },
+  {
+    "type": "log",
+    "text": "Final request options: JSHandle@object",
+    "location": {
+      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-BLKOrhch.js",
+      "lineNumber": 321,
+      "columnNumber": 6002
     }
   },
   {
     "type": "log",
     "text": "Response received: JSHandle@object",
     "location": {
-      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-LSofOa8R.js",
+      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-BLKOrhch.js",
       "lineNumber": 316,
       "columnNumber": 5520
     }
@@ -1936,7 +2026,7 @@
     "type": "log",
     "text": "Parsed JSON response: JSHandle@object",
     "location": {
-      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-LSofOa8R.js",
+      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-BLKOrhch.js",
       "lineNumber": 316,
       "columnNumber": 5780
     }
@@ -1945,7 +2035,7 @@
     "type": "log",
     "text": "Processing notification response: JSHandle@object",
     "location": {
-      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-LSofOa8R.js",
+      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-BLKOrhch.js",
       "lineNumber": 316,
       "columnNumber": 6434
     }
@@ -1954,7 +2044,7 @@
     "type": "log",
     "text": "Final API response object: JSHandle@object",
     "location": {
-      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-LSofOa8R.js",
+      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-BLKOrhch.js",
       "lineNumber": 316,
       "columnNumber": 7231
     }
@@ -1963,7 +2053,7 @@
     "type": "endGroup",
     "text": "console.groupEnd",
     "location": {
-      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-LSofOa8R.js",
+      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-BLKOrhch.js",
       "lineNumber": 316,
       "columnNumber": 7334
     }
@@ -1972,7 +2062,7 @@
     "type": "log",
     "text": "Raw API response received: JSHandle@object",
     "location": {
-      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-LSofOa8R.js",
+      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-BLKOrhch.js",
       "lineNumber": 316,
       "columnNumber": 77739
     }
@@ -1981,7 +2071,7 @@
     "type": "log",
     "text": "Processed notifications: JSHandle@object",
     "location": {
-      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-LSofOa8R.js",
+      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-BLKOrhch.js",
       "lineNumber": 316,
       "columnNumber": 78275
     }
@@ -1990,7 +2080,7 @@
     "type": "log",
     "text": "Returning processed notifications response",
     "location": {
-      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-LSofOa8R.js",
+      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-BLKOrhch.js",
       "lineNumber": 316,
       "columnNumber": 78548
     }
@@ -1999,7 +2089,7 @@
     "type": "endGroup",
     "text": "console.groupEnd",
     "location": {
-      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-LSofOa8R.js",
+      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-BLKOrhch.js",
       "lineNumber": 316,
       "columnNumber": 78606
     }
@@ -2008,16 +2098,7 @@
     "type": "log",
     "text": "Response received: JSHandle@object",
     "location": {
-      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-LSofOa8R.js",
-      "lineNumber": 316,
-      "columnNumber": 5520
-    }
-  },
-  {
-    "type": "log",
-    "text": "Response received: JSHandle@object",
-    "location": {
-      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-LSofOa8R.js",
+      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-BLKOrhch.js",
       "lineNumber": 316,
       "columnNumber": 5520
     }
@@ -2026,7 +2107,7 @@
     "type": "log",
     "text": "Parsed JSON response: JSHandle@object",
     "location": {
-      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-LSofOa8R.js",
+      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-BLKOrhch.js",
       "lineNumber": 316,
       "columnNumber": 5780
     }
@@ -2035,7 +2116,7 @@
     "type": "log",
     "text": "Final API response object: JSHandle@object",
     "location": {
-      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-LSofOa8R.js",
+      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-BLKOrhch.js",
       "lineNumber": 316,
       "columnNumber": 7231
     }
@@ -2044,7 +2125,7 @@
     "type": "endGroup",
     "text": "console.groupEnd",
     "location": {
-      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-LSofOa8R.js",
+      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-BLKOrhch.js",
       "lineNumber": 316,
       "columnNumber": 7334
     }
@@ -2053,7 +2134,7 @@
     "type": "endGroup",
     "text": "console.groupEnd",
     "location": {
-      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-LSofOa8R.js",
+      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-BLKOrhch.js",
       "lineNumber": 316,
       "columnNumber": 74451
     }
@@ -2062,7 +2143,7 @@
     "type": "log",
     "text": "Step 3: Processing API response",
     "location": {
-      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-LSofOa8R.js",
+      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-BLKOrhch.js",
       "lineNumber": 324,
       "columnNumber": 82762
     }
@@ -2071,7 +2152,7 @@
     "type": "log",
     "text": "Response data: JSHandle@object",
     "location": {
-      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-LSofOa8R.js",
+      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-BLKOrhch.js",
       "lineNumber": 324,
       "columnNumber": 82809
     }
@@ -2080,7 +2161,7 @@
     "type": "log",
     "text": "Step 3 Success: Valid profile data received",
     "location": {
-      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-LSofOa8R.js",
+      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-BLKOrhch.js",
       "lineNumber": 324,
       "columnNumber": 82941
     }
@@ -2089,7 +2170,7 @@
     "type": "log",
     "text": "✅ Profile fetch completed successfully",
     "location": {
-      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-LSofOa8R.js",
+      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-BLKOrhch.js",
       "lineNumber": 324,
       "columnNumber": 83131
     }
@@ -2098,106 +2179,61 @@
     "type": "endGroup",
     "text": "console.groupEnd",
     "location": {
-      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-LSofOa8R.js",
+      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-BLKOrhch.js",
       "lineNumber": 324,
       "columnNumber": 83185
     }
   },
   {
     "type": "log",
-    "text": "Parsed JSON response: JSHandle@object",
-    "location": {
-      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-LSofOa8R.js",
-      "lineNumber": 316,
-      "columnNumber": 5780
-    }
-  },
-  {
-    "type": "log",
-    "text": "Final API response object: JSHandle@object",
-    "location": {
-      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-LSofOa8R.js",
-      "lineNumber": 316,
-      "columnNumber": 7231
-    }
-  },
-  {
-    "type": "endGroup",
-    "text": "console.groupEnd",
-    "location": {
-      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-LSofOa8R.js",
-      "lineNumber": 316,
-      "columnNumber": 7334
-    }
-  },
-  {
-    "type": "startGroup",
-    "text": "📋 Subscription List Request",
-    "location": {
-      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-LSofOa8R.js",
-      "lineNumber": 316,
-      "columnNumber": 70830
-    }
-  },
-  {
-    "type": "log",
-    "text": "Fetching subscriptions...",
-    "location": {
-      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-LSofOa8R.js",
-      "lineNumber": 316,
-      "columnNumber": 70876
-    }
-  },
-  {
-    "type": "startGroup",
-    "text": "🌐 API Request: GET /api/v1/subscriptions",
-    "location": {
-      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-LSofOa8R.js",
-      "lineNumber": 316,
-      "columnNumber": 4767
-    }
-  },
-  {
-    "type": "log",
-    "text": "Request details: JSHandle@object",
-    "location": {
-      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-LSofOa8R.js",
-      "lineNumber": 316,
-      "columnNumber": 4810
-    }
-  },
-  {
-    "type": "log",
-    "text": "Auth headers: JSHandle@object",
-    "location": {
-      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-LSofOa8R.js",
-      "lineNumber": 316,
-      "columnNumber": 5158
-    }
-  },
-  {
-    "type": "log",
-    "text": "Final request options: JSHandle@object",
-    "location": {
-      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-LSofOa8R.js",
-      "lineNumber": 316,
-      "columnNumber": 5351
-    }
-  },
-  {
-    "type": "log",
     "text": "Response received: JSHandle@object",
     "location": {
-      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-LSofOa8R.js",
+      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-BLKOrhch.js",
       "lineNumber": 316,
       "columnNumber": 5520
     }
   },
   {
     "type": "log",
+    "text": "Response received: JSHandle@object",
+    "location": {
+      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-BLKOrhch.js",
+      "lineNumber": 321,
+      "columnNumber": 6207
+    }
+  },
+  {
+    "type": "log",
     "text": "Parsed JSON response: JSHandle@object",
     "location": {
-      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-LSofOa8R.js",
+      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-BLKOrhch.js",
+      "lineNumber": 321,
+      "columnNumber": 6276
+    }
+  },
+  {
+    "type": "log",
+    "text": "Final API response object: JSHandle@object",
+    "location": {
+      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-BLKOrhch.js",
+      "lineNumber": 321,
+      "columnNumber": 6351
+    }
+  },
+  {
+    "type": "log",
+    "text": "Subscriptions API response: JSHandle@object",
+    "location": {
+      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-BLKOrhch.js",
+      "lineNumber": 321,
+      "columnNumber": 7990
+    }
+  },
+  {
+    "type": "log",
+    "text": "Parsed JSON response: JSHandle@object",
+    "location": {
+      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-BLKOrhch.js",
       "lineNumber": 316,
       "columnNumber": 5780
     }
@@ -2206,7 +2242,7 @@
     "type": "log",
     "text": "Processing notification response: JSHandle@object",
     "location": {
-      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-LSofOa8R.js",
+      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-BLKOrhch.js",
       "lineNumber": 316,
       "columnNumber": 6434
     }
@@ -2215,7 +2251,7 @@
     "type": "log",
     "text": "Final API response object: JSHandle@object",
     "location": {
-      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-LSofOa8R.js",
+      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-BLKOrhch.js",
       "lineNumber": 316,
       "columnNumber": 7231
     }
@@ -2224,7 +2260,7 @@
     "type": "endGroup",
     "text": "console.groupEnd",
     "location": {
-      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-LSofOa8R.js",
+      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-BLKOrhch.js",
       "lineNumber": 316,
       "columnNumber": 7334
     }
@@ -2233,7 +2269,7 @@
     "type": "log",
     "text": "Raw API response received: JSHandle@object",
     "location": {
-      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-LSofOa8R.js",
+      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-BLKOrhch.js",
       "lineNumber": 316,
       "columnNumber": 77739
     }
@@ -2242,7 +2278,7 @@
     "type": "log",
     "text": "Processed notifications: JSHandle@object",
     "location": {
-      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-LSofOa8R.js",
+      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-BLKOrhch.js",
       "lineNumber": 316,
       "columnNumber": 78275
     }
@@ -2251,7 +2287,7 @@
     "type": "log",
     "text": "Returning processed notifications response",
     "location": {
-      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-LSofOa8R.js",
+      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-BLKOrhch.js",
       "lineNumber": 316,
       "columnNumber": 78548
     }
@@ -2260,7 +2296,7 @@
     "type": "endGroup",
     "text": "console.groupEnd",
     "location": {
-      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-LSofOa8R.js",
+      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-BLKOrhch.js",
       "lineNumber": 316,
       "columnNumber": 78606
     }
@@ -2269,61 +2305,178 @@
     "type": "log",
     "text": "Response received: JSHandle@object",
     "location": {
-      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-LSofOa8R.js",
-      "lineNumber": 316,
-      "columnNumber": 5520
+      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-BLKOrhch.js",
+      "lineNumber": 321,
+      "columnNumber": 6207
     }
   },
   {
     "type": "log",
     "text": "Parsed JSON response: JSHandle@object",
     "location": {
-      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-LSofOa8R.js",
-      "lineNumber": 316,
-      "columnNumber": 5780
+      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-BLKOrhch.js",
+      "lineNumber": 321,
+      "columnNumber": 6276
     }
   },
   {
     "type": "log",
     "text": "Final API response object: JSHandle@object",
     "location": {
-      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-LSofOa8R.js",
-      "lineNumber": 316,
-      "columnNumber": 7231
-    }
-  },
-  {
-    "type": "endGroup",
-    "text": "console.groupEnd",
-    "location": {
-      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-LSofOa8R.js",
-      "lineNumber": 316,
-      "columnNumber": 7334
-    }
-  },
-  {
-    "type": "endGroup",
-    "text": "console.groupEnd",
-    "location": {
-      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-LSofOa8R.js",
-      "lineNumber": 316,
-      "columnNumber": 70968
+      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-BLKOrhch.js",
+      "lineNumber": 321,
+      "columnNumber": 6351
     }
   },
   {
     "type": "log",
-    "text": "Redirect fix: Form not found, redirecting to subscriptions list",
+    "text": "Response received: JSHandle@object",
     "location": {
-      "url": "https://clever-kelpie-60c3a6.netlify.app/subscriptions/new",
-      "lineNumber": 18,
-      "columnNumber": 22
+      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-BLKOrhch.js",
+      "lineNumber": 321,
+      "columnNumber": 6207
+    }
+  },
+  {
+    "type": "log",
+    "text": "Parsed JSON response: JSHandle@object",
+    "location": {
+      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-BLKOrhch.js",
+      "lineNumber": 321,
+      "columnNumber": 6276
+    }
+  },
+  {
+    "type": "log",
+    "text": "Final API response object: JSHandle@object",
+    "location": {
+      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-BLKOrhch.js",
+      "lineNumber": 321,
+      "columnNumber": 6351
+    }
+  },
+  {
+    "type": "log",
+    "text": "Response received: JSHandle@object",
+    "location": {
+      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-BLKOrhch.js",
+      "lineNumber": 321,
+      "columnNumber": 6207
+    }
+  },
+  {
+    "type": "log",
+    "text": "Parsed JSON response: JSHandle@object",
+    "location": {
+      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-BLKOrhch.js",
+      "lineNumber": 321,
+      "columnNumber": 6276
+    }
+  },
+  {
+    "type": "log",
+    "text": "Final API response object: JSHandle@object",
+    "location": {
+      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-BLKOrhch.js",
+      "lineNumber": 321,
+      "columnNumber": 6351
+    }
+  },
+  {
+    "type": "log",
+    "text": "Processing notification response: JSHandle@object",
+    "location": {
+      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-BLKOrhch.js",
+      "lineNumber": 322,
+      "columnNumber": 42076
+    }
+  },
+  {
+    "type": "log",
+    "text": "Raw API response received: JSHandle@object",
+    "location": {
+      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-BLKOrhch.js",
+      "lineNumber": 322,
+      "columnNumber": 42160
+    }
+  },
+  {
+    "type": "log",
+    "text": "Processed notifications: JSHandle@object",
+    "location": {
+      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-BLKOrhch.js",
+      "lineNumber": 322,
+      "columnNumber": 42237
+    }
+  },
+  {
+    "type": "log",
+    "text": "Returning processed notifications response",
+    "location": {
+      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-BLKOrhch.js",
+      "lineNumber": 322,
+      "columnNumber": 42389
+    }
+  },
+  {
+    "type": "log",
+    "text": "Request details: JSHandle@object",
+    "location": {
+      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-BLKOrhch.js",
+      "lineNumber": 321,
+      "columnNumber": 5801
+    }
+  },
+  {
+    "type": "log",
+    "text": "Auth headers: JSHandle@object",
+    "location": {
+      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-BLKOrhch.js",
+      "lineNumber": 321,
+      "columnNumber": 5879
+    }
+  },
+  {
+    "type": "log",
+    "text": "Final request options: JSHandle@object",
+    "location": {
+      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-BLKOrhch.js",
+      "lineNumber": 321,
+      "columnNumber": 6002
+    }
+  },
+  {
+    "type": "log",
+    "text": "Response received: JSHandle@object",
+    "location": {
+      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-BLKOrhch.js",
+      "lineNumber": 321,
+      "columnNumber": 6207
+    }
+  },
+  {
+    "type": "log",
+    "text": "Parsed JSON response: JSHandle@object",
+    "location": {
+      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-BLKOrhch.js",
+      "lineNumber": 321,
+      "columnNumber": 6276
+    }
+  },
+  {
+    "type": "log",
+    "text": "Final API response object: JSHandle@object",
+    "location": {
+      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-BLKOrhch.js",
+      "lineNumber": 321,
+      "columnNumber": 6351
     }
   },
   {
     "type": "log",
     "text": "Auth URL being used: (Using Netlify redirects)",
     "location": {
-      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-LSofOa8R.js",
+      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-BLKOrhch.js",
       "lineNumber": 316,
       "columnNumber": 1224
     }
@@ -2332,7 +2485,7 @@
     "type": "log",
     "text": "Backend URL being used: (Using Netlify redirects)",
     "location": {
-      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-LSofOa8R.js",
+      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-BLKOrhch.js",
       "lineNumber": 316,
       "columnNumber": 4608
     }
@@ -2341,7 +2494,7 @@
     "type": "log",
     "text": "Using Netlify redirects: true",
     "location": {
-      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-LSofOa8R.js",
+      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-BLKOrhch.js",
       "lineNumber": 321,
       "columnNumber": 5240
     }
@@ -2350,7 +2503,7 @@
     "type": "log",
     "text": "API base URL being used: /api",
     "location": {
-      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-LSofOa8R.js",
+      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-BLKOrhch.js",
       "lineNumber": 321,
       "columnNumber": 5299
     }
@@ -2359,7 +2512,7 @@
     "type": "log",
     "text": "Environment variables:",
     "location": {
-      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-LSofOa8R.js",
+      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-BLKOrhch.js",
       "lineNumber": 364,
       "columnNumber": 34804
     }
@@ -2368,7 +2521,7 @@
     "type": "log",
     "text": "VITE_AUTH_URL: https://authentication-service-415554190254.us-central1.run.app",
     "location": {
-      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-LSofOa8R.js",
+      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-BLKOrhch.js",
       "lineNumber": 364,
       "columnNumber": 34842
     }
@@ -2377,7 +2530,7 @@
     "type": "log",
     "text": "VITE_BACKEND_URL: https://backend-415554190254.us-central1.run.app",
     "location": {
-      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-LSofOa8R.js",
+      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-BLKOrhch.js",
       "lineNumber": 364,
       "columnNumber": 34938
     }
@@ -2386,7 +2539,7 @@
     "type": "log",
     "text": "VITE_SUBSCRIPTION_WORKER: https://subscription-worker-415554190254.us-central1.run.app",
     "location": {
-      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-LSofOa8R.js",
+      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-BLKOrhch.js",
       "lineNumber": 364,
       "columnNumber": 35022
     }
@@ -2395,7 +2548,7 @@
     "type": "log",
     "text": "VITE_ENV: production",
     "location": {
-      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-LSofOa8R.js",
+      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-BLKOrhch.js",
       "lineNumber": 364,
       "columnNumber": 35126
     }
@@ -2404,7 +2557,7 @@
     "type": "log",
     "text": "Application starting...",
     "location": {
-      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-LSofOa8R.js",
+      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-BLKOrhch.js",
       "lineNumber": 364,
       "columnNumber": 35454
     }
@@ -2413,7 +2566,7 @@
     "type": "log",
     "text": "Creating React root...",
     "location": {
-      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-LSofOa8R.js",
+      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-BLKOrhch.js",
       "lineNumber": 364,
       "columnNumber": 35585
     }
@@ -2422,7 +2575,7 @@
     "type": "log",
     "text": "Rendering application...",
     "location": {
-      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-LSofOa8R.js",
+      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-BLKOrhch.js",
       "lineNumber": 364,
       "columnNumber": 35637
     }
@@ -2431,7 +2584,7 @@
     "type": "log",
     "text": "Application rendered successfully",
     "location": {
-      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-LSofOa8R.js",
+      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-BLKOrhch.js",
       "lineNumber": 364,
       "columnNumber": 35783
     }
@@ -2440,7 +2593,7 @@
     "type": "log",
     "text": "App: Rendering routes",
     "location": {
-      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-LSofOa8R.js",
+      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-BLKOrhch.js",
       "lineNumber": 364,
       "columnNumber": 31657
     }
@@ -2449,7 +2602,7 @@
     "type": "log",
     "text": "Auth state in header updated: JSHandle@object",
     "location": {
-      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-LSofOa8R.js",
+      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-BLKOrhch.js",
       "lineNumber": 364,
       "columnNumber": 23469
     }
@@ -2458,7 +2611,7 @@
     "type": "startGroup",
     "text": "Notifications API - list",
     "location": {
-      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-LSofOa8R.js",
+      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-BLKOrhch.js",
       "lineNumber": 316,
       "columnNumber": 77318
     }
@@ -2467,7 +2620,7 @@
     "type": "log",
     "text": "Listing notifications with options: JSHandle@object",
     "location": {
-      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-LSofOa8R.js",
+      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-BLKOrhch.js",
       "lineNumber": 316,
       "columnNumber": 77360
     }
@@ -2476,7 +2629,7 @@
     "type": "startGroup",
     "text": "🌐 API Request: GET /api/v1/notifications?page=1&limit=1&unread=true",
     "location": {
-      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-LSofOa8R.js",
+      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-BLKOrhch.js",
       "lineNumber": 316,
       "columnNumber": 4767
     }
@@ -2485,7 +2638,7 @@
     "type": "log",
     "text": "Request details: JSHandle@object",
     "location": {
-      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-LSofOa8R.js",
+      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-BLKOrhch.js",
       "lineNumber": 316,
       "columnNumber": 4810
     }
@@ -2494,7 +2647,7 @@
     "type": "log",
     "text": "Auth headers: JSHandle@object",
     "location": {
-      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-LSofOa8R.js",
+      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-BLKOrhch.js",
       "lineNumber": 316,
       "columnNumber": 5158
     }
@@ -2503,7 +2656,7 @@
     "type": "log",
     "text": "Final request options: JSHandle@object",
     "location": {
-      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-LSofOa8R.js",
+      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-BLKOrhch.js",
       "lineNumber": 316,
       "columnNumber": 5351
     }
@@ -2512,7 +2665,7 @@
     "type": "log",
     "text": "AuthContext: Checking auth state JSHandle@object",
     "location": {
-      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-LSofOa8R.js",
+      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-BLKOrhch.js",
       "lineNumber": 316,
       "columnNumber": 90484
     }
@@ -2521,7 +2674,7 @@
     "type": "startGroup",
     "text": "👤 Get User Profile",
     "location": {
-      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-LSofOa8R.js",
+      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-BLKOrhch.js",
       "lineNumber": 316,
       "columnNumber": 74328
     }
@@ -2530,7 +2683,7 @@
     "type": "log",
     "text": "Fetching user profile...",
     "location": {
-      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-LSofOa8R.js",
+      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-BLKOrhch.js",
       "lineNumber": 316,
       "columnNumber": 74365
     }
@@ -2539,7 +2692,7 @@
     "type": "startGroup",
     "text": "🌐 API Request: GET /api/v1/users/me",
     "location": {
-      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-LSofOa8R.js",
+      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-BLKOrhch.js",
       "lineNumber": 316,
       "columnNumber": 4767
     }
@@ -2548,7 +2701,7 @@
     "type": "log",
     "text": "Request details: JSHandle@object",
     "location": {
-      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-LSofOa8R.js",
+      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-BLKOrhch.js",
       "lineNumber": 316,
       "columnNumber": 4810
     }
@@ -2557,7 +2710,7 @@
     "type": "log",
     "text": "Auth headers: JSHandle@object",
     "location": {
-      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-LSofOa8R.js",
+      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-BLKOrhch.js",
       "lineNumber": 316,
       "columnNumber": 5158
     }
@@ -2566,9 +2719,1582 @@
     "type": "log",
     "text": "Final request options: JSHandle@object",
     "location": {
-      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-LSofOa8R.js",
+      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-BLKOrhch.js",
       "lineNumber": 316,
       "columnNumber": 5351
+    }
+  },
+  {
+    "type": "log",
+    "text": "Response received: JSHandle@object",
+    "location": {
+      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-BLKOrhch.js",
+      "lineNumber": 316,
+      "columnNumber": 5520
+    }
+  },
+  {
+    "type": "log",
+    "text": "Parsed JSON response: JSHandle@object",
+    "location": {
+      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-BLKOrhch.js",
+      "lineNumber": 316,
+      "columnNumber": 5780
+    }
+  },
+  {
+    "type": "log",
+    "text": "Final API response object: JSHandle@object",
+    "location": {
+      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-BLKOrhch.js",
+      "lineNumber": 316,
+      "columnNumber": 7231
+    }
+  },
+  {
+    "type": "endGroup",
+    "text": "console.groupEnd",
+    "location": {
+      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-BLKOrhch.js",
+      "lineNumber": 316,
+      "columnNumber": 7334
+    }
+  },
+  {
+    "type": "endGroup",
+    "text": "console.groupEnd",
+    "location": {
+      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-BLKOrhch.js",
+      "lineNumber": 316,
+      "columnNumber": 74451
+    }
+  },
+  {
+    "type": "log",
+    "text": "AuthContext: User loaded from API JSHandle@object",
+    "location": {
+      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-BLKOrhch.js",
+      "lineNumber": 316,
+      "columnNumber": 90655
+    }
+  },
+  {
+    "type": "log",
+    "text": "Auth state in header updated: JSHandle@object",
+    "location": {
+      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-BLKOrhch.js",
+      "lineNumber": 364,
+      "columnNumber": 23469
+    }
+  },
+  {
+    "type": "log",
+    "text": "Subscriptions component mounted/updated",
+    "location": {
+      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-BLKOrhch.js",
+      "lineNumber": 322,
+      "columnNumber": 34258
+    }
+  },
+  {
+    "type": "log",
+    "text": "Subscriptions data: JSHandle@array",
+    "location": {
+      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-BLKOrhch.js",
+      "lineNumber": 322,
+      "columnNumber": 34313
+    }
+  },
+  {
+    "type": "log",
+    "text": "Subscriptions loading: true",
+    "location": {
+      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-BLKOrhch.js",
+      "lineNumber": 322,
+      "columnNumber": 34350
+    }
+  },
+  {
+    "type": "log",
+    "text": "Subscriptions error: ",
+    "location": {
+      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-BLKOrhch.js",
+      "lineNumber": 322,
+      "columnNumber": 34390
+    }
+  },
+  {
+    "type": "startGroup",
+    "text": "Notifications API - list",
+    "location": {
+      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-BLKOrhch.js",
+      "lineNumber": 316,
+      "columnNumber": 77318
+    }
+  },
+  {
+    "type": "log",
+    "text": "Listing notifications with options: JSHandle@object",
+    "location": {
+      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-BLKOrhch.js",
+      "lineNumber": 316,
+      "columnNumber": 77360
+    }
+  },
+  {
+    "type": "startGroup",
+    "text": "🌐 API Request: GET /api/v1/notifications?page=1&limit=1&unread=true",
+    "location": {
+      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-BLKOrhch.js",
+      "lineNumber": 316,
+      "columnNumber": 4767
+    }
+  },
+  {
+    "type": "log",
+    "text": "Request details: JSHandle@object",
+    "location": {
+      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-BLKOrhch.js",
+      "lineNumber": 316,
+      "columnNumber": 4810
+    }
+  },
+  {
+    "type": "log",
+    "text": "Auth headers: JSHandle@object",
+    "location": {
+      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-BLKOrhch.js",
+      "lineNumber": 316,
+      "columnNumber": 5158
+    }
+  },
+  {
+    "type": "log",
+    "text": "Final request options: JSHandle@object",
+    "location": {
+      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-BLKOrhch.js",
+      "lineNumber": 316,
+      "columnNumber": 5351
+    }
+  },
+  {
+    "type": "startGroup",
+    "text": "🔒 User Profile Flow",
+    "location": {
+      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-BLKOrhch.js",
+      "lineNumber": 324,
+      "columnNumber": 82089
+    }
+  },
+  {
+    "type": "log",
+    "text": "Step 1: Checking authentication state",
+    "location": {
+      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-BLKOrhch.js",
+      "lineNumber": 324,
+      "columnNumber": 82127
+    }
+  },
+  {
+    "type": "log",
+    "text": "Current auth state: JSHandle@object",
+    "location": {
+      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-BLKOrhch.js",
+      "lineNumber": 324,
+      "columnNumber": 82227
+    }
+  },
+  {
+    "type": "log",
+    "text": "Step 2: Fetching user profile from API",
+    "location": {
+      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-BLKOrhch.js",
+      "lineNumber": 324,
+      "columnNumber": 82416
+    }
+  },
+  {
+    "type": "log",
+    "text": "Making request to /api/users/me endpoint",
+    "location": {
+      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-BLKOrhch.js",
+      "lineNumber": 324,
+      "columnNumber": 82470
+    }
+  },
+  {
+    "type": "startGroup",
+    "text": "👤 Get User Profile",
+    "location": {
+      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-BLKOrhch.js",
+      "lineNumber": 316,
+      "columnNumber": 74328
+    }
+  },
+  {
+    "type": "log",
+    "text": "Fetching user profile...",
+    "location": {
+      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-BLKOrhch.js",
+      "lineNumber": 316,
+      "columnNumber": 74365
+    }
+  },
+  {
+    "type": "startGroup",
+    "text": "🌐 API Request: GET /api/v1/users/me",
+    "location": {
+      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-BLKOrhch.js",
+      "lineNumber": 316,
+      "columnNumber": 4767
+    }
+  },
+  {
+    "type": "log",
+    "text": "Request details: JSHandle@object",
+    "location": {
+      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-BLKOrhch.js",
+      "lineNumber": 316,
+      "columnNumber": 4810
+    }
+  },
+  {
+    "type": "log",
+    "text": "Auth headers: JSHandle@object",
+    "location": {
+      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-BLKOrhch.js",
+      "lineNumber": 316,
+      "columnNumber": 5158
+    }
+  },
+  {
+    "type": "log",
+    "text": "Final request options: JSHandle@object",
+    "location": {
+      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-BLKOrhch.js",
+      "lineNumber": 316,
+      "columnNumber": 5351
+    }
+  },
+  {
+    "type": "log",
+    "text": "Request details: JSHandle@object",
+    "location": {
+      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-BLKOrhch.js",
+      "lineNumber": 321,
+      "columnNumber": 5801
+    }
+  },
+  {
+    "type": "log",
+    "text": "Auth headers: JSHandle@object",
+    "location": {
+      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-BLKOrhch.js",
+      "lineNumber": 321,
+      "columnNumber": 5879
+    }
+  },
+  {
+    "type": "log",
+    "text": "Final request options: JSHandle@object",
+    "location": {
+      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-BLKOrhch.js",
+      "lineNumber": 321,
+      "columnNumber": 6002
+    }
+  },
+  {
+    "type": "log",
+    "text": "Request details: JSHandle@object",
+    "location": {
+      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-BLKOrhch.js",
+      "lineNumber": 321,
+      "columnNumber": 5801
+    }
+  },
+  {
+    "type": "log",
+    "text": "Auth headers: JSHandle@object",
+    "location": {
+      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-BLKOrhch.js",
+      "lineNumber": 321,
+      "columnNumber": 5879
+    }
+  },
+  {
+    "type": "log",
+    "text": "Final request options: JSHandle@object",
+    "location": {
+      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-BLKOrhch.js",
+      "lineNumber": 321,
+      "columnNumber": 6002
+    }
+  },
+  {
+    "type": "log",
+    "text": "Response received: JSHandle@object",
+    "location": {
+      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-BLKOrhch.js",
+      "lineNumber": 316,
+      "columnNumber": 5520
+    }
+  },
+  {
+    "type": "log",
+    "text": "Parsed JSON response: JSHandle@object",
+    "location": {
+      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-BLKOrhch.js",
+      "lineNumber": 316,
+      "columnNumber": 5780
+    }
+  },
+  {
+    "type": "log",
+    "text": "Processing notification response: JSHandle@object",
+    "location": {
+      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-BLKOrhch.js",
+      "lineNumber": 316,
+      "columnNumber": 6434
+    }
+  },
+  {
+    "type": "log",
+    "text": "Final API response object: JSHandle@object",
+    "location": {
+      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-BLKOrhch.js",
+      "lineNumber": 316,
+      "columnNumber": 7231
+    }
+  },
+  {
+    "type": "endGroup",
+    "text": "console.groupEnd",
+    "location": {
+      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-BLKOrhch.js",
+      "lineNumber": 316,
+      "columnNumber": 7334
+    }
+  },
+  {
+    "type": "log",
+    "text": "Raw API response received: JSHandle@object",
+    "location": {
+      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-BLKOrhch.js",
+      "lineNumber": 316,
+      "columnNumber": 77739
+    }
+  },
+  {
+    "type": "log",
+    "text": "Processed notifications: JSHandle@object",
+    "location": {
+      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-BLKOrhch.js",
+      "lineNumber": 316,
+      "columnNumber": 78275
+    }
+  },
+  {
+    "type": "log",
+    "text": "Returning processed notifications response",
+    "location": {
+      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-BLKOrhch.js",
+      "lineNumber": 316,
+      "columnNumber": 78548
+    }
+  },
+  {
+    "type": "endGroup",
+    "text": "console.groupEnd",
+    "location": {
+      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-BLKOrhch.js",
+      "lineNumber": 316,
+      "columnNumber": 78606
+    }
+  },
+  {
+    "type": "log",
+    "text": "Response received: JSHandle@object",
+    "location": {
+      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-BLKOrhch.js",
+      "lineNumber": 316,
+      "columnNumber": 5520
+    }
+  },
+  {
+    "type": "log",
+    "text": "Parsed JSON response: JSHandle@object",
+    "location": {
+      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-BLKOrhch.js",
+      "lineNumber": 316,
+      "columnNumber": 5780
+    }
+  },
+  {
+    "type": "log",
+    "text": "Final API response object: JSHandle@object",
+    "location": {
+      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-BLKOrhch.js",
+      "lineNumber": 316,
+      "columnNumber": 7231
+    }
+  },
+  {
+    "type": "endGroup",
+    "text": "console.groupEnd",
+    "location": {
+      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-BLKOrhch.js",
+      "lineNumber": 316,
+      "columnNumber": 7334
+    }
+  },
+  {
+    "type": "endGroup",
+    "text": "console.groupEnd",
+    "location": {
+      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-BLKOrhch.js",
+      "lineNumber": 316,
+      "columnNumber": 74451
+    }
+  },
+  {
+    "type": "log",
+    "text": "Step 3: Processing API response",
+    "location": {
+      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-BLKOrhch.js",
+      "lineNumber": 324,
+      "columnNumber": 82762
+    }
+  },
+  {
+    "type": "log",
+    "text": "Response data: JSHandle@object",
+    "location": {
+      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-BLKOrhch.js",
+      "lineNumber": 324,
+      "columnNumber": 82809
+    }
+  },
+  {
+    "type": "log",
+    "text": "Step 3 Success: Valid profile data received",
+    "location": {
+      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-BLKOrhch.js",
+      "lineNumber": 324,
+      "columnNumber": 82941
+    }
+  },
+  {
+    "type": "log",
+    "text": "✅ Profile fetch completed successfully",
+    "location": {
+      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-BLKOrhch.js",
+      "lineNumber": 324,
+      "columnNumber": 83131
+    }
+  },
+  {
+    "type": "endGroup",
+    "text": "console.groupEnd",
+    "location": {
+      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-BLKOrhch.js",
+      "lineNumber": 324,
+      "columnNumber": 83185
+    }
+  },
+  {
+    "type": "log",
+    "text": "Response received: JSHandle@object",
+    "location": {
+      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-BLKOrhch.js",
+      "lineNumber": 321,
+      "columnNumber": 6207
+    }
+  },
+  {
+    "type": "log",
+    "text": "Parsed JSON response: JSHandle@object",
+    "location": {
+      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-BLKOrhch.js",
+      "lineNumber": 321,
+      "columnNumber": 6276
+    }
+  },
+  {
+    "type": "log",
+    "text": "Final API response object: JSHandle@object",
+    "location": {
+      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-BLKOrhch.js",
+      "lineNumber": 321,
+      "columnNumber": 6351
+    }
+  },
+  {
+    "type": "log",
+    "text": "Subscriptions API response: JSHandle@object",
+    "location": {
+      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-BLKOrhch.js",
+      "lineNumber": 321,
+      "columnNumber": 7990
+    }
+  },
+  {
+    "type": "log",
+    "text": "Subscriptions component mounted/updated",
+    "location": {
+      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-BLKOrhch.js",
+      "lineNumber": 322,
+      "columnNumber": 34258
+    }
+  },
+  {
+    "type": "log",
+    "text": "Subscriptions data: JSHandle@array",
+    "location": {
+      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-BLKOrhch.js",
+      "lineNumber": 322,
+      "columnNumber": 34313
+    }
+  },
+  {
+    "type": "log",
+    "text": "Subscriptions loading: false",
+    "location": {
+      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-BLKOrhch.js",
+      "lineNumber": 322,
+      "columnNumber": 34350
+    }
+  },
+  {
+    "type": "log",
+    "text": "Subscriptions error: ",
+    "location": {
+      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-BLKOrhch.js",
+      "lineNumber": 322,
+      "columnNumber": 34390
+    }
+  },
+  {
+    "type": "log",
+    "text": "Response received: JSHandle@object",
+    "location": {
+      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-BLKOrhch.js",
+      "lineNumber": 321,
+      "columnNumber": 6207
+    }
+  },
+  {
+    "type": "log",
+    "text": "Parsed JSON response: JSHandle@object",
+    "location": {
+      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-BLKOrhch.js",
+      "lineNumber": 321,
+      "columnNumber": 6276
+    }
+  },
+  {
+    "type": "log",
+    "text": "Final API response object: JSHandle@object",
+    "location": {
+      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-BLKOrhch.js",
+      "lineNumber": 321,
+      "columnNumber": 6351
+    }
+  },
+  {
+    "type": "log",
+    "text": "Response received: JSHandle@object",
+    "location": {
+      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-BLKOrhch.js",
+      "lineNumber": 316,
+      "columnNumber": 5520
+    }
+  },
+  {
+    "type": "log",
+    "text": "Parsed JSON response: JSHandle@object",
+    "location": {
+      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-BLKOrhch.js",
+      "lineNumber": 316,
+      "columnNumber": 5780
+    }
+  },
+  {
+    "type": "log",
+    "text": "Processing notification response: JSHandle@object",
+    "location": {
+      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-BLKOrhch.js",
+      "lineNumber": 316,
+      "columnNumber": 6434
+    }
+  },
+  {
+    "type": "log",
+    "text": "Final API response object: JSHandle@object",
+    "location": {
+      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-BLKOrhch.js",
+      "lineNumber": 316,
+      "columnNumber": 7231
+    }
+  },
+  {
+    "type": "endGroup",
+    "text": "console.groupEnd",
+    "location": {
+      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-BLKOrhch.js",
+      "lineNumber": 316,
+      "columnNumber": 7334
+    }
+  },
+  {
+    "type": "log",
+    "text": "Raw API response received: JSHandle@object",
+    "location": {
+      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-BLKOrhch.js",
+      "lineNumber": 316,
+      "columnNumber": 77739
+    }
+  },
+  {
+    "type": "log",
+    "text": "Processed notifications: JSHandle@object",
+    "location": {
+      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-BLKOrhch.js",
+      "lineNumber": 316,
+      "columnNumber": 78275
+    }
+  },
+  {
+    "type": "log",
+    "text": "Returning processed notifications response",
+    "location": {
+      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-BLKOrhch.js",
+      "lineNumber": 316,
+      "columnNumber": 78548
+    }
+  },
+  {
+    "type": "endGroup",
+    "text": "console.groupEnd",
+    "location": {
+      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-BLKOrhch.js",
+      "lineNumber": 316,
+      "columnNumber": 78606
+    }
+  },
+  {
+    "type": "log",
+    "text": "Auth URL being used: (Using Netlify redirects)",
+    "location": {
+      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-BLKOrhch.js",
+      "lineNumber": 316,
+      "columnNumber": 1224
+    }
+  },
+  {
+    "type": "log",
+    "text": "Backend URL being used: (Using Netlify redirects)",
+    "location": {
+      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-BLKOrhch.js",
+      "lineNumber": 316,
+      "columnNumber": 4608
+    }
+  },
+  {
+    "type": "log",
+    "text": "Using Netlify redirects: true",
+    "location": {
+      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-BLKOrhch.js",
+      "lineNumber": 321,
+      "columnNumber": 5240
+    }
+  },
+  {
+    "type": "log",
+    "text": "API base URL being used: /api",
+    "location": {
+      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-BLKOrhch.js",
+      "lineNumber": 321,
+      "columnNumber": 5299
+    }
+  },
+  {
+    "type": "log",
+    "text": "Environment variables:",
+    "location": {
+      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-BLKOrhch.js",
+      "lineNumber": 364,
+      "columnNumber": 34804
+    }
+  },
+  {
+    "type": "log",
+    "text": "VITE_AUTH_URL: https://authentication-service-415554190254.us-central1.run.app",
+    "location": {
+      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-BLKOrhch.js",
+      "lineNumber": 364,
+      "columnNumber": 34842
+    }
+  },
+  {
+    "type": "log",
+    "text": "VITE_BACKEND_URL: https://backend-415554190254.us-central1.run.app",
+    "location": {
+      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-BLKOrhch.js",
+      "lineNumber": 364,
+      "columnNumber": 34938
+    }
+  },
+  {
+    "type": "log",
+    "text": "VITE_SUBSCRIPTION_WORKER: https://subscription-worker-415554190254.us-central1.run.app",
+    "location": {
+      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-BLKOrhch.js",
+      "lineNumber": 364,
+      "columnNumber": 35022
+    }
+  },
+  {
+    "type": "log",
+    "text": "VITE_ENV: production",
+    "location": {
+      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-BLKOrhch.js",
+      "lineNumber": 364,
+      "columnNumber": 35126
+    }
+  },
+  {
+    "type": "log",
+    "text": "Application starting...",
+    "location": {
+      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-BLKOrhch.js",
+      "lineNumber": 364,
+      "columnNumber": 35454
+    }
+  },
+  {
+    "type": "log",
+    "text": "Creating React root...",
+    "location": {
+      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-BLKOrhch.js",
+      "lineNumber": 364,
+      "columnNumber": 35585
+    }
+  },
+  {
+    "type": "log",
+    "text": "Rendering application...",
+    "location": {
+      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-BLKOrhch.js",
+      "lineNumber": 364,
+      "columnNumber": 35637
+    }
+  },
+  {
+    "type": "log",
+    "text": "Application rendered successfully",
+    "location": {
+      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-BLKOrhch.js",
+      "lineNumber": 364,
+      "columnNumber": 35783
+    }
+  },
+  {
+    "type": "log",
+    "text": "App: Rendering routes",
+    "location": {
+      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-BLKOrhch.js",
+      "lineNumber": 364,
+      "columnNumber": 31657
+    }
+  },
+  {
+    "type": "log",
+    "text": "Auth state in header updated: JSHandle@object",
+    "location": {
+      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-BLKOrhch.js",
+      "lineNumber": 364,
+      "columnNumber": 23469
+    }
+  },
+  {
+    "type": "startGroup",
+    "text": "Notifications API - list",
+    "location": {
+      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-BLKOrhch.js",
+      "lineNumber": 316,
+      "columnNumber": 77318
+    }
+  },
+  {
+    "type": "log",
+    "text": "Listing notifications with options: JSHandle@object",
+    "location": {
+      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-BLKOrhch.js",
+      "lineNumber": 316,
+      "columnNumber": 77360
+    }
+  },
+  {
+    "type": "startGroup",
+    "text": "🌐 API Request: GET /api/v1/notifications?page=1&limit=1&unread=true",
+    "location": {
+      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-BLKOrhch.js",
+      "lineNumber": 316,
+      "columnNumber": 4767
+    }
+  },
+  {
+    "type": "log",
+    "text": "Request details: JSHandle@object",
+    "location": {
+      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-BLKOrhch.js",
+      "lineNumber": 316,
+      "columnNumber": 4810
+    }
+  },
+  {
+    "type": "log",
+    "text": "Auth headers: JSHandle@object",
+    "location": {
+      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-BLKOrhch.js",
+      "lineNumber": 316,
+      "columnNumber": 5158
+    }
+  },
+  {
+    "type": "log",
+    "text": "Final request options: JSHandle@object",
+    "location": {
+      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-BLKOrhch.js",
+      "lineNumber": 316,
+      "columnNumber": 5351
+    }
+  },
+  {
+    "type": "log",
+    "text": "AuthContext: Checking auth state JSHandle@object",
+    "location": {
+      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-BLKOrhch.js",
+      "lineNumber": 316,
+      "columnNumber": 90484
+    }
+  },
+  {
+    "type": "startGroup",
+    "text": "👤 Get User Profile",
+    "location": {
+      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-BLKOrhch.js",
+      "lineNumber": 316,
+      "columnNumber": 74328
+    }
+  },
+  {
+    "type": "log",
+    "text": "Fetching user profile...",
+    "location": {
+      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-BLKOrhch.js",
+      "lineNumber": 316,
+      "columnNumber": 74365
+    }
+  },
+  {
+    "type": "startGroup",
+    "text": "🌐 API Request: GET /api/v1/users/me",
+    "location": {
+      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-BLKOrhch.js",
+      "lineNumber": 316,
+      "columnNumber": 4767
+    }
+  },
+  {
+    "type": "log",
+    "text": "Request details: JSHandle@object",
+    "location": {
+      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-BLKOrhch.js",
+      "lineNumber": 316,
+      "columnNumber": 4810
+    }
+  },
+  {
+    "type": "log",
+    "text": "Auth headers: JSHandle@object",
+    "location": {
+      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-BLKOrhch.js",
+      "lineNumber": 316,
+      "columnNumber": 5158
+    }
+  },
+  {
+    "type": "log",
+    "text": "Final request options: JSHandle@object",
+    "location": {
+      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-BLKOrhch.js",
+      "lineNumber": 316,
+      "columnNumber": 5351
+    }
+  },
+  {
+    "type": "log",
+    "text": "Response received: JSHandle@object",
+    "location": {
+      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-BLKOrhch.js",
+      "lineNumber": 316,
+      "columnNumber": 5520
+    }
+  },
+  {
+    "type": "log",
+    "text": "Parsed JSON response: JSHandle@object",
+    "location": {
+      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-BLKOrhch.js",
+      "lineNumber": 316,
+      "columnNumber": 5780
+    }
+  },
+  {
+    "type": "log",
+    "text": "Final API response object: JSHandle@object",
+    "location": {
+      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-BLKOrhch.js",
+      "lineNumber": 316,
+      "columnNumber": 7231
+    }
+  },
+  {
+    "type": "endGroup",
+    "text": "console.groupEnd",
+    "location": {
+      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-BLKOrhch.js",
+      "lineNumber": 316,
+      "columnNumber": 7334
+    }
+  },
+  {
+    "type": "endGroup",
+    "text": "console.groupEnd",
+    "location": {
+      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-BLKOrhch.js",
+      "lineNumber": 316,
+      "columnNumber": 74451
+    }
+  },
+  {
+    "type": "log",
+    "text": "AuthContext: User loaded from API JSHandle@object",
+    "location": {
+      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-BLKOrhch.js",
+      "lineNumber": 316,
+      "columnNumber": 90655
+    }
+  },
+  {
+    "type": "log",
+    "text": "Auth state in header updated: JSHandle@object",
+    "location": {
+      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-BLKOrhch.js",
+      "lineNumber": 364,
+      "columnNumber": 23469
+    }
+  },
+  {
+    "type": "log",
+    "text": "Subscriptions component mounted/updated",
+    "location": {
+      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-BLKOrhch.js",
+      "lineNumber": 322,
+      "columnNumber": 34258
+    }
+  },
+  {
+    "type": "log",
+    "text": "Subscriptions data: JSHandle@array",
+    "location": {
+      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-BLKOrhch.js",
+      "lineNumber": 322,
+      "columnNumber": 34313
+    }
+  },
+  {
+    "type": "log",
+    "text": "Subscriptions loading: true",
+    "location": {
+      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-BLKOrhch.js",
+      "lineNumber": 322,
+      "columnNumber": 34350
+    }
+  },
+  {
+    "type": "log",
+    "text": "Subscriptions error: ",
+    "location": {
+      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-BLKOrhch.js",
+      "lineNumber": 322,
+      "columnNumber": 34390
+    }
+  },
+  {
+    "type": "startGroup",
+    "text": "Notifications API - list",
+    "location": {
+      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-BLKOrhch.js",
+      "lineNumber": 316,
+      "columnNumber": 77318
+    }
+  },
+  {
+    "type": "log",
+    "text": "Listing notifications with options: JSHandle@object",
+    "location": {
+      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-BLKOrhch.js",
+      "lineNumber": 316,
+      "columnNumber": 77360
+    }
+  },
+  {
+    "type": "startGroup",
+    "text": "🌐 API Request: GET /api/v1/notifications?page=1&limit=1&unread=true",
+    "location": {
+      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-BLKOrhch.js",
+      "lineNumber": 316,
+      "columnNumber": 4767
+    }
+  },
+  {
+    "type": "log",
+    "text": "Request details: JSHandle@object",
+    "location": {
+      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-BLKOrhch.js",
+      "lineNumber": 316,
+      "columnNumber": 4810
+    }
+  },
+  {
+    "type": "log",
+    "text": "Auth headers: JSHandle@object",
+    "location": {
+      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-BLKOrhch.js",
+      "lineNumber": 316,
+      "columnNumber": 5158
+    }
+  },
+  {
+    "type": "log",
+    "text": "Final request options: JSHandle@object",
+    "location": {
+      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-BLKOrhch.js",
+      "lineNumber": 316,
+      "columnNumber": 5351
+    }
+  },
+  {
+    "type": "startGroup",
+    "text": "🔒 User Profile Flow",
+    "location": {
+      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-BLKOrhch.js",
+      "lineNumber": 324,
+      "columnNumber": 82089
+    }
+  },
+  {
+    "type": "log",
+    "text": "Step 1: Checking authentication state",
+    "location": {
+      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-BLKOrhch.js",
+      "lineNumber": 324,
+      "columnNumber": 82127
+    }
+  },
+  {
+    "type": "log",
+    "text": "Current auth state: JSHandle@object",
+    "location": {
+      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-BLKOrhch.js",
+      "lineNumber": 324,
+      "columnNumber": 82227
+    }
+  },
+  {
+    "type": "log",
+    "text": "Step 2: Fetching user profile from API",
+    "location": {
+      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-BLKOrhch.js",
+      "lineNumber": 324,
+      "columnNumber": 82416
+    }
+  },
+  {
+    "type": "log",
+    "text": "Making request to /api/users/me endpoint",
+    "location": {
+      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-BLKOrhch.js",
+      "lineNumber": 324,
+      "columnNumber": 82470
+    }
+  },
+  {
+    "type": "startGroup",
+    "text": "👤 Get User Profile",
+    "location": {
+      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-BLKOrhch.js",
+      "lineNumber": 316,
+      "columnNumber": 74328
+    }
+  },
+  {
+    "type": "log",
+    "text": "Fetching user profile...",
+    "location": {
+      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-BLKOrhch.js",
+      "lineNumber": 316,
+      "columnNumber": 74365
+    }
+  },
+  {
+    "type": "startGroup",
+    "text": "🌐 API Request: GET /api/v1/users/me",
+    "location": {
+      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-BLKOrhch.js",
+      "lineNumber": 316,
+      "columnNumber": 4767
+    }
+  },
+  {
+    "type": "log",
+    "text": "Request details: JSHandle@object",
+    "location": {
+      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-BLKOrhch.js",
+      "lineNumber": 316,
+      "columnNumber": 4810
+    }
+  },
+  {
+    "type": "log",
+    "text": "Auth headers: JSHandle@object",
+    "location": {
+      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-BLKOrhch.js",
+      "lineNumber": 316,
+      "columnNumber": 5158
+    }
+  },
+  {
+    "type": "log",
+    "text": "Final request options: JSHandle@object",
+    "location": {
+      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-BLKOrhch.js",
+      "lineNumber": 316,
+      "columnNumber": 5351
+    }
+  },
+  {
+    "type": "log",
+    "text": "Request details: JSHandle@object",
+    "location": {
+      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-BLKOrhch.js",
+      "lineNumber": 321,
+      "columnNumber": 5801
+    }
+  },
+  {
+    "type": "log",
+    "text": "Auth headers: JSHandle@object",
+    "location": {
+      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-BLKOrhch.js",
+      "lineNumber": 321,
+      "columnNumber": 5879
+    }
+  },
+  {
+    "type": "log",
+    "text": "Final request options: JSHandle@object",
+    "location": {
+      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-BLKOrhch.js",
+      "lineNumber": 321,
+      "columnNumber": 6002
+    }
+  },
+  {
+    "type": "log",
+    "text": "Request details: JSHandle@object",
+    "location": {
+      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-BLKOrhch.js",
+      "lineNumber": 321,
+      "columnNumber": 5801
+    }
+  },
+  {
+    "type": "log",
+    "text": "Auth headers: JSHandle@object",
+    "location": {
+      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-BLKOrhch.js",
+      "lineNumber": 321,
+      "columnNumber": 5879
+    }
+  },
+  {
+    "type": "log",
+    "text": "Final request options: JSHandle@object",
+    "location": {
+      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-BLKOrhch.js",
+      "lineNumber": 321,
+      "columnNumber": 6002
+    }
+  },
+  {
+    "type": "log",
+    "text": "Response received: JSHandle@object",
+    "location": {
+      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-BLKOrhch.js",
+      "lineNumber": 316,
+      "columnNumber": 5520
+    }
+  },
+  {
+    "type": "log",
+    "text": "Parsed JSON response: JSHandle@object",
+    "location": {
+      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-BLKOrhch.js",
+      "lineNumber": 316,
+      "columnNumber": 5780
+    }
+  },
+  {
+    "type": "log",
+    "text": "Processing notification response: JSHandle@object",
+    "location": {
+      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-BLKOrhch.js",
+      "lineNumber": 316,
+      "columnNumber": 6434
+    }
+  },
+  {
+    "type": "log",
+    "text": "Final API response object: JSHandle@object",
+    "location": {
+      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-BLKOrhch.js",
+      "lineNumber": 316,
+      "columnNumber": 7231
+    }
+  },
+  {
+    "type": "endGroup",
+    "text": "console.groupEnd",
+    "location": {
+      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-BLKOrhch.js",
+      "lineNumber": 316,
+      "columnNumber": 7334
+    }
+  },
+  {
+    "type": "log",
+    "text": "Raw API response received: JSHandle@object",
+    "location": {
+      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-BLKOrhch.js",
+      "lineNumber": 316,
+      "columnNumber": 77739
+    }
+  },
+  {
+    "type": "log",
+    "text": "Processed notifications: JSHandle@object",
+    "location": {
+      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-BLKOrhch.js",
+      "lineNumber": 316,
+      "columnNumber": 78275
+    }
+  },
+  {
+    "type": "log",
+    "text": "Returning processed notifications response",
+    "location": {
+      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-BLKOrhch.js",
+      "lineNumber": 316,
+      "columnNumber": 78548
+    }
+  },
+  {
+    "type": "endGroup",
+    "text": "console.groupEnd",
+    "location": {
+      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-BLKOrhch.js",
+      "lineNumber": 316,
+      "columnNumber": 78606
+    }
+  },
+  {
+    "type": "log",
+    "text": "Response received: JSHandle@object",
+    "location": {
+      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-BLKOrhch.js",
+      "lineNumber": 316,
+      "columnNumber": 5520
+    }
+  },
+  {
+    "type": "log",
+    "text": "Parsed JSON response: JSHandle@object",
+    "location": {
+      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-BLKOrhch.js",
+      "lineNumber": 316,
+      "columnNumber": 5780
+    }
+  },
+  {
+    "type": "log",
+    "text": "Final API response object: JSHandle@object",
+    "location": {
+      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-BLKOrhch.js",
+      "lineNumber": 316,
+      "columnNumber": 7231
+    }
+  },
+  {
+    "type": "endGroup",
+    "text": "console.groupEnd",
+    "location": {
+      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-BLKOrhch.js",
+      "lineNumber": 316,
+      "columnNumber": 7334
+    }
+  },
+  {
+    "type": "endGroup",
+    "text": "console.groupEnd",
+    "location": {
+      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-BLKOrhch.js",
+      "lineNumber": 316,
+      "columnNumber": 74451
+    }
+  },
+  {
+    "type": "log",
+    "text": "Step 3: Processing API response",
+    "location": {
+      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-BLKOrhch.js",
+      "lineNumber": 324,
+      "columnNumber": 82762
+    }
+  },
+  {
+    "type": "log",
+    "text": "Response data: JSHandle@object",
+    "location": {
+      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-BLKOrhch.js",
+      "lineNumber": 324,
+      "columnNumber": 82809
+    }
+  },
+  {
+    "type": "log",
+    "text": "Step 3 Success: Valid profile data received",
+    "location": {
+      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-BLKOrhch.js",
+      "lineNumber": 324,
+      "columnNumber": 82941
+    }
+  },
+  {
+    "type": "log",
+    "text": "✅ Profile fetch completed successfully",
+    "location": {
+      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-BLKOrhch.js",
+      "lineNumber": 324,
+      "columnNumber": 83131
+    }
+  },
+  {
+    "type": "endGroup",
+    "text": "console.groupEnd",
+    "location": {
+      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-BLKOrhch.js",
+      "lineNumber": 324,
+      "columnNumber": 83185
+    }
+  },
+  {
+    "type": "log",
+    "text": "Response received: JSHandle@object",
+    "location": {
+      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-BLKOrhch.js",
+      "lineNumber": 316,
+      "columnNumber": 5520
+    }
+  },
+  {
+    "type": "log",
+    "text": "Parsed JSON response: JSHandle@object",
+    "location": {
+      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-BLKOrhch.js",
+      "lineNumber": 316,
+      "columnNumber": 5780
+    }
+  },
+  {
+    "type": "log",
+    "text": "Processing notification response: JSHandle@object",
+    "location": {
+      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-BLKOrhch.js",
+      "lineNumber": 316,
+      "columnNumber": 6434
+    }
+  },
+  {
+    "type": "log",
+    "text": "Final API response object: JSHandle@object",
+    "location": {
+      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-BLKOrhch.js",
+      "lineNumber": 316,
+      "columnNumber": 7231
+    }
+  },
+  {
+    "type": "endGroup",
+    "text": "console.groupEnd",
+    "location": {
+      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-BLKOrhch.js",
+      "lineNumber": 316,
+      "columnNumber": 7334
+    }
+  },
+  {
+    "type": "log",
+    "text": "Raw API response received: JSHandle@object",
+    "location": {
+      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-BLKOrhch.js",
+      "lineNumber": 316,
+      "columnNumber": 77739
+    }
+  },
+  {
+    "type": "log",
+    "text": "Processed notifications: JSHandle@object",
+    "location": {
+      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-BLKOrhch.js",
+      "lineNumber": 316,
+      "columnNumber": 78275
+    }
+  },
+  {
+    "type": "log",
+    "text": "Returning processed notifications response",
+    "location": {
+      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-BLKOrhch.js",
+      "lineNumber": 316,
+      "columnNumber": 78548
+    }
+  },
+  {
+    "type": "endGroup",
+    "text": "console.groupEnd",
+    "location": {
+      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-BLKOrhch.js",
+      "lineNumber": 316,
+      "columnNumber": 78606
+    }
+  },
+  {
+    "type": "log",
+    "text": "Response received: JSHandle@object",
+    "location": {
+      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-BLKOrhch.js",
+      "lineNumber": 321,
+      "columnNumber": 6207
+    }
+  },
+  {
+    "type": "log",
+    "text": "Parsed JSON response: JSHandle@object",
+    "location": {
+      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-BLKOrhch.js",
+      "lineNumber": 321,
+      "columnNumber": 6276
+    }
+  },
+  {
+    "type": "log",
+    "text": "Final API response object: JSHandle@object",
+    "location": {
+      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-BLKOrhch.js",
+      "lineNumber": 321,
+      "columnNumber": 6351
+    }
+  },
+  {
+    "type": "log",
+    "text": "Subscriptions API response: JSHandle@object",
+    "location": {
+      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-BLKOrhch.js",
+      "lineNumber": 321,
+      "columnNumber": 7990
+    }
+  },
+  {
+    "type": "log",
+    "text": "Subscriptions component mounted/updated",
+    "location": {
+      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-BLKOrhch.js",
+      "lineNumber": 322,
+      "columnNumber": 34258
+    }
+  },
+  {
+    "type": "log",
+    "text": "Subscriptions data: JSHandle@array",
+    "location": {
+      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-BLKOrhch.js",
+      "lineNumber": 322,
+      "columnNumber": 34313
+    }
+  },
+  {
+    "type": "log",
+    "text": "Subscriptions loading: false",
+    "location": {
+      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-BLKOrhch.js",
+      "lineNumber": 322,
+      "columnNumber": 34350
+    }
+  },
+  {
+    "type": "log",
+    "text": "Subscriptions error: ",
+    "location": {
+      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-BLKOrhch.js",
+      "lineNumber": 322,
+      "columnNumber": 34390
+    }
+  },
+  {
+    "type": "log",
+    "text": "Response received: JSHandle@object",
+    "location": {
+      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-BLKOrhch.js",
+      "lineNumber": 321,
+      "columnNumber": 6207
+    }
+  },
+  {
+    "type": "log",
+    "text": "Parsed JSON response: JSHandle@object",
+    "location": {
+      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-BLKOrhch.js",
+      "lineNumber": 321,
+      "columnNumber": 6276
+    }
+  },
+  {
+    "type": "log",
+    "text": "Final API response object: JSHandle@object",
+    "location": {
+      "url": "https://clever-kelpie-60c3a6.netlify.app/assets/index-BLKOrhch.js",
+      "lineNumber": 321,
+      "columnNumber": 6351
+    }
+  },
+  {
+    "type": "error",
+    "text": "Failed to load resource: the server responded with a status of 401 ()",
+    "location": {
+      "url": "https://clever-kelpie-60c3a6.netlify.app/api/v1/subscriptions"
     }
   }
 ]
