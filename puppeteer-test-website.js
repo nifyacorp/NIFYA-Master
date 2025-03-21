@@ -151,33 +151,33 @@ const puppeteer = require('puppeteer');
       // Fill in the form
       console.log('Filling subscription form...');
       try {
-        // Wait for textarea to appear
-        await page.waitForSelector('textarea', { timeout: 5000 });
+        // Wait for the form to appear
+        await page.waitForSelector('[data-testid="subscription-form"]', { timeout: 5000 });
+        console.log('Found subscription form');
         
-        // Fill in the prompt
-        await page.type('textarea', 'Subvenciones para empresas tecnológicas en Madrid');
+        // Wait for input field instead of textarea
+        await page.waitForSelector('[data-testid="prompt-input-0"]', { timeout: 5000 });
+        
+        // Fill in the prompt in the input field
+        await page.type('[data-testid="prompt-input-0"]', 'Subvenciones para empresas tecnológicas en Madrid');
         console.log('Entered prompt text');
         
         // Take screenshot of filled form
         await page.screenshot({ path: 'subscription-form-filled.png' });
         
-        // Look for frequency options if they exist
+        // Select frequency option
         try {
-          const frequencyOptions = await page.$$('[data-value="daily"], .frequency-option');
-          if (frequencyOptions.length > 0) {
-            console.log('Found frequency options, selecting daily...');
-            await frequencyOptions[0].click();
-            console.log('Selected frequency option');
-            
-            // Take screenshot after selecting frequency
-            await page.screenshot({ path: 'frequency-selected.png' });
-          }
+          await page.click('[data-testid="frequency-daily"]');
+          console.log('Selected daily frequency option');
+          
+          // Take screenshot after selecting frequency
+          await page.screenshot({ path: 'frequency-selected.png' });
         } catch (frequencyError) {
-          console.log('No frequency options found or error selecting:', frequencyError.message);
+          console.log('Error selecting frequency:', frequencyError.message);
         }
         
         // Submit the form
-        const submitButton = await page.$('button[type="submit"]');
+        const submitButton = await page.$('[data-testid="subscription-submit-button"]');
         if (submitButton) {
           console.log('Submitting form...');
           
