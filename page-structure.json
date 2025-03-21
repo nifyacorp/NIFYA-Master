@@ -1,0 +1,296 @@
+{
+  "main": {
+    "found": true,
+    "childElements": [
+      {
+        "tagName": "div",
+        "className": "flex h-screen bg-background",
+        "id": "",
+        "childCount": 2
+      }
+    ]
+  },
+  ".container": {
+    "found": true,
+    "childElements": [
+      {
+        "tagName": "div",
+        "className": "flex items-center",
+        "id": "",
+        "childCount": 2
+      },
+      {
+        "tagName": "div",
+        "className": "flex items-center gap-4",
+        "id": "",
+        "childCount": 2
+      }
+    ]
+  },
+  ".content": {
+    "found": false
+  },
+  "[role=\"main\"]": {
+    "found": false
+  },
+  ".templates-grid": {
+    "found": false
+  },
+  ".templates-container": {
+    "found": false
+  },
+  "possibleCards": {
+    "count": 8,
+    "items": [
+      {
+        "tagName": "button",
+        "text": "U",
+        "className": "inline-flex items-center justify-center whitespace-nowrap text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 hover:bg-accent hover:text-accent-foreground rounded-full h-9 w-9",
+        "href": null
+      },
+      {
+        "tagName": "button",
+        "text": "Cerrar sesión",
+        "className": "flex items-center gap-3 px-3 py-2 w-full rounded-md text-muted-foreground hover:text-destructive hover:bg-destructive/10 transition-colors",
+        "href": null
+      },
+      {
+        "tagName": "button",
+        "text": "Back to Subscriptions",
+        "className": "inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 hover:bg-accent hover:text-accent-foreground h-9 px-4 py-2 mr-4",
+        "href": null
+      },
+      {
+        "tagName": "button",
+        "text": "View All Subscriptions",
+        "className": "inline-flex items-center justify-center whitespace-nowrap font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 border border-input bg-background shadow-sm hover:bg-accent hover:text-accent-foreground h-8 rounded-md px-3 w-full text-sm",
+        "href": null
+      },
+      {
+        "tagName": "button",
+        "text": "Select",
+        "className": "inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 bg-primary text-primary-foreground shadow hover:bg-primary/90 h-9 px-4 py-2 w-full",
+        "href": null
+      },
+      {
+        "tagName": "button",
+        "text": "Select",
+        "className": "inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 bg-primary text-primary-foreground shadow hover:bg-primary/90 h-9 px-4 py-2 w-full",
+        "href": null
+      },
+      {
+        "tagName": "button",
+        "text": "Select",
+        "className": "inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 bg-primary text-primary-foreground shadow hover:bg-primary/90 h-9 px-4 py-2 w-full",
+        "href": null
+      },
+      {
+        "tagName": "button",
+        "text": "Create Custom",
+        "className": "inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 border border-input bg-background shadow-sm hover:bg-accent hover:text-accent-foreground h-9 px-4 py-2 w-full",
+        "href": null
+      }
+    ]
+  },
+  "boeElements": {
+    "count": 28,
+    "items": [
+      {
+        "tagName": "html",
+        "text": "NIFYA - Notificaciones inteligentes impulsadas por IA\n    \n    \n  \n  \n    NIFYADashboardSubscriptionsUNIFYANotificaciones InteligentesTestratonxi@gmail.comInicioNotificacionesSubscripcionesAjustesCerrar sesiónBack to SubscriptionsCreate New SubscriptionYour SubscriptionsYou don't have any subscriptions yet.View All SubscriptionsAvailable TemplatesBOE GeneralSeguimiento general del Boletín Oficial del EstadoGet notifications for new publications in the Spanish Official State Gazette (BOE) based on your keywords and filters.Default prompts:disposiciónleyreal decretoSelectSubvenciones BOEAlertas de subvenciones y ayudas públicasGet notifications for new publications in the Spanish Official State Gazette (BOE) based on your keywords and filters.Default prompts:subvenciónayudaconvocatoriaSelectAlquiler de ViviendasBúsqueda de alquileres en zonas específicasGet notifications for new properties, price changes, and other updates from real estate platforms based on your criteria.Default prompts:alquilerpisoapartamentoSelectCustom SubscriptionCreate a custom notification sourceSet up a custom notification source with your own parameters, webhooks, or API integrations.Create Custom",
+        "className": "light",
+        "id": "",
+        "path": "html.light"
+      },
+      {
+        "tagName": "body",
+        "text": "NIFYADashboardSubscriptionsUNIFYANotificaciones InteligentesTestratonxi@gmail.comInicioNotificacionesSubscripcionesAjustesCerrar sesiónBack to SubscriptionsCreate New SubscriptionYour SubscriptionsYou don't have any subscriptions yet.View All SubscriptionsAvailable TemplatesBOE GeneralSeguimiento general del Boletín Oficial del EstadoGet notifications for new publications in the Spanish Official State Gazette (BOE) based on your keywords and filters.Default prompts:disposiciónleyreal decretoSelectSubvenciones BOEAlertas de subvenciones y ayudas públicasGet notifications for new publications in the Spanish Official State Gazette (BOE) based on your keywords and filters.Default prompts:subvenciónayudaconvocatoriaSelectAlquiler de ViviendasBúsqueda de alquileres en zonas específicasGet notifications for new properties, price changes, and other updates from real estate platforms based on your criteria.Default prompts:alquilerpisoapartamentoSelectCustom SubscriptionCreate a custom notification sourceSet up a custom notification source with your own parameters, webhooks, or API integrations.Create Custom",
+        "className": "",
+        "id": "",
+        "path": "html.light > body"
+      },
+      {
+        "tagName": "div",
+        "text": "NIFYADashboardSubscriptionsUNIFYANotificaciones InteligentesTestratonxi@gmail.comInicioNotificacionesSubscripcionesAjustesCerrar sesiónBack to SubscriptionsCreate New SubscriptionYour SubscriptionsYou don't have any subscriptions yet.View All SubscriptionsAvailable TemplatesBOE GeneralSeguimiento general del Boletín Oficial del EstadoGet notifications for new publications in the Spanish Official State Gazette (BOE) based on your keywords and filters.Default prompts:disposiciónleyreal decretoSelectSubvenciones BOEAlertas de subvenciones y ayudas públicasGet notifications for new publications in the Spanish Official State Gazette (BOE) based on your keywords and filters.Default prompts:subvenciónayudaconvocatoriaSelectAlquiler de ViviendasBúsqueda de alquileres en zonas específicasGet notifications for new properties, price changes, and other updates from real estate platforms based on your criteria.Default prompts:alquilerpisoapartamentoSelectCustom SubscriptionCreate a custom notification sourceSet up a custom notification source with your own parameters, webhooks, or API integrations.Create Custom",
+        "className": "",
+        "id": "root",
+        "path": "#root"
+      },
+      {
+        "tagName": "div",
+        "text": "NIFYADashboardSubscriptionsUNIFYANotificaciones InteligentesTestratonxi@gmail.comInicioNotificacionesSubscripcionesAjustesCerrar sesiónBack to SubscriptionsCreate New SubscriptionYour SubscriptionsYou don't have any subscriptions yet.View All SubscriptionsAvailable TemplatesBOE GeneralSeguimiento general del Boletín Oficial del EstadoGet notifications for new publications in the Spanish Official State Gazette (BOE) based on your keywords and filters.Default prompts:disposiciónleyreal decretoSelectSubvenciones BOEAlertas de subvenciones y ayudas públicasGet notifications for new publications in the Spanish Official State Gazette (BOE) based on your keywords and filters.Default prompts:subvenciónayudaconvocatoriaSelectAlquiler de ViviendasBúsqueda de alquileres en zonas específicasGet notifications for new properties, price changes, and other updates from real estate platforms based on your criteria.Default prompts:alquilerpisoapartamentoSelectCustom SubscriptionCreate a custom notification sourceSet up a custom notification source with your own parameters, webhooks, or API integrations.Create Custom",
+        "className": "min-h-screen bg-background text-foreground",
+        "id": "",
+        "path": "#root > div.min-h-screen.bg-background.text-foreground"
+      },
+      {
+        "tagName": "main",
+        "text": "NIFYANotificaciones InteligentesTestratonxi@gmail.comInicioNotificacionesSubscripcionesAjustesCerrar sesiónBack to SubscriptionsCreate New SubscriptionYour SubscriptionsYou don't have any subscriptions yet.View All SubscriptionsAvailable TemplatesBOE GeneralSeguimiento general del Boletín Oficial del EstadoGet notifications for new publications in the Spanish Official State Gazette (BOE) based on your keywords and filters.Default prompts:disposiciónleyreal decretoSelectSubvenciones BOEAlertas de subvenciones y ayudas públicasGet notifications for new publications in the Spanish Official State Gazette (BOE) based on your keywords and filters.Default prompts:subvenciónayudaconvocatoriaSelectAlquiler de ViviendasBúsqueda de alquileres en zonas específicasGet notifications for new properties, price changes, and other updates from real estate platforms based on your criteria.Default prompts:alquilerpisoapartamentoSelectCustom SubscriptionCreate a custom notification sourceSet up a custom notification source with your own parameters, webhooks, or API integrations.Create Custom",
+        "className": "",
+        "id": "",
+        "path": "#root > div.min-h-screen.bg-background.text-foreground > main"
+      },
+      {
+        "tagName": "div",
+        "text": "NIFYANotificaciones InteligentesTestratonxi@gmail.comInicioNotificacionesSubscripcionesAjustesCerrar sesiónBack to SubscriptionsCreate New SubscriptionYour SubscriptionsYou don't have any subscriptions yet.View All SubscriptionsAvailable TemplatesBOE GeneralSeguimiento general del Boletín Oficial del EstadoGet notifications for new publications in the Spanish Official State Gazette (BOE) based on your keywords and filters.Default prompts:disposiciónleyreal decretoSelectSubvenciones BOEAlertas de subvenciones y ayudas públicasGet notifications for new publications in the Spanish Official State Gazette (BOE) based on your keywords and filters.Default prompts:subvenciónayudaconvocatoriaSelectAlquiler de ViviendasBúsqueda de alquileres en zonas específicasGet notifications for new properties, price changes, and other updates from real estate platforms based on your criteria.Default prompts:alquilerpisoapartamentoSelectCustom SubscriptionCreate a custom notification sourceSet up a custom notification source with your own parameters, webhooks, or API integrations.Create Custom",
+        "className": "flex h-screen bg-background",
+        "id": "",
+        "path": "#root > div.min-h-screen.bg-background.text-foreground > main > div.flex.h-screen.bg-background"
+      },
+      {
+        "tagName": "main",
+        "text": "Back to SubscriptionsCreate New SubscriptionYour SubscriptionsYou don't have any subscriptions yet.View All SubscriptionsAvailable TemplatesBOE GeneralSeguimiento general del Boletín Oficial del EstadoGet notifications for new publications in the Spanish Official State Gazette (BOE) based on your keywords and filters.Default prompts:disposiciónleyreal decretoSelectSubvenciones BOEAlertas de subvenciones y ayudas públicasGet notifications for new publications in the Spanish Official State Gazette (BOE) based on your keywords and filters.Default prompts:subvenciónayudaconvocatoriaSelectAlquiler de ViviendasBúsqueda de alquileres en zonas específicasGet notifications for new properties, price changes, and other updates from real estate platforms based on your criteria.Default prompts:alquilerpisoapartamentoSelectCustom SubscriptionCreate a custom notification sourceSet up a custom notification source with your own parameters, webhooks, or API integrations.Create Custom",
+        "className": "flex-1 overflow-y-auto",
+        "id": "",
+        "path": "#root > div.min-h-screen.bg-background.text-foreground > main > div.flex.h-screen.bg-background > main.flex-1.overflow-y-auto"
+      },
+      {
+        "tagName": "div",
+        "text": "Back to SubscriptionsCreate New SubscriptionYour SubscriptionsYou don't have any subscriptions yet.View All SubscriptionsAvailable TemplatesBOE GeneralSeguimiento general del Boletín Oficial del EstadoGet notifications for new publications in the Spanish Official State Gazette (BOE) based on your keywords and filters.Default prompts:disposiciónleyreal decretoSelectSubvenciones BOEAlertas de subvenciones y ayudas públicasGet notifications for new publications in the Spanish Official State Gazette (BOE) based on your keywords and filters.Default prompts:subvenciónayudaconvocatoriaSelectAlquiler de ViviendasBúsqueda de alquileres en zonas específicasGet notifications for new properties, price changes, and other updates from real estate platforms based on your criteria.Default prompts:alquilerpisoapartamentoSelectCustom SubscriptionCreate a custom notification sourceSet up a custom notification source with your own parameters, webhooks, or API integrations.Create Custom",
+        "className": "min-h-screen w-full bg-background",
+        "id": "",
+        "path": "#root > div.min-h-screen.bg-background.text-foreground > main > div.flex.h-screen.bg-background > main.flex-1.overflow-y-auto > div.min-h-screen.w-full.bg-background"
+      },
+      {
+        "tagName": "main",
+        "text": "Back to SubscriptionsCreate New SubscriptionYour SubscriptionsYou don't have any subscriptions yet.View All SubscriptionsAvailable TemplatesBOE GeneralSeguimiento general del Boletín Oficial del EstadoGet notifications for new publications in the Spanish Official State Gazette (BOE) based on your keywords and filters.Default prompts:disposiciónleyreal decretoSelectSubvenciones BOEAlertas de subvenciones y ayudas públicasGet notifications for new publications in the Spanish Official State Gazette (BOE) based on your keywords and filters.Default prompts:subvenciónayudaconvocatoriaSelectAlquiler de ViviendasBúsqueda de alquileres en zonas específicasGet notifications for new properties, price changes, and other updates from real estate platforms based on your criteria.Default prompts:alquilerpisoapartamentoSelectCustom SubscriptionCreate a custom notification sourceSet up a custom notification source with your own parameters, webhooks, or API integrations.Create Custom",
+        "className": "flex min-h-[calc(100vh-4rem)]",
+        "id": "",
+        "path": "#root > div.min-h-screen.bg-background.text-foreground > main > div.flex.h-screen.bg-background > main.flex-1.overflow-y-auto > div.min-h-screen.w-full.bg-background > main.flex.min-h-[calc(100vh-4rem)]"
+      },
+      {
+        "tagName": "div",
+        "text": "Back to SubscriptionsCreate New SubscriptionYour SubscriptionsYou don't have any subscriptions yet.View All SubscriptionsAvailable TemplatesBOE GeneralSeguimiento general del Boletín Oficial del EstadoGet notifications for new publications in the Spanish Official State Gazette (BOE) based on your keywords and filters.Default prompts:disposiciónleyreal decretoSelectSubvenciones BOEAlertas de subvenciones y ayudas públicasGet notifications for new publications in the Spanish Official State Gazette (BOE) based on your keywords and filters.Default prompts:subvenciónayudaconvocatoriaSelectAlquiler de ViviendasBúsqueda de alquileres en zonas específicasGet notifications for new properties, price changes, and other updates from real estate platforms based on your criteria.Default prompts:alquilerpisoapartamentoSelectCustom SubscriptionCreate a custom notification sourceSet up a custom notification source with your own parameters, webhooks, or API integrations.Create Custom",
+        "className": "flex-1 ",
+        "id": "",
+        "path": "#root > div.min-h-screen.bg-background.text-foreground > main > div.flex.h-screen.bg-background > main.flex-1.overflow-y-auto > div.min-h-screen.w-full.bg-background > main.flex.min-h-[calc(100vh-4rem)] > div.flex-1"
+      },
+      {
+        "tagName": "div",
+        "text": "Back to SubscriptionsCreate New SubscriptionYour SubscriptionsYou don't have any subscriptions yet.View All SubscriptionsAvailable TemplatesBOE GeneralSeguimiento general del Boletín Oficial del EstadoGet notifications for new publications in the Spanish Official State Gazette (BOE) based on your keywords and filters.Default prompts:disposiciónleyreal decretoSelectSubvenciones BOEAlertas de subvenciones y ayudas públicasGet notifications for new publications in the Spanish Official State Gazette (BOE) based on your keywords and filters.Default prompts:subvenciónayudaconvocatoriaSelectAlquiler de ViviendasBúsqueda de alquileres en zonas específicasGet notifications for new properties, price changes, and other updates from real estate platforms based on your criteria.Default prompts:alquilerpisoapartamentoSelectCustom SubscriptionCreate a custom notification sourceSet up a custom notification source with your own parameters, webhooks, or API integrations.Create Custom",
+        "className": "container mx-auto py-8",
+        "id": "",
+        "path": "#root > div.min-h-screen.bg-background.text-foreground > main > div.flex.h-screen.bg-background > main.flex-1.overflow-y-auto > div.min-h-screen.w-full.bg-background > main.flex.min-h-[calc(100vh-4rem)] > div.flex-1 > div.container.mx-auto.py-8"
+      },
+      {
+        "tagName": "div",
+        "text": "Your SubscriptionsYou don't have any subscriptions yet.View All SubscriptionsAvailable TemplatesBOE GeneralSeguimiento general del Boletín Oficial del EstadoGet notifications for new publications in the Spanish Official State Gazette (BOE) based on your keywords and filters.Default prompts:disposiciónleyreal decretoSelectSubvenciones BOEAlertas de subvenciones y ayudas públicasGet notifications for new publications in the Spanish Official State Gazette (BOE) based on your keywords and filters.Default prompts:subvenciónayudaconvocatoriaSelectAlquiler de ViviendasBúsqueda de alquileres en zonas específicasGet notifications for new properties, price changes, and other updates from real estate platforms based on your criteria.Default prompts:alquilerpisoapartamentoSelectCustom SubscriptionCreate a custom notification sourceSet up a custom notification source with your own parameters, webhooks, or API integrations.Create Custom",
+        "className": "grid grid-cols-1 md:grid-cols-3 gap-8",
+        "id": "",
+        "path": "#root > div.min-h-screen.bg-background.text-foreground > main > div.flex.h-screen.bg-background > main.flex-1.overflow-y-auto > div.min-h-screen.w-full.bg-background > main.flex.min-h-[calc(100vh-4rem)] > div.flex-1 > div.container.mx-auto.py-8 > div.grid.grid-cols-1.md:grid-cols-3.gap-8"
+      },
+      {
+        "tagName": "div",
+        "text": "Available TemplatesBOE GeneralSeguimiento general del Boletín Oficial del EstadoGet notifications for new publications in the Spanish Official State Gazette (BOE) based on your keywords and filters.Default prompts:disposiciónleyreal decretoSelectSubvenciones BOEAlertas de subvenciones y ayudas públicasGet notifications for new publications in the Spanish Official State Gazette (BOE) based on your keywords and filters.Default prompts:subvenciónayudaconvocatoriaSelectAlquiler de ViviendasBúsqueda de alquileres en zonas específicasGet notifications for new properties, price changes, and other updates from real estate platforms based on your criteria.Default prompts:alquilerpisoapartamentoSelectCustom SubscriptionCreate a custom notification sourceSet up a custom notification source with your own parameters, webhooks, or API integrations.Create Custom",
+        "className": "md:col-span-2",
+        "id": "",
+        "path": "#root > div.min-h-screen.bg-background.text-foreground > main > div.flex.h-screen.bg-background > main.flex-1.overflow-y-auto > div.min-h-screen.w-full.bg-background > main.flex.min-h-[calc(100vh-4rem)] > div.flex-1 > div.container.mx-auto.py-8 > div.grid.grid-cols-1.md:grid-cols-3.gap-8 > div.md:col-span-2"
+      },
+      {
+        "tagName": "div",
+        "text": "Available TemplatesBOE GeneralSeguimiento general del Boletín Oficial del EstadoGet notifications for new publications in the Spanish Official State Gazette (BOE) based on your keywords and filters.Default prompts:disposiciónleyreal decretoSelectSubvenciones BOEAlertas de subvenciones y ayudas públicasGet notifications for new publications in the Spanish Official State Gazette (BOE) based on your keywords and filters.Default prompts:subvenciónayudaconvocatoriaSelectAlquiler de ViviendasBúsqueda de alquileres en zonas específicasGet notifications for new properties, price changes, and other updates from real estate platforms based on your criteria.Default prompts:alquilerpisoapartamentoSelectCustom SubscriptionCreate a custom notification sourceSet up a custom notification source with your own parameters, webhooks, or API integrations.Create Custom",
+        "className": "",
+        "id": "",
+        "path": "#root > div.min-h-screen.bg-background.text-foreground > main > div.flex.h-screen.bg-background > main.flex-1.overflow-y-auto > div.min-h-screen.w-full.bg-background > main.flex.min-h-[calc(100vh-4rem)] > div.flex-1 > div.container.mx-auto.py-8 > div.grid.grid-cols-1.md:grid-cols-3.gap-8 > div.md:col-span-2 > div"
+      },
+      {
+        "tagName": "div",
+        "text": "BOE GeneralSeguimiento general del Boletín Oficial del EstadoGet notifications for new publications in the Spanish Official State Gazette (BOE) based on your keywords and filters.Default prompts:disposiciónleyreal decretoSelectSubvenciones BOEAlertas de subvenciones y ayudas públicasGet notifications for new publications in the Spanish Official State Gazette (BOE) based on your keywords and filters.Default prompts:subvenciónayudaconvocatoriaSelectAlquiler de ViviendasBúsqueda de alquileres en zonas específicasGet notifications for new properties, price changes, and other updates from real estate platforms based on your criteria.Default prompts:alquilerpisoapartamentoSelectCustom SubscriptionCreate a custom notification sourceSet up a custom notification source with your own parameters, webhooks, or API integrations.Create Custom",
+        "className": "grid gap-4 grid-cols-1 lg:grid-cols-2",
+        "id": "",
+        "path": "#root > div.min-h-screen.bg-background.text-foreground > main > div.flex.h-screen.bg-background > main.flex-1.overflow-y-auto > div.min-h-screen.w-full.bg-background > main.flex.min-h-[calc(100vh-4rem)] > div.flex-1 > div.container.mx-auto.py-8 > div.grid.grid-cols-1.md:grid-cols-3.gap-8 > div.md:col-span-2 > div > div.grid.gap-4.grid-cols-1.lg:grid-cols-2"
+      },
+      {
+        "tagName": "div",
+        "text": "BOE GeneralSeguimiento general del Boletín Oficial del EstadoGet notifications for new publications in the Spanish Official State Gazette (BOE) based on your keywords and filters.Default prompts:disposiciónleyreal decretoSelect",
+        "className": "rounded-lg bg-card text-card-foreground border-2 shadow-md hover:shadow-lg transition-shadow",
+        "id": "",
+        "path": "#root > div.min-h-screen.bg-background.text-foreground > main > div.flex.h-screen.bg-background > main.flex-1.overflow-y-auto > div.min-h-screen.w-full.bg-background > main.flex.min-h-[calc(100vh-4rem)] > div.flex-1 > div.container.mx-auto.py-8 > div.grid.grid-cols-1.md:grid-cols-3.gap-8 > div.md:col-span-2 > div > div.grid.gap-4.grid-cols-1.lg:grid-cols-2 > div.rounded-lg.bg-card.text-card-foreground.border-2.shadow-md.hover:shadow-lg.transition-shadow"
+      },
+      {
+        "tagName": "div",
+        "text": "BOE GeneralSeguimiento general del Boletín Oficial del Estado",
+        "className": "space-y-1.5 p-6 flex flex-row items-center gap-4 pb-2",
+        "id": "",
+        "path": "#root > div.min-h-screen.bg-background.text-foreground > main > div.flex.h-screen.bg-background > main.flex-1.overflow-y-auto > div.min-h-screen.w-full.bg-background > main.flex.min-h-[calc(100vh-4rem)] > div.flex-1 > div.container.mx-auto.py-8 > div.grid.grid-cols-1.md:grid-cols-3.gap-8 > div.md:col-span-2 > div > div.grid.gap-4.grid-cols-1.lg:grid-cols-2 > div.rounded-lg.bg-card.text-card-foreground.border-2.shadow-md.hover:shadow-lg.transition-shadow > div.space-y-1.5.p-6.flex.flex-row.items-center.gap-4.pb-2"
+      },
+      {
+        "tagName": "div",
+        "text": "BOE GeneralSeguimiento general del Boletín Oficial del Estado",
+        "className": "",
+        "id": "",
+        "path": "#root > div.min-h-screen.bg-background.text-foreground > main > div.flex.h-screen.bg-background > main.flex-1.overflow-y-auto > div.min-h-screen.w-full.bg-background > main.flex.min-h-[calc(100vh-4rem)] > div.flex-1 > div.container.mx-auto.py-8 > div.grid.grid-cols-1.md:grid-cols-3.gap-8 > div.md:col-span-2 > div > div.grid.gap-4.grid-cols-1.lg:grid-cols-2 > div.rounded-lg.bg-card.text-card-foreground.border-2.shadow-md.hover:shadow-lg.transition-shadow > div.space-y-1.5.p-6.flex.flex-row.items-center.gap-4.pb-2 > div"
+      },
+      {
+        "tagName": "h3",
+        "text": "BOE General",
+        "className": "text-2xl font-semibold leading-none tracking-tight",
+        "id": "",
+        "path": "#root > div.min-h-screen.bg-background.text-foreground > main > div.flex.h-screen.bg-background > main.flex-1.overflow-y-auto > div.min-h-screen.w-full.bg-background > main.flex.min-h-[calc(100vh-4rem)] > div.flex-1 > div.container.mx-auto.py-8 > div.grid.grid-cols-1.md:grid-cols-3.gap-8 > div.md:col-span-2 > div > div.grid.gap-4.grid-cols-1.lg:grid-cols-2 > div.rounded-lg.bg-card.text-card-foreground.border-2.shadow-md.hover:shadow-lg.transition-shadow > div.space-y-1.5.p-6.flex.flex-row.items-center.gap-4.pb-2 > div > h3.text-2xl.font-semibold.leading-none.tracking-tight"
+      },
+      {
+        "tagName": "p",
+        "text": "Seguimiento general del Boletín Oficial del Estado",
+        "className": "text-sm text-muted-foreground",
+        "id": "",
+        "path": "#root > div.min-h-screen.bg-background.text-foreground > main > div.flex.h-screen.bg-background > main.flex-1.overflow-y-auto > div.min-h-screen.w-full.bg-background > main.flex.min-h-[calc(100vh-4rem)] > div.flex-1 > div.container.mx-auto.py-8 > div.grid.grid-cols-1.md:grid-cols-3.gap-8 > div.md:col-span-2 > div > div.grid.gap-4.grid-cols-1.lg:grid-cols-2 > div.rounded-lg.bg-card.text-card-foreground.border-2.shadow-md.hover:shadow-lg.transition-shadow > div.space-y-1.5.p-6.flex.flex-row.items-center.gap-4.pb-2 > div > p.text-sm.text-muted-foreground"
+      },
+      {
+        "tagName": "div",
+        "text": "Get notifications for new publications in the Spanish Official State Gazette (BOE) based on your keywords and filters.Default prompts:disposiciónleyreal decreto",
+        "className": "p-6 pt-2",
+        "id": "",
+        "path": "#root > div.min-h-screen.bg-background.text-foreground > main > div.flex.h-screen.bg-background > main.flex-1.overflow-y-auto > div.min-h-screen.w-full.bg-background > main.flex.min-h-[calc(100vh-4rem)] > div.flex-1 > div.container.mx-auto.py-8 > div.grid.grid-cols-1.md:grid-cols-3.gap-8 > div.md:col-span-2 > div > div.grid.gap-4.grid-cols-1.lg:grid-cols-2 > div.rounded-lg.bg-card.text-card-foreground.border-2.shadow-md.hover:shadow-lg.transition-shadow > div.p-6.pt-2"
+      },
+      {
+        "tagName": "p",
+        "text": "Get notifications for new publications in the Spanish Official State Gazette (BOE) based on your keywords and filters.",
+        "className": "text-sm text-muted-foreground",
+        "id": "",
+        "path": "#root > div.min-h-screen.bg-background.text-foreground > main > div.flex.h-screen.bg-background > main.flex-1.overflow-y-auto > div.min-h-screen.w-full.bg-background > main.flex.min-h-[calc(100vh-4rem)] > div.flex-1 > div.container.mx-auto.py-8 > div.grid.grid-cols-1.md:grid-cols-3.gap-8 > div.md:col-span-2 > div > div.grid.gap-4.grid-cols-1.lg:grid-cols-2 > div.rounded-lg.bg-card.text-card-foreground.border-2.shadow-md.hover:shadow-lg.transition-shadow > div.p-6.pt-2 > p.text-sm.text-muted-foreground"
+      },
+      {
+        "tagName": "div",
+        "text": "Subvenciones BOEAlertas de subvenciones y ayudas públicasGet notifications for new publications in the Spanish Official State Gazette (BOE) based on your keywords and filters.Default prompts:subvenciónayudaconvocatoriaSelect",
+        "className": "rounded-lg bg-card text-card-foreground border-2 shadow-md hover:shadow-lg transition-shadow",
+        "id": "",
+        "path": "#root > div.min-h-screen.bg-background.text-foreground > main > div.flex.h-screen.bg-background > main.flex-1.overflow-y-auto > div.min-h-screen.w-full.bg-background > main.flex.min-h-[calc(100vh-4rem)] > div.flex-1 > div.container.mx-auto.py-8 > div.grid.grid-cols-1.md:grid-cols-3.gap-8 > div.md:col-span-2 > div > div.grid.gap-4.grid-cols-1.lg:grid-cols-2 > div.rounded-lg.bg-card.text-card-foreground.border-2.shadow-md.hover:shadow-lg.transition-shadow"
+      },
+      {
+        "tagName": "div",
+        "text": "Subvenciones BOEAlertas de subvenciones y ayudas públicas",
+        "className": "space-y-1.5 p-6 flex flex-row items-center gap-4 pb-2",
+        "id": "",
+        "path": "#root > div.min-h-screen.bg-background.text-foreground > main > div.flex.h-screen.bg-background > main.flex-1.overflow-y-auto > div.min-h-screen.w-full.bg-background > main.flex.min-h-[calc(100vh-4rem)] > div.flex-1 > div.container.mx-auto.py-8 > div.grid.grid-cols-1.md:grid-cols-3.gap-8 > div.md:col-span-2 > div > div.grid.gap-4.grid-cols-1.lg:grid-cols-2 > div.rounded-lg.bg-card.text-card-foreground.border-2.shadow-md.hover:shadow-lg.transition-shadow > div.space-y-1.5.p-6.flex.flex-row.items-center.gap-4.pb-2"
+      },
+      {
+        "tagName": "div",
+        "text": "Subvenciones BOEAlertas de subvenciones y ayudas públicas",
+        "className": "",
+        "id": "",
+        "path": "#root > div.min-h-screen.bg-background.text-foreground > main > div.flex.h-screen.bg-background > main.flex-1.overflow-y-auto > div.min-h-screen.w-full.bg-background > main.flex.min-h-[calc(100vh-4rem)] > div.flex-1 > div.container.mx-auto.py-8 > div.grid.grid-cols-1.md:grid-cols-3.gap-8 > div.md:col-span-2 > div > div.grid.gap-4.grid-cols-1.lg:grid-cols-2 > div.rounded-lg.bg-card.text-card-foreground.border-2.shadow-md.hover:shadow-lg.transition-shadow > div.space-y-1.5.p-6.flex.flex-row.items-center.gap-4.pb-2 > div"
+      },
+      {
+        "tagName": "h3",
+        "text": "Subvenciones BOE",
+        "className": "text-2xl font-semibold leading-none tracking-tight",
+        "id": "",
+        "path": "#root > div.min-h-screen.bg-background.text-foreground > main > div.flex.h-screen.bg-background > main.flex-1.overflow-y-auto > div.min-h-screen.w-full.bg-background > main.flex.min-h-[calc(100vh-4rem)] > div.flex-1 > div.container.mx-auto.py-8 > div.grid.grid-cols-1.md:grid-cols-3.gap-8 > div.md:col-span-2 > div > div.grid.gap-4.grid-cols-1.lg:grid-cols-2 > div.rounded-lg.bg-card.text-card-foreground.border-2.shadow-md.hover:shadow-lg.transition-shadow > div.space-y-1.5.p-6.flex.flex-row.items-center.gap-4.pb-2 > div > h3.text-2xl.font-semibold.leading-none.tracking-tight"
+      },
+      {
+        "tagName": "div",
+        "text": "Get notifications for new publications in the Spanish Official State Gazette (BOE) based on your keywords and filters.Default prompts:subvenciónayudaconvocatoria",
+        "className": "p-6 pt-2",
+        "id": "",
+        "path": "#root > div.min-h-screen.bg-background.text-foreground > main > div.flex.h-screen.bg-background > main.flex-1.overflow-y-auto > div.min-h-screen.w-full.bg-background > main.flex.min-h-[calc(100vh-4rem)] > div.flex-1 > div.container.mx-auto.py-8 > div.grid.grid-cols-1.md:grid-cols-3.gap-8 > div.md:col-span-2 > div > div.grid.gap-4.grid-cols-1.lg:grid-cols-2 > div.rounded-lg.bg-card.text-card-foreground.border-2.shadow-md.hover:shadow-lg.transition-shadow > div.p-6.pt-2"
+      },
+      {
+        "tagName": "p",
+        "text": "Get notifications for new publications in the Spanish Official State Gazette (BOE) based on your keywords and filters.",
+        "className": "text-sm text-muted-foreground",
+        "id": "",
+        "path": "#root > div.min-h-screen.bg-background.text-foreground > main > div.flex.h-screen.bg-background > main.flex-1.overflow-y-auto > div.min-h-screen.w-full.bg-background > main.flex.min-h-[calc(100vh-4rem)] > div.flex-1 > div.container.mx-auto.py-8 > div.grid.grid-cols-1.md:grid-cols-3.gap-8 > div.md:col-span-2 > div > div.grid.gap-4.grid-cols-1.lg:grid-cols-2 > div.rounded-lg.bg-card.text-card-foreground.border-2.shadow-md.hover:shadow-lg.transition-shadow > div.p-6.pt-2 > p.text-sm.text-muted-foreground"
+      }
+    ]
+  }
+}
