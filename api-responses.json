@@ -1,0 +1,190 @@
+{
+  "https://clever-kelpie-60c3a6.netlify.app/api/v1/notifications?page=1&limit=1&unread=true": {
+    "status": 200,
+    "data": {
+      "notifications": [],
+      "total": 0,
+      "unread": 0,
+      "page": 1,
+      "limit": 1
+    }
+  },
+  "https://clever-kelpie-60c3a6.netlify.app/api/v1/users/me": {
+    "status": 200,
+    "data": {
+      "profile": {
+        "id": "65c6074d-dbc4-4091-8e45-b6aecffd9ab9",
+        "email": "ratonxi@gmail.com",
+        "name": "Test",
+        "avatar": null,
+        "bio": null,
+        "theme": "",
+        "language": "",
+        "emailNotifications": true,
+        "notificationEmail": "ratonxi@gmail.com",
+        "lastLogin": "2025-03-06T23:05:29.919Z",
+        "emailVerified": true,
+        "subscriptionCount": 5,
+        "notificationCount": 0,
+        "lastNotification": null
+      }
+    }
+  },
+  "https://clever-kelpie-60c3a6.netlify.app/api/v1/subscriptions": {
+    "status": 200,
+    "data": {
+      "status": "success",
+      "data": {
+        "subscriptions": [],
+        "pagination": {
+          "total": 0,
+          "page": 1,
+          "limit": 20,
+          "totalPages": 0
+        }
+      }
+    }
+  },
+  "https://clever-kelpie-60c3a6.netlify.app/api/v1/notifications?limit=4": {
+    "status": 200,
+    "data": {
+      "notifications": [],
+      "total": 0,
+      "unread": 0,
+      "page": 1,
+      "limit": 4
+    }
+  },
+  "https://clever-kelpie-60c3a6.netlify.app/api/v1/subscriptions/stats": {
+    "status": 200,
+    "data": {
+      "total": 5,
+      "active": 5,
+      "inactive": 0,
+      "bySource": {
+        "BOE": 5
+      },
+      "byFrequency": {
+        "daily": 4,
+        "immediate": 1
+      }
+    }
+  },
+  "https://clever-kelpie-60c3a6.netlify.app/api/v1/notifications/stats": {
+    "status": 200,
+    "data": {
+      "total": 0,
+      "unread": 0,
+      "change": 0,
+      "isIncrease": false,
+      "byType": {}
+    }
+  },
+  "https://clever-kelpie-60c3a6.netlify.app/api/v1/notifications/activity": {
+    "status": 200,
+    "data": {
+      "activityByDay": [
+        {
+          "day": "Mon",
+          "count": 0
+        },
+        {
+          "day": "Tue",
+          "count": 0
+        },
+        {
+          "day": "Wed",
+          "count": 0
+        },
+        {
+          "day": "Thu",
+          "count": 0
+        },
+        {
+          "day": "Fri",
+          "count": 0
+        },
+        {
+          "day": "Sat",
+          "count": 0
+        },
+        {
+          "day": "Sun",
+          "count": 0
+        }
+      ],
+      "sources": []
+    }
+  },
+  "https://clever-kelpie-60c3a6.netlify.app/api/v1/templates?page=1&limit=20": {
+    "status": 200,
+    "data": {
+      "templates": [
+        {
+          "id": "boe-general",
+          "name": "BOE General",
+          "description": "Seguimiento general del Boletín Oficial del Estado",
+          "type": "boe",
+          "prompts": [
+            "disposición",
+            "ley",
+            "real decreto"
+          ],
+          "icon": "GanttChart",
+          "logo": "https://www.boe.es/favicon.ico",
+          "metadata": {
+            "category": "government",
+            "source": "boe"
+          },
+          "isBuiltIn": true,
+          "frequency": "daily"
+        },
+        {
+          "id": "boe-subvenciones",
+          "name": "Subvenciones BOE",
+          "description": "Alertas de subvenciones y ayudas públicas",
+          "type": "boe",
+          "prompts": [
+            "subvención",
+            "ayuda",
+            "convocatoria"
+          ],
+          "icon": "Coins",
+          "logo": "https://www.boe.es/favicon.ico",
+          "metadata": {
+            "category": "government",
+            "source": "boe"
+          },
+          "isBuiltIn": true,
+          "frequency": "immediate"
+        },
+        {
+          "id": "real-estate-rental",
+          "name": "Alquiler de Viviendas",
+          "description": "Búsqueda de alquileres en zonas específicas",
+          "type": "real-estate",
+          "prompts": [
+            "alquiler",
+            "piso",
+            "apartamento"
+          ],
+          "icon": "Key",
+          "logo": "https://cdn-icons-png.flaticon.com/512/1040/1040993.png",
+          "metadata": {
+            "category": "real-estate",
+            "source": "property-listings"
+          },
+          "isBuiltIn": true,
+          "frequency": "immediate"
+        }
+      ],
+      "pagination": {
+        "page": 1,
+        "limit": 20,
+        "totalPages": 1,
+        "totalCount": 3,
+        "hasMore": false
+      }
+    }
+  }
+}
