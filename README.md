@@ -4,6 +4,17 @@ A comprehensive platform for intelligent notifications powered by AI. NIFYA prov
 
 ![NIFYA](https://ik.imagekit.io/appraisily/NYFIA/logo.png)
 
+## 🚀 Current Status (March 2025)
+
+- **Frontend**: Fully operational with React, TypeScript, and Tailwind CSS
+- **Authentication**: Complete with OAuth and JWT authentication
+- **Notification System**: Implemented with real-time and email delivery
+- **Subscription Management**: Available with customizable templates and processing
+- **Data Validation**: Zod implemented in frontend, backend, and authentication services
+- **API Resilience**: Enhanced error handling and standardized responses
+- **Email Notifications**: Working with HTML templates and user preferences
+- **Current Focus**: Bug fixes and performance optimization across services
+
 ## 🏛️ System Architecture
 
 NIFYA is built with a microservices architecture where specialized services handle specific domains of functionality:
@@ -11,7 +22,7 @@ NIFYA is built with a microservices architecture where specialized services hand
 ```
 ┌─────────────┐     ┌─────────────┐     ┌─────────────┐
 │  Frontend   │────▶│   Backend   │────▶│ Auth Service│
-│  (React)    │◀────│  (Node.js)  │◀────│ (Node.js/TS)│
+│  (React/TS) │◀────│  (Node.js)  │◀────│ (Node.js/TS)│
 └─────────────┘     └─────────────┘     └─────────────┘
        ▲                   ▲                   ▲
        │                   │                   │
