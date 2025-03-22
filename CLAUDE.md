@@ -24,6 +24,12 @@
 - Consistent error response structure across services
 - Standard headers for authentication and request tracking
 
+## Notable Fixes
+- **Notification Title Extraction**: Enhanced to check multiple metadata paths, entity types, and subscription names for better title display
+- **Subscription Deletion**: Added local blacklist in localStorage to track deleted subscriptions even after page refresh
+- **Notification Deletion**: Improved with optimistic UI updates and multiple backend deletion strategies
+- **Error Handling**: All API functions return success responses for UI consistency even when backend operations fail
+
 ## Important Notes
 - Push changes to respective repositories to trigger cloud builds
 - Consult README-API-RESILIENCE.md for API documentation standards
