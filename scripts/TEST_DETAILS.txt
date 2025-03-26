@@ -1,0 +1,96 @@
+
+AUTH TEST RESULTS (2025-03-26T11:37:09.870Z)
+==========================================
+Status: ERROR
+Reason: Failed to parse response
+Error: Unexpected token '<', "<!DOCTYPE "... is not valid JSON
+Response Status Code: 404
+Raw Response: <!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Error</title>
+</head>
+<body>
+<pre>Cannot POST /auth/login</pre>
+</body>
+</html>
+
+
+AUTH TEST RESULTS (2025-03-26T11:37:20.062Z)
+==========================================
+Status: ERROR
+Reason: Failed to parse response
+Error: Unexpected token '<', "<!DOCTYPE "... is not valid JSON
+Response Status Code: 404
+Raw Response: <!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Error</title>
+</head>
+<body>
+<pre>Cannot POST /login</pre>
+</body>
+</html>
+
+
+AUTH TEST RESULTS (2025-03-26T11:37:27.446Z)
+==========================================
+Status: ERROR
+Reason: Failed to parse response
+Error: Unexpected token '<', "<!DOCTYPE "... is not valid JSON
+Response Status Code: 404
+Raw Response: <!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Error</title>
+</head>
+<body>
+<pre>Cannot POST /api/login</pre>
+</body>
+</html>
+
+
+AUTH TEST RESULTS (2025-03-26T11:37:55.099Z)
+==========================================
+Status: FAILED
+Reason: No token in response
+Response Status Code: 200
+Response: {
+  "accessToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2NWM2MDc0ZC1kYmM0LTQwOTEtOGU0NS1iNmFlY2ZmZDlhYjkiLCJlbWFpbCI6InJhdG9ueGlAZ21haWwuY29tIiwibmFtZSI6IlRlc3QiLCJlbWFpbF92ZXJpZmllZCI6dHJ1ZSwidHlwZSI6ImFjY2VzcyIsImlhdCI6MTc0Mjk4OTE0OSwiZXhwIjoxNzQyOTkwMDQ5fQ.LfvMOE5WKnPbj7DLyAybT3dwjOq7siSHTbJsdlUM3fQ",
+  "refreshToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2NWM2MDc0ZC1kYmM0LTQwOTEtOGU0NS1iNmFlY2ZmZDlhYjkiLCJlbWFpbCI6InJhdG9ueGlAZ21haWwuY29tIiwidHlwZSI6InJlZnJlc2giLCJpYXQiOjE3NDI5ODkxNDksImV4cCI6MTc0MzU5Mzk0OX0.erSHT_40BHbGGXYZAgC4GMtZmWCtQ5KwmAX7aDFClPw",
+  "user": {
+    "id": "65c6074d-dbc4-4091-8e45-b6aecffd9ab9",
+    "email": "ratonxi@gmail.com",
+    "name": "Test",
+    "email_verified": true
+  }
+}
+
+AUTH TEST RESULTS (2025-03-26T11:50:42.575Z)
+==========================================
+Status: ERROR
+Reason: Failed to parse response
+Error: Unexpected token '<', "<!DOCTYPE "... is not valid JSON
+Response Status Code: 404
+Raw Response: <!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Error</title>
+</head>
+<body>
+<pre>Cannot POST /login</pre>
+</body>
+</html>
+
+
+AUTH TEST RESULTS (2025-03-26T11:55:16.271Z)
+==========================================
+Status: SUCCESS
+Access Token: eyJhbGciOi...
+User ID: 65c6074d-dbc4-4091-8e45-b6aecffd9ab9
+User Email: ratonxi@gmail.com
+Response Status Code: 200
