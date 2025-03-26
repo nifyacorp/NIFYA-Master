@@ -1,0 +1,50 @@
+  1. Auth Service:
+    - Auth endpoint URL
+https://authentication-service-415554190254.us-central1.run.app
+    - Required credentials (username/password or API key)
+to login: username: ratonxi@gmail.com
+	  password: nifyaCorp12!
+
+    - Token response format
+  2. Backend API:
+
+    - Base URL
+https://backend-415554190254.us-central1.run.app
+    - API endpoint paths for subscriptions, notifications
+    - Required headers (authentication format)
+-> you have the code, you can guess them.
+  3. Subscription Parameters:
+    - Required fields for subscription creation
+    - Subscription types/templates
+    - Example prompt values
+https://subscription-worker-415554190254.us-central1.run.app
+https://notification-worker-415554190254.us-central1.run.app
+https://boe-parser-415554190254.us-central1.run.app
+
+IMPORTANT, YOU CANNOT MAKE CURL COMMANDS DIRECTLY, INSTEAD, YOU WILL USE SCRIPTS LIKE THIS ONE TO MAKE THE CURL COMMANDS:
+
+#!/bin/bash
+
+# Get the API key from environment
+API_KEY="XXX"
+
+# Create a JSON payload for the contact
+read -r -d '' PAYLOAD << EOM
+{
+  "first_name": "Curl",
+  "last_name": "Test",
+  "job_title": "Tester"
+}
+EOM
+
+# Make the curl request
+echo "Creating contact via curl..."
+curl -v -X POST \
+  "http://localhost:8000/api/v1/my_endpoint/" \
+  -H "Content-Type: application/json" \
+  -H "X-API-KEY: $API_KEY" \
+  -d "$PAYLOAD"
+
+echo "
+
+PUT ALL THE SCRIPTS IN A FOLDER AND TRY TO RECYCLE SCRIPTS
