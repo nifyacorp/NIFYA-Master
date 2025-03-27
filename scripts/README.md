@@ -1,6 +1,6 @@
 # NIFYA Backend Testing Scripts
 
-This directory contains Node.js scripts for testing the NIFYA backend services independently of the frontend. These scripts allow you to verify the entire notification pipeline from authentication to notification delivery.
+This directory contains scripts for testing, analyzing, and troubleshooting the NIFYA backend services. These scripts allow you to verify and diagnose the entire platform from authentication to notification delivery.
 
 ## Prerequisites
 
@@ -8,17 +8,47 @@ This directory contains Node.js scripts for testing the NIFYA backend services i
 - Network access to NIFYA backend services
 - Basic understanding of NIFYA's architecture
 
-## Available Scripts
+## Core Testing Scripts
 
 | Script | Description | Dependencies |
 |--------|-------------|--------------|
-| `auth-login.js` | Authenticates with the service | None |
+| `auth-login.js` | Authenticates with the auth service | None |
 | `get-profile.js` | Retrieves user profile information | Requires auth token |
 | `list-subscriptions.js` | Lists all user subscriptions | Requires auth token |
 | `create-subscription.js` | Creates a new BOE subscription | Requires auth token |
 | `process-subscription.js` | Manually processes a subscription | Requires auth token and subscription ID |
 | `poll-notifications.js` | Polls for notifications | Requires auth token |
-| `run-all-tests.js` | Runs all tests in sequence | None (manages dependencies) |
+| `run-all-tests.js` | Runs all basic tests in sequence | None (manages dependencies) |
+
+## Advanced Analysis Scripts
+
+| Script | Description | Output |
+|--------|-------------|--------|
+| `analyze-notification-pipeline.js` | Analyzes the notification pipeline from BOE Parser to Notification Worker | `notification_pipeline_analysis.md` |
+| `map-all-endpoints.js` | Creates a map of all backend endpoints and compares with frontend usage | `backend_endpoints_map.md`, `frontend_endpoints_used.md` |
+| `test-all-auth-endpoints.js` | Tests all available auth service endpoints | `auth_endpoints_results.md` |
+| `user-journey-test.js` | Simulates complete user journey from login to notification | `user_journey_log.md`, `user_journey_state.json` |
+
+## Shell Scripts
+
+| Script | Description | Dependencies |
+|--------|-------------|--------------|
+| `create_boe_subscription.sh` | Creates a BOE subscription using cURL | Requires `auth_token.txt` |
+| `poll_notifications.sh` | Polls for notifications in a loop | Requires `auth_token.txt` |
+| `run_all_tests.sh` | Runs all shell-based tests in sequence | None (manages dependencies) |
+| `test_auth.sh` | Tests authentication and saves token | None |
+| `test_profile.sh` | Tests profile retrieval | Requires `auth_token.txt` |
+| `test_subscriptions.sh` | Tests subscription listing | Requires `auth_token.txt` |
+
+## Documentation Files
+
+| File | Description |
+|------|-------------|
+| `NIFYA-TESTING-GUIDE.md` | Comprehensive guide to backend testing methodology |
+| `TESTING-CONCLUSIONS.md` | Summary of findings from the test suite |
+| `NOTIFICATION-PIPELINE-CONCLUSIONS.md` | Analysis of notification pipeline issues |
+| `backend-testing-guide.md` | Detailed guide for backend API testing |
+| `auth-service-issues.md` | Analysis of authentication service issues |
 
 ## Getting Started
 
@@ -38,12 +68,34 @@ This directory contains Node.js scripts for testing the NIFYA backend services i
    node list-subscriptions.js
    ```
 
+4. For shell-based testing:
+   ```bash
+   chmod +x run_all_tests.sh
+   ./run_all_tests.sh
+   ```
+
+5. For advanced analysis:
+   ```bash
+   node analyze-notification-pipeline.js
+   node map-all-endpoints.js
+   node user-journey-test.js
+   ```
+
 ## Understanding the Output
 
 Each script:
 1. Logs its progress to the console
 2. Saves raw API responses to JSON files
-3. Appends results to `TEST_DETAILS.txt` for analysis
+3. Often produces additional detailed reports in markdown format
+
+Key output files:
+- `auth_token.txt` - Contains the authentication token
+- `latest_subscription_id.txt` - Contains ID of created subscription
+- `*_response.json` - API responses from various endpoints
+- `TEST_DETAILS.txt` - Comprehensive test report
+- `user_journey_log.md` - Detailed user journey test results
+- `notification_pipeline_analysis.md` - In-depth analysis of notification system
+- `backend_endpoints_map.md` - Map of all backend endpoints
 
 ## API Endpoints
 
@@ -52,8 +104,10 @@ The scripts interact with the following services:
 ### Authentication Service
 - **Base URL**: `https://authentication-service-415554190254.us-central1.run.app`
 - **Endpoints**:
-  - `/login` - Authentication
-  - `/me` - User profile
+  - `/api/auth/login` - Authentication
+  - `/api/auth/me` - User profile
+  - `/api/auth/revoke-all-sessions` - Session management
+  - And more (see `auth_endpoints_results.md` for full list)
 
 ### Backend Service
 - **Base URL**: `https://backend-415554190254.us-central1.run.app`
@@ -62,7 +116,7 @@ The scripts interact with the following services:
   - `/api/subscriptions/:id/process` - Process subscription
   - `/api/notifications` - Get notifications
 
-## Data Flow
+## Complete Testing Workflow
 
 The scripts simulate the following data flow:
 
@@ -72,6 +126,7 @@ The scripts simulate the following data flow:
 4. **Creation**: Create a new subscription
 5. **Processing**: Trigger subscription processing
 6. **Notifications**: Poll for new notifications
+7. **Analysis**: Analyze system performance and issues
 
 ## Troubleshooting
 
@@ -92,15 +147,9 @@ If you encounter issues:
    - Verify network connectivity
    - Check service URLs are correct
 
-## Output Files
-
-The scripts create several output files:
-
-- `auth_token.txt` - Contains the authentication token
-- `latest_subscription_id.txt` - Contains ID of created subscription
-- `*_response_raw.json` - Raw API responses
-- `*_response.json` - Formatted API responses
-- `TEST_DETAILS.txt` - Comprehensive test report
+5. **Redirects (301/308)**:
+   - Check for trailing slashes in URLs
+   - Verify correct endpoint paths
 
 ## Customization
 
@@ -108,46 +157,8 @@ You can modify these scripts to test specific scenarios:
 
 - Edit `create-subscription.js` to change subscription parameters
 - Adjust polling intervals in `poll-notifications.js`
-- Add new API endpoints as needed
-
-## Core Functions
-
-The scripts use these key Node.js patterns:
-
-1. **HTTPS Requests**:
-   ```javascript
-   const req = https.request(options, (res) => {
-     // Handle response
-   });
-   ```
-
-2. **Authentication**:
-   ```javascript
-   headers: {
-     'Authorization': `Bearer ${token}`,
-     'Content-Type': 'application/json'
-   }
-   ```
-
-3. **Response Processing**:
-   ```javascript
-   res.on('data', (chunk) => { data += chunk; });
-   res.on('end', () => { /* Process complete data */ });
-   ```
-
-4. **File I/O**:
-   ```javascript
-   fs.writeFileSync('output.json', JSON.stringify(data));
-   ```
-
-## Common Errors and Solutions
-
-| Error | Likely Cause | Solution |
-|-------|--------------|----------|
-| 401 Unauthorized | Invalid token | Re-authenticate with `auth-login.js` |
-| 404 Not Found | Incorrect API path | Verify endpoint URL in script |
-| 400 Bad Request | Invalid payload | Check JSON data format |
-| ECONNREFUSED | Service unavailable | Confirm service is running |
+- Modify schema analysis in `analyze-notification-pipeline.js`
+- Add new API endpoints to test in `map-all-endpoints.js`
 
 ## Security Notes
 

@@ -1,10 +1,10 @@
 # NIFYA PubSub Message Schema Documentation
 
-This document defines the standardized message schema used for communication between NIFYA services, specifically between parser services (BOE parser, DOGA parser) and the notification worker.
+This document defines the standardized message schema used for communication between NIFYA services, specifically between parser services (BOE parser, DOGA parser) and the notification worker. Both message producers and consumers must adhere to this schema.
 
 ## Schema Overview
 
-All PubSub messages follow a consistent structure to ensure compatibility between services. This schema is enforced using Zod validation in the notification-worker service.
+All PubSub messages follow a consistent structure to ensure compatibility between services. This schema is enforced using Zod validation in the notification-worker service, with fallback mechanisms for backward compatibility.
 
 ## Common Message Structure
 
@@ -164,19 +164,93 @@ All PubSub messages follow a consistent structure to ensure compatibility betwee
 }
 ```
 
+## Backward Compatibility
+
+To maintain compatibility between different versions of the message schema, the following fallback mechanisms should be implemented:
+
+### Legacy Formats and Fallbacks
+
+1. **Results Structure**: 
+   - **Current format**: `results.matches[]` 
+   - **Legacy format**: `results.results[].matches[]`
+   - **Fallback logic**:
+   ```javascript
+   if (!message.results?.matches || !Array.isArray(message.results.matches)) {
+     // Look for matches in legacy location
+     if (Array.isArray(message.results?.results?.[0]?.matches)) {
+       message.results.matches = message.results.results[0].matches;
+       logger.warn('Found matches in legacy location: results.results[0].matches');
+     } else if (message.results?.results) {
+       // Flatten multiple results
+       message.results.matches = message.results.results.flatMap(r => 
+         Array.isArray(r.matches) ? r.matches.map(m => ({...m, prompt: r.prompt})) : []
+       );
+       logger.warn('Reconstructed matches from nested results structure');
+     }
+   }
+   ```
+
+2. **Request Fields**: 
+   - **Current format**: `request.user_id` and `request.subscription_id`
+   - **Legacy format**: Root-level `user_id` or `context.user_id`
+   - **Fallback logic**:
+   ```javascript
+   const userId = message.request?.user_id || message.user_id || message.context?.user_id;
+   const subscriptionId = message.request?.subscription_id || message.subscription_id || message.context?.subscription_id;
+   
+   if (userId && subscriptionId) {
+     if (!message.request) message.request = {};
+     message.request.user_id = userId;
+     message.request.subscription_id = subscriptionId;
+   }
+   ```
+
+### Schema Evolution Guidelines
+
+1. **Non-breaking Changes** (backward compatible):
+   - Adding new optional fields
+   - Relaxing validation requirements
+   - Adding new document types
+
+2. **Breaking Changes** (require version increment):
+   - Removing required fields
+   - Changing field types
+   - Restructuring schema hierarchy
+
 ## Implementation Notes
 
 1. **Validation**: The notification-worker validates incoming messages using Zod schemas defined in `notification-worker/src/types/boe.js` and `notification-worker/src/types/messages.js`.
 
-2. **Error Handling**: If a message fails validation, the notification-worker will still attempt to process it with best-effort, but will log warnings.
+2. **Error Handling**: If a message fails validation, the notification-worker will attempt to process it with best-effort using the fallback mechanisms described above, but will log warnings.
 
-3. **Required Fields**: The most critical fields that must be present:
+3. **Required Fields**: The most critical fields that must be present (after fallback processing):
    - `processor_type`
    - `request.user_id`
    - `request.subscription_id`
    - `results.matches` (array, can be empty)
 
-4. **DLQ**: Messages that cannot be processed will be sent to a Dead Letter Queue (DLQ).
+4. **DLQ**: Messages that cannot be processed even with fallbacks will be sent to a Dead Letter Queue (DLQ).
+
+## PubSub Topic Configuration
+
+The following PubSub topics are essential for the notification pipeline:
+
+| Topic Name | Description | Publisher | Subscriber |
+|------------|-------------|-----------|------------|
+| `processor-results` | Main topic for processing results | BOE Parser | Notification Worker |
+| `notification-dlq` | Dead letter queue for notification failures | Notification Worker | (Manual processing) |
+| `processor-results-dlq` | Dead letter queue for processor failures | BOE Parser | (Manual processing) |
+
+### Creating Missing DLQ Topics
+
+```bash
+# Create both required DLQ topics
+gcloud pubsub topics create notification-dlq --project=PROJECT_ID
+gcloud pubsub topics create processor-results-dlq --project=PROJECT_ID
+
+# Verify creation
+gcloud pubsub topics list --filter="name ~ dlq" --project=PROJECT_ID
+```
 
 ## Services Implementation
 
@@ -184,7 +258,63 @@ All PubSub messages follow a consistent structure to ensure compatibility betwee
 The BOE parser formats messages according to this schema in the `publishResults` function.
 
 ### Notification Worker (`notification-worker/src/types/boe.js`)
-The notification worker validates messages against this schema using Zod validation in `validateMessage`.
+The notification worker validates messages against this schema using Zod validation in `validateMessage` and processes them in `processBOEMessage`.
+
+## Robust Error Handling
+
+The notification worker should implement the following enhanced error handling:
+
+```javascript
+// In notification-worker/src/processors/boe.js
+// Validate the message structure with fallback support
+if (!message.results?.matches || !Array.isArray(message.results.matches)) {
+  logger.warn('Message validation warning', {
+    processor_type: message.processor_type || 'boe',
+    trace_id: message.trace_id,
+    errors: {
+      _errors: [],
+      results: {
+        _errors: [],
+        matches: {
+          _errors: ["Required"]
+        }
+      }
+    }
+  });
+  
+  // Try to recover by looking for matches in expected locations
+  let matches = [];
+  
+  if (Array.isArray(message.results?.results?.[0]?.matches)) {
+    // Handle legacy format where matches is nested under results.results[0]
+    matches = message.results.results[0].matches;
+    logger.warn('Found matches in legacy location: results.results[0].matches', {
+      trace_id: message.trace_id,
+      match_count: matches.length
+    });
+  } else if (message.results?.results) {
+    // Try to extract matches from all results
+    matches = message.results.results.flatMap(r => 
+      Array.isArray(r.matches) ? r.matches.map(m => ({...m, prompt: r.prompt})) : []
+    );
+    logger.warn('Reconstructed matches from nested results structure', {
+      trace_id: message.trace_id,
+      match_count: matches.length
+    });
+  }
+  
+  if (matches.length > 0) {
+    // Use the recovered matches
+    message.results.matches = matches;
+    logger.info('Successfully recovered matches from alternate schema', {
+      trace_id: message.trace_id,
+      match_count: matches.length
+    });
+  } else {
+    throw new Error('Invalid message format: missing or invalid matches array');
+  }
+}
+```
 
 ## Schema Changes
 
@@ -194,5 +324,23 @@ Any changes to this message schema must be coordinated between all services:
 2. Update the message construction in `boe-parser/src/utils/pubsub.js`
 3. Update this documentation
 4. Update tests for both services
+5. Add fallback handling in message consumers
 
-**IMPORTANT**: Breaking changes should be versioned to maintain backward compatibility.
+**IMPORTANT**: Breaking changes should be versioned to maintain backward compatibility. The version field should follow semantic versioning (MAJOR.MINOR.PATCH).
+
+## Monitoring Recommendations
+
+1. **Schema Validation Metrics**:
+   - Track rate of schema validation warnings
+   - Monitor message format migration progress
+   - Alert on high error rates
+
+2. **DLQ Monitoring**:
+   - Alert on any messages sent to DLQ
+   - Implement DLQ message inspection and replay capability
+   - Track DLQ message counts by error type
+
+3. **End-to-End Testing**:
+   - Create schema conformance tests
+   - Verify message handling across service versions
+   - Implement periodic schema validation checks
