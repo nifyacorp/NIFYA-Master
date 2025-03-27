@@ -112,6 +112,56 @@ async function testHealthEndpoint() {
   }
 }
 
+// Test Gemini API connection
+async function testGeminiConnection() {
+  console.log('Testing BOE Parser Gemini API connection...');
+  
+  try {
+    const options = {
+      hostname: config.boeParser.baseUrl,
+      port: 443,
+      path: '/check-gemini',
+      method: 'GET',
+      headers: {
+        'Accept': 'application/json'
+      }
+    };
+    
+    const response = await makeBOERequest(options);
+    
+    console.log(`Status Code: ${response.statusCode}`);
+    console.log('Response:', response.data);
+    
+    const success = response.statusCode === 200 && response.data.status === 'OK';
+    
+    if (success) {
+      console.log('✅ Gemini API connection successful!');
+      console.log('API Response:', response.data.response);
+    } else if (response.statusCode === 200 && response.data.status === 'WARNING') {
+      console.warn('⚠️ Gemini API connected but returned unexpected response');
+      console.warn('API Response:', response.data.response);
+    } else {
+      console.error('❌ Gemini API connection failed!');
+      console.error('Error:', response.data.error || 'Unknown error');
+    }
+    
+    appendTestDetails('Gemini API Check', success, 
+      `Status Code: ${response.statusCode}, Response: ${JSON.stringify(response.data)}`);
+      
+    return {
+      success,
+      response: response.data
+    };
+  } catch (error) {
+    console.error('Gemini API check failed:', error.message);
+    appendTestDetails('Gemini API Check', false, `Error: ${error.message}`);
+    return {
+      success: false,
+      error: error.message
+    };
+  }
+}
+
 // Test analyze endpoint with auth token
 async function testAnalyzeEndpoint(prompts = config.defaultPrompts, publishToPubSub = false) {
   console.log('Testing BOE Parser analyze endpoint...');
@@ -275,20 +325,42 @@ async function runAllTests() {
   console.log('Health check result:', healthResult.success ? '✅ PASSED' : '❌ FAILED');
   console.log('-------------------------------------');
   
-  // Test 2: Analyze endpoint
-  console.log('\n2. Testing Analyze Endpoint:');
+  // Test 2: Gemini API check
+  console.log('\n2. Testing Gemini API Connection:');
+  const geminiResult = await testGeminiConnection();
+  console.log('Gemini API check result:', geminiResult.success ? '✅ PASSED' : '❌ FAILED');
+  
+  // If Gemini API check fails, print a useful message
+  if (!geminiResult.success) {
+    console.log('\n⚠️ GEMINI API CHECK FAILED ⚠️');
+    console.log('This is likely the root cause of BOE parser issues!');
+    console.log('Possible causes:');
+    console.log('1. GEMINI_API_KEY environment variable is not set');
+    console.log('2. The API key is invalid or expired');
+    console.log('3. The Gemini API service is experiencing issues');
+    console.log('4. Network access to Gemini API is blocked');
+    console.log('\nRecommended actions:');
+    console.log('1. Check the GEMINI_API_KEY environment variable');
+    console.log('2. Verify the API key is valid and has proper permissions');
+    console.log('3. Restart the BOE parser service after fixing the issue');
+  }
+  
+  console.log('-------------------------------------');
+  
+  // Test 3: Analyze endpoint
+  console.log('\n3. Testing Analyze Endpoint:');
   const analyzeResult = await testAnalyzeEndpoint();
   console.log('Analyze test result:', analyzeResult.success ? '✅ PASSED' : '❌ FAILED');
   console.log('-------------------------------------');
   
-  // Test 3: Diagnostic endpoint
-  console.log('\n3. Testing Diagnostic Endpoint:');
+  // Test 4: Diagnostic endpoint
+  console.log('\n4. Testing Diagnostic Endpoint:');
   const diagnosticResult = await testDiagnosticEndpoint();
   console.log('Diagnostic test result:', diagnosticResult.success ? '✅ PASSED' : '❌ FAILED');
   console.log('-------------------------------------');
   
-  // Test 4: End-to-end with PubSub
-  console.log('\n4. Testing End-to-End with PubSub:');
+  // Test 5: End-to-end with PubSub
+  console.log('\n5. Testing End-to-End with PubSub:');
   const e2eResult = await testDiagnosticEndpoint(['quiero ser funcionario'], true);
   console.log('End-to-End test result:', e2eResult.success ? '✅ PASSED' : '❌ FAILED');
   console.log('-------------------------------------');
@@ -296,6 +368,7 @@ async function runAllTests() {
   // Test summary
   console.log('\n====== TEST SUMMARY ======');
   console.log('Health Check:', healthResult.success ? '✅ PASSED' : '❌ FAILED');
+  console.log('Gemini API Check:', geminiResult.success ? '✅ PASSED' : '❌ FAILED');
   console.log('Analyze Endpoint:', analyzeResult.success ? '✅ PASSED' : '❌ FAILED');
   console.log('Diagnostic Endpoint:', diagnosticResult.success ? '✅ PASSED' : '❌ FAILED');
   console.log('End-to-End with PubSub:', e2eResult.success ? '✅ PASSED' : '❌ FAILED');
@@ -303,11 +376,18 @@ async function runAllTests() {
   
   const allPassed = 
     healthResult.success && 
+    geminiResult.success &&
     analyzeResult.success && 
     diagnosticResult.success && 
     e2eResult.success;
     
   console.log('Overall Result:', allPassed ? '✅ ALL TESTS PASSED' : '❌ SOME TESTS FAILED');
+  
+  // If Gemini API check failed but other tests passed, make it clear this is the main issue
+  if (!geminiResult.success && healthResult.success) {
+    console.log('\n⚠️ Primary issue detected: Gemini API connection failure');
+    console.log('Fix the Gemini API connection to resolve BOE parsing issues');
+  }
   
   return allPassed;
 }
@@ -327,6 +407,7 @@ if (require.main === module) {
 
 module.exports = {
   testHealthEndpoint,
+  testGeminiConnection,
   testAnalyzeEndpoint,
   testDiagnosticEndpoint,
   runAllTests
