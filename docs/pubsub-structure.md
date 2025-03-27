@@ -1,114 +1,78 @@
-# NIFYA PubSub Message Schema Documentation
+# PubSub Message Structure Documentation
 
-This document defines the standardized message schema used for communication between NIFYA services, specifically between parser services (BOE parser, DOGA parser) and the notification worker. Both message producers and consumers must adhere to this schema.
+This document defines the standardized PubSub message formats used across NIFYA services for reliable communication.
 
-## Schema Overview
+## Message Format Versions
 
-All PubSub messages follow a consistent structure to ensure compatibility between services. This schema is enforced using Zod validation in the notification-worker service, with fallback mechanisms for backward compatibility.
+All PubSub messages should include a `version` field to support backward compatibility and future schema changes.
 
-## Common Message Structure
+## Core Message Structure
 
-```typescript
+All messages should follow this base structure:
+
+```json
 {
-  "version": string,               // Message schema version (e.g. "1.0")
-  "trace_id": string,              // Unique ID for tracing/debugging
-  "processor_type": string,        // "boe", "doga", etc.
-  "timestamp": string,             // ISO-8601 timestamp
+  "version": "1.0",
+  "trace_id": "unique-uuid-for-tracing",
+  "processor_type": "service-name",
+  "timestamp": "2025-03-27T10:51:02.651Z",
   
   "request": {
-    "subscription_id": string,     // UUID of the subscription
-    "user_id": string,             // UUID of the user
-    "processing_id": string,       // Unique ID for this processing request
-    "prompts": string[]            // Array of user prompts
+    "subscription_id": "user-subscription-uuid",
+    "user_id": "user-uuid",
+    "processing_id": "processing-request-uuid",
+    "prompts": ["Prompt text"]
   },
   
   "results": {
-    "query_date": string,          // Date of the query (YYYY-MM-DD)
-    "matches": Match[]             // Array of match objects (see below)
+    /* Type-specific results */
   },
   
   "metadata": {
-    "processing_time_ms": number,  // Processing time in milliseconds
-    "total_items_processed": number, // Number of items processed
-    "total_matches": number,       // Number of matches found
-    "model_used": string,          // AI model used for processing
-    "status": "success" | "error", // Processing status
-    "error": string | null         // Error message if status is "error"
+    "processing_time_ms": 1234,
+    "status": "success",
+    "error": null
   }
 }
 ```
 
-## Match Object (Generic)
+## BOE Processor Message Format
 
-```typescript
-{
-  "prompt": string,                // User prompt that generated this match
-  "documents": Document[]          // Array of document objects
-}
-```
-
-## Document Object (Generic)
-
-```typescript
-{
-  "document_type": string,         // Type of document
-  "title": string,                 // Document title
-  "summary": string,               // Document summary
-  "relevance_score": number,       // Relevance score (0-1)
-  "links": {
-    "html": string,                // URL to HTML version
-    "pdf": string                  // URL to PDF version (optional)
-  }
-}
-```
-
-## BOE-specific Document Fields
-
-```typescript
-{
-  // All generic document fields +
-  "document_type": "boe_document", // Must be "boe_document"
-  "publication_date": string,      // ISO-8601 date
-  "section": string,               // BOE section
-  "bulletin_type": string          // Bulletin type
-}
-```
-
-## Complete BOE Message Example
+The BOE Processor publishes messages with this specific structure:
 
 ```json
 {
   "version": "1.0",
   "trace_id": "47e47250-00e0-4502-90ed-031e23dcc222",
   "processor_type": "boe",
-  "timestamp": "2025-03-26T07:49:40.330Z",
+  "timestamp": "2025-03-27T10:51:02.651Z",
   
   "request": {
     "subscription_id": "bbcde7bb-bc04-4a0b-8c47-01682a31cc15",
     "user_id": "65c6074d-dbc4-4091-8e45-b6aecffd9ab9",
-    "processing_id": "20b3ed68-4db3-461f-9815-793beac65e8f",
-    "prompts": ["quiero ser funcionario"]
+    "processing_id": "unique-uuid",
+    "prompts": ["Keyword or phrase to search for"]
   },
   
   "results": {
-    "query_date": "2025-03-26",
+    "query_date": "2025-03-27",
     "matches": [
       {
-        "prompt": "quiero ser funcionario",
+        "prompt": "Keyword or phrase",
         "documents": [
           {
             "document_type": "boe_document",
-            "title": "Convocatoria oposiciones administrativo",
-            "notification_title": "Convocatoria oposiciones",
-            "issuing_body": "Ministerio de Hacienda",
-            "summary": "Convocatoria de oposiciones para el cuerpo de administrativos",
-            "relevance_score": 0.95,
+            "title": "Document title",
+            "notification_title": "Title for notification",
+            "issuing_body": "Ministry of...",
+            "summary": "Brief summary of the document",
+            "relevance_score": 0.85,
             "links": {
-              "html": "https://www.boe.es/diario_boe/txt.php?id=BOE-A-2025-1234",
-              "pdf": "https://www.boe.es/boe/dias/2025/03/26/pdfs/BOE-A-2025-1234.pdf"
+              "html": "https://www.boe.es/...",
+              "pdf": "https://www.boe.es/..."
             },
-            "publication_date": "2025-03-26T00:00:00.000Z",
-            "section": "II.B",
+            "publication_date": "2025-03-27T00:00:00.000Z",
+            "section": "section-name",
             "bulletin_type": "BOE"
           }
         ]
@@ -117,46 +81,9 @@ All PubSub messages follow a consistent structure to ensure compatibility betwee
   },
   
   "metadata": {
-    "processing_time_ms": 1969,
-    "total_items_processed": 1936,
-    "total_matches": 1,
-    "model_used": "gemini-2.0-pro-exp-02-05",
-    "status": "success",
-    "error": null
-  }
-}
-```
-
-## Empty Match Example (No Results Found)
-
-```json
-{
-  "version": "1.0",
-  "trace_id": "47e47250-00e0-4502-90ed-031e23dcc222",
-  "processor_type": "boe",
-  "timestamp": "2025-03-26T07:49:40.330Z",
-  
-  "request": {
-    "subscription_id": "bbcde7bb-bc04-4a0b-8c47-01682a31cc15",
-    "user_id": "65c6074d-dbc4-4091-8e45-b6aecffd9ab9",
-    "processing_id": "20b3ed68-4db3-461f-9815-793beac65e8f",
-    "prompts": ["quiero ser funcionario"]
-  },
-  
-  "results": {
-    "query_date": "2025-03-26",
-    "matches": [
-      {
-        "prompt": "quiero ser funcionario",
-        "documents": []
-      }
-    ]
-  },
-  
-  "metadata": {
-    "processing_time_ms": 1969,
-    "total_items_processed": 1936,
-    "total_matches": 0,
+    "processing_time_ms": 1234,
+    "total_items_processed": 50,
+    "total_matches": 3,
     "model_used": "gemini-2.0-pro-exp-02-05",
     "status": "success",
     "error": null
@@ -166,181 +93,74 @@ All PubSub messages follow a consistent structure to ensure compatibility betwee
 
 ## Backward Compatibility
 
-To maintain compatibility between different versions of the message schema, the following fallback mechanisms should be implemented:
+### BOE Message Schema Compatibility
 
-### Legacy Formats and Fallbacks
+The notification worker has been updated to support multiple message formats for backward compatibility:
 
-1. **Results Structure**: 
-   - **Current format**: `results.matches[]` 
-   - **Legacy format**: `results.results[].matches[]`
-   - **Fallback logic**:
-   ```javascript
-   if (!message.results?.matches || !Array.isArray(message.results.matches)) {
-     // Look for matches in legacy location
-     if (Array.isArray(message.results?.results?.[0]?.matches)) {
-       message.results.matches = message.results.results[0].matches;
-       logger.warn('Found matches in legacy location: results.results[0].matches');
-     } else if (message.results?.results) {
-       // Flatten multiple results
-       message.results.matches = message.results.results.flatMap(r => 
-         Array.isArray(r.matches) ? r.matches.map(m => ({...m, prompt: r.prompt})) : []
-       );
-       logger.warn('Reconstructed matches from nested results structure');
-     }
-   }
-   ```
+1. **Current Format**: `results.matches` array containing document matches
+2. **Legacy Format 1**: `results.results[0].matches` array
+3. **Legacy Format 2**: `results.results` array where each item has its own `matches` array
 
-2. **Request Fields**: 
-   - **Current format**: `request.user_id` and `request.subscription_id`
-   - **Legacy format**: Root-level `user_id` or `context.user_id`
-   - **Fallback logic**:
-   ```javascript
-   const userId = message.request?.user_id || message.user_id || message.context?.user_id;
-   const subscriptionId = message.request?.subscription_id || message.subscription_id || message.context?.subscription_id;
-   
-   if (userId && subscriptionId) {
-     if (!message.request) message.request = {};
-     message.request.user_id = userId;
-     message.request.subscription_id = subscriptionId;
-   }
-   ```
+For maximum compatibility when updating services:
 
-### Schema Evolution Guidelines
+1. Always provide the full compliant message structure
+2. Include a version field to distinguish schema versions
+3. Log the complete message structure during development
+4. Add resilient error handling for schema variations
 
-1. **Non-breaking Changes** (backward compatible):
-   - Adding new optional fields
-   - Relaxing validation requirements
-   - Adding new document types
+## Dead Letter Queue (DLQ)
 
-2. **Breaking Changes** (require version increment):
-   - Removing required fields
-   - Changing field types
-   - Restructuring schema hierarchy
+When message processing fails, services should publish to a DLQ topic with this format:
 
-## Implementation Notes
-
-1. **Validation**: The notification-worker validates incoming messages using Zod schemas defined in `notification-worker/src/types/boe.js` and `notification-worker/src/types/messages.js`.
-
-2. **Error Handling**: If a message fails validation, the notification-worker will attempt to process it with best-effort using the fallback mechanisms described above, but will log warnings.
-
-3. **Required Fields**: The most critical fields that must be present (after fallback processing):
-   - `processor_type`
-   - `request.user_id`
-   - `request.subscription_id`
-   - `results.matches` (array, can be empty)
-
-4. **DLQ**: Messages that cannot be processed even with fallbacks will be sent to a Dead Letter Queue (DLQ).
-
-## PubSub Topic Configuration
-
-The following PubSub topics are essential for the notification pipeline:
-
-| Topic Name | Description | Publisher | Subscriber |
-|------------|-------------|-----------|------------|
-| `processor-results` | Main topic for processing results | BOE Parser | Notification Worker |
-| `notification-dlq` | Dead letter queue for notification failures | Notification Worker | (Manual processing) |
-| `processor-results-dlq` | Dead letter queue for processor failures | BOE Parser | (Manual processing) |
-
-### Creating Missing DLQ Topics
-
-```bash
-# Create both required DLQ topics
-gcloud pubsub topics create notification-dlq --project=PROJECT_ID
-gcloud pubsub topics create processor-results-dlq --project=PROJECT_ID
-
-# Verify creation
-gcloud pubsub topics list --filter="name ~ dlq" --project=PROJECT_ID
-```
-
-## Services Implementation
-
-### BOE Parser (`boe-parser/src/utils/pubsub.js`)
-The BOE parser formats messages according to this schema in the `publishResults` function.
-
-### Notification Worker (`notification-worker/src/types/boe.js`)
-The notification worker validates messages against this schema using Zod validation in `validateMessage` and processes them in `processBOEMessage`.
-
-## Robust Error Handling
-
-The notification worker should implement the following enhanced error handling:
-
-```javascript
-// In notification-worker/src/processors/boe.js
-// Validate the message structure with fallback support
-if (!message.results?.matches || !Array.isArray(message.results.matches)) {
-  logger.warn('Message validation warning', {
-    processor_type: message.processor_type || 'boe',
-    trace_id: message.trace_id,
-    errors: {
-      _errors: [],
-      results: {
-        _errors: [],
-        matches: {
-          _errors: ["Required"]
-        }
-      }
-    }
-  });
-  
-  // Try to recover by looking for matches in expected locations
-  let matches = [];
-  
-  if (Array.isArray(message.results?.results?.[0]?.matches)) {
-    // Handle legacy format where matches is nested under results.results[0]
-    matches = message.results.results[0].matches;
-    logger.warn('Found matches in legacy location: results.results[0].matches', {
-      trace_id: message.trace_id,
-      match_count: matches.length
-    });
-  } else if (message.results?.results) {
-    // Try to extract matches from all results
-    matches = message.results.results.flatMap(r => 
-      Array.isArray(r.matches) ? r.matches.map(m => ({...m, prompt: r.prompt})) : []
-    );
-    logger.warn('Reconstructed matches from nested results structure', {
-      trace_id: message.trace_id,
-      match_count: matches.length
-    });
-  }
-  
-  if (matches.length > 0) {
-    // Use the recovered matches
-    message.results.matches = matches;
-    logger.info('Successfully recovered matches from alternate schema', {
-      trace_id: message.trace_id,
-      match_count: matches.length
-    });
-  } else {
-    throw new Error('Invalid message format: missing or invalid matches array');
+```json
+{
+  "original_payload": /* The original message that failed processing */,
+  "error": {
+    "message": "Error message",
+    "stack": "Stack trace",
+    "timestamp": "2025-03-27T10:51:05.352Z"
   }
 }
 ```
 
-## Schema Changes
+## Message Size Limits
 
-Any changes to this message schema must be coordinated between all services:
+PubSub messages have a maximum size of 10MB. For large content:
 
-1. Update the schema definition in `notification-worker/src/types/boe.js`
-2. Update the message construction in `boe-parser/src/utils/pubsub.js`
-3. Update this documentation
-4. Update tests for both services
-5. Add fallback handling in message consumers
+1. Store the data in external storage (e.g., GCS)
+2. Include a reference to the data in the message
+3. Services retrieve the full data as needed
 
-**IMPORTANT**: Breaking changes should be versioned to maintain backward compatibility. The version field should follow semantic versioning (MAJOR.MINOR.PATCH).
+## Error Handling
 
-## Monitoring Recommendations
+All services should implement robust error handling for message processing:
 
-1. **Schema Validation Metrics**:
-   - Track rate of schema validation warnings
-   - Monitor message format migration progress
-   - Alert on high error rates
+1. **Validate** the message structure immediately
+2. **Provide fallbacks** for missing fields
+3. **Log detailed errors** for debugging
+4. **Use DLQ** for unprocessable messages
 
-2. **DLQ Monitoring**:
-   - Alert on any messages sent to DLQ
-   - Implement DLQ message inspection and replay capability
-   - Track DLQ message counts by error type
+## Testing
 
-3. **End-to-End Testing**:
-   - Create schema conformance tests
-   - Verify message handling across service versions
-   - Implement periodic schema validation checks
+Test messages can be published directly to topics for verification:
+
+```bash
+gcloud pubsub topics publish processor-results --message="$(cat test-message.json)"
+```
+
+## Topic and Subscription Naming
+
+Standard naming conventions:
+
+- Main topic: `{service}-results` (e.g., `processor-results`)
+- DLQ topic: `{service}-results-dlq` (e.g., `processor-results-dlq`)
+- Subscription: `{service}-subscription` (e.g., `notification-subscription`)
+
+## Schema Validation
+
+Implement schema validation in all services:
+
+1. Validate against expected schema
+2. Log validation errors
+3. Attempt recovery for backward compatibility
+4. Reject completely invalid messages to DLQ
