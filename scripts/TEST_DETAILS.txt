@@ -108,3 +108,34 @@ Response Status Code: 200
 Status: SUCCESS
 Successfully started processing for subscription bbcde7bb-bc04-4a0b-8c47-01682a31cc15
 --------------------------------------------------
+
+AUTH TEST RESULTS (2025-03-27T13:54:26.168Z)
+==========================================
+Status: SUCCESS
+Access Token: eyJhbGciOi...
+User ID: 65c6074d-dbc4-4091-8e45-b6aecffd9ab9
+User Email: ratonxi@gmail.com
+Response Status Code: 200
+
+SUBSCRIPTIONS TEST RESULTS (2025-03-27T13:55:01.130Z)
+==========================================
+Status: ERROR
+Reason: Failed to parse response
+Error: Unexpected end of JSON input
+Response Status Code: 301
+Raw Response: 
+
+[2025-03-27T13:55:04.376Z] Test: Subscription Listing v1
+Status: SUCCESS
+Successfully retrieved 6 subscriptions.
+--------------------------------------------------
+
+[2025-03-27T13:55:10.119Z] Test: Subscription Processing v1
+Status: SUCCESS
+Successfully started processing for subscription bbcde7bb-bc04-4a0b-8c47-01682a31cc15
+--------------------------------------------------
+
+[2025-03-27T13:56:01.754Z] Test: Notification Polling v1
+Status: SUCCESS
+No notifications found after 10 attempts for subscription bbcde7bb-bc04-4a0b-8c47-01682a31cc15
+--------------------------------------------------

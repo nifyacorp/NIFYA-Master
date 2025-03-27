@@ -1,101 +1,83 @@
-# NIFYA Notification Pipeline Test Summary
+# Notification Pipeline Test Summary
 
 ## Overview
 
-This document provides a comprehensive analysis of the notification pipeline test results and identifies the remaining issues that need to be addressed. The testing reveals issues at multiple points in the pipeline, with the most recent test showing a 404 error when trying to access notifications.
+We conducted extensive testing of the notification pipeline to identify and fix issues with notifications not appearing in the frontend despite subscriptions being successfully processed. This document presents our findings and recommended next steps.
 
-## Current Status
+## Findings
 
-- **Frontend Subscription Processing**: Successfully triggers the backend API
-- **Backend API**: Successfully processes subscription requests and sends data to BOE Parser
-- **BOE Parser**: Successfully processes data but has issues with message format
-- **Notification Worker**: Successfully processes messages when format is correct
-- **Notification Retrieval**: Currently failing with 404 error (API route not found)
+1. **BOE Parser Issues (Fixed)**
+   - Fixed character-by-character logging issue in logger.js
+   - Changed Gemini model from "gemini-2.0-pro-exp-02-05" to "gemini-2.0-flash-lite" to avoid rate limits
+   - Added filtering for BOE items to reduce token count
+   - Limited the number of items sent to Gemini to stay within token limits
+   - These changes have improved the BOE parser's stability and reliability
 
-## Key Issues Identified
+2. **API Route Issues (Fixed)**
+   - Confirmed the frontend was correctly calling `/v1/notifications` endpoint
+   - Backend API endpoints properly registered with proper v1 prefixes
+   - API authentication requires X-User-ID header (confirmed this works)
 
-1. **API Route Not Found Error**:
-   - The endpoint `/api/notifications?subscriptionId=bbcde7bb-bc04-4a0b-8c47-01682a31cc15` returns 404
-   - Error message: `"Route GET:/api/notifications?subscriptionId=bbcde7bb-bc04-4a0b-8c47-01682a31cc15 not found"`
-   - The API has moved to versioned endpoints (`/api/v1/notifications`) but the test script uses the old path
+3. **Missing Notifications (Ongoing Issue)**
+   - API endpoints return empty notifications arrays, not errors
+   - After processing subscriptions, no notifications appear in the database
+   - This suggests a breakdown in the notification worker's processing pipeline
 
-2. **PubSub Message Schema Mismatch**:
-   - While the schema definitions in code are compatible, runtime messages have structural differences
-   - BOE Parser and Notification Worker have inconsistent nesting of the `matches` array
-
-3. **Missing DLQ Resources**:
-   - The Dead Letter Queue topic `notification-dlq` does not exist
-   - Failed messages cannot be properly handled or recovered
-
-4. **Subscription Blacklist Issue**:
-   - Subscription ID `bbcde7bb-bc04-4a0b-8c47-01682a31cc15` may be incorrectly blacklisted
-   - Frontend localStorage blacklist can prevent accessing valid subscriptions
-
-## Recent Fixes
-
-Several important fixes have been implemented:
-
-1. **Schema Resilience**:
-   - Notification Worker now has fallback logic to handle different message formats
-   - Enhanced error handling for various schema variations
-
-2. **Unified Message Structure**:
-   - Updated BOE Parser to use a standardized message structure
-   - Added empty document array handling to prevent processing failures
-
-3. **Subscription Blacklist Override**:
-   - Added `?force=true` parameter to override the localStorage blacklist
-   - This allows accessing subscriptions even if they're in the blacklist
+4. **Pipeline Workflow Analysis**
+   - When a subscription is processed, the following should happen:
+     1. Backend sends message to BOE-parser topic
+     2. BOE-parser processes data and sends to notification-topic
+     3. Notification-worker processes message and creates DB record
+     4. Frontend retrieves notifications via API
+   - Based on our testing, the issue appears to be in steps 2-3
 
 ## Next Steps
 
-To complete the end-to-end notification pipeline, the following actions are required:
+1. **Investigate PubSub Message Flow**
+   - Monitor Cloud Logging for the notification worker
+   - Look for any errors in parsing PubSub messages
+   - Verify that the BOE parser is publishing to the correct topic
+   - Verify that message format is compatible between components
 
-1. **Update Notification Polling Script**:
-   - Modify `poll-notifications.js` to use the versioned API path:
-   ```javascript
-   // Change path from:
-   path = '/api/notifications';
-   // To:
-   path = '/api/v1/notifications';
-   ```
+2. **Enhance Notification Worker Logging**
+   - Add more detailed logging for:
+     - Message receipt from PubSub
+     - Message parsing and validation
+     - Database operations during notification creation
+   - Enable debug logging in production temporarily to capture issues
 
-2. **Update User Journey Test**:
-   - Ensure the user journey test script uses the v1 API endpoints throughout
+3. **Add Diagnostics to Notification Pipeline**
+   - Create a diagnostic API endpoint to query notification status
+   - Add a test endpoint to publish a test notification to PubSub
+   - Build a monitoring dashboard for the notification pipeline
 
-3. **Create Missing DLQ Topic**:
-   ```bash
-   gcloud pubsub topics create notification-dlq --project=PROJECT_ID
-   ```
+4. **Fix PubSub Message Format**
+   - Ensure the notification format sent by the BOE parser matches what the notification worker expects
+   - Update notification worker or BOE parser as needed to ensure compatibility
+   - Configure proper DLQ (Dead Letter Queue) for failed messages
 
-4. **Verify End-to-End Pipeline**:
-   - Run the updated scripts to verify the entire pipeline 
-   - Test both with and without document matches to ensure robust handling
+5. **Consider RLS Policy Review**
+   - While our tests suggest RLS is configured correctly, a review of the DB policies would be prudent
+   - Verify that newly created notifications have the correct user_id field
+   - Test direct database queries to confirm notifications exist
 
-## Testing Procedure
+## Implementation Recommendations
 
-1. **Authenticate**:
-   ```bash
-   node auth-login.js
-   ```
+1. **Focus on Notification Worker First**
+   - Add enhanced logging to notification worker
+   - Deploy the updated worker to production
+   - Process a subscription and analyze logs
 
-2. **Process Subscription**:
-   ```bash
-   node process-subscription-v1.js bbcde7bb-bc04-4a0b-8c47-01682a31cc15
-   ```
+2. **Test Isolated Components**
+   - Create a test script to publish a test message directly to the notification topic
+   - This will help determine if the issue is with the BOE parser (publishing) or notification worker (processing)
 
-3. **Poll for Notifications**:
-   ```bash
-   node poll-notifications-v1.js bbcde7bb-bc04-4a0b-8c47-01682a31cc15
-   ```
+3. **Monitor the End-to-End Flow**
+   - Use the created test-notification-pipeline.sh script to monitor the entire flow
+   - Add additional diagnostics as needed to isolate the issue
 
-4. **Verify Results**:
-   - Check notification content matches the processed subscription
-   - Ensure notification metadata is correctly populated
-   - Verify that notifications appear in the frontend UI
+4. **Fix and Verify**
+   - Once the issue is identified, implement the necessary fix
+   - Verify with the same test script to ensure notifications are created and retrieved
 
-## Conclusion
-
-The notification pipeline has been significantly improved with robust error handling and schema resilience. The remaining issue is primarily related to using outdated API paths in the polling script. By updating the script to use the v1 API endpoints, we can complete the end-to-end notification pipeline and ensure reliable notification delivery.
-
-The system is now much more robust against variations in message format and can handle edge cases such as empty document arrays without failing. The next round of testing with the updated polling script should demonstrate successful notification delivery.
+By systematically following these steps, we should be able to identify and fix the remaining issues with the notification pipeline.
