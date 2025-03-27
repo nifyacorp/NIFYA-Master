@@ -1,0 +1,191 @@
+======================================================
+NIFYA Backend Test Suite
+======================================================
+
+[2025-03-27T09:33:42.561Z] Running: Authentication
+------------------------------------------------------
+Sending authentication request to: authentication-service-415554190254.us-central1.run.app/api/auth/login
+Authentication request sent, waiting for response...
+Status Code: 200
+Headers: {
+  "x-powered-by": "Express",
+  "vary": "Origin",
+  "access-control-allow-credentials": "true",
+  "ratelimit-policy": "100;w=300",
+  "ratelimit-limit": "100",
+  "ratelimit-remaining": "99",
+  "ratelimit-reset": "300",
+  "content-type": "application/json; charset=utf-8",
+  "etag": "W/\"2b8-+cg16+cQ1F8PdQXePHDD64ZOdqU\"",
+  "x-cloud-trace-context": "74d41e758bd7311f1ffaf353698b1eb5;o=1",
+  "date": "Thu, 27 Mar 2025 09:34:53 GMT",
+  "server": "Google Frontend",
+  "content-length": "696",
+  "alt-svc": "h3=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000"
+}
+Response received
+Raw response saved to auth_response_raw.json
+Formatted response saved to auth_response.json
+Authentication successful! Access token saved to auth_token.txt
+Test results appended to TEST_DETAILS.txt
+✅ Authentication completed successfully
+Waiting 2 seconds before next test...
+
+[2025-03-27T09:33:45.375Z] Running: User Profile Retrieval
+------------------------------------------------------
+Fetching user profile...
+Request URL: https://authentication-service-415554190254.us-central1.run.app/api/auth/me
+Profile request sent, waiting for response...
+Status Code: 200
+Headers: {
+  "x-powered-by": "Express",
+  "vary": "Origin",
+  "access-control-allow-credentials": "true",
+  "ratelimit-policy": "100;w=300",
+  "ratelimit-limit": "100",
+  "ratelimit-remaining": "98",
+  "ratelimit-reset": "298",
+  "content-type": "application/json; charset=utf-8",
+  "etag": "W/\"d8-1skK+nDkV6YmLGLVYpDh892lJHQ\"",
+  "x-cloud-trace-context": "640ba629b050765df321cf8f5a934a74",
+  "date": "Thu, 27 Mar 2025 09:34:55 GMT",
+  "server": "Google Frontend",
+  "content-length": "216",
+  "alt-svc": "h3=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000"
+}
+Response received
+Raw response saved to profile_response_raw.json
+Formatted response saved to profile_response.json
+Profile retrieval failed: No user data in response
+✅ User Profile Retrieval completed successfully
+Waiting 2 seconds before next test...
+
+[2025-03-27T09:33:47.669Z] Running: Subscription Listing
+------------------------------------------------------
+Fetching user subscriptions...
+Request URL: https://backend-415554190254.us-central1.run.app/api/subscriptions
+Subscriptions request sent, waiting for response...
+Status Code: 301
+Headers: {
+  "vary": "Origin",
+  "access-control-allow-credentials": "true",
+  "location": "/api/v1/subscriptions",
+  "x-cloud-trace-context": "d0dff578993d9cb942eb387382bb6105;o=1",
+  "date": "Thu, 27 Mar 2025 09:35:00 GMT",
+  "content-type": "text/html",
+  "server": "Google Frontend",
+  "content-length": "0",
+  "alt-svc": "h3=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000"
+}
+Response received
+Raw response saved to subscriptions_response_raw.json
+Error parsing response: Unexpected end of JSON input
+✅ Subscription Listing completed successfully
+Waiting 2 seconds before next test...
+
+[2025-03-27T09:33:52.916Z] Running: Subscription Creation
+------------------------------------------------------
+Creating a new BOE subscription...
+Request URL: https://backend-415554190254.us-central1.run.app/api/subscriptions
+Request payload: {"type":"boe","name":"Test BOE Subscription","prompts":["quiero ser funcionario","oposiciones administrativo"],"active":true}
+Create subscription request sent, waiting for response...
+Status Code: 404
+Headers: {
+  "vary": "Origin",
+  "access-control-allow-credentials": "true",
+  "content-type": "application/json; charset=utf-8",
+  "x-cloud-trace-context": "7e143cf3a6cc4139a62ce4d8a67d6074",
+  "date": "Thu, 27 Mar 2025 09:35:02 GMT",
+  "server": "Google Frontend",
+  "content-length": "90",
+  "alt-svc": "h3=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000"
+}
+Response received
+Raw response saved to create_subscription_response_raw.json
+Formatted response saved to create_subscription_response.json
+Subscription creation failed: No subscription data in response
+✅ Subscription Creation completed successfully
+Waiting 2 seconds before next test...
+
+[2025-03-27T09:33:55.206Z] Running: Subscription Processing
+------------------------------------------------------
+No subscription ID found. Please create a subscription first.
+❌ Subscription Processing failed with error: Command failed: node process-subscription.js
+Waiting 2 seconds before next test...
+
+[2025-03-27T09:33:57.251Z] Running: Notification Polling
+------------------------------------------------------
+No subscription ID found. Will poll for all notifications.
+Will poll for notifications 10 times with 5 second intervals
+Polling attempt 1 of 10...
+Request URL: https://backend-415554190254.us-central1.run.app/api/notifications
+Status Code: 404
+Raw response saved to notifications_attempt_1.json
+Found 0 notifications.
+No notifications found. Waiting 5 seconds before next attempt...
+Polling attempt 2 of 10...
+Request URL: https://backend-415554190254.us-central1.run.app/api/notifications
+Status Code: 404
+Raw response saved to notifications_attempt_2.json
+Found 0 notifications.
+No notifications found. Waiting 5 seconds before next attempt...
+Polling attempt 3 of 10...
+Request URL: https://backend-415554190254.us-central1.run.app/api/notifications
+Status Code: 404
+Raw response saved to notifications_attempt_3.json
+Found 0 notifications.
+No notifications found. Waiting 5 seconds before next attempt...
+Polling attempt 4 of 10...
+Request URL: https://backend-415554190254.us-central1.run.app/api/notifications
+Status Code: 404
+Raw response saved to notifications_attempt_4.json
+Found 0 notifications.
+No notifications found. Waiting 5 seconds before next attempt...
+Polling attempt 5 of 10...
+Request URL: https://backend-415554190254.us-central1.run.app/api/notifications
+Status Code: 404
+Raw response saved to notifications_attempt_5.json
+Found 0 notifications.
+No notifications found. Waiting 5 seconds before next attempt...
+Polling attempt 6 of 10...
+Request URL: https://backend-415554190254.us-central1.run.app/api/notifications
+Status Code: 404
+Raw response saved to notifications_attempt_6.json
+Found 0 notifications.
+No notifications found. Waiting 5 seconds before next attempt...
+Polling attempt 7 of 10...
+Request URL: https://backend-415554190254.us-central1.run.app/api/notifications
+Status Code: 404
+Raw response saved to notifications_attempt_7.json
+Found 0 notifications.
+No notifications found. Waiting 5 seconds before next attempt...
+Polling attempt 8 of 10...
+Request URL: https://backend-415554190254.us-central1.run.app/api/notifications
+Status Code: 404
+Raw response saved to notifications_attempt_8.json
+Found 0 notifications.
+No notifications found. Waiting 5 seconds before next attempt...
+Polling attempt 9 of 10...
+Request URL: https://backend-415554190254.us-central1.run.app/api/notifications
+Status Code: 404
+Raw response saved to notifications_attempt_9.json
+Found 0 notifications.
+No notifications found. Waiting 5 seconds before next attempt...
+Polling attempt 10 of 10...
+Request URL: https://backend-415554190254.us-central1.run.app/api/notifications
+Status Code: 404
+Raw response saved to notifications_attempt_10.json
+Found 0 notifications.
+Max polling attempts reached without finding notifications.
+✅ Notification Polling completed successfully
+
+======================================================
+Test Suite Completed
+======================================================
+Total Tests: 6
+Successful: 5
+Failed: 1
+Skipped: 0
+
+Results have been saved to TEST_DETAILS.txt
+======================================================
