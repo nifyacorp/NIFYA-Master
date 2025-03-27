@@ -1,3 +1,10 @@
+/**
+ * NIFYA Notification Polling Script
+ * 
+ * This script polls for notifications related to a subscription.
+ * Updated to use the v1 API endpoint.
+ */
+
 const https = require('https');
 const fs = require('fs');
 
@@ -20,6 +27,10 @@ let subscriptionId = null;
 if (fs.existsSync('latest_subscription_id.txt')) {
   subscriptionId = fs.readFileSync('latest_subscription_id.txt', 'utf8').trim();
   console.log('Using subscription ID:', subscriptionId);
+} else if (process.argv[2]) {
+  // Allow passing subscription ID as command line argument
+  subscriptionId = process.argv[2];
+  console.log('Using subscription ID from command line:', subscriptionId);
 } else {
   console.log('No subscription ID found. Will poll for all notifications.');
 }
@@ -30,7 +41,8 @@ async function pollForNotifications(attempt, maxAttempts, intervalSeconds) {
   
   return new Promise((resolve, reject) => {
     // Create notification URL with optional subscription filter
-    let path = '/api/notifications';
+    // UPDATED: Use v1 API endpoint
+    let path = '/api/v1/notifications';
     if (subscriptionId) {
       path += `?subscriptionId=${subscriptionId}`;
     }
@@ -71,8 +83,17 @@ async function pollForNotifications(attempt, maxAttempts, intervalSeconds) {
           // Parse the JSON response
           const parsedData = JSON.parse(data);
           
-          // Extract notifications
-          const notifications = parsedData.data?.notifications || parsedData.notifications || [];
+          // Extract notifications - handle both response formats
+          // Updated to handle different response structures
+          const notifications = 
+            // New API response format
+            parsedData.data?.notifications || 
+            // Direct array in data property 
+            parsedData.data || 
+            // Legacy format
+            parsedData.notifications || 
+            // Fallback
+            [];
           
           console.log(`Found ${notifications.length} notifications.`);
           
@@ -90,6 +111,7 @@ Notifications Found: ${notifications.length}
 Attempt: ${attempt}/${maxAttempts}
 Subscription ID: ${subscriptionId || 'All subscriptions'}
 Response Status Code: ${res.statusCode}
+API Path: ${path}
 `;
             fs.appendFileSync('TEST_DETAILS.txt', detailsEntry);
           }
@@ -97,7 +119,8 @@ Response Status Code: ${res.statusCode}
           resolve({
             success: true,
             count: notifications.length,
-            notifications
+            notifications,
+            statusCode: res.statusCode
           });
         } catch (error) {
           console.error('Error parsing response:', error.message);
@@ -109,11 +132,13 @@ Reason: Failed to parse response
 Error: ${error.message}
 Attempt: ${attempt}/${maxAttempts}
 Response Status Code: ${res.statusCode}
+API Path: ${path}
 `);
           resolve({
             success: false,
             error: error.message,
-            count: 0
+            count: 0,
+            statusCode: res.statusCode
           });
         }
       });
@@ -129,6 +154,7 @@ Status: ERROR
 Reason: Request failed
 Error: ${error.message}
 Attempt: ${attempt}/${maxAttempts}
+API Path: ${path}
 `);
       resolve({
         success: false,
@@ -163,10 +189,28 @@ async function runPolling() {
         console.log('- Title:', notification.title);
         console.log('- Created:', notification.created_at);
         console.log('- Read:', notification.read ? 'Yes' : 'No');
+        
+        // If the notification has content, show a snippet
+        if (notification.content) {
+          const contentPreview = notification.content.length > 100 
+            ? notification.content.substring(0, 97) + '...' 
+            : notification.content;
+          console.log('- Content:', contentPreview);
+        }
+        
+        // If the notification has a source URL, show it
+        if (notification.source_url) {
+          console.log('- Source URL:', notification.source_url);
+        }
       });
       
       foundNotifications = true;
       break;
+    } else if (result.statusCode >= 400) {
+      console.error(`Error response from server: Status code ${result.statusCode}`);
+      if (result.statusCode === 404) {
+        console.warn('API endpoint not found. Check if you are using the correct API version.');
+      }
     }
     
     if (attempt < MAX_ATTEMPTS) {
@@ -189,6 +233,10 @@ Subscription ID: ${subscriptionId || 'All subscriptions'}
 }
 
 // Run the polling
-runPolling().catch(error => {
-  console.error('Polling error:', error);
-});
+if (require.main === module) {
+  runPolling().catch(error => {
+    console.error('Polling error:', error);
+  });
+}
+
+module.exports = { pollForNotifications, runPolling };
