@@ -1,1 +1,1 @@
-{"message":"Route GET:/api/diagnostics/db-tables not found","error":"Not Found","statusCode":404}
+{"status":"success","tables":["notifications","schema_migrations","schema_version","subscription_processing","subscription_types","subscriptions","user_email_preferences","users"],"count":8}

@@ -1,5 +1,7 @@
 {
-  "error": "Cannot set property context of #<Request> which has only a getter",
-  "code": "AUTH_ERROR",
-  "status": 401
+  "notifications": [],
+  "total": 0,
+  "unread": 0,
+  "page": 1,
+  "limit": 10
 }

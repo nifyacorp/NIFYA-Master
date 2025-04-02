@@ -1,1 +1,1 @@
-{"status":"ok","message":"Diagnostics API is available","endpoints":["/health","/user","/create-user","/db-info"]}
+{"status":"ok","message":"Diagnostics API is available","endpoints":["/health","/user","/create-user","/db-info","/db-status","/db-tables"]}

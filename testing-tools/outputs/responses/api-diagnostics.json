@@ -5,6 +5,8 @@
     "/health",
     "/user",
     "/create-user",
-    "/db-info"
+    "/db-info",
+    "/db-status",
+    "/db-tables"
   ]
 }
