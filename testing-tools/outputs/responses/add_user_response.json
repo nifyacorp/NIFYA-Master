@@ -1,0 +1,5 @@
+{
+  "message": "Route POST:/api/diagnostics/add-test-user not found",
+  "error": "Not Found",
+  "statusCode": 404
+}

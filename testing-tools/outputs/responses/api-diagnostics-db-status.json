@@ -1,0 +1,5 @@
+{
+  "message": "Route GET:/api/diagnostics/db-status not found",
+  "error": "Not Found",
+  "statusCode": 404
+}
