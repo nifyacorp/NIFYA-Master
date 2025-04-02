@@ -1,0 +1,133 @@
+{
+  "timestamp": "2025-04-02T10:55:59.284Z",
+  "summary": {
+    "total": 8,
+    "passed": 5,
+    "failed": 3,
+    "skipped": 0
+  },
+  "categories": {
+    "authentication": {
+      "total": 1,
+      "passed": 1,
+      "failed": 0
+    },
+    "infrastructure": {
+      "total": 1,
+      "passed": 1,
+      "failed": 0
+    },
+    "subscriptions": {
+      "total": 3,
+      "passed": 1,
+      "failed": 2
+    },
+    "notifications": {
+      "total": 2,
+      "passed": 1,
+      "failed": 1
+    },
+    "diagnostics": {
+      "total": 1,
+      "passed": 1,
+      "failed": 0
+    }
+  },
+  "tests": [
+    {
+      "name": "Authentication: Login",
+      "category": "authentication",
+      "success": true,
+      "output": [
+        "\u001b[36m[2025-04-02T10:55:59.330Z] [INFO] Starting test login...\u001b[0m",
+        "\u001b[32m[2025-04-02T10:55:59.732Z] [SUCCESS] Authentication successful! Token saved (first 10 chars): eyJhbGciOi...\u001b[0m",
+        "\u001b[36m[2025-04-02T10:55:59.733Z] [INFO] Test login completed successfully\u001b[0m"
+      ],
+      "critical": true
+    },
+    {
+      "name": "Infrastructure: Health Check",
+      "category": "infrastructure",
+      "success": true,
+      "output": [
+        "\u001b[36m[2025-04-02T10:55:59.789Z] [INFO] Starting health check test\u001b[0m",
+        "\u001b[32m[2025-04-02T10:55:59.998Z] [SUCCESS] Health check successful:",
+        "\u001b[32m[2025-04-02T10:56:00.000Z] [SUCCESS] Database connection verified\u001b[0m",
+        "\u001b[36m[2025-04-02T10:56:00.035Z] [INFO] Health check test completed successfully\u001b[0m"
+      ],
+      "critical": true
+    },
+    {
+      "name": "Subscriptions: List",
+      "category": "subscriptions",
+      "success": true,
+      "output": [
+        "\u001b[36m[2025-04-02T10:56:00.093Z] [INFO] Starting list subscriptions test\u001b[0m",
+        "\u001b[36m[2025-04-02T10:56:00.098Z] [INFO] Fetching subscriptions: backend-415554190254.us-central1.run.app/api/v1/subscriptions\u001b[0m",
+        "\u001b[32m[2025-04-02T10:56:00.312Z] [SUCCESS] Retrieved 0 subscriptions\u001b[0m",
+        "\u001b[32m[2025-04-02T10:56:00.314Z] [SUCCESS] Test list-subscriptions: PASSED",
+        "\u001b[32m[2025-04-02T10:56:00.318Z] [SUCCESS] Subscription listing test completed successfully\u001b[0m",
+        "\u001b[36m[2025-04-02T10:56:00.320Z] [INFO] Retrieved 0 subscriptions\u001b[0m"
+      ],
+      "critical": true
+    },
+    {
+      "name": "Subscriptions: Create",
+      "category": "subscriptions",
+      "success": false,
+      "error": "Command failed: node tests/subscriptions/minimal-create.js",
+      "critical": true
+    },
+    {
+      "name": "Subscriptions: Create with User ID",
+      "category": "subscriptions",
+      "success": false,
+      "output": [
+        "\u001b[36m[2025-04-02T10:56:00.687Z] [INFO] Starting subscription creation with explicit user_id test\u001b[0m",
+        "\u001b[36m[2025-04-02T10:56:00.691Z] [INFO] Creating subscription with user_id: backend-415554190254.us-central1.run.app/api/v1/subscriptions",
+        "\u001b[31m[2025-04-02T10:56:00.936Z] [ERROR] Subscription creation failed with status code 500",
+        "\u001b[31m[2025-04-02T10:56:00.945Z] [ERROR] Test user-id-create-subscription: FAILED",
+        "\u001b[32m[2025-04-02T10:56:00.946Z] [SUCCESS] Subscription creation with user_id test completed\u001b[0m"
+      ],
+      "critical": false
+    },
+    {
+      "name": "Notifications: List",
+      "category": "notifications",
+      "success": false,
+      "error": "Command failed: node tests/notifications/poll.js",
+      "critical": true
+    },
+    {
+      "name": "Notifications: By Entity Type",
+      "category": "notifications",
+      "success": true,
+      "output": [
+        "\u001b[36m[2025-04-02T10:56:48.313Z] [INFO] Starting notifications by entity test\u001b[0m",
+        "\u001b[36m[2025-04-02T10:56:48.317Z] [INFO] Testing notifications for entity type: subscription, with entityId param\u001b[0m",
+        "\u001b[33m[2025-04-02T10:56:48.580Z] [WARN] Received 200 status but data is not in expected format\u001b[0m",
+        "\u001b[32m[2025-04-02T10:56:48.582Z] [SUCCESS] Test notifications-by-entity: PASSED but with unexpected format",
+        "\u001b[32m[2025-04-02T10:56:48.584Z] [SUCCESS] Notifications by entity test completed\u001b[0m"
+      ],
+      "critical": false
+    },
+    {
+      "name": "Diagnostics: API Info",
+      "category": "diagnostics",
+      "success": true,
+      "output": [
+        "\u001b[36m[2025-04-02T10:56:48.631Z] [INFO] Starting database diagnostic test\u001b[0m",
+        "\u001b[36m[2025-04-02T10:56:48.642Z] [INFO] Testing endpoint: /health\u001b[0m",
+        "\u001b[32m[2025-04-02T10:56:48.862Z] [SUCCESS] Endpoint /health returned success: {",
+        "\u001b[36m[2025-04-02T10:56:48.866Z] [INFO] Testing endpoint: /api/diagnostics\u001b[0m",
+        "\u001b[32m[2025-04-02T10:56:49.020Z] [SUCCESS] Endpoint /api/diagnostics returned success: {",
+        "\u001b[36m[2025-04-02T10:56:49.023Z] [INFO] Testing endpoint: /api/diagnostics/db-status\u001b[0m",
+        "\u001b[32m[2025-04-02T10:56:49.178Z] [SUCCESS] Endpoint /api/diagnostics/db-status returned success: {",
+        "\u001b[36m[2025-04-02T10:56:49.180Z] [INFO] Testing endpoint: /api/diagnostics/db-tables\u001b[0m",
+        "\u001b[32m[2025-04-02T10:56:49.330Z] [SUCCESS] Endpoint /api/diagnostics/db-tables returned success: {",
+        "\u001b[32m[2025-04-02T10:56:49.332Z] [SUCCESS] Database diagnostic test completed\u001b[0m"
+      ],
+      "critical": false
+    }
+  ]
+}

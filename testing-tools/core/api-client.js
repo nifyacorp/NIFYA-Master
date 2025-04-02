@@ -46,9 +46,11 @@ function getUserIdFromToken(token) {
 /**
  * Make an API request with proper headers
  * @param {Object} options - Request options including url
+ * @param {string|null} token - Optional auth token to include
+ * @param {Object|null} data - Optional data to include in body
  * @returns {Promise<Object>} API response
  */
-function makeApiRequest(options) {
+function makeApiRequest(options, token = null, data = null) {
   return new Promise((resolve, reject) => {
     try {
       // Parse URL if provided directly
@@ -76,6 +78,18 @@ function makeApiRequest(options) {
       if (!requestOptions.headers || !requestOptions.headers['Content-Type']) {
         requestOptions.headers = requestOptions.headers || {};
         requestOptions.headers['Content-Type'] = 'application/json';
+      }
+      
+      // Add auth token if provided and not already present
+      if (token && (!requestOptions.headers.Authorization && !requestOptions.headers.authorization)) {
+        requestOptions.headers.Authorization = `Bearer ${token}`;
+        
+        // Add user ID header if not already present
+        // Extract user ID from token
+        const userId = getUserIdFromToken(token);
+        if (userId && !requestOptions.headers['x-user-id'] && !requestOptions.headers['X-User-ID']) {
+          requestOptions.headers['x-user-id'] = userId;
+        }
       }
 
       // Sanitize path - this can help prevent 'match' errors with malformed paths
@@ -142,10 +156,13 @@ function makeApiRequest(options) {
         reject(error);
       });
       
-      if (options.data) {
-        const bodyData = typeof options.data === 'string' ? options.data : JSON.stringify(options.data);
-        console.log(`Request body: ${bodyData}`);
-        req.write(bodyData);
+      // Handle body data from either options.data or the data parameter
+      const bodyData = data || options.data;
+      
+      if (bodyData) {
+        const serializedBody = typeof bodyData === 'string' ? bodyData : JSON.stringify(bodyData);
+        console.log(`Request body: ${serializedBody}`);
+        req.write(serializedBody);
       }
       
       req.end();

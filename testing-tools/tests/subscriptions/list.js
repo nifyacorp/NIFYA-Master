@@ -53,8 +53,9 @@ async function listSubscriptions(token = null) {
     // Save response to file
     apiClient.saveResponseToFile('subscriptions_response', response, RESPONSES_DIR);
     
-    if (response.statusCode === 200) {
-      // Extract subscriptions from response
+    // Check for successful response (either by statusCode or status field in data)
+    if (response.statusCode === 200 || response.data?.status === 'success') {
+      // Extract subscriptions from response - check both possible formats
       const subscriptions = response.data.subscriptions || response.data.data?.subscriptions || [];
       
       logger.success(`Retrieved ${subscriptions.length} subscriptions`, null, testName);
@@ -62,7 +63,7 @@ async function listSubscriptions(token = null) {
       // Log test result
       logger.testResult(testName, true, {
         count: subscriptions.length,
-        statusCode: response.statusCode
+        statusCode: response.statusCode || response.status
       });
       
       return { 
@@ -73,9 +74,9 @@ async function listSubscriptions(token = null) {
       };
     } else {
       // Non-success status code
-      logger.error(`Subscription listing failed with status code ${response.statusCode}`, response.data, testName);
-      logger.testResult(testName, false, `Status code ${response.statusCode}: ${JSON.stringify(response.data)}`);
-      return { success: false, error: `Status code ${response.statusCode}` };
+      logger.error(`Subscription listing failed with status code ${response.statusCode || 'undefined'}`, response.data, testName);
+      logger.testResult(testName, false, `Status code ${response.statusCode || 'undefined'}: ${JSON.stringify(response.data)}`);
+      return { success: false, error: `Status code ${response.statusCode || 'undefined'}` };
     }
   } catch (error) {
     // Request error

@@ -38,9 +38,8 @@ async function createMinimalSubscription(token = null) {
   const subscriptionData = {
     name: "Test BOE Subscription",
     type: "boe",
-    prompts: ["Ayuntamiento Barcelona licitaciones"],
-    frequency: "daily",
-    configuration: JSON.stringify({})
+    prompts: ["Ayuntamiento Barcelona licitaciones"], // Back to array format
+    frequency: "daily"
   };
   
   // Request options
