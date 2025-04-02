@@ -47,10 +47,12 @@ async function createMinimalSubscription(token = null) {
   const options = {
     hostname: endpoints.backend.baseUrl,
     port: 443,
-    path: endpoints.backend.subscriptions.list,
+    path: endpoints.backend.subscriptions.create,
     method: 'POST',
     headers: {
-      'Content-Type': 'application/json'
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${token}`,
+      'x-user-id': apiClient.getUserIdFromToken(token)
     }
   };
   

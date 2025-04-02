@@ -30,17 +30,23 @@
 - **Details**: The `/health` endpoint returns correct status information
 - **Notes**: System reports healthy status and database connection is verified
 
+### Diagnostic Endpoints
+- **Status**: ✅ IMPROVED
+- **Working Endpoints**:
+  - `/api/diagnostics` - Lists available diagnostic endpoints
+  - `/health` - Reports service health
+  - `/api/diagnostics/db-tables` - Lists database tables
+  - `/api/diagnostics/db-status` - Now returns database status without errors
+- **Remaining Issues**:
+  - `/api/diagnostics/user` - Returns 401 Unauthorized with message "Invalid token"
+  - User creation endpoint not working
+
 ### Subscription Tests
 - **Status**: ❌ FAILED
-- **Error**: 
-```json
-{
-  "status": "error",
-  "code": "DATABASE_ERROR",
-  "message": "Database operation failed: insert or update on table \"subscriptions\" violates foreign key constraint \"subscriptions_user_id_fkey\""
-}
-```
-- **Analysis**: The foreign key constraint issue persists. The user record does not exist in the database.
+- **Errors**: 
+  - Subscription Creation: Returns 400 Bad Request with message "body must have required property 'name'"
+  - Subscription Listing: Returns 401 Unauthorized with message "Invalid Authorization header format. Must be: Bearer <token>"
+- **Note**: There appears to be an issue with request body parsing and authorization header handling
 
 ### Notification Tests
 - **Status**: ⚠️ MIXED RESULTS
@@ -48,34 +54,34 @@
   - `GET /api/v1/notifications?entityType=subscription` - ✅ WORKING (returns empty array with pagination)
   - `GET /api/v1/notifications` (standard polling) - ❌ FAILING
 
-### Diagnostic Endpoints
-- **Status**: ⚠️ PARTIALLY IMPLEMENTED
-- **Working Endpoints**:
-  - `/api/diagnostics` - Lists available diagnostic endpoints
-  - `/health` - Reports service health
-  - `/api/diagnostics/db-tables` - Lists database tables
-- **Failing Endpoints**:
-  - `/api/diagnostics/db-status` - Returns 500 error with message "Cannot read properties of undefined (reading 'connect')"
+## Backend Infrastructure Status
 
-## Progress Assessment
-
-### Fixed Issues
-1. ✅ **Authentication Middleware**: The previous authentication error ("Cannot set property context of #<Request> which has only a getter") has been fixed
-2. ✅ **Diagnostic API Expansion**: More diagnostic endpoints have been implemented
-3. ✅ **Notification Format**: The notification endpoint now returns the correct format with pagination
-
-### Remaining Issues
-1. ❌ **User Synchronization**: The user record from authentication is still not being created in the database
-2. ❌ **Database Connection in Diagnostics**: The `/api/diagnostics/db-status` endpoint cannot connect to the database
-3. ❌ **Subscription Creation**: Still fails with the foreign key constraint error
-
-## Database Schema Information
-
-From the diagnostic endpoint, we can see the database has the following tables:
+### Database
+- **Status**: ✅ CONNECTED
+- **Details**: From the `/api/diagnostics/db-status` endpoint:
 ```json
 {
+  "status": "success",
+  "database": {
+    "connected": true,
+    "server_time": "2025-04-02T10:08:26.896Z",
+    "tables_count": 8,
+    "response_times": {
+      "basic_query_ms": 4,
+      "complex_query_ms": 6,
+      "transaction_ms": 9
+    }
+  }
+}
+```
+
+### Table Structure
+- **Tables**: 8 total
+```json
+{
+  "status": "success",
   "tables": [
-    "notifications",
+    "notifications", 
     "schema_migrations",
     "schema_version", 
     "subscription_processing",
@@ -88,118 +94,144 @@ From the diagnostic endpoint, we can see the database has the following tables:
 }
 ```
 
-This confirms that:
-1. The `users` table exists and is expected to contain user records
-2. The `subscriptions` table has a foreign key constraint to the `users` table
+## Progress Assessment
 
-## Root Cause Analysis
+### Fixed Issues
+1. ✅ **Authentication Middleware**: The property getter error has been fixed
+2. ✅ **Database Connection**: The database diagnostics endpoint now works correctly
+3. ✅ **Notification Format**: Notification endpoints return proper pagination format
 
-The foreign key constraint error occurs because:
+### New Issues
+1. ❌ **Request Body Parsing**: Subscription creation fails with "body must have required property 'name'" despite the property being included
+2. ❌ **Authorization Handling**: Some endpoints return "Invalid Authorization header format" despite correct format being sent
+3. ❌ **Token Validation**: User diagnostic endpoint returns "Invalid token" with a valid token
 
-1. The user authenticates through the Auth service
-2. The Auth service validates the user and issues a JWT token
-3. When creating a subscription, the backend tries to associate it with the user's ID
-4. The user ID doesn't exist in the backend database's `users` table
-5. The database rejects the operation due to the foreign key constraint
+### Remaining Issues
+1. ❌ **User Synchronization**: The user record from authentication is still not being created in the database
+
+## Issues Analysis
+
+1. **Request Body Parsing Issue**: The subscription creation endpoint is not correctly receiving or parsing the request body. This could be due to:
+   - Incorrect content-type handling
+   - Middleware issues in body parsing
+   - Validation schema mismatch
+
+2. **Authorization Header Handling**: Some endpoints are not correctly processing the Authorization header, suggesting:
+   - Middleware configuration issue
+   - Token validation process is inconsistent between endpoints
+   - Different security implementations across endpoints
+
+3. **Token Validation**: The "Invalid token" error indicates a possible JWT validation issue:
+   - JWT secret mismatch between services
+   - Token format expectations different between services
+   - Token verification logic error
 
 ## Recommended Fixes
 
-1. **Implement User Synchronization**: Create a process to synchronize user records between the Auth service and the backend database. Options include:
-   
+1. **Fix Request Body Parsing**:
    ```javascript
-   // Option 1: Automatic creation on first API call
-   // In auth middleware after token verification:
+   // In your Express app configuration:
+   app.use(express.json());
    
-   async function authMiddleware(req, res, next) {
-     const userId = req.user.sub; // From token
+   // Or if using Fastify:
+   fastify.register(require('fastify-formbody'));
+   
+   // Check your route handler to ensure proper body access:
+   app.post('/api/v1/subscriptions', (req, res) => {
+     console.log('Received body:', req.body); // Debug received body
      
-     // Check if user exists in database
-     const user = await db.query('SELECT * FROM users WHERE id = $1', [userId]);
-     
-     if (!user) {
-       // Create user record
-       await db.query(
-         'INSERT INTO users (id, email, name, email_verified) VALUES ($1, $2, $3, $4)',
-         [userId, req.user.email, req.user.name, req.user.email_verified]
-       );
+     // Validate required fields are present
+     if (!req.body.name) {
+       return res.status(400).json({
+         statusCode: 400,
+         error: 'Bad Request',
+         message: 'body must have required property \'name\''
+       });
      }
      
-     next();
+     // Process subscription...
+   });
+   ```
+
+2. **Fix Authorization Handling**:
+   ```javascript
+   // Consistent auth middleware:
+   function authMiddleware(req, res, next) {
+     const authHeader = req.headers.authorization;
+     
+     // Check header format
+     if (!authHeader || !authHeader.startsWith('Bearer ')) {
+       return res.status(401).json({
+         error: 'MISSING_HEADERS',
+         message: 'Invalid Authorization header format. Must be: Bearer <token>',
+         status: 401
+       });
+     }
+     
+     const token = authHeader.split(' ')[1];
+     
+     // Validate token
+     try {
+       const decoded = jwt.verify(token, process.env.JWT_SECRET);
+       req.user = decoded;
+       next();
+     } catch (err) {
+       return res.status(401).json({
+         status: 'error',
+         code: 'UNAUTHORIZED',
+         message: 'Invalid token'
+       });
+     }
    }
    ```
 
-2. **Fix Database Connection in Diagnostics**: The error in the `/api/diagnostics/db-status` endpoint suggests a problem with the database client:
-
+3. **Implement User Synchronization**:
    ```javascript
-   // Current problematic code (likely):
-   app.get('/api/diagnostics/db-status', (req, res) => {
+   // In your auth middleware after token verification:
+   async function syncUserMiddleware(req, res, next) {
      try {
-       const status = dbClient.connect(); // dbClient is undefined
-       res.json({ status: 'success', database: { connected: true } });
-     } catch (error) {
-       res.status(500).json({ 
-         status: 'error',
-         message: error.message,
-         database: { connected: false }
-       });
-     }
-   });
-   
-   // Fix by ensuring dbClient is properly imported and initialized:
-   const { dbClient } = require('../infrastructure/database/client');
-   ```
-
-3. **Add User Creation Endpoint**: Add a diagnostic endpoint to manually create test users:
-
-   ```javascript
-   app.post('/api/diagnostics/create-user', async (req, res) => {
-     try {
-       const { userId, email, name } = req.body;
-       
-       // Check if user already exists
-       const existingUser = await db.query('SELECT * FROM users WHERE id = $1', [userId]);
-       
-       if (existingUser.rows.length > 0) {
-         return res.json({ 
-           status: 'success',
-           message: 'User already exists',
-           user: existingUser.rows[0]
-         });
-       }
-       
-       // Create new user
-       const newUser = await db.query(
-         'INSERT INTO users (id, email, name, email_verified) VALUES ($1, $2, $3, $4) RETURNING *',
-         [userId, email, name, true]
+       // Check if user exists in database
+       const userId = req.user.sub;
+       const userExists = await db.query(
+         'SELECT EXISTS(SELECT 1 FROM users WHERE id = $1)', 
+         [userId]
        );
        
-       res.json({ 
-         status: 'success',
-         message: 'User created successfully',
-         user: newUser.rows[0]
-       });
+       if (!userExists.rows[0].exists) {
+         // Create user record
+         await db.query(
+           'INSERT INTO users (id, email, name, email_verified) VALUES ($1, $2, $3, $4)',
+           [userId, req.user.email, req.user.name, req.user.email_verified]
+         );
+         console.log(`Created user record for ${userId}`);
+       }
+       
+       next();
      } catch (error) {
-       res.status(500).json({ 
-         status: 'error',
-         message: error.message
-       });
+       console.error('User sync error:', error);
+       next(); // Continue even if sync fails
      }
-   });
+   }
+   
+   // Apply middleware in sequence
+   app.use(authMiddleware);
+   app.use(syncUserMiddleware);
    ```
 
 ## Next Steps
 
-1. **Fix User Synchronization**: Implement the user synchronization mechanism to automatically create user records from Auth service in the backend database.
+1. **Fix Body Parsing**: Ensure proper request body parsing in the API server configuration.
 
-2. **Fix Database Connectivity**: Resolve the database connection issue in the diagnostics endpoint.
+2. **Standardize Auth Handling**: Implement consistent auth header handling across all routes.
 
-3. **Rerun Test Suite**: After implementing these fixes, run the comprehensive test suite again to verify all endpoints are working correctly.
+3. **Align JWT Validation**: Ensure JWT validation uses the same secret and validation logic across all services.
+
+4. **Implement User Sync**: Add automatic user record creation from JWT token information.
+
+5. **Rerun Test Suite**: After implementing these fixes, run the comprehensive test suite again.
 
 ## Conclusion
 
-Significant progress has been made on fixing the platform:
-- Authentication middleware has been fixed and no longer shows the property getter error
-- Notification format has been corrected with proper pagination
-- Diagnostic API has been expanded with additional endpoints
+The latest fixes have resolved some infrastructure issues (database connectivity, diagnostics), but introduced or revealed API handling problems (body parsing, authorization). These new issues appear to be related to the web server configuration rather than the database or business logic.
 
-However, the core issue of user synchronization between the Auth service and backend database remains unsolved, causing the foreign key constraint error in subscription creation. With the authentication middleware now working properly, fixing the user synchronization issue should be straightforward.
+The fixes should focus on basic web server functionality (request parsing, authentication) before addressing the user synchronization issue. Once these foundational issues are resolved, the user synchronization mechanism can be implemented to resolve the foreign key constraint problem.

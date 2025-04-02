@@ -1,1 +1,1 @@
-{"status":"error","message":"Cannot read properties of undefined (reading 'connect')","database":{"connected":false}}
+{"status":"success","database":{"connected":true,"server_time":"2025-04-02T10:13:07.569Z","tables_count":8,"response_times":{"basic_query_ms":2,"complex_query_ms":7,"transaction_ms":5}}}

@@ -1,947 +1,691 @@
-# NIFYA Frontend Testing Implementation
-
-This document outlines the implementation plan for testing the front-backend communication of the NIFYA platform, focusing on identifying and resolving issues in the communication layer.
+# Frontend Testing Implementation Platform
 
 ## Overview
 
-The NIFYA frontend, now deployed at https://main-page-415554190254.us-central1.run.app, needs comprehensive testing to identify where frontend-backend communication is failing. Based on our analysis of the codebase, we've designed several testing approaches to isolate and fix these issues.
+This testing platform focuses on verifying frontend-to-backend API communication in the NIFYA application. Instead of testing UI components directly, we'll create tools to monitor, validate, and simulate API interactions.
 
-## Testing Strategy
+## Core Components
 
-We'll implement a multi-layered approach to test the frontend-backend communication:
+### 1. API Request Monitor
 
-1. **Debug Dashboard**: Create a dedicated debug UI for real-time API monitoring
-2. **Network Interceptors**: Implement monitoring for all API calls
-3. **API Testing Components**: Individual components to test specific API endpoints
-4. **User Journey Simulation**: Automated testing of complete user flows
+A tool to intercept and log all API requests and responses between the frontend and backend. This will help identify:
+- Authentication header issues
+- Request payload format problems
+- Response processing errors
+
+### 2. Response Simulator
+
+A mock server that simulates backend responses for testing frontend behavior with:
+- Success responses
+- Error conditions
+- Edge cases (slow responses, timeouts)
+
+### 3. Network Validation Tool
+
+A utility to validate that requests conform to the expected schema:
+- Correct headers (Authorization, Content-Type)
+- Properly structured request bodies
+- Proper error handling
+
+### 4. In-Browser Debug Dashboard
+
+A component that can be integrated into the app to show:
+- Real-time API request logs
+- Authentication state
+- Request/response details
+- Error tracking
 
 ## Implementation Plan
 
-### 1. Debug Dashboard
+### Phase 1: Setup and Monitoring Tools
 
-Create a dedicated debug dashboard page that shows:
+1. **API Request Logger**
+   - Implement a browser extension or proxy to capture API requests
+   - Store request/response pairs for analysis
+   - Create a UI to filter and search logs
 
-```jsx
-// src/pages/Debug.tsx
+2. **Debug Dashboard Component**
+   - Create a React component that can be embedded in the app
+   - Display real-time API communication
+   - Show authentication state and token information
+   - Implement as a development-only tool
+
+3. **Test Data Generator**
+   - Generate realistic test data for API requests
+   - Create sample response data for mocking
+
+### Phase 2: Response Simulation
+
+1. **Mock API Server**
+   - Create a simple Express server that mimics the backend API
+   - Implement endpoints to match the production API
+   - Support configurable response delays and errors
+
+2. **Proxy Configuration**
+   - Set up a proxy to route requests to mock server
+   - Allow switching between mock and real backend
+
+3. **Scenario Runner**
+   - Create predefined test scenarios
+   - Support recording and playback of API interactions
+
+### Phase 3: Testing Framework
+
+1. **API Contract Tests**
+   - Verify that requests match expected schema
+   - Validate response handling conforms to requirements
+
+2. **Authentication Flow Tests**
+   - Test login/logout flows
+   - Verify token refresh behavior
+   - Test error handling for expired/invalid tokens
+
+3. **Network Failure Tests**
+   - Simulate network errors and timeouts
+   - Test application resilience
+
+4. **End-to-End User Flows**
+   - Define key user journeys
+   - Automate testing of complete flows
+
+## Tools and Technologies
+
+1. **Core Testing Tools**
+   - Jest for unit testing
+   - Cypress for end-to-end testing
+   - MSW (Mock Service Worker) for API mocking
+
+2. **Monitoring and Debugging**
+   - Redux DevTools for state management inspection
+   - Chrome DevTools Network Monitor
+   - Custom logging middleware
+
+3. **API Validation**
+   - Zod schemas (already used in the app)
+   - TypeScript for type checking
+
+## Implementation Code Examples
+
+### 1. API Request Logger Middleware
+
+```typescript
+// apiLoggerMiddleware.ts
+import { Middleware } from 'redux';
+
+export const apiLoggerMiddleware: Middleware = store => next => action => {
+  // Log API requests/responses
+  if (action.type.endsWith('_REQUEST')) {
+    console.group(`🔄 API Request: ${action.type}`);
+    console.log('Request Payload:', action.payload);
+    console.log('Headers:', action.meta?.headers);
+    console.timeStamp();
+    console.groupEnd();
+  }
+  
+  if (action.type.endsWith('_SUCCESS') || action.type.endsWith('_FAILURE')) {
+    console.group(`📥 API Response: ${action.type}`);
+    console.log('Response Data:', action.payload);
+    console.log('Status:', action.meta?.status);
+    console.timeStamp();
+    console.groupEnd();
+  }
+  
+  return next(action);
+};
+```
+
+### 2. Debug Dashboard Component
+
+```tsx
+// DebugDashboard.tsx
 import React, { useState, useEffect } from 'react';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { Tabs, TabsList, TabsTrigger, TabsContent } from '@/components/ui/tabs';
-import { Button } from '@/components/ui/button';
-import { backendClient } from '@/lib/api/clients/backend';
+import { useAuth } from '../../hooks/use-auth';
+import './DebugDashboard.css';
 
-export default function DebugDashboard() {
-  const [authStatus, setAuthStatus] = useState({ status: 'unknown', token: null, userId: null });
-  const [apiRequests, setApiRequests] = useState([]);
-  const [lastResponse, setLastResponse] = useState(null);
-  
-  // Test authentication
-  const testAuth = async () => {
-    const accessToken = localStorage.getItem('accessToken');
-    const userId = localStorage.getItem('userId');
-    
-    setAuthStatus({
-      status: accessToken ? 'authenticated' : 'unauthenticated',
-      token: accessToken ? `${accessToken.substring(0, 15)}...` : null,
-      userId
-    });
-    
-    // Test /api/auth/me endpoint
-    if (accessToken) {
-      const result = await backendClient({
-        endpoint: '/api/auth/me',
-        method: 'GET'
-      });
-      
-      setLastResponse(result);
-    }
-  };
-  
-  // Test subscription listing
-  const testSubscriptionList = async () => {
-    const result = await backendClient({
-      endpoint: '/api/v1/subscriptions',
-      method: 'GET'
-    });
-    
-    setLastResponse(result);
-  };
-  
-  // Test notification listing
-  const testNotificationList = async () => {
-    const result = await backendClient({
-      endpoint: '/api/v1/notifications',
-      method: 'GET'
-    });
-    
-    setLastResponse(result);
-  };
-  
-  return (
-    <div className="container mx-auto py-10">
-      <h1 className="text-2xl font-bold mb-6">API Debug Dashboard</h1>
-      
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
-        <Card>
-          <CardHeader>
-            <CardTitle>Authentication Status</CardTitle>
-          </CardHeader>
-          <CardContent>
-            <div className="space-y-2">
-              <p>Status: {authStatus.status}</p>
-              {authStatus.token && <p>Token: {authStatus.token}</p>}
-              {authStatus.userId && <p>User ID: {authStatus.userId}</p>}
-              <Button onClick={testAuth}>Test Authentication</Button>
-            </div>
-          </CardContent>
-        </Card>
-        
-        <Card>
-          <CardHeader>
-            <CardTitle>API Tests</CardTitle>
-          </CardHeader>
-          <CardContent>
-            <div className="flex flex-col space-y-2">
-              <Button onClick={testSubscriptionList}>Test Subscription List</Button>
-              <Button onClick={testNotificationList}>Test Notification List</Button>
-            </div>
-          </CardContent>
-        </Card>
-      </div>
-      
-      <Card>
-        <CardHeader>
-          <CardTitle>Last API Response</CardTitle>
-        </CardHeader>
-        <CardContent>
-          {lastResponse ? (
-            <pre className="bg-slate-100 p-4 rounded overflow-auto max-h-96">
-              {JSON.stringify(lastResponse, null, 2)}
-            </pre>
-          ) : (
-            <p>No API response yet. Click a test button above.</p>
-          )}
-        </CardContent>
-      </Card>
-    </div>
-  );
-}
-```
+export const DebugDashboard: React.FC = () => {
+  const { isAuthenticated, user, token } = useAuth();
+  const [apiLogs, setApiLogs] = useState<ApiLogEntry[]>([]);
+  const [isVisible, setIsVisible] = useState(false);
 
-### 2. API Request Logger Service
-
-Implement a global API request logger:
-
-```jsx
-// src/lib/api/logger.ts
-class ApiLogger {
-  private requests: Array<{
-    url: string;
-    method: string;
-    headers: Record<string, string>;
-    body?: any;
-    timestamp: Date;
-    duration?: number;
-    status?: number;
-    response?: any;
-    error?: any;
-  }> = [];
-  
-  private listeners: Array<(requests: any[]) => void> = [];
-  
-  logRequest(url: string, method: string, headers: Record<string, string>, body?: any) {
-    const request = {
-      url,
-      method,
-      headers: this.sanitizeHeaders(headers),
-      body,
-      timestamp: new Date(),
-    };
-    
-    const requestId = this.requests.length;
-    this.requests.push(request);
-    this.notifyListeners();
-    
-    return requestId;
-  }
-  
-  logResponse(requestId: number, status: number, response: any, duration: number) {
-    if (this.requests[requestId]) {
-      this.requests[requestId] = {
-        ...this.requests[requestId],
-        status,
-        response,
-        duration
-      };
-      
-      this.notifyListeners();
-    }
-  }
-  
-  logError(requestId: number, error: any, duration: number) {
-    if (this.requests[requestId]) {
-      this.requests[requestId] = {
-        ...this.requests[requestId],
-        error,
-        duration
-      };
-      
-      this.notifyListeners();
-    }
-  }
-  
-  getRequests() {
-    return [...this.requests];
-  }
-  
-  clearRequests() {
-    this.requests = [];
-    this.notifyListeners();
-  }
-  
-  subscribe(listener: (requests: any[]) => void) {
-    this.listeners.push(listener);
-    return () => {
-      this.listeners = this.listeners.filter(l => l !== listener);
-    };
-  }
-  
-  private notifyListeners() {
-    this.listeners.forEach(listener => listener([...this.requests]));
-  }
-  
-  private sanitizeHeaders(headers: Record<string, string>) {
-    const sanitized = {...headers};
-    // Mask sensitive values
-    if (sanitized.Authorization) {
-      sanitized.Authorization = 'Bearer ***';
-    }
-    return sanitized;
-  }
-}
-
-export const apiLogger = new ApiLogger();
-```
-
-### 3. Modify Backend Client to Use Logger
-
-Update the backend client to log all requests:
-
-```jsx
-// Modify in src/lib/api/clients/backend.ts
-import { apiLogger } from '../logger';
-
-export async function backendClient<T>({
-  endpoint,
-  method = 'GET',
-  body = undefined,
-  headers = {}
-}: RequestConfig): Promise<ApiResponse<T>> {
-  let retryCount = 0;
-  const maxRetries = 1;
-  
-  // Debug logging for request
-  console.group(`🌐 API Request: ${method} ${endpoint}`);
-  console.log('Request details:', { method, endpoint, headers: { ...headers, Authorization: headers.Authorization ? '***' : undefined } });
-  if (body) console.log('Request body:', typeof body === 'string' ? body.substring(0, 100) + '...' : body);
-  
-  // Log the request using our logger
-  const requestId = apiLogger.logRequest(
-    `${BACKEND_URL}${endpoint}`, 
-    method, 
-    headers as Record<string, string>, 
-    body
-  );
-  const startTime = Date.now();
-  
-  async function attemptRequest(): Promise<ApiResponse<T>> {
-    try {
-      // ... existing code ...
-      
-      // Log response
-      const duration = Date.now() - startTime;
-      apiLogger.logResponse(requestId, response.status, data, duration);
-      
-      // ... rest of existing code ...
-    } catch (error: any) {
-      // Log error
-      const duration = Date.now() - startTime;
-      apiLogger.logError(requestId, error, duration);
-      
-      // ... rest of existing code ...
-    }
-  }
-  
-  return attemptRequest();
-}
-```
-
-### 4. API Request Monitor Component
-
-Create a component to display API requests:
-
-```jsx
-// src/components/Debug/ApiMonitor.tsx
-import { useState, useEffect } from 'react';
-import { apiLogger } from '@/lib/api/logger';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { Button } from '@/components/ui/button';
-import { Badge } from '@/components/ui/badge';
-
-export function ApiMonitor() {
-  const [requests, setRequests] = useState([]);
-  const [selectedRequest, setSelectedRequest] = useState(null);
-  
   useEffect(() => {
-    const unsubscribe = apiLogger.subscribe(setRequests);
-    return unsubscribe;
+    // Listen for API communication events
+    const handleApiEvent = (event: CustomEvent) => {
+      setApiLogs(prev => [...prev, event.detail]);
+    };
+    
+    window.addEventListener('api-log', handleApiEvent as EventListener);
+    return () => window.removeEventListener('api-log', handleApiEvent as EventListener);
   }, []);
-  
-  const clearLogs = () => {
-    apiLogger.clearRequests();
-    setSelectedRequest(null);
-  };
-  
+
+  if (!isVisible) {
+    return (
+      <button className="debug-toggle" onClick={() => setIsVisible(true)}>
+        Show Debug Panel
+      </button>
+    );
+  }
+
   return (
-    <div className="space-y-4">
-      <div className="flex justify-between">
-        <h2 className="text-xl font-bold">API Request Monitor</h2>
-        <Button onClick={clearLogs} variant="outline" size="sm">Clear Logs</Button>
+    <div className="debug-dashboard">
+      <h2>API Debug Dashboard</h2>
+      <button onClick={() => setIsVisible(false)}>Close</button>
+      
+      <div className="auth-info">
+        <h3>Authentication</h3>
+        <div>Authenticated: {isAuthenticated ? 'Yes' : 'No'}</div>
+        <div>User ID: {user?.id || 'Not logged in'}</div>
+        <div>Token: {token ? `${token.substring(0, 10)}...` : 'None'}</div>
       </div>
       
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-        <Card>
-          <CardHeader>
-            <CardTitle>Recent Requests</CardTitle>
-          </CardHeader>
-          <CardContent>
-            <div className="space-y-2 max-h-80 overflow-auto">
-              {requests.length === 0 ? (
-                <p className="text-muted-foreground">No requests logged yet.</p>
-              ) : (
-                requests.map((req, idx) => (
-                  <div 
-                    key={idx} 
-                    className="p-2 border rounded cursor-pointer hover:bg-slate-50"
-                    onClick={() => setSelectedRequest(req)}
-                  >
-                    <div className="flex justify-between">
-                      <div className="font-mono">
-                        <Badge variant={req.status >= 400 ? "destructive" : req.status >= 300 ? "outline" : "default"}>
-                          {req.method}
-                        </Badge> {req.url.split('/').slice(3).join('/')}
-                      </div>
-                      <div className="text-slate-500 text-sm">
-                        {req.status ? req.status : req.error ? 'Error' : 'Pending'}
-                      </div>
-                    </div>
-                  </div>
-                ))
-              )}
-            </div>
-          </CardContent>
-        </Card>
-        
-        <Card>
-          <CardHeader>
-            <CardTitle>Request Details</CardTitle>
-          </CardHeader>
-          <CardContent>
-            {selectedRequest ? (
-              <div className="space-y-4">
-                <div>
-                  <h3 className="font-semibold">Request</h3>
-                  <pre className="bg-slate-100 p-2 rounded text-xs overflow-auto max-h-40">
-                    {JSON.stringify({
-                      url: selectedRequest.url,
-                      method: selectedRequest.method,
-                      headers: selectedRequest.headers,
-                      body: selectedRequest.body
-                    }, null, 2)}
-                  </pre>
-                </div>
-                
-                {(selectedRequest.response || selectedRequest.error) && (
-                  <div>
-                    <h3 className="font-semibold">
-                      {selectedRequest.error ? 'Error' : 'Response'}
-                    </h3>
-                    <pre className="bg-slate-100 p-2 rounded text-xs overflow-auto max-h-40">
-                      {JSON.stringify(
-                        selectedRequest.error || selectedRequest.response, 
-                        null, 
-                        2
-                      )}
-                    </pre>
-                  </div>
-                )}
-                
-                {selectedRequest.duration && (
-                  <p className="text-sm text-slate-500">
-                    Duration: {selectedRequest.duration}ms
-                  </p>
-                )}
-              </div>
-            ) : (
-              <p className="text-muted-foreground">
-                Select a request to view details.
-              </p>
-            )}
-          </CardContent>
-        </Card>
+      <div className="api-logs">
+        <h3>API Communication Logs</h3>
+        {apiLogs.map((log, i) => (
+          <div key={i} className={`log-entry ${log.isError ? 'error' : ''}`}>
+            <div className="log-method">{log.method}</div>
+            <div className="log-url">{log.url}</div>
+            <div className="log-status">{log.status}</div>
+            <button onClick={() => console.log('Full log:', log)}>
+              Details
+            </button>
+          </div>
+        ))}
       </div>
     </div>
   );
-}
+};
 ```
 
-### 5. Subscription Testing Component
-
-Create a component for testing subscription functionality:
-
-```jsx
-// src/components/Debug/SubscriptionTester.tsx
-import { useState } from 'react';
-import { Button } from '@/components/ui/button';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { backendClient } from '@/lib/api/clients/backend';
-import { Input } from '@/components/ui/input';
-import { Label } from '@/components/ui/label';
-
-export function SubscriptionTester() {
-  const [result, setResult] = useState(null);
-  const [loading, setLoading] = useState(false);
-  const [subscriptionId, setSubscriptionId] = useState('');
-  
-  const testCreateSubscription = async () => {
-    setLoading(true);
-    try {
-      // Minimal subscription data
-      const subscriptionData = {
-        name: "Test BOE Subscription",
-        type: "boe",
-        prompts: ["Ayuntamiento Barcelona licitaciones"],
-        frequency: "daily",
-      };
-      
-      const result = await backendClient({
-        endpoint: '/api/v1/subscriptions',
-        method: 'POST',
-        body: subscriptionData
-      });
-      
-      setResult(result);
-      
-      if (result.data?.id) {
-        setSubscriptionId(result.data.id);
-      }
-    } catch (error) {
-      setResult({ error });
-    } finally {
-      setLoading(false);
-    }
-  };
-  
-  const testProcessSubscription = async () => {
-    if (!subscriptionId) {
-      setResult({ error: 'Please enter a subscription ID or create a subscription first' });
-      return;
-    }
-    
-    setLoading(true);
-    try {
-      const result = await backendClient({
-        endpoint: `/api/v1/subscriptions/${subscriptionId}/process`,
-        method: 'POST'
-      });
-      
-      setResult(result);
-    } catch (error) {
-      setResult({ error });
-    } finally {
-      setLoading(false);
-    }
-  };
-  
-  const testDeleteSubscription = async () => {
-    if (!subscriptionId) {
-      setResult({ error: 'Please enter a subscription ID or create a subscription first' });
-      return;
-    }
-    
-    setLoading(true);
-    try {
-      const result = await backendClient({
-        endpoint: `/api/v1/subscriptions/${subscriptionId}`,
-        method: 'DELETE'
-      });
-      
-      setResult(result);
-      
-      if (result.ok) {
-        setSubscriptionId('');
-      }
-    } catch (error) {
-      setResult({ error });
-    } finally {
-      setLoading(false);
-    }
-  };
-  
-  return (
-    <div className="space-y-4">
-      <Card>
-        <CardHeader>
-          <CardTitle>Subscription Tester</CardTitle>
-        </CardHeader>
-        <CardContent className="space-y-4">
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-4 items-end">
-            <div className="col-span-3">
-              <Label htmlFor="subscription-id">Subscription ID</Label>
-              <Input 
-                id="subscription-id" 
-                value={subscriptionId} 
-                onChange={(e) => setSubscriptionId(e.target.value)}
-                placeholder="Enter subscription ID or create one"
-              />
-            </div>
-            <Button 
-              onClick={testCreateSubscription} 
-              disabled={loading}
-              className="w-full"
-            >
-              Create Subscription
-            </Button>
-          </div>
-          
-          <div className="grid grid-cols-2 gap-4">
-            <Button 
-              onClick={testProcessSubscription} 
-              disabled={loading || !subscriptionId}
-              variant="outline"
-            >
-              Process Subscription
-            </Button>
-            <Button 
-              onClick={testDeleteSubscription} 
-              disabled={loading || !subscriptionId}
-              variant="outline"
-            >
-              Delete Subscription
-            </Button>
-          </div>
-          
-          {result && (
-            <div className="mt-4">
-              <h3 className="font-semibold mb-2">Result:</h3>
-              <pre className="bg-slate-100 p-3 rounded overflow-auto max-h-60 text-xs">
-                {JSON.stringify(result, null, 2)}
-              </pre>
-            </div>
-          )}
-        </CardContent>
-      </Card>
-    </div>
-  );
-}
-```
-
-### 6. Notification Testing Component
-
-Create a component for testing notifications:
-
-```jsx
-// src/components/Debug/NotificationTester.tsx
-import { useState } from 'react';
-import { Button } from '@/components/ui/button';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { backendClient } from '@/lib/api/clients/backend';
-import { Input } from '@/components/ui/input';
-import { Label } from '@/components/ui/label';
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
-
-export function NotificationTester() {
-  const [result, setResult] = useState(null);
-  const [loading, setLoading] = useState(false);
-  const [subId, setSubId] = useState('');
-  const [endpoint, setEndpoint] = useState('/api/v1/notifications');
-  
-  const testEndpoints = [
-    '/api/v1/notifications',
-    '/api/notifications',
-  ];
-  
-  const testNotifications = async () => {
-    setLoading(true);
-    try {
-      const url = subId 
-        ? `${endpoint}?subscriptionId=${subId}`
-        : endpoint;
-        
-      const result = await backendClient({
-        endpoint: url,
-        method: 'GET',
-      });
-      
-      setResult(result);
-    } catch (error) {
-      setResult({ error });
-    } finally {
-      setLoading(false);
-    }
-  };
-  
-  return (
-    <div className="space-y-4">
-      <Card>
-        <CardHeader>
-          <CardTitle>Notification Tester</CardTitle>
-        </CardHeader>
-        <CardContent className="space-y-4">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 items-end">
-            <div>
-              <Label htmlFor="endpoint-select">API Endpoint</Label>
-              <Select 
-                value={endpoint} 
-                onValueChange={setEndpoint}
-              >
-                <SelectTrigger id="endpoint-select">
-                  <SelectValue placeholder="Select endpoint" />
-                </SelectTrigger>
-                <SelectContent>
-                  {testEndpoints.map(ep => (
-                    <SelectItem key={ep} value={ep}>{ep}</SelectItem>
-                  ))}
-                </SelectContent>
-              </Select>
-            </div>
-            <div>
-              <Label htmlFor="subscription-filter">Subscription ID (Optional)</Label>
-              <Input 
-                id="subscription-filter" 
-                value={subId} 
-                onChange={(e) => setSubId(e.target.value)}
-                placeholder="Filter by subscription ID"
-              />
-            </div>
-            <Button 
-              onClick={testNotifications} 
-              disabled={loading}
-              className="w-full"
-            >
-              Test Notifications
-            </Button>
-          </div>
-          
-          {result && (
-            <div className="mt-4">
-              <h3 className="font-semibold mb-2">Result:</h3>
-              <pre className="bg-slate-100 p-3 rounded overflow-auto max-h-60 text-xs">
-                {JSON.stringify(result, null, 2)}
-              </pre>
-            </div>
-          )}
-        </CardContent>
-      </Card>
-    </div>
-  );
-}
-```
-
-### 7. Header Analysis Component
-
-Create a component to test and visualize authentication headers:
-
-```jsx
-// src/components/Debug/HeaderAnalyzer.tsx
-import { useState } from 'react';
-import { Button } from '@/components/ui/button';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { AUTH_HEADER, USER_ID_HEADER, getAuthHeaders } from '@/lib/constants/headers';
-
-export function HeaderAnalyzer() {
-  const [headers, setHeaders] = useState(null);
-  
-  const analyzeHeaders = () => {
-    const accessToken = localStorage.getItem('accessToken');
-    const userId = localStorage.getItem('userId');
-    
-    // Get headers using the app's utility function
-    const authHeaders = getAuthHeaders(accessToken, userId);
-    
-    // Basic validation
-    const issues = [];
-    
-    if (!authHeaders[AUTH_HEADER]) {
-      issues.push('Missing Authorization header');
-    } else if (!authHeaders[AUTH_HEADER].startsWith('Bearer ')) {
-      issues.push('Authorization header missing "Bearer " prefix');
-    }
-    
-    if (!authHeaders[USER_ID_HEADER]) {
-      issues.push('Missing User ID header');
-    }
-    
-    // Display token info if available
-    let tokenInfo = null;
-    if (accessToken) {
-      try {
-        // Parse JWT if possible
-        const parts = accessToken.replace('Bearer ', '').split('.');
-        if (parts.length === 3) {
-          const payload = JSON.parse(atob(parts[1]));
-          tokenInfo = {
-            exp: payload.exp ? new Date(payload.exp * 1000).toISOString() : 'Not set',
-            sub: payload.sub || 'Not set',
-            expired: payload.exp ? (payload.exp * 1000 < Date.now()) : false
-          };
-        }
-      } catch (e) {
-        tokenInfo = { error: 'Could not parse token' };
-      }
-    }
-    
-    // Set analysis results
-    setHeaders({
-      authHeaders,
-      issues,
-      tokenInfo
-    });
-  };
-  
-  return (
-    <Card>
-      <CardHeader>
-        <CardTitle>Auth Header Analyzer</CardTitle>
-      </CardHeader>
-      <CardContent className="space-y-4">
-        <Button onClick={analyzeHeaders}>Analyze Headers</Button>
-        
-        {headers && (
-          <div className="space-y-4">
-            <div>
-              <h3 className="font-semibold mb-2">Headers:</h3>
-              <pre className="bg-slate-100 p-3 rounded text-xs">
-                {JSON.stringify(headers.authHeaders, null, 2)}
-              </pre>
-            </div>
-            
-            {headers.issues.length > 0 && (
-              <div>
-                <h3 className="font-semibold mb-2 text-red-500">Issues Found:</h3>
-                <ul className="list-disc pl-5 space-y-1">
-                  {headers.issues.map((issue, i) => (
-                    <li key={i} className="text-red-500">{issue}</li>
-                  ))}
-                </ul>
-              </div>
-            )}
-            
-            {headers.tokenInfo && (
-              <div>
-                <h3 className="font-semibold mb-2">Token Information:</h3>
-                <div className="bg-slate-100 p-3 rounded">
-                  {headers.tokenInfo.error ? (
-                    <p className="text-red-500">{headers.tokenInfo.error}</p>
-                  ) : (
-                    <div className="space-y-1">
-                      <p>Subject: {headers.tokenInfo.sub}</p>
-                      <p>Expires: {headers.tokenInfo.exp}</p>
-                      <p className={headers.tokenInfo.expired ? "text-red-500 font-bold" : ""}>
-                        Status: {headers.tokenInfo.expired ? "EXPIRED" : "Valid"}
-                      </p>
-                    </div>
-                  )}
-                </div>
-              </div>
-            )}
-          </div>
-        )}
-      </CardContent>
-    </Card>
-  );
-}
-```
-
-### 8. Enhanced Debug Page
-
-Update the debug page to include all the components:
-
-```jsx
-// src/pages/Debug.tsx (updated)
-import React from 'react';
-import { Tabs, TabsList, TabsTrigger, TabsContent } from '@/components/ui/tabs';
-import { ApiMonitor } from '@/components/Debug/ApiMonitor';
-import { SubscriptionTester } from '@/components/Debug/SubscriptionTester';
-import { NotificationTester } from '@/components/Debug/NotificationTester';
-import { HeaderAnalyzer } from '@/components/Debug/HeaderAnalyzer';
-
-export default function DebugDashboard() {
-  return (
-    <div className="container mx-auto py-10">
-      <h1 className="text-2xl font-bold mb-6">NIFYA API Debug Dashboard</h1>
-      
-      <Tabs defaultValue="monitor">
-        <TabsList className="mb-6">
-          <TabsTrigger value="monitor">API Monitor</TabsTrigger>
-          <TabsTrigger value="subscriptions">Subscriptions</TabsTrigger>
-          <TabsTrigger value="notifications">Notifications</TabsTrigger>
-          <TabsTrigger value="auth">Authentication</TabsTrigger>
-        </TabsList>
-        
-        <TabsContent value="monitor">
-          <ApiMonitor />
-        </TabsContent>
-        
-        <TabsContent value="subscriptions">
-          <SubscriptionTester />
-        </TabsContent>
-        
-        <TabsContent value="notifications">
-          <NotificationTester />
-        </TabsContent>
-        
-        <TabsContent value="auth">
-          <HeaderAnalyzer />
-        </TabsContent>
-      </Tabs>
-    </div>
-  );
-}
-```
-
-### 9. Backend Diagnostic Endpoints
-
-Create diagnostic endpoints on the backend server that can be called from the frontend debug dashboard:
+### 3. Mock API Server
 
 ```javascript
-// In the backend API server
-app.get('/api/diagnostics/health', (req, res) => {
-  res.json({
-    status: 'healthy',
-    time: new Date().toISOString(),
-    services: {
-      backend: { status: 'up' },
-      database: { status: 'up' },
-      auth: { status: 'up' }
-    }
-  });
-});
+// mock-api-server.js
+const express = require('express');
+const cors = require('cors');
+const bodyParser = require('body-parser');
+const delay = require('express-delay');
 
-app.get('/api/diagnostics/subscriptions/:id', async (req, res) => {
-  try {
-    const { id } = req.params;
-    
-    // Get subscription directly from database
-    const subscription = await db.subscriptions.findUnique({
-      where: { id }
-    });
-    
-    if (!subscription) {
-      return res.status(404).json({
-        status: 'error',
-        message: 'Subscription not found in database'
-      });
-    }
-    
-    // Return detailed information including raw DB record
+const app = express();
+
+// Middleware
+app.use(cors());
+app.use(bodyParser.json());
+
+// Configurable delay for response simulation
+app.use(delay(500)); // Default 500ms delay
+
+// Mock auth response
+app.post('/api/auth/login', (req, res) => {
+  const { email, password } = req.body;
+  
+  // Simple credential check
+  if (email === 'test@example.com' && password === 'password') {
     res.json({
-      status: 'success',
-      subscription,
-      // Add any additional diagnostic info
-      metadata: {
-        lastProcessed: subscription.processed_at || 'never',
-        totalNotifications: await db.notifications.count({
-          where: { subscriptionId: id }
-        })
+      ok: true,
+      status: 200,
+      data: {
+        token: 'mock-jwt-token-for-testing',
+        refreshToken: 'mock-refresh-token',
+        user: {
+          id: 'mock-user-id',
+          email: 'test@example.com',
+          name: 'Test User'
+        }
       }
     });
-  } catch (error) {
-    console.error('Diagnostic error:', error);
-    res.status(500).json({
-      status: 'error',
-      message: error.message,
-      stack: process.env.NODE_ENV === 'development' ? error.stack : undefined
+  } else {
+    res.status(401).json({
+      ok: false,
+      status: 401,
+      error: 'Invalid credentials'
     });
   }
 });
 
-app.get('/api/diagnostics/notifications/test-payload', (req, res) => {
-  // Return a sample notification payload for testing the frontend
+// Mock subscriptions endpoint
+app.get('/api/v1/subscriptions', (req, res) => {
   res.json({
-    id: 'test-notification-123',
-    title: 'Test Notification',
-    content: 'This is a test notification for debugging purposes.',
-    created_at: new Date().toISOString(),
-    subscription_id: req.query.subscriptionId || 'test-subscription-123',
-    read: false,
-    entity_type: 'boe_document',
+    ok: true,
+    status: 200,
     data: {
-      document_id: 'BOE-A-2023-12345',
-      summary: 'Test document summary',
-      url: 'https://boe.es/test-document'
+      subscriptions: [
+        {
+          id: 'mock-sub-1',
+          name: 'Test Subscription',
+          description: 'This is a mock subscription',
+          prompts: ['test prompt'],
+          logo: 'https://example.com/logo.png',
+          frequency: 'daily',
+          active: true,
+          createdAt: new Date().toISOString(),
+          updatedAt: new Date().toISOString()
+        }
+      ]
     }
+  });
+});
+
+// Error endpoint for testing error handling
+app.get('/api/error-test', (req, res) => {
+  const errorType = req.query.type;
+  
+  switch (errorType) {
+    case 'timeout':
+      // Don't respond to simulate timeout
+      break;
+    case 'network':
+      res.destroy();
+      break;
+    case '401':
+      res.status(401).json({
+        ok: false,
+        status: 401,
+        error: 'Unauthorized',
+        message: 'Invalid token'
+      });
+      break;
+    case '500':
+      res.status(500).json({
+        ok: false,
+        status: 500,
+        error: 'Internal Server Error',
+        message: 'Something went wrong'
+      });
+      break;
+    default:
+      res.status(400).json({
+        ok: false,
+        status: 400,
+        error: 'Bad Request',
+        message: 'Invalid test type'
+      });
+  }
+});
+
+// Start the server
+const PORT = process.env.PORT || 3030;
+app.listen(PORT, () => {
+  console.log(`Mock API server running on port ${PORT}`);
+});
+```
+
+### 4. API Testing Utilities
+
+```typescript
+// api-test-utils.ts
+import { ApiResponse } from '../lib/api/types';
+
+export interface RequestCapture {
+  url: string;
+  method: string;
+  headers: Record<string, string>;
+  body?: any;
+}
+
+export interface ResponseCapture {
+  status: number;
+  body: any;
+  headers: Record<string, string>;
+}
+
+export interface ApiCapture {
+  request: RequestCapture;
+  response: ResponseCapture;
+  timestamp: number;
+  duration: number;
+}
+
+// Global store for captured API interactions
+const apiStore: ApiCapture[] = [];
+
+// Mock fetch for testing
+export function setupFetchMock(
+  responseMap: Record<string, ApiResponse<any>> = {}
+) {
+  const originalFetch = window.fetch;
+  
+  window.fetch = jest.fn(async (url, options) => {
+    const startTime = Date.now();
+    const method = options?.method || 'GET';
+    const key = `${method}:${url.toString()}`;
+    
+    // Capture request
+    const requestCapture: RequestCapture = {
+      url: url.toString(),
+      method,
+      headers: options?.headers as Record<string, string> || {},
+      body: options?.body ? JSON.parse(options.body as string) : undefined
+    };
+    
+    // Get mock response or use default
+    const mockResponse = responseMap[key] || {
+      ok: true,
+      status: 200,
+      data: { message: 'Default mock response' }
+    };
+    
+    // Create response object
+    const response = {
+      ok: mockResponse.ok !== false,
+      status: mockResponse.status || 200,
+      headers: new Headers({ 'Content-Type': 'application/json' }),
+      json: async () => mockResponse
+    };
+    
+    // Capture response
+    const responseCapture: ResponseCapture = {
+      status: response.status,
+      body: mockResponse,
+      headers: { 'Content-Type': 'application/json' }
+    };
+    
+    // Store capture
+    apiStore.push({
+      request: requestCapture,
+      response: responseCapture,
+      timestamp: startTime,
+      duration: Date.now() - startTime
+    });
+    
+    return response as Response;
+  });
+  
+  // Helper to restore original fetch
+  return {
+    restore: () => {
+      window.fetch = originalFetch;
+    },
+    getCapturedRequests: () => [...apiStore]
+  };
+}
+
+// Validate a request against expected schema
+export function validateRequest(
+  captured: RequestCapture,
+  expected: Partial<RequestCapture>
+): boolean {
+  // Validate URL
+  if (expected.url && captured.url !== expected.url) {
+    console.error(`URL mismatch: ${captured.url} vs ${expected.url}`);
+    return false;
+  }
+  
+  // Validate method
+  if (expected.method && captured.method !== expected.method) {
+    console.error(`Method mismatch: ${captured.method} vs ${expected.method}`);
+    return false;
+  }
+  
+  // Validate headers
+  if (expected.headers) {
+    for (const [key, value] of Object.entries(expected.headers)) {
+      if (captured.headers[key] !== value) {
+        console.error(`Header "${key}" mismatch: ${captured.headers[key]} vs ${value}`);
+        return false;
+      }
+    }
+  }
+  
+  // Validate body if expected body is provided
+  if (expected.body) {
+    if (!captured.body) {
+      console.error('Expected body but none was captured');
+      return false;
+    }
+    
+    // We'll do a simple check here, but you could implement a more complex validation
+    const expectedKeys = Object.keys(expected.body);
+    for (const key of expectedKeys) {
+      if (captured.body[key] !== expected.body[key]) {
+        console.error(`Body field "${key}" mismatch: ${captured.body[key]} vs ${expected.body[key]}`);
+        return false;
+      }
+    }
+  }
+  
+  return true;
+}
+```
+
+## Testing Scripts
+
+### 1. Test API Authentication Flow
+
+```typescript
+// test-auth-flow.ts
+import { setupFetchMock, validateRequest } from './api-test-utils';
+import { authService } from '../src/lib/api/services/auth';
+
+describe('Authentication Flow', () => {
+  let fetchMock;
+  
+  beforeEach(() => {
+    // Setup mock fetch
+    fetchMock = setupFetchMock({
+      'POST:/api/auth/login': {
+        status: 200,
+        ok: true,
+        data: {
+          token: 'test-token',
+          refreshToken: 'test-refresh-token',
+          user: { id: 'test-user', email: 'test@example.com' }
+        }
+      },
+      'POST:/api/auth/refresh': {
+        status: 200,
+        ok: true,
+        data: {
+          token: 'new-test-token',
+          refreshToken: 'new-refresh-token'
+        }
+      },
+      'POST:/api/auth/logout': {
+        status: 200,
+        ok: true,
+        data: { message: 'Logged out successfully' }
+      }
+    });
+    
+    // Clear storage
+    localStorage.clear();
+  });
+  
+  afterEach(() => {
+    fetchMock.restore();
+    localStorage.clear();
+  });
+  
+  test('Login flow sends correct request format', async () => {
+    await authService.login({
+      email: 'test@example.com',
+      password: 'password123'
+    });
+    
+    const requests = fetchMock.getCapturedRequests();
+    const loginRequest = requests[0];
+    
+    expect(validateRequest(loginRequest.request, {
+      url: '/api/auth/login',
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: {
+        email: 'test@example.com',
+        password: 'password123'
+      }
+    })).toBe(true);
+  });
+  
+  test('Login success stores tokens correctly', async () => {
+    await authService.login({
+      email: 'test@example.com',
+      password: 'password123'
+    });
+    
+    expect(localStorage.getItem('accessToken')).toBe('test-token');
+    expect(localStorage.getItem('refreshToken')).toBe('test-refresh-token');
+    expect(localStorage.getItem('isAuthenticated')).toBe('true');
+  });
+  
+  test('Token refresh flow works correctly', async () => {
+    // Setup initial tokens
+    localStorage.setItem('accessToken', 'old-token');
+    localStorage.setItem('refreshToken', 'old-refresh-token');
+    localStorage.setItem('isAuthenticated', 'true');
+    
+    await authService.refreshToken();
+    
+    const requests = fetchMock.getCapturedRequests();
+    const refreshRequest = requests[0];
+    
+    expect(validateRequest(refreshRequest.request, {
+      url: '/api/auth/refresh',
+      method: 'POST',
+      body: { refreshToken: 'old-refresh-token' }
+    })).toBe(true);
+    
+    expect(localStorage.getItem('accessToken')).toBe('new-test-token');
+    expect(localStorage.getItem('refreshToken')).toBe('new-refresh-token');
+    expect(localStorage.getItem('isAuthenticated')).toBe('true');
   });
 });
 ```
 
-## Implementation Steps
+### 2. Test Subscription API Interactions
 
-1. **Create the core logger service**:
-   - Implement the `ApiLogger` class
-   - Modify the backend client to use it
+```typescript
+// test-subscription-api.ts
+import { setupFetchMock, validateRequest } from './api-test-utils';
+import { subscriptionService } from '../src/lib/api/services/subscriptions';
 
-2. **Create Debug components**:
-   - Implement API Monitor component
-   - Build Subscription Tester
-   - Develop Notification Tester
-   - Create Header Analyzer
+describe('Subscription API Interactions', () => {
+  let fetchMock;
+  
+  beforeEach(() => {
+    // Setup mock fetch
+    fetchMock = setupFetchMock({
+      'GET:/api/v1/subscriptions': {
+        status: 200,
+        ok: true,
+        data: {
+          subscriptions: [
+            {
+              id: 'sub-1',
+              name: 'Test Subscription',
+              description: 'Test description',
+              prompts: ['Test prompt'],
+              logo: 'test-logo.png',
+              frequency: 'daily',
+              active: true,
+              createdAt: '2025-01-01T00:00:00.000Z',
+              updatedAt: '2025-01-01T00:00:00.000Z'
+            }
+          ]
+        }
+      },
+      'POST:/api/v1/subscriptions': {
+        status: 201,
+        ok: true,
+        data: {
+          subscription: {
+            id: 'new-sub-id',
+            name: 'New Subscription',
+            description: 'New description',
+            prompts: ['New prompt'],
+            logo: 'new-logo.png',
+            frequency: 'immediate',
+            active: true,
+            createdAt: '2025-01-01T00:00:00.000Z',
+            updatedAt: '2025-01-01T00:00:00.000Z'
+          }
+        }
+      }
+    });
+    
+    // Setup auth token
+    localStorage.setItem('accessToken', 'test-token');
+  });
+  
+  afterEach(() => {
+    fetchMock.restore();
+    localStorage.clear();
+  });
+  
+  test('List subscriptions sends correct request', async () => {
+    await subscriptionService.list();
+    
+    const requests = fetchMock.getCapturedRequests();
+    const listRequest = requests[0];
+    
+    expect(validateRequest(listRequest.request, {
+      url: '/api/v1/subscriptions',
+      method: 'GET',
+      headers: {
+        'Authorization': 'Bearer test-token'
+      }
+    })).toBe(true);
+  });
+  
+  test('Create subscription sends correct request format', async () => {
+    const newSubscription = {
+      name: 'New Subscription',
+      description: 'New description',
+      prompts: ['New prompt'],
+      logo: 'new-logo.png',
+      frequency: 'immediate',
+      type: 'test',
+      active: true
+    };
+    
+    await subscriptionService.create(newSubscription);
+    
+    const requests = fetchMock.getCapturedRequests();
+    const createRequest = requests[0];
+    
+    expect(validateRequest(createRequest.request, {
+      url: '/api/v1/subscriptions',
+      method: 'POST',
+      headers: {
+        'Authorization': 'Bearer test-token',
+        'Content-Type': 'application/json'
+      },
+      body: newSubscription
+    })).toBe(true);
+  });
+  
+  test('Create subscription validates input before sending', async () => {
+    const invalidSubscription = {
+      // Missing required name field
+      description: 'Invalid subscription'
+    };
+    
+    const result = await subscriptionService.create(invalidSubscription as any);
+    
+    // Should fail validation
+    expect(result.ok).toBe(false);
+    expect(result.status).toBe(400);
+    
+    // No request should have been sent
+    const requests = fetchMock.getCapturedRequests();
+    expect(requests.length).toBe(0);
+  });
+});
+```
 
-3. **Add Debug Route**:
-   - Add route to application router
-   - Create debug-focused layout
+## Integration with Existing Backend Tests
 
-4. **Add Backend Diagnostics**:
-   - Implement diagnostic endpoints
-   - Create test fixtures
+The frontend testing platform can seamlessly integrate with the backend tests we've already created:
 
-## Expected Outcomes
+1. **Shared Test Data**
+   - Use the same test data in both frontend and backend tests
+   - Test exact request/response formats that match each other
 
-By implementing this testing approach, we expect to:
+2. **End-to-End API Flow Tests**
+   - Test complete frontend-to-backend flows
+   - Validate complete request/response cycles
 
-1. **Identify Authentication Issues**:
-   - Token formatting problems
-   - Missing or incorrect headers
-   - Expiration-related issues
+3. **Coordinated Test Runs**
+   - Run frontend and backend tests in sequence
+   - Verify full system functionality
 
-2. **Pinpoint API Communication Failures**:
-   - Request format errors
-   - Response parsing problems
-   - Endpoint mismatches
-
-3. **Isolate Database Issues**:
-   - Schema mismatches
-   - JSON format handling problems
-   - Missing columns
-
-## Usage Guide
-
-1. **For Developers**:
-   - Navigate to `/debug` route in the deployed frontend
-   - Use the API Monitor to watch real-time requests/responses
-   - Test specific endpoints with the domain-specific testers
-   - Analyze auth headers for format issues
-
-2. **For QA Testing**:
-   - Use the subscription tester to verify end-to-end flow
-   - Check notification delivery through the notification tester
-   - Validate proper header/auth setup with the header analyzer
-
-3. **For Automated Testing**:
-   - Use the diagnostic endpoints for automated health checks
-   - Export logs for CI/CD pipeline analysis
-
-## Conclusion
-
-This implementation plan provides a comprehensive approach to testing frontend-backend communication in the NIFYA platform. By focusing on real-time monitoring, component-specific testing, and diagnostic tools, we can quickly identify and resolve issues in the communication layer.
-
-The modular approach allows for easy maintenance and extension, while providing both developers and testers with the tools they need to ensure robust integration between frontend and backend components.
+This approach ensures we catch issues at the integration point between frontend and backend, which is where many real-world problems occur.

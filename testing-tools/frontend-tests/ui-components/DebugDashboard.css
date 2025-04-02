@@ -1,0 +1,511 @@
+/* Debug Dashboard Styles */
+
+/* Toggle button when minimized */
+.debug-dashboard-toggle {
+  position: fixed;
+  z-index: 10000;
+}
+
+.debug-dashboard-toggle.bottom-right {
+  bottom: 20px;
+  right: 20px;
+}
+
+.debug-dashboard-toggle.bottom-left {
+  bottom: 20px;
+  left: 20px;
+}
+
+.debug-dashboard-toggle.top-right {
+  top: 20px;
+  right: 20px;
+}
+
+.debug-dashboard-toggle.top-left {
+  top: 20px;
+  left: 20px;
+}
+
+.debug-dashboard-toggle button {
+  background-color: #2563eb;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  padding: 8px 16px;
+  font-size: 14px;
+  cursor: pointer;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.2s;
+}
+
+.debug-dashboard-toggle button:hover {
+  background-color: #1d4ed8;
+}
+
+/* Main dashboard container */
+.debug-dashboard {
+  position: fixed;
+  z-index: 10000;
+  background-color: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+  width: 90%;
+  max-width: 1200px;
+  max-height: 80vh;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  color: #1e293b;
+  font-size: 14px;
+}
+
+/* Dashboard positioning */
+.debug-dashboard.bottom-right {
+  bottom: 20px;
+  right: 20px;
+}
+
+.debug-dashboard.bottom-left {
+  bottom: 20px;
+  left: 20px;
+}
+
+.debug-dashboard.top-right {
+  top: 20px;
+  right: 20px;
+}
+
+.debug-dashboard.top-left {
+  top: 20px;
+  left: 20px;
+}
+
+/* Header */
+.debug-dashboard-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 16px;
+  background-color: #f8fafc;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.debug-dashboard-header h2 {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 600;
+  color: #0f172a;
+}
+
+.debug-dashboard-actions {
+  display: flex;
+  gap: 8px;
+}
+
+.debug-dashboard-actions button {
+  background-color: #e2e8f0;
+  color: #475569;
+  border: none;
+  border-radius: 4px;
+  padding: 6px 12px;
+  font-size: 12px;
+  cursor: pointer;
+}
+
+.debug-dashboard-actions button:hover {
+  background-color: #cbd5e1;
+}
+
+/* Tabs */
+.debug-dashboard-tabs {
+  display: flex;
+  background-color: #f1f5f9;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.debug-dashboard-tabs button {
+  flex: 1;
+  background: none;
+  border: none;
+  padding: 10px;
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  color: #64748b;
+  transition: all 0.2s;
+}
+
+.debug-dashboard-tabs button:hover {
+  background-color: #e2e8f0;
+  color: #0f172a;
+}
+
+.debug-dashboard-tabs button.active {
+  background-color: #ffffff;
+  color: #2563eb;
+  border-bottom: 2px solid #2563eb;
+}
+
+/* Main content */
+.debug-dashboard-content {
+  flex: 1;
+  overflow: auto;
+  height: 100%;
+}
+
+/* Requests tab */
+.requests-tab {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.filters {
+  display: flex;
+  padding: 12px;
+  gap: 8px;
+  background-color: #f8fafc;
+  border-bottom: 1px solid #e2e8f0;
+  flex-wrap: wrap;
+}
+
+.filters input,
+.filters select {
+  padding: 6px 10px;
+  border: 1px solid #cbd5e1;
+  border-radius: 4px;
+  font-size: 13px;
+}
+
+.filters input {
+  flex: 1;
+  min-width: 150px;
+}
+
+.filters label {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 13px;
+}
+
+/* Logs container */
+.logs-container {
+  display: flex;
+  flex: 1;
+  overflow: hidden;
+  height: 100%;
+}
+
+.logs-list {
+  flex: 1;
+  overflow-y: auto;
+  border-right: 1px solid #e2e8f0;
+  max-height: 60vh;
+}
+
+.no-logs {
+  padding: 20px;
+  text-align: center;
+  color: #94a3b8;
+}
+
+.log-entry {
+  display: flex;
+  padding: 10px 12px;
+  border-bottom: 1px solid #f1f5f9;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  font-size: 13px;
+}
+
+.log-entry:hover {
+  background-color: #f1f5f9;
+}
+
+.log-entry.error {
+  background-color: #fee2e2;
+}
+
+.log-entry.error:hover {
+  background-color: #fecaca;
+}
+
+.log-entry.selected {
+  background-color: #dbeafe;
+}
+
+.log-entry.selected:hover {
+  background-color: #bfdbfe;
+}
+
+.log-entry .log-method {
+  font-weight: 500;
+  min-width: 60px;
+}
+
+.log-entry .log-url {
+  flex: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.log-entry .log-status {
+  min-width: 40px;
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+.log-entry .log-time {
+  min-width: 60px;
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+  color: #64748b;
+}
+
+/* Log details */
+.log-details {
+  flex: 1;
+  overflow-y: auto;
+  padding: 16px;
+  max-height: 60vh;
+}
+
+.log-details h3 {
+  margin-top: 0;
+  margin-bottom: 16px;
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.detail-section {
+  margin-bottom: 16px;
+  padding: 12px;
+  background-color: #f8fafc;
+  border-radius: 6px;
+  border-left: 3px solid #e2e8f0;
+}
+
+.detail-section.error {
+  background-color: #fee2e2;
+  border-left-color: #ef4444;
+}
+
+.detail-section h4 {
+  margin-top: 0;
+  margin-bottom: 8px;
+  font-size: 13px;
+  font-weight: 600;
+  color: #475569;
+}
+
+.detail-header {
+  margin-bottom: 8px;
+  font-size: 14px;
+  word-break: break-all;
+}
+
+.detail-status {
+  font-size: 13px;
+  margin-bottom: 4px;
+}
+
+.detail-time {
+  font-size: 13px;
+  color: #64748b;
+}
+
+.error-badge {
+  background-color: #ef4444;
+  color: white;
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-size: 11px;
+  font-weight: 500;
+  margin-left: 8px;
+}
+
+.duration-badge {
+  background-color: #475569;
+  color: white;
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-size: 11px;
+  font-weight: 500;
+  margin-left: 8px;
+}
+
+.detail-section pre {
+  margin: 0;
+  padding: 8px;
+  background-color: #ffffff;
+  border-radius: 4px;
+  overflow: auto;
+  font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
+  font-size: 12px;
+  max-height: 200px;
+}
+
+/* Auth tab */
+.auth-tab {
+  padding: 16px;
+}
+
+.auth-status {
+  margin-bottom: 20px;
+}
+
+.auth-status h3 {
+  margin-top: 0;
+  margin-bottom: 10px;
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.status-badge {
+  display: inline-block;
+  padding: 6px 10px;
+  border-radius: 4px;
+  font-weight: 500;
+  font-size: 13px;
+}
+
+.auth-status .status-badge {
+  background-color: #f0fdf4;
+  color: #15803d;
+  border: 1px solid #86efac;
+}
+
+.auth-detail {
+  margin-bottom: 14px;
+  font-size: 13px;
+}
+
+.token-display {
+  background-color: #f8fafc;
+  padding: 8px;
+  border-radius: 4px;
+  font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
+  font-size: 12px;
+  margin-top: 4px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.token-display button {
+  background-color: #e2e8f0;
+  color: #475569;
+  border: none;
+  border-radius: 4px;
+  padding: 4px 8px;
+  font-size: 11px;
+  cursor: pointer;
+}
+
+.token-display button:hover {
+  background-color: #cbd5e1;
+}
+
+.auth-storage {
+  margin-top: 20px;
+}
+
+.auth-storage h4 {
+  margin-top: 0;
+  margin-bottom: 10px;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.auth-storage ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  background-color: #f8fafc;
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+.auth-storage li {
+  padding: 8px 12px;
+  border-bottom: 1px solid #e2e8f0;
+  font-size: 12px;
+  word-break: break-all;
+}
+
+.auth-storage li:last-child {
+  border-bottom: none;
+}
+
+.auth-actions {
+  margin-top: 20px;
+}
+
+.auth-actions button {
+  background-color: #ef4444;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  padding: 8px 12px;
+  font-size: 13px;
+  cursor: pointer;
+}
+
+.auth-actions button:hover {
+  background-color: #dc2626;
+}
+
+/* Settings tab */
+.settings-tab {
+  padding: 16px;
+}
+
+.settings-tab h3 {
+  margin-top: 0;
+  margin-bottom: 16px;
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.setting-section {
+  margin-bottom: 20px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.setting-section:last-child {
+  border-bottom: none;
+}
+
+.setting-section h4 {
+  margin-top: 0;
+  margin-bottom: 10px;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.setting-section select {
+  padding: 6px 10px;
+  border: 1px solid #cbd5e1;
+  border-radius: 4px;
+  font-size: 13px;
+  width: 100%;
+  max-width: 300px;
+}
+
+.setting-section button {
+  background-color: #2563eb;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  padding: 8px 12px;
+  font-size: 13px;
+  cursor: pointer;
+}
+
+.setting-section button:hover {
+  background-color: #1d4ed8;
+}

@@ -1,1 +1,1 @@
-{"error":"MISSING_HEADERS","message":"Invalid Authorization header format. Must be: Bearer <token>","status":401,"details":{},"timestamp":"2025-04-02T09:08:48.487Z"}
+{"error":"MISSING_HEADERS","message":"Invalid Authorization header format. Must be: Bearer <token>","status":401,"details":{},"timestamp":"2025-04-02T10:12:30.168Z"}
