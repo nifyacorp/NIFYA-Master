@@ -1,84 +1,112 @@
-# NIFYA Testing Tools
+# NIFYA Testing Toolkit
 
-This module provides structured testing tools for the NIFYA platform. It offers comprehensive testing, debugging, and analysis capabilities for all NIFYA components.
+A comprehensive suite of tools for testing the NIFYA platform, including backend API tests, frontend communication tests, and end-to-end test flows.
+
+## Overview
+
+This testing toolkit provides tools and scripts to help identify and diagnose issues in both the frontend and backend components of the NIFYA platform. It focuses on:
+
+- **Backend API Testing**: Verify endpoints, authentication, and data operations
+- **Frontend Communication**: Monitor and analyze API requests between frontend and backend
+- **End-to-End Testing**: Test complete user flows from frontend to backend
 
 ## Directory Structure
 
 ```
-/testing-tools/
-├── config/              # Configuration files
-├── core/                # Core utilities
-├── tests/               # Test scripts organized by domain
-├── utils/               # Helper utilities
-├── docs/                # Documentation and guides
-└── outputs/             # Test outputs
+testing-tools/
+├── config/               # Configuration files
+├── core/                 # Core utilities
+│   ├── api-client.js     # API request client
+│   └── logger.js         # Structured logging
+├── docs/                 # Documentation
+│   ├── TEST-GUIDE.md     # Comprehensive testing guide
+│   └── backend-endpoints-reference.md # API endpoint reference
+├── frontend-tests/       # Frontend testing tools
+│   ├── api-monitor/      # API request monitoring tools
+│   ├── mock-server/      # API proxy server
+│   ├── network-validation/ # Request/response validation
+│   └── ui-components/    # Debug UI components
+├── outputs/              # Test outputs and logs
+│   ├── comprehensive-tests/ # Full test run results
+│   ├── frontend-logs/    # Frontend request logs
+│   ├── logs/             # Detailed test logs
+│   └── reports/          # Test reports and summaries
+├── tests/                # Test scripts
+│   ├── admin/            # Administrative tests
+│   ├── auth/             # Authentication tests
+│   ├── health/           # Health check tests
+│   ├── notifications/    # Notification tests
+│   ├── subscriptions/    # Subscription tests
+│   └── user-journeys/    # End-to-end user flows
+└── utils/                # Testing utilities
 ```
 
 ## Getting Started
 
-To run the tests:
+### Installation
 
 ```bash
-cd testing-tools
+# Clone the repository (if not already done)
+git clone https://github.com/yourusername/NIFYA-Master.git
+cd NIFYA-Master/testing-tools
 
-# Run individual test
-node tests/auth/login.js
-
-# Run test suite
-node utils/test-runner.js all
-
-# Run specific domain tests
-node utils/test-runner.js subscriptions
+# Install dependencies
+npm install
 ```
 
-## Core Features
+### Running Backend Tests
 
-- **Authentication Testing**: Test login, token management, and session handling
-- **Subscription Testing**: Verify subscription creation, processing, and status
-- **Notification Testing**: Test notification delivery and formatting
-- **API Endpoint Analysis**: Map and test all available endpoints
-- **User Journey Simulation**: Test complete user flows
-- **Pipeline Analysis**: Analyze data flow between services
+```bash
+# Run all tests and generate a comprehensive report
+node run-all-tests.js
 
-## Usage Examples
-
-### Authentication Testing
-
-```javascript
-// Test login and store token
+# Run specific test
 node tests/auth/login.js
 ```
 
-### Subscription Testing
+### Using Frontend Testing Tools
 
-```javascript
-// Create and process a subscription
-node tests/subscriptions/create-and-process.js
+```bash
+# Start the API proxy server for frontend testing
+cd frontend-tests
+node mock-server/mock-api-server.js
 ```
 
-### Notification Testing
+For detailed instructions on using these tools, please see [Testing Guide](docs/TEST-GUIDE.md).
 
-```javascript
-// Poll for notifications
-node tests/notifications/poll.js
-```
+## Key Features
 
-### Full User Journey
+### Backend Testing
 
-```javascript
-// Run complete user journey test
-node tests/user-journeys/standard-flow.js
-```
+- **API Endpoint Tests**: Verify authentication, subscriptions, notifications, and diagnostics endpoints
+- **Error Case Testing**: Test how the API handles invalid inputs and error conditions
+- **Comprehensive Reports**: Detailed test results and analysis
+
+### Frontend Testing
+
+- **API Communication Monitoring**: Track and log all API requests and responses
+- **Debug Dashboard**: Real-time visualization of API interactions
+- **Request Validation**: Verify correct formatting of API requests from frontend
+
+### End-to-End Testing
+
+- **User Journey Tests**: Simulate complete user flows from login to using various features
+- **Integration Verification**: Ensure frontend and backend work together correctly
 
 ## Documentation
 
-For detailed documentation, see the `docs/` directory:
+- [Testing Guide](docs/TEST-GUIDE.md): Comprehensive guide to using all testing tools
+- [Backend Endpoints Reference](docs/backend-endpoints-reference.md): Reference documentation for all backend API endpoints
 
-- [Testing Guide](docs/TESTING-GUIDE.md)
-- [Backend Endpoints Reference](docs/backend-endpoints-reference.md)
-- [Notification Pipeline Analysis](docs/findings/NOTIFICATION-PIPELINE-CONCLUSIONS.md)
-- [API Endpoint Map](docs/findings/API-ENDPOINT-MAP.md)
+## Contributing
 
-## Security
+When adding new tests or tools to this repository:
 
-These scripts store auth tokens and other sensitive data in the `outputs/` directory. Ensure these are not committed to version control.
+1. Follow the existing directory structure
+2. Update the documentation to reflect your changes
+3. Ensure all test outputs are properly structured and logged
+4. Make sure your code follows the project's coding standards
+
+## License
+
+Copyright © 2025 NIFYA Team

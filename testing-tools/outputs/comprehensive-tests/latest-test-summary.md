@@ -1,6 +1,6 @@
 # NIFYA Comprehensive Test Results
 
-Test run completed at: 2025-04-02T10:11:02.699Z
+Test run completed at: 2025-04-02T10:32:56.720Z
 
 ## Summary
 
@@ -57,9 +57,9 @@ Test run completed at: 2025-04-02T10:11:02.699Z
 <details><summary>Output Log (Click to expand)</summary>
 
 ```
-[36m[2025-04-02T10:11:02.742Z] [INFO] Starting test login...[0m
-[32m[2025-04-02T10:11:03.321Z] [SUCCESS] Authentication successful! Token saved (first 10 chars): eyJhbGciOi...[0m
-[36m[2025-04-02T10:11:03.325Z] [INFO] Test login completed successfully[0m
+[36m[2025-04-02T10:32:56.763Z] [INFO] Starting test login...[0m
+[32m[2025-04-02T10:33:00.982Z] [SUCCESS] Authentication successful! Token saved (first 10 chars): eyJhbGciOi...[0m
+[36m[2025-04-02T10:33:00.986Z] [INFO] Test login completed successfully[0m
 ```
 
 </details>
@@ -73,10 +73,10 @@ Test run completed at: 2025-04-02T10:11:02.699Z
 <details><summary>Output Log (Click to expand)</summary>
 
 ```
-[36m[2025-04-02T10:11:03.368Z] [INFO] Starting health check test[0m
-[32m[2025-04-02T10:11:03.615Z] [SUCCESS] Health check successful:
-[32m[2025-04-02T10:11:03.620Z] [SUCCESS] Database connection verified[0m
-[36m[2025-04-02T10:11:03.622Z] [INFO] Health check test completed successfully[0m
+[36m[2025-04-02T10:33:01.034Z] [INFO] Starting health check test[0m
+[32m[2025-04-02T10:33:01.393Z] [SUCCESS] Health check successful:
+[32m[2025-04-02T10:33:01.397Z] [SUCCESS] Database connection verified[0m
+[36m[2025-04-02T10:33:01.406Z] [INFO] Health check test completed successfully[0m
 ```
 
 </details>
@@ -106,11 +106,11 @@ Test run completed at: 2025-04-02T10:11:02.699Z
 <details><summary>Output Log (Click to expand)</summary>
 
 ```
-[36m[2025-04-02T10:11:04.253Z] [INFO] Starting subscription creation with explicit user_id test[0m
-[36m[2025-04-02T10:11:04.257Z] [INFO] Creating subscription with user_id: backend-415554190254.us-central1.run.app/api/v1/subscriptions
-[31m[2025-04-02T10:11:04.758Z] [ERROR] Subscription creation failed with status code 500
-[31m[2025-04-02T10:11:04.767Z] [ERROR] Test user-id-create-subscription: FAILED
-[32m[2025-04-02T10:11:04.771Z] [SUCCESS] Subscription creation with user_id test completed[0m
+[36m[2025-04-02T10:33:02.053Z] [INFO] Starting subscription creation with explicit user_id test[0m
+[36m[2025-04-02T10:33:02.056Z] [INFO] Creating subscription with user_id: backend-415554190254.us-central1.run.app/api/v1/subscriptions
+[31m[2025-04-02T10:33:02.347Z] [ERROR] Subscription creation failed with status code 500
+[31m[2025-04-02T10:33:02.350Z] [ERROR] Test user-id-create-subscription: FAILED
+[32m[2025-04-02T10:33:02.352Z] [SUCCESS] Subscription creation with user_id test completed[0m
 ```
 
 </details>
@@ -132,11 +132,11 @@ Test run completed at: 2025-04-02T10:11:02.699Z
 <details><summary>Output Log (Click to expand)</summary>
 
 ```
-[36m[2025-04-02T10:11:52.180Z] [INFO] Starting notifications by entity test[0m
-[36m[2025-04-02T10:11:52.183Z] [INFO] Testing notifications for entity type: subscription, with entityId param[0m
-[33m[2025-04-02T10:11:52.443Z] [WARN] Received 200 status but data is not in expected format[0m
-[32m[2025-04-02T10:11:52.446Z] [SUCCESS] Test notifications-by-entity: PASSED but with unexpected format
-[32m[2025-04-02T10:11:52.448Z] [SUCCESS] Notifications by entity test completed[0m
+[36m[2025-04-02T10:33:49.539Z] [INFO] Starting notifications by entity test[0m
+[36m[2025-04-02T10:33:49.543Z] [INFO] Testing notifications for entity type: subscription, with entityId param[0m
+[33m[2025-04-02T10:33:49.822Z] [WARN] Received 200 status but data is not in expected format[0m
+[32m[2025-04-02T10:33:49.824Z] [SUCCESS] Test notifications-by-entity: PASSED but with unexpected format
+[32m[2025-04-02T10:33:49.826Z] [SUCCESS] Notifications by entity test completed[0m
 ```
 
 </details>
@@ -150,16 +150,16 @@ Test run completed at: 2025-04-02T10:11:02.699Z
 <details><summary>Output Log (Click to expand)</summary>
 
 ```
-[36m[2025-04-02T10:11:52.495Z] [INFO] Starting database diagnostic test[0m
-[36m[2025-04-02T10:11:52.499Z] [INFO] Testing endpoint: /health[0m
-[32m[2025-04-02T10:11:52.711Z] [SUCCESS] Endpoint /health returned success: {
-[36m[2025-04-02T10:11:52.714Z] [INFO] Testing endpoint: /api/diagnostics[0m
-[32m[2025-04-02T10:11:52.864Z] [SUCCESS] Endpoint /api/diagnostics returned success: {
-[36m[2025-04-02T10:11:52.866Z] [INFO] Testing endpoint: /api/diagnostics/db-status[0m
-[32m[2025-04-02T10:11:53.019Z] [SUCCESS] Endpoint /api/diagnostics/db-status returned success: {
-[36m[2025-04-02T10:11:53.021Z] [INFO] Testing endpoint: /api/diagnostics/db-tables[0m
-[32m[2025-04-02T10:11:53.162Z] [SUCCESS] Endpoint /api/diagnostics/db-tables returned success: {
-[32m[2025-04-02T10:11:53.164Z] [SUCCESS] Database diagnostic test completed[0m
+[36m[2025-04-02T10:33:49.871Z] [INFO] Starting database diagnostic test[0m
+[36m[2025-04-02T10:33:49.875Z] [INFO] Testing endpoint: /health[0m
+[32m[2025-04-02T10:33:50.098Z] [SUCCESS] Endpoint /health returned success: {
+[36m[2025-04-02T10:33:50.107Z] [INFO] Testing endpoint: /api/diagnostics[0m
+[32m[2025-04-02T10:33:50.249Z] [SUCCESS] Endpoint /api/diagnostics returned success: {
+[36m[2025-04-02T10:33:50.251Z] [INFO] Testing endpoint: /api/diagnostics/db-status[0m
+[32m[2025-04-02T10:33:50.409Z] [SUCCESS] Endpoint /api/diagnostics/db-status returned success: {
+[36m[2025-04-02T10:33:50.411Z] [INFO] Testing endpoint: /api/diagnostics/db-tables[0m
+[32m[2025-04-02T10:33:50.556Z] [SUCCESS] Endpoint /api/diagnostics/db-tables returned success: {
+[32m[2025-04-02T10:33:50.557Z] [SUCCESS] Database diagnostic test completed[0m
 ```
 
 </details>
