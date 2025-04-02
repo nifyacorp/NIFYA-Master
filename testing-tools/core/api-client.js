@@ -172,28 +172,56 @@ function loadAuthToken(filePath = path.join(OUTPUT_DIR, 'auth_token.txt')) {
 
 /**
  * Save API response to file
- * @param {Object} response - API response object
- * @param {string} filepath - Full path to output file
+ * @param {string|Object} prefixOrResponse - Filename prefix or response object
+ * @param {Object|string} responseOrFilepath - API response object or filepath
+ * @param {string} [dir] - Output directory (optional, used with prefix mode)
  */
-function saveResponseToFile(response, filepath) {
+function saveResponseToFile(prefixOrResponse, responseOrFilepath, dir = RESPONSES_DIR) {
   try {
-    const dir = path.dirname(filepath);
-    const base = path.basename(filepath, '.json');
-    
-    // Ensure directory exists
-    if (!fs.existsSync(dir)) {
-      fs.mkdirSync(dir, { recursive: true });
+    // Detect which calling convention is being used
+    if (typeof prefixOrResponse === 'string' && typeof responseOrFilepath === 'object') {
+      // Old style: saveResponseToFile(prefix, response, dir)
+      const prefix = prefixOrResponse;
+      const response = responseOrFilepath;
+      
+      // Ensure directory exists
+      if (!fs.existsSync(dir)) {
+        fs.mkdirSync(dir, { recursive: true });
+      }
+      
+      // Save raw response
+      fs.writeFileSync(path.join(dir, `${prefix}_raw.json`), response.raw || '');
+      
+      // Save formatted response
+      if (response.data) {
+        fs.writeFileSync(path.join(dir, `${prefix}.json`), JSON.stringify(response.data, null, 2));
+      }
+      
+      console.log(`Response saved to ${dir}/${prefix}.json and ${dir}/${prefix}_raw.json`);
+    } else if (typeof prefixOrResponse === 'object' && typeof responseOrFilepath === 'string') {
+      // New style: saveResponseToFile(response, filepath)
+      const response = prefixOrResponse;
+      const filepath = responseOrFilepath;
+      const filepathDir = path.dirname(filepath);
+      const base = path.basename(filepath, '.json');
+      
+      // Ensure directory exists
+      if (!fs.existsSync(filepathDir)) {
+        fs.mkdirSync(filepathDir, { recursive: true });
+      }
+      
+      // Save raw response
+      fs.writeFileSync(path.join(filepathDir, `${base}_raw.json`), response.raw || '');
+      
+      // Save formatted response
+      if (response.data) {
+        fs.writeFileSync(filepath, JSON.stringify(response.data, null, 2));
+      }
+      
+      console.log(`Response saved to ${filepath} and ${filepathDir}/${base}_raw.json`);
+    } else {
+      console.error('Invalid arguments to saveResponseToFile');
     }
-    
-    // Save raw response
-    fs.writeFileSync(path.join(dir, `${base}_raw.json`), response.raw || '');
-    
-    // Save formatted response
-    if (response.data) {
-      fs.writeFileSync(filepath, JSON.stringify(response.data, null, 2));
-    }
-    
-    console.log(`Response saved to ${filepath} and ${dir}/${base}_raw.json`);
   } catch (error) {
     console.error(`Failed to save response:`, error.message);
   }

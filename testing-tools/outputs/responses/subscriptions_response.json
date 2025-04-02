@@ -1,12 +1,7 @@
 {
-  "status": "success",
-  "data": {
-    "subscriptions": [],
-    "pagination": {
-      "total": 0,
-      "page": 1,
-      "limit": 20,
-      "totalPages": 0
-    }
-  }
+  "error": "MISSING_HEADERS",
+  "message": "Invalid Authorization header format. Must be: Bearer <token>",
+  "status": 401,
+  "details": {},
+  "timestamp": "2025-04-02T08:56:47.024Z"
 }

@@ -1,0 +1,18 @@
+{
+  "timestamp": "2025-04-02T08:49:15.679Z",
+  "auth": true,
+  "diagnostics": {
+    "endpoints": true,
+    "userExists": false
+  },
+  "subscriptions": {
+    "creation": false,
+    "listing": true,
+    "hasSubscriptions": false
+  },
+  "notifications": {
+    "endpoint": true,
+    "hasPagination": false
+  },
+  "allTestsPassed": false
+}

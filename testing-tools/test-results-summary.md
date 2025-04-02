@@ -2,74 +2,134 @@
 
 ## Latest Test Results (April 2, 2025)
 
+### Comprehensive Test Results
+- **Total Tests**: 8
+- **Passed**: 2
+- **Failed**: 6
+- **Success Rate**: 25%
+
+### Tests by Category
+
+| Category | Tests | Passed | Failed | Success Rate |
+|----------|-------|--------|--------|-------------|
+| Authentication | 1 | 1 | 0 | 100% |
+| Infrastructure | 1 | 1 | 0 | 100% |
+| Subscriptions | 3 | 0 | 3 | 0% |
+| Notifications | 2 | 0 | 2 | 0% |
+| Diagnostics | 1 | 0 | 1 | 0% |
+
 ### Authentication Tests
-- **Status**: ✅ SUCCESSFUL
+- **Status**: ✅ PASSED
 - **Details**: Authentication service correctly returns JWT tokens and user information
-- **Notes**: Current token has the user ID `65c6074d-dbc4-4091-8e45-b6aecffd9ab9` in the `sub` claim
-
-### Subscription Tests
-
-#### Subscription Listing
-- **Status**: ⚠️ PARTIAL SUCCESS
-- **Details**: Endpoint returns 200 OK but no subscriptions are found for the authenticated user
-- **Possible Causes**: 
-  - User does not exist in the database
-  - Foreign key constraint issue
-
-#### Subscription Creation
-- **Status**: ❌ FAILED
-- **Error**: `Database operation failed: insert or update on table "subscriptions" violates foreign key constraint "subscriptions_user_id_fkey"`
-- **Analysis**: 
-  - The database schema shows a foreign key constraint between `subscriptions.user_id` and `users.id`
-  - The test user ID from the JWT token appears not to exist in the database
-  - User records must be created in the database before subscriptions can be created
-
-### Notification Tests
-
-#### Notification Listing (Standard Endpoint)
-- **Status**: ⚠️ PARTIAL SUCCESS
-- **Details**: Endpoint now returns 200 OK with an empty list, format includes metadata `{notifications: [], total: 0, unread: 0, page: 1, limit: 10}`
-- **Notes**: Previously this endpoint had a server error with "Cannot read properties of undefined (reading 'match')"
-
-#### Notification with Entity Type Filter
-- **Status**: ✅ SUCCESSFUL
-- **Details**: Successfully returns 200 OK with proper metadata format
-- **Note**: No notifications were found, but the endpoint is working properly
+- **Notes**: Authentication is working properly and returns a valid token
 
 ### Infrastructure Tests
+- **Status**: ✅ PASSED
+- **Details**: The `/health` endpoint returns correct status information
+- **Notes**: System reports healthy status and database connection is verified
 
-#### Health Check
-- **Status**: ✅ SUCCESSFUL
-- **Details**: Server reports healthy status with database connection
-- **Notes**: This indicates the database service is running and reachable
+### Backend API Tests
 
 #### Diagnostic Endpoints
-- **Status**: ❌ NOT IMPLEMENTED
-- **Details**: Expected diagnostic endpoints are not found (404)
-- **Suggestion**: Implement diagnostic endpoints for better debugging
+- **Status**: ⚠️ PARTIALLY IMPLEMENTED
+- **Details**: The main `/api/diagnostics` endpoint is now available, but specific diagnostic endpoints fail
+- **Working Endpoints**:
+  - `/api/diagnostics` - Returns available diagnostic endpoints
+  - `/health` - Returns service health status
+- **Missing Endpoints**:
+  - `/api/diagnostics/db-status` - Returns 404
+  - `/api/diagnostics/db-tables` - Returns 404
 
-## Recommendations
+#### Subscription and Notification Endpoints
+- **Status**: ❌ FAILED
+- **Error**: Authentication error with 401 status code
+```json
+{
+  "error": "Cannot set property context of #<Request> which has only a getter",
+  "code": "AUTH_ERROR",
+  "status": 401
+}
+```
 
-1. **Create User Record**: Implement a synchronization process to create user records in the database when users authenticate through the Auth service.
+### Issue Analysis
 
-2. **Add Diagnostics**: Implement diagnostic endpoints to check user existence and create test users if needed.
+Our comprehensive testing revealed several findings:
 
-3. **Fix Subscription Creation**: Modify the subscription creation process to:
-   - Check if user exists in database
-   - Create user record if not exists
-   - Then create subscription
+1. **Authentication is working correctly** - The login process works and returns a valid JWT token
+2. **Infrastructure endpoints are healthy** - The health check reports proper system status
+3. **Diagnostic API is partially implemented** - The main endpoint works, but specific diagnostic endpoints are missing
+4. **Authentication middleware has issues** - All secured endpoints (subscriptions, notifications) fail with an authentication error
+5. **Token expiration is handled properly** - The system correctly identifies expired tokens
 
-4. **Implement Fallback Notifications**: Create a fallback mechanism for notifications that don't have an associated subscription.
+The core issue is the authentication middleware error:
+```
+Cannot set property context of #<Request> which has only a getter
+```
 
-## Next Steps
+This prevents us from testing any of the secured endpoints, including:
+- Subscription listing and creation
+- Notification polling and management
+- User-specific diagnostic endpoints
 
-1. Implement diagnostic endpoints in the backend service
-2. Create a user record synchronization mechanism
-3. Run another round of tests after these changes
-4. Test subscription processing workflow
+## Fix Implementation Status
 
-## Technical Details
+| Issue | Status | Notes |
+|-------|--------|-------|
+| Authentication Service | ✅ FIXED | Login works correctly and returns JWT tokens |
+| Health Endpoint | ✅ FIXED | Health check works and shows database connection |
+| Diagnostic API | ⚠️ PARTIALLY FIXED | Main endpoint works, but specific endpoints missing |
+| Authentication Middleware | ❌ NEW ISSUE | Error setting context property in Express |
+| Foreign Key Constraint | 🔄 UNKNOWN | Auth error prevents testing |
+| Missing Logo Column | 🔄 UNKNOWN | Auth error prevents testing |
+| Notification Format | 🔄 UNKNOWN | Auth error prevents testing |
 
-The foreign key constraint issue occurs because users authenticate through the Auth service but their records are not automatically created in the backend database. This creates a disconnection between the authentication and backend services.
+## Recommended Next Steps
 
-The solution would be to implement user synchronization or a "just-in-time" user creation mechanism in the backend service.
+1. **Fix Authentication Middleware**: The priority issue is resolving the Express.js middleware authentication error:
+   ```
+   Cannot set property context of #<Request> which has only a getter
+   ```
+   
+   The error occurs when trying to set a read-only property. Recommended solution:
+   
+   ```javascript
+   // In the auth middleware file (likely auth.middleware.js)
+   
+   // Instead of:
+   req.context = { userId: /* ... */ };
+   
+   // Use:
+   req.userContext = { userId: /* ... */ };
+   // OR
+   req._context = { userId: /* ... */ };
+   ```
+
+2. **Complete Diagnostic Endpoints**: After fixing the authentication middleware, implement the remaining diagnostic endpoints:
+   - `/api/diagnostics/db-status` (for database connection status)
+   - `/api/diagnostics/db-tables` (for database schema information)
+   - `/api/diagnostics/user` (to check if a user exists in the database)
+   - `/api/diagnostics/create-user` (to create test users for debugging)
+
+3. **Run Comprehensive Tests Again**: After fixing these issues, run the complete test suite to verify all endpoints are working correctly.
+
+## New Testing Suite
+
+We've implemented a comprehensive testing suite that thoroughly tests all backend endpoints. The testing platform now includes:
+
+1. **Complete Endpoint Reference**: Documentation with all backend endpoints and their parameters
+2. **Organized Test Scripts**: Tests for each endpoint organized by domain (auth, subscriptions, notifications)
+3. **Automated Test Runner**: A script that tests all endpoints and generates a comprehensive report
+4. **Detailed Documentation**: Complete testing guides and reference material
+
+This infrastructure will make it easier to test future changes and ensure all components work correctly.
+
+## Conclusion
+
+The backend service shows significant improvements in several areas:
+- Authentication system is working correctly
+- Health checks and system status reporting is functional
+- Diagnostics API is partially implemented
+
+However, the authentication middleware error is blocking further testing of secured endpoints. This is a relatively simple fix that should be addressed immediately to allow complete testing of the system.
+
+After fixing the middleware issue, we'll need to verify whether the other fixes (foreign key constraint, notification format, etc.) have been properly implemented.

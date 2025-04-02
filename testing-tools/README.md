@@ -75,6 +75,7 @@ node tests/user-journeys/standard-flow.js
 For detailed documentation, see the `docs/` directory:
 
 - [Testing Guide](docs/TESTING-GUIDE.md)
+- [Backend Endpoints Reference](docs/backend-endpoints-reference.md)
 - [Notification Pipeline Analysis](docs/findings/NOTIFICATION-PIPELINE-CONCLUSIONS.md)
 - [API Endpoint Map](docs/findings/API-ENDPOINT-MAP.md)
 

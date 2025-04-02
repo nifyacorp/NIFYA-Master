@@ -49,7 +49,12 @@ async function testAuthentication() {
   
   try {
     // Make the request
-    const response = await apiClient.makeApiRequest(options, null, authData);
+    const response = await apiClient.makeApiRequest({
+      url: `https://${options.hostname}${options.path}`,
+      method: options.method,
+      headers: options.headers,
+      data: authData
+    });
     
     // Save response to file
     apiClient.saveResponseToFile('auth_response', response, OUTPUT_DIR);
