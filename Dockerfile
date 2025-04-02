@@ -24,7 +24,7 @@ COPY --from=build /app/frontend/dist /usr/share/nginx/html/ 2>/dev/null || \
 COPY --from=build /app/dist /usr/share/nginx/html/ 2>/dev/null || \
 echo "No build output found"
 
-# Setup nginx configuration
+# Create nginx config template with environment variable placeholders
 RUN echo 'server { \
   listen 8080; \
   server_name _; \
@@ -36,6 +36,23 @@ RUN echo 'server { \
   gzip_min_length 1000; \
   gzip_types text/plain text/css application/json application/javascript text/xml application/xml text/javascript; \
   \
+  # Handle API redirects \
+  location /api/auth/ { \
+    proxy_pass ${AUTH_SERVICE_URL}/api/auth/; \
+    proxy_set_header Host $host; \
+    proxy_set_header X-Real-IP $remote_addr; \
+    proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for; \
+    proxy_set_header X-Forwarded-Proto $scheme; \
+  } \
+  \
+  location /api/ { \
+    proxy_pass ${BACKEND_SERVICE_URL}/api/; \
+    proxy_set_header Host $host; \
+    proxy_set_header X-Real-IP $remote_addr; \
+    proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for; \
+    proxy_set_header X-Forwarded-Proto $scheme; \
+  } \
+  \
   # Handle SPA routing \
   location / { \
     try_files $uri $uri/ /index.html; \
@@ -43,7 +60,7 @@ RUN echo 'server { \
   } \
   \
   # Cache static assets \
-  location ~* \.(js|css|png|jpg|jpeg|gif|ico|svg)$ { \
+  location ~* \\.(js|css|png|jpg|jpeg|gif|ico|svg)$ { \
     expires 30d; \
     add_header Cache-Control "public, max-age=2592000"; \
   } \
@@ -54,7 +71,10 @@ RUN echo 'server { \
   location = /50x.html { \
     root /usr/share/nginx/html; \
   } \
-}' > /etc/nginx/conf.d/default.conf
+}' > /etc/nginx/templates/default.conf.template
+
+# Install gettext for envsubst
+RUN apk add --no-cache gettext
 
 # Expose port
 EXPOSE 8080

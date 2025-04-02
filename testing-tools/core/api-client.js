@@ -45,53 +45,53 @@ function getUserIdFromToken(token) {
 
 /**
  * Make an API request with proper headers
- * @param {Object} options - HTTPS request options
- * @param {string} [token] - JWT token for authentication
- * @param {Object|string} [body] - Request body data
+ * @param {Object} options - Request options including url
  * @returns {Promise<Object>} API response
  */
-function makeApiRequest(options, token = null, body = null) {
+function makeApiRequest(options) {
   return new Promise((resolve, reject) => {
     try {
-      // Set auth headers if token is provided
-      if (token) {
-        options.headers = options.headers || {};
-        options.headers['Authorization'] = `Bearer ${token}`;
+      // Parse URL if provided directly
+      let requestOptions = {};
+      let url;
+      
+      if (options.url) {
+        const urlObj = new URL(options.url);
         
-        // Extract and add user ID header
-        const userId = getUserIdFromToken(token);
-        if (userId) {
-          options.headers['x-user-id'] = userId;
-        } else {
-          console.warn('⚠️ Warning: Could not extract user ID from token. API might require x-user-id header.');
-        }
+        requestOptions = {
+          hostname: urlObj.hostname,
+          port: urlObj.port || 443,
+          path: urlObj.pathname + urlObj.search,
+          method: options.method || 'GET',
+          headers: options.headers || {}
+        };
+        
+        url = options.url;
+      } else {
+        requestOptions = { ...options };
+        url = `${requestOptions.protocol || 'https://'}${requestOptions.hostname}${requestOptions.path}`;
       }
       
       // Set content type if not specified
-      if ((!options.headers || !options.headers['Content-Type'])) {
-        options.headers = options.headers || {};
-        options.headers['Content-Type'] = 'application/json';
+      if (!requestOptions.headers || !requestOptions.headers['Content-Type']) {
+        requestOptions.headers = requestOptions.headers || {};
+        requestOptions.headers['Content-Type'] = 'application/json';
       }
 
       // Sanitize path - this can help prevent 'match' errors with malformed paths
-      if (options.path && typeof options.path === 'string') {
+      if (requestOptions.path && typeof requestOptions.path === 'string') {
         // Remove any double slashes
-        options.path = options.path.replace(/\/+/g, '/');
+        requestOptions.path = requestOptions.path.replace(/\/+/g, '/');
         // Ensure path starts with /
-        if (!options.path.startsWith('/')) {
-          options.path = '/' + options.path;
-        }
-        // Fix API prefix if needed
-        if (options.path.includes('/api/subscriptions/') && !options.path.includes('/api/v1/')) {
-          console.log('⚠️ Updating legacy API path to v1 format');
-          options.path = options.path.replace('/api/subscriptions/', '/api/v1/subscriptions/');
+        if (!requestOptions.path.startsWith('/')) {
+          requestOptions.path = '/' + requestOptions.path;
         }
       }
       
-      console.log(`Making ${options.method} request to ${options.hostname}${options.path}`);
-      console.log(`Headers: ${JSON.stringify(options.headers || {})}`);
+      console.log(`Making ${requestOptions.method} request to ${url}`);
+      console.log(`Headers: ${JSON.stringify(requestOptions.headers || {})}`);
       
-      const req = https.request(options, (res) => {
+      const req = https.request(requestOptions, (res) => {
         let data = '';
         res.on('data', (chunk) => { data += chunk; });
         
@@ -103,7 +103,7 @@ function makeApiRequest(options, token = null, body = null) {
               
               // Return redirect info
               resolve({
-                statusCode: res.statusCode,
+                status: res.statusCode,
                 headers: res.headers,
                 isRedirect: true,
                 location: res.headers.location,
@@ -125,7 +125,7 @@ function makeApiRequest(options, token = null, body = null) {
             }
             
             resolve({
-              statusCode: res.statusCode,
+              status: res.statusCode,
               headers: res.headers,
               data: parsedData,
               raw: data
@@ -142,9 +142,9 @@ function makeApiRequest(options, token = null, body = null) {
         reject(error);
       });
       
-      if (body) {
-        const bodyData = typeof body === 'string' ? body : JSON.stringify(body);
-        console.log(`Request body: ${bodyData.substring(0, 200)}${bodyData.length > 200 ? '...' : ''}`);
+      if (options.data) {
+        const bodyData = typeof options.data === 'string' ? options.data : JSON.stringify(options.data);
+        console.log(`Request body: ${bodyData}`);
         req.write(bodyData);
       }
       
@@ -172,26 +172,28 @@ function loadAuthToken(filePath = path.join(OUTPUT_DIR, 'auth_token.txt')) {
 
 /**
  * Save API response to file
- * @param {string} prefix - Filename prefix
  * @param {Object} response - API response object
- * @param {string} [dir] - Output directory
+ * @param {string} filepath - Full path to output file
  */
-function saveResponseToFile(prefix, response, dir = RESPONSES_DIR) {
+function saveResponseToFile(response, filepath) {
   try {
+    const dir = path.dirname(filepath);
+    const base = path.basename(filepath, '.json');
+    
     // Ensure directory exists
     if (!fs.existsSync(dir)) {
       fs.mkdirSync(dir, { recursive: true });
     }
     
     // Save raw response
-    fs.writeFileSync(path.join(dir, `${prefix}_raw.json`), response.raw || '');
+    fs.writeFileSync(path.join(dir, `${base}_raw.json`), response.raw || '');
     
     // Save formatted response
     if (response.data) {
-      fs.writeFileSync(path.join(dir, `${prefix}.json`), JSON.stringify(response.data, null, 2));
+      fs.writeFileSync(filepath, JSON.stringify(response.data, null, 2));
     }
     
-    console.log(`Response saved to ${dir}/${prefix}.json and ${dir}/${prefix}_raw.json`);
+    console.log(`Response saved to ${filepath} and ${dir}/${base}_raw.json`);
   } catch (error) {
     console.error(`Failed to save response:`, error.message);
   }

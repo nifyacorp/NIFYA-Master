@@ -37,7 +37,7 @@ async function listNotifications(token = null) {
   const options = {
     hostname: endpoints.backend.baseUrl,
     port: 443,
-    path: '/api/notifications',  // Try legacy path without v1
+    path: '/api/v1/notifications',  // Use the v1 path
     method: 'GET',
     headers: {
       'Content-Type': 'application/json'
