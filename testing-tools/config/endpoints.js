@@ -71,7 +71,9 @@ module.exports = {
       type: "boe",
       templateId: "boe-default",
       prompts: ["Ayuntamiento Barcelona licitaciones"],
-      frequency: "daily"
+      frequency: "daily",
+      configuration: {},
+      logo: null
     }
   }
 };

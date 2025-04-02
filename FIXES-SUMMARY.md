@@ -24,21 +24,30 @@ When accessing the platform at the root URL (https://clever-kelpie-60c3a6.netlif
 - frontend/AUTH-HEADER-GUIDE.md
 - frontend/CLAUDE.md
 
-### 2. Subscription Creation Database Error
+### 2. Subscription and Notification API Errors
 
-Users were unable to create new subscriptions due to a database schema mismatch, where the application code was trying to insert into a `logo` column that didn't exist in the database.
+Several backend API issues were identified and fixed:
+
+1. **Subscription Creation Database Error**: The application code was trying to insert into a `logo` column that didn't exist in the database.
+2. **JSON Format Error**: After fixing the schema, invalid JSON format errors were encountered during subscription creation.
+3. **Notification API Error**: A null reference error when accessing the 'match' property of an undefined object.
+4. **Template Listing Error**: API was returning 500 errors.
 
 **Solution:**
 - Created a database migration to add the missing column
 - Updated subscription service to handle schema mismatches gracefully
-- Added robust error handling for database operations
-- Created a test script to verify the fix
-- Added comprehensive documentation in FIX-SUBSCRIPTION-ISSUE.md
+- Fixed JSON handling to properly format JSONB data for Postgres
+- Created fallback routes for API endpoints to prevent crashes
+- Created a comprehensive test script to verify all fixes
+- Added detailed documentation in FIX-SUBSCRIPTION-ISSUE.md
 
 **Files Modified:**
 - backend/supabase/migrations/20250403000000_fix_subscription_schema.sql (new file)
 - backend/src/core/subscription/services/subscription.service.js
+- backend/src/core/subscription/services/template.repository.js
+- backend/src/routes/notifications.js (new file)
 - backend/test-subscription-creation.js (new file)
+- backend/post-fix-test.js (new file)
 - backend/FIX-SUBSCRIPTION-ISSUE.md (new file)
 
 ## Testing
