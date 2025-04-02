@@ -1,0 +1,1 @@
+{"status":"error","code":"DATABASE_ERROR","message":"Database operation failed: column \"logo\" of relation \"subscriptions\" does not exist"}

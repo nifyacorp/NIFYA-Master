@@ -1,0 +1,28 @@
+{
+  "name": "nifya-testing-tools",
+  "version": "1.0.0",
+  "description": "Comprehensive testing tools for the NIFYA platform",
+  "main": "utils/test-runner.js",
+  "scripts": {
+    "test": "node utils/test-runner.js all",
+    "test:auth": "node utils/test-runner.js auth",
+    "test:subscriptions": "node utils/test-runner.js subscriptions",
+    "test:notifications": "node utils/test-runner.js notifications",
+    "test:journey": "node tests/user-journeys/standard-flow.js",
+    "login": "node tests/auth/login.js",
+    "create": "node tests/subscriptions/create.js",
+    "process": "node tests/subscriptions/process.js",
+    "poll": "node tests/notifications/poll.js"
+  },
+  "author": "NIFYA Team",
+  "license": "UNLICENSED",
+  "private": true,
+  "dependencies": {
+    "fs": "0.0.1-security",
+    "https": "^1.0.0",
+    "path": "^0.12.7"
+  },
+  "engines": {
+    "node": ">=14.0.0"
+  }
+}

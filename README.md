@@ -22,6 +22,94 @@ For testing and debugging purposes, use the test credentials stored in the `test
 - Test site: https://clever-kelpie-60c3a6.netlify.app/
 - Comprehensive testing documentation available in [testing-documentation.md](testing-documentation.md)
 
+### 📋 Testing Tools for AI Assistants and Developers
+
+We've created a structured testing toolkit to help AI assistants and developers test the NIFYA platform efficiently. The toolkit is organized in the `/testing-tools` directory with a clear domain-oriented structure:
+
+```
+/testing-tools/
+├── config/              # Configuration files for endpoints and test data
+├── core/                # Core utilities for API client and logging
+├── tests/               # Test scripts organized by domain
+│   ├── auth/            # Authentication tests
+│   ├── subscriptions/   # Subscription tests  
+│   ├── notifications/   # Notification tests
+│   └── user-journeys/   # End-to-end user flows
+├── utils/               # Helper utilities and test runners
+├── docs/                # Documentation and analysis findings
+└── outputs/             # Test outputs (responses, logs, reports)
+```
+
+#### For AI Assistants
+
+The testing tools are designed to be easily understood and used by AI assistants:
+
+1. **Clear Directory Structure**: Tests are organized by domain (auth, subscriptions, notifications)
+2. **Self-Contained Tests**: Each test file contains necessary context and documentation
+3. **Structured Logging**: Tests produce consistent, detailed logs for analysis
+4. **Output Separation**: All outputs are stored in a dedicated directory for easy access
+5. **Configuration Files**: All endpoints and test data centralized for easy modification
+
+#### Quick Start for AI Assistants
+
+Here's how to quickly understand and use the testing toolkit:
+
+1. **Authentication Testing**:
+   ```javascript
+   // Tests login flow and stores authentication token
+   node testing-tools/tests/auth/login.js
+   ```
+
+2. **Subscription Testing**:
+   ```javascript
+   // Creates a test subscription
+   node testing-tools/tests/subscriptions/create.js
+   
+   // Processes an existing subscription
+   node testing-tools/tests/subscriptions/process.js
+   ```
+
+3. **Notification Testing**:
+   ```javascript
+   // Polls for notifications, with optional subscription ID filter
+   node testing-tools/tests/notifications/poll.js [subscriptionId] [maxAttempts] [interval]
+   ```
+
+4. **User Journey Testing**:
+   ```javascript
+   // Runs complete user flow from auth to notifications
+   node testing-tools/tests/user-journeys/standard-flow.js
+   ```
+
+5. **Running Multiple Tests**:
+   ```javascript
+   // Runs all tests in a specific domain or all tests
+   node testing-tools/utils/test-runner.js auth|subscriptions|notifications|all
+   ```
+
+#### Key Files to Analyze
+
+When debugging issues, these files will be most helpful:
+
+1. **API Client**: `/testing-tools/core/api-client.js` - Contains API request logic and auth handling
+2. **Endpoint Configuration**: `/testing-tools/config/endpoints.js` - Lists all API endpoints and test data
+3. **Test Results**: `/testing-tools/outputs/reports/` - Contains test reports and journey logs
+4. **API Responses**: `/testing-tools/outputs/responses/` - Contains raw API responses for analysis
+
+#### Common Issues and Solutions
+
+The testing tools help identify several common issues:
+
+1. **Authentication Headers**: If tests show `401 MISSING_HEADERS`, check the Authorization header format
+2. **Schema Validation**: `Invalid message format` errors in notifications indicate schema mismatches
+3. **Subscription Processing**: If no notifications appear, check the subscription worker logs
+4. **Topic/Subscription Mismatches**: PubSub errors indicate misconfigured topics
+
+#### Automated Analysis
+
+For a comprehensive analysis of the notification pipeline, refer to:
+`/testing-tools/docs/findings/NOTIFICATION-PIPELINE-CONCLUSIONS.md`
+
 ### Automated Testing
 
 The repository includes automated testing scripts:
@@ -315,6 +403,25 @@ The system implements the following security measures across services:
 - **Environment Variables**: Configuration without hardcoded secrets
 - **HTTPS**: All communications encrypted in transit
 
+### Authentication Headers Format
+
+**CRITICAL**: All authentication headers must follow this exact format:
+
+- **Authorization Header**: Always use `Bearer {token}` format (with space after "Bearer")
+- **User ID Header**: Always include `x-user-id` header with the user's ID
+
+Example correct headers:
+```
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...
+x-user-id: 65c6074d-dbc4-4091-8e45-b6aecffd9ab9
+```
+
+The backend strictly validates this format and will return a 401 MISSING_HEADERS error if not followed exactly. When working with authentication:
+
+1. Always use the auth utility functions in `src/lib/utils/auth-recovery.ts`
+2. Never manually construct the Authorization header without the "Bearer " prefix
+3. Use `verifyAuthHeaders()` before making API requests to ensure proper format
+
 ## 🚀 Deployment
 
 All services are deployed to Google Cloud Run with the following configuration:
@@ -358,11 +465,21 @@ The system includes structured logging across all services with the following in
 
 When troubleshooting the system, consider the following common integration points:
 
-1. **Authentication Flow**: Verify JWT tokens are correctly passed and validated
-2. **PubSub Messages**: Check message format and topic subscriptions
-3. **Database Connections**: Verify RLS context is properly set
-4. **Service Health**: Check each service's `/health` endpoint
-5. **Service Logs**: Review Cloud Run logs for each service
+1. **Authentication Flow**: 
+   - Verify JWT tokens are correctly passed and validated
+   - Ensure tokens have proper `Bearer ` prefix (note the space)
+   - Check that the `x-user-id` header is included in all authenticated requests
+   - Validate that the user ID in the token matches the user ID in the header
+
+2. **Authentication Errors**:
+   - `MISSING_HEADERS` error (401): Check Authorization header format, ensure it's `Bearer {token}`
+   - `USER_MISMATCH` error (401): Check that the user ID in the token matches the x-user-id header
+   - `TOKEN_EXPIRED` error: Refresh token or re-authenticate
+
+3. **PubSub Messages**: Check message format and topic subscriptions
+4. **Database Connections**: Verify RLS context is properly set
+5. **Service Health**: Check each service's `/health` endpoint
+6. **Service Logs**: Review Cloud Run logs for each service
 
 ## 📖 License
 

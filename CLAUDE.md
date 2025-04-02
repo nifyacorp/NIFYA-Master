@@ -7,6 +7,13 @@
 - **Services**: `npm start` (run service), `npm run lint` (lint code), `npm run format` (format code)
 - **Testing**: `npm test` (run all tests), `npm test -- --testNamePattern="test name"` (single test), `vitest` (notification worker)
 
+## Authentication Headers
+- **CRITICAL**: Read the [Authentication Headers Guide](AUTH-HEADER-GUIDE.md) for proper token format
+- **Format**: Always use `Bearer {token}` format (with space after "Bearer") for Authorization header
+- **User ID**: Include `x-user-id` header with user's ID in all authenticated requests
+- **Error Check**: `MISSING_HEADERS` (401) error indicates incorrect Authorization header format
+- **Utilities**: Use `verifyAuthHeaders()` from `auth-recovery.ts` before making API requests
+
 ## Code Style Guidelines
 - **Architecture**: Domain-driven with core/infrastructure/interfaces layers
 - **TypeScript**: Strict mode, proper type annotations, no `any` types

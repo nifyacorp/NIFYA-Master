@@ -1,0 +1,17 @@
+{
+  "suite": "auth",
+  "startTime": "2025-04-02T07:15:24.569Z",
+  "endTime": "2025-04-02T07:15:25.143Z",
+  "duration": 0.574,
+  "tests": [
+    {
+      "name": "Authentication Login",
+      "duration": 0.57,
+      "success": true,
+      "error": null
+    }
+  ],
+  "passed": 1,
+  "failed": 0,
+  "success": true
+}

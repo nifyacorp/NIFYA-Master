@@ -1,0 +1,28 @@
+{
+  "startTime": "2025-04-02T07:14:21.894Z",
+  "steps": [
+    {
+      "name": "authentication",
+      "success": true,
+      "timestamp": "2025-04-02T07:14:22.324Z"
+    },
+    {
+      "name": "create-subscription",
+      "success": false,
+      "timestamp": "2025-04-02T07:14:22.594Z"
+    }
+  ],
+  "currentStep": "create-subscription",
+  "auth": {
+    "success": true,
+    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2NWM2MDc0ZC1kYmM0LTQwOTEtOGU0NS1iNmFlY2ZmZDlhYjkiLCJlbWFpbCI6InJhdG9ueGlAZ21haWwuY29tIiwibmFtZSI6IlRlc3QiLCJlbWFpbF92ZXJpZmllZCI6dHJ1ZSwidHlwZSI6ImFjY2VzcyIsImlhdCI6MTc0MzU3ODEzNiwiZXhwIjoxNzQzNTc5MDM2fQ.8Cjh_rfRJkD_eiQAOWb1bw1bbCb6Sv47GFcf8DABBQQ",
+    "userId": "65c6074d-dbc4-4091-8e45-b6aecffd9ab9"
+  },
+  "subscription": {
+    "success": false,
+    "error": "Status code 500"
+  },
+  "processing": null,
+  "notifications": null,
+  "success": false
+}
