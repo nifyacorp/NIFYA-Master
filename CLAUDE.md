@@ -47,3 +47,4 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Security
 - IF YOU FIND ANY TRACE OF MOCKUP DATA REMOVE IT ASAP
+- NEVER USE MOCKUP DATA, IF YOU FIND MOCKUP DATA OR TRACES OF MOCKUP DATA REMOVE THE CODE AND THE DATA ASAP
