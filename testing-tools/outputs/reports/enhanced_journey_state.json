@@ -1,25 +1,25 @@
 {
-  "startTime": "2025-04-03T08:47:20.255Z",
+  "startTime": "2025-04-03T09:21:01.616Z",
   "steps": [
     {
       "name": "health-check",
       "success": true,
-      "timestamp": "2025-04-03T08:47:20.650Z"
+      "timestamp": "2025-04-03T09:21:01.860Z"
     },
     {
       "name": "authentication",
       "success": true,
-      "timestamp": "2025-04-03T08:47:21.156Z"
+      "timestamp": "2025-04-03T09:21:02.184Z"
     },
     {
       "name": "user-profile",
       "success": true,
-      "timestamp": "2025-04-03T08:47:21.363Z"
+      "timestamp": "2025-04-03T09:21:02.342Z"
     },
     {
       "name": "subscription-types",
       "success": false,
-      "timestamp": "2025-04-03T08:47:21.535Z"
+      "timestamp": "2025-04-03T09:21:02.496Z"
     }
   ],
   "currentStep": "subscription-types",
@@ -28,8 +28,8 @@
     "status": "healthy",
     "data": {
       "status": "healthy",
-      "timestamp": "2025-04-03T08:48:35.065Z",
-      "uptime": 62.05367016,
+      "timestamp": "2025-04-03T09:22:16.292Z",
+      "uptime": 1153.455103427,
       "version": {
         "package": "1.0.0",
         "buildTimestamp": "$(date",
@@ -37,11 +37,11 @@
         "environment": "production"
       },
       "memory": {
-        "rss": 109027328,
-        "heapTotal": 39628800,
-        "heapUsed": 36674824,
-        "external": 3695955,
-        "arrayBuffers": 134256
+        "rss": 112852992,
+        "heapTotal": 43560960,
+        "heapUsed": 41577336,
+        "external": 3719211,
+        "arrayBuffers": 156768
       },
       "services": {
         "database": "connected"
@@ -50,8 +50,8 @@
   },
   "auth": {
     "success": true,
-    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2NWM2MDc0ZC1kYmM0LTQwOTEtOGU0NS1iNmFlY2ZmZDlhYjkiLCJlbWFpbCI6InJhdG9ueGlAZ21haWwuY29tIiwibmFtZSI6IlRlc3QiLCJlbWFpbF92ZXJpZmllZCI6dHJ1ZSwidHlwZSI6ImFjY2VzcyIsImlhdCI6MTc0MzY3MDExNSwiZXhwIjoxNzQzNjcxMDE1fQ.XIplPNHiolXzX6HDpkDz9TO3PC02NtCQcCQJ0iMGC_M",
-    "refreshToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2NWM2MDc0ZC1kYmM0LTQwOTEtOGU0NS1iNmFlY2ZmZDlhYjkiLCJlbWFpbCI6InJhdG9ueGlAZ21haWwuY29tIiwidHlwZSI6InJlZnJlc2giLCJpYXQiOjE3NDM2NzAxMTUsImV4cCI6MTc0NDI3NDkxNX0.oGOmKQXS_IzGAboWYrdq37iwQ35mxmBqUOLPS1a1hZw",
+    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2NWM2MDc0ZC1kYmM0LTQwOTEtOGU0NS1iNmFlY2ZmZDlhYjkiLCJlbWFpbCI6InJhdG9ueGlAZ21haWwuY29tIiwibmFtZSI6IlRlc3QiLCJlbWFpbF92ZXJpZmllZCI6dHJ1ZSwidHlwZSI6ImFjY2VzcyIsImlhdCI6MTc0MzY3MjEzNiwiZXhwIjoxNzQzNjczMDM2fQ.zTrN4QT9OuC9QBJ-Qbx1CljU5MHy4fHYCDqZEXWYwko",
+    "refreshToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2NWM2MDc0ZC1kYmM0LTQwOTEtOGU0NS1iNmFlY2ZmZDlhYjkiLCJlbWFpbCI6InJhdG9ueGlAZ21haWwuY29tIiwidHlwZSI6InJlZnJlc2giLCJpYXQiOjE3NDM2NzIxMzYsImV4cCI6MTc0NDI3NjkzNn0.KMrUiiPPkwAPeVeKpM1NSMAr9UbU9G7bqey0Rgv4St4",
     "userId": "65c6074d-dbc4-4091-8e45-b6aecffd9ab9"
   },
   "userProfile": {
