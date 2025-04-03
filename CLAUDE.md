@@ -1,3 +1,7 @@
+# CLAUDE.md
+
+This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
+
 # NIFYA Project Guidelines
 
 ## Build Commands
@@ -25,6 +29,7 @@
 - **API**: Standard response structure with status and data
 - **Database**: Parameterized queries, respect Row-Level Security
 - **Logging**: Include context with requestId, path, and method
+- **WebSockets**: Never use WebSocket connections in this project
 
 ## CI/CD
 - When changes are synced, cloud builds start automatically

@@ -61,6 +61,12 @@ const tests = [
     category: 'notifications', 
     critical: false
   },
+  {
+    name: 'Notifications: Activity',
+    command: 'node tests/notifications/activity.js',
+    category: 'notifications',
+    critical: false
+  },
   
   // Diagnostic tests
   {
