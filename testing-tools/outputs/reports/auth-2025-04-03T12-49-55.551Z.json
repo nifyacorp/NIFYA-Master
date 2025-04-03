@@ -1,0 +1,66 @@
+{
+  "overall": {
+    "success": false,
+    "successRate": 60,
+    "totalTests": 5,
+    "passedTests": 3,
+    "failedTests": 2,
+    "duration": 2606
+  },
+  "tests": [
+    {
+      "name": "login",
+      "success": true,
+      "duration": 1893
+    },
+    {
+      "name": "getProfile",
+      "success": true,
+      "duration": 147
+    },
+    {
+      "name": "getSession",
+      "success": false,
+      "duration": 160,
+      "error": "HTTP status 404"
+    },
+    {
+      "name": "refreshToken",
+      "success": false,
+      "duration": 167,
+      "error": "HTTP status 401"
+    },
+    {
+      "name": "revokeAllSessions",
+      "success": true,
+      "duration": 213
+    }
+  ],
+  "schemas": {
+    "login": {
+      "sub": "string",
+      "email": "string",
+      "name": "string",
+      "email_verified": "boolean",
+      "type": "string",
+      "iat": "number",
+      "exp": "number"
+    },
+    "getProfile": {
+      "id": "string",
+      "email": "string",
+      "name": "string",
+      "createdAt": "string",
+      "emailVerified": "boolean",
+      "preferences": {
+        "theme": "string",
+        "language": "string",
+        "notifications": "boolean"
+      }
+    }
+  },
+  "recommendations": [
+    "Token refresh is not working. Verify that refresh tokens are being issued properly.",
+    "Authentication service tests are failing at an unacceptable rate. Review auth service logs and database connection."
+  ]
+}

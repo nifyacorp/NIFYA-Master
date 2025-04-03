@@ -1,8 +1,22 @@
 {
-  "success": false,
-  "status": 504,
+  "success": true,
+  "status": 200,
   "data": {
-    "raw": "upstream request timeout",
-    "_parseError": "Unexpected token 'u', \"upstream r\"... is not valid JSON"
+    "profile": {
+      "id": "65c6074d-dbc4-4091-8e45-b6aecffd9ab9",
+      "email": "ratonxi@gmail.com",
+      "name": "Test",
+      "avatar": null,
+      "bio": null,
+      "theme": "",
+      "language": "",
+      "emailNotifications": true,
+      "notificationEmail": "ratonxi@gmail.com",
+      "lastLogin": "2025-04-03T12:53:40.183Z",
+      "emailVerified": true,
+      "subscriptionCount": 15,
+      "notificationCount": 0,
+      "lastNotification": null
+    }
   }
 }

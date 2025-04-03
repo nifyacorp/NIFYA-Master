@@ -1,6 +1,6 @@
 # NIFYA User Profile API Test Results
 
-**Test Time:** 2025-04-03T11:14:27.229Z
+**Test Time:** 2025-04-03T12:52:26.871Z
 
 ## Overview
 
@@ -27,7 +27,7 @@ This test suite validates the user profile management endpoints that allow users
 
 | Status | Success Rate | Details |
 |--------|--------------|---------|
-| ❌ FAILED | 37.50% | [View Detailed Report](user-profile-test-2025-04-03T11-14-27.220Z.md) |
+| ❌ FAILED | 75.00% | [View Detailed Report](user-profile-test-2025-04-03T12-52-26.864Z.md) |
 
 ### Test Details
 
@@ -35,13 +35,13 @@ This test suite validates the user profile management endpoints that allow users
 |------|--------|---------|
 | authentication | ✅ PASSED | Successfully authenticated user |
 | Get User Profile | ✅ PASSED | Request successful with status 200 |
-| Update User Profile | ❌ FAILED | {"message":"Route PATCH:/api/v1/me not found","error":"Not Found","statusCode":404} |
+| Update User Profile | ✅ PASSED | Request successful with status 200 |
 | Verify Profile Updates | ❌ FAILED | Profile does not contain the updated information |
-| Update Notification Settings | ❌ FAILED | {"message":"Route PATCH:/api/v1/me/notification-settings not found","error":"Not Found","statusCode":404} |
+| Update Notification Settings | ✅ PASSED | Request successful with status 200 |
 | Get Email Preferences | ✅ PASSED | Request successful with status 200 |
 | Update Email Preferences | ✅ PASSED | Request successful with status 200 |
 | Verify Email Preferences Update | ❌ FAILED | Email preferences do not contain the updated information |
-| Send Test Email | ❌ FAILED | {"statusCode":500,"code":"PUBSUB_ERROR","error":"Internal Server Error","message":"Failed to send test email - messaging service unavailable"} |
+| Send Test Email | ✅ PASSED | Request successful with status 200 |
 
 ## User Profile Schema
 
@@ -82,25 +82,20 @@ The email preferences contain the following structure:
 
 ## System Health Assessment
 
-### ❌ CRITICAL ISSUES (37.50%)
-The user profile management system has critical failures and requires immediate attention.
+### ✅ GOOD (75.00%)
+The user profile management system is working but has some minor issues.
 
 ## Issues and Recommendations
-
-### Endpoint Failures
-- **Update User Profile** (PATCH /api/v1/me): Request failed with status 404
-- **Update Notification Settings** (PATCH /api/v1/me/notification-settings): Request failed with status 404
-- **Send Test Email** (POST /api/v1/me/test-email): Request failed with status 500
 
 ### Data Consistency Issues
 - **Verify Profile Updates**: Profile update verification failed
 - **Verify Email Preferences Update**: Email preferences update verification failed
 
 ### Recommended Actions
-- Fix failing endpoints first
+- Verify data consistency across profile update operations
 - Ensure proper error handling for user profile operations
 - Validate data model consistency between client and server
 - Check database connection and schema for user-related tables
 
 ---
-Generated on: 2025-04-03T11:14:27.229Z
+Generated on: 2025-04-03T12:52:26.871Z

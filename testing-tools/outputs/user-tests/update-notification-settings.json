@@ -1,9 +1,12 @@
 {
-  "success": false,
-  "status": 404,
+  "success": true,
+  "status": 200,
   "data": {
-    "message": "Route PATCH:/api/v1/me/notification-settings not found",
-    "error": "Not Found",
-    "statusCode": 404
+    "settings": {
+      "emailNotifications": true,
+      "notificationEmail": "ratonxi@gmail.com",
+      "emailFrequency": "immediate",
+      "instantNotifications": true
+    }
   }
 }

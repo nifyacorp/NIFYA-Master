@@ -50,7 +50,11 @@ async function generateSummaryReport(results) {
 | Test Suite | Status | Success Rate | Details |
 |------------|--------|--------------|---------|
 ${Object.entries(results).map(([suite, result]) => {
-  const overallResult = result.results?.overall;
+  // Handle cases where result or result.results might be undefined
+  if (!result || !result.results || !result.results.overall) {
+    return `| ${TEST_SUITES[suite].name} | ❌ FAILED | 0.00% | Error running tests |`;
+  }
+  const overallResult = result.results.overall;
   return `| ${TEST_SUITES[suite].name} | ${overallResult.success ? '✅ PASSED' : '❌ FAILED'} | ${overallResult.successRate.toFixed(2)}% | [View Details](${path.relative(REPORT_DIR, result.reportPath)}) |`;
 }).join('\n')}
 
