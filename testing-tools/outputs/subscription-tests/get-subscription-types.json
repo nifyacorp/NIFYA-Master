@@ -1,0 +1,9 @@
+{
+  "success": false,
+  "status": 500,
+  "data": {
+    "status": "error",
+    "code": "TYPE_FETCH_ERROR",
+    "message": "Failed to fetch subscription types"
+  }
+}

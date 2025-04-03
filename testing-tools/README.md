@@ -19,8 +19,29 @@ This testing toolkit provides a flexible and powerful way to validate the NIFYA 
 # Install dependencies
 npm install
 
-# Run all tests
+# Run all tests (legacy method)
 npm run test:all
+
+# Run all tests using the new test runner
+node index.js run-all
+```
+
+### New Test Runner
+
+A unified test runner is now available to run any or all test types:
+
+```bash
+# Show available commands
+node index.js help
+
+# List available test types
+node index.js list
+
+# Run a specific test type
+node index.js run subscription
+
+# Run all test types
+node index.js run-all
 ```
 
 ## 📊 Test Categories
@@ -41,14 +62,38 @@ node tests/auth/test-login.js
 Test subscription creation, listing, and processing.
 
 ```bash
+# Run all subscription tests (basic)
 npm run test:subscriptions
-# or individual tests
+
+# Run comprehensive subscription management tests
+node run-subscription-tests.js
+
+# Run specific tests
 node tests/subscriptions/create.js
 node tests/subscriptions/list.js
 node tests/subscriptions/minimal-create.js
 node tests/subscriptions/process.js
 node tests/subscriptions/templates.js
 ```
+
+#### New Subscription Management Test Suite
+
+A comprehensive test suite for all subscription management endpoints:
+
+```bash
+# Run all subscription management tests
+node run-subscription-tests.js
+
+# Run a specific test suite
+node run-subscription-tests.js run subscription-manager
+```
+
+This tests:
+- Create/read/update/delete operations
+- Subscription processing
+- Subscription status toggling
+- Subscription sharing
+- Multiple subscription types
 
 ### Notification Tests
 
@@ -99,6 +144,23 @@ Test all configured API endpoints in a single run.
 ```bash
 node tests/comprehensive-endpoint-test.js
 ```
+
+### Cross-Service Integration Tests
+
+Test functionality across multiple services (notification worker, subscription worker, backend, authentication).
+
+```bash
+# Run all integration tests
+node run-integration-tests.js
+
+# Run specific notification pipeline test
+node test-notification-pipeline.js
+```
+
+These tests verify:
+- End-to-end notification pipeline
+- Cross-service communication
+- Worker service functionality
 
 ### Post-Fix Verification
 

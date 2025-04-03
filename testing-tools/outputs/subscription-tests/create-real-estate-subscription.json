@@ -1,0 +1,10 @@
+{
+  "success": true,
+  "status": 201,
+  "data": {
+    "status": "success",
+    "data": {
+      "subscription": {}
+    }
+  }
+}
