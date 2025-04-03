@@ -1,15 +1,15 @@
 # NIFYA API Endpoint Test Results
 
-Test run completed at: 2025-04-03T08:38:00.202Z
+Test run completed at: 2025-04-03T08:47:24.379Z
 
 ## Summary
 
 - Total Endpoints: 16
-- Passed: 9
-- Failed: 7
+- Passed: 11
+- Failed: 5
 - Errors: 0
 - Skipped: 0
-- Success Rate: 56%
+- Success Rate: 69%
 
 ## Results by Category
 
@@ -70,11 +70,11 @@ Test run completed at: 2025-04-03T08:38:00.202Z
 ### User
 
 - Endpoints: 2
-- Passed: 0
-- Failed: 2
+- Passed: 2
+- Failed: 0
 - Errors: 0
 - Skipped: 0
-- Success Rate: 0%
+- Success Rate: 100%
 
 ## Detailed Endpoint Results
 
@@ -82,50 +82,50 @@ Test run completed at: 2025-04-03T08:38:00.202Z
 
 | Endpoint | Method | Status | Response Code | Response Time |
 |----------|--------|--------|---------------|---------------|
-| /health | GET | ✅ PASSED | 200 | 205ms |
+| /health | GET | ✅ PASSED | 200 | 209ms |
 
 ### Diagnostics Endpoints
 
 | Endpoint | Method | Status | Response Code | Response Time |
 |----------|--------|--------|---------------|---------------|
-| /api/diagnostics | GET | ✅ PASSED | 200 | 133ms |
-| /api/diagnostics/db-status | GET | ✅ PASSED | 200 | 144ms |
-| /api/diagnostics/db-tables | GET | ✅ PASSED | 200 | 134ms |
+| /api/diagnostics | GET | ✅ PASSED | 200 | 139ms |
+| /api/diagnostics/db-status | GET | ✅ PASSED | 200 | 141ms |
+| /api/diagnostics/db-tables | GET | ✅ PASSED | 200 | 148ms |
 
 ### Authentication Endpoints
 
 | Endpoint | Method | Status | Response Code | Response Time |
 |----------|--------|--------|---------------|---------------|
-| /api/auth/login/test | POST | ❌ FAILED | 404 | 130ms |
+| /api/auth/login/test | POST | ❌ FAILED | 404 | 125ms |
 
 ### Notifications Endpoints
 
 | Endpoint | Method | Status | Response Code | Response Time |
 |----------|--------|--------|---------------|---------------|
-| /api/v1/notifications | GET | ✅ PASSED | 200 | 166ms |
-| /api/v1/notifications/activity | GET | ✅ PASSED | 200 | 141ms |
-| /api/v1/notifications/stats | GET | ✅ PASSED | 200 | 146ms |
-| /api/v1/notifications/read-all | POST | ✅ PASSED | 200 | 140ms |
-| /api/v1/notifications/create-test | POST | ❌ FAILED | 404 | 133ms |
+| /api/v1/notifications | GET | ✅ PASSED | 200 | 159ms |
+| /api/v1/notifications/activity | GET | ✅ PASSED | 200 | 143ms |
+| /api/v1/notifications/stats | GET | ✅ PASSED | 200 | 150ms |
+| /api/v1/notifications/read-all | POST | ✅ PASSED | 200 | 153ms |
+| /api/v1/notifications/create-test | POST | ❌ FAILED | 404 | 127ms |
 
 ### Subscriptions Endpoints
 
 | Endpoint | Method | Status | Response Code | Response Time |
 |----------|--------|--------|---------------|---------------|
-| /api/v1/subscriptions | GET | ✅ PASSED | 200 | 143ms |
-| /api/v1/subscriptions | POST | ❌ FAILED | 400 | 134ms |
-| /api/v1/subscriptions/types | GET | ❌ FAILED | 500 | 139ms |
+| /api/v1/subscriptions | GET | ✅ PASSED | 200 | 144ms |
+| /api/v1/subscriptions | POST | ❌ FAILED | 400 | 129ms |
+| /api/v1/subscriptions/types | GET | ❌ FAILED | 500 | 135ms |
 
 ### Templates Endpoints
 
 | Endpoint | Method | Status | Response Code | Response Time |
 |----------|--------|--------|---------------|---------------|
-| /api/v1/templates | GET | ❌ FAILED | 500 | 137ms |
+| /api/v1/templates | GET | ❌ FAILED | 500 | 131ms |
 
 ### User Endpoints
 
 | Endpoint | Method | Status | Response Code | Response Time |
 |----------|--------|--------|---------------|---------------|
-| /api/v1/me | GET | ❌ FAILED | 404 | 124ms |
-| /api/v1/me/email-preferences | GET | ❌ FAILED | 404 | 130ms |
+| /api/v1/me | GET | ✅ PASSED | 200 | 135ms |
+| /api/v1/me/email-preferences | GET | ✅ PASSED | 200 | 137ms |
 

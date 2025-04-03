@@ -1,1 +1,1 @@
-{"message":"Route GET:/api/v1/me not found","error":"Not Found","statusCode":404}
+{"profile":{"id":"65c6074d-dbc4-4091-8e45-b6aecffd9ab9","email":"ratonxi@gmail.com","name":"Test","avatar":null,"bio":null,"theme":null,"language":null,"emailNotifications":true,"notificationEmail":"ratonxi@gmail.com","emailFrequency":"immediate","instantNotifications":true,"lastLogin":"2025-04-03T07:07:24.288Z","emailVerified":true,"subscriptionCount":"6","notificationCount":"0","lastNotification":null}}

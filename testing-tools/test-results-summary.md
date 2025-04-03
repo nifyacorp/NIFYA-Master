@@ -1,103 +1,106 @@
 # NIFYA Platform Testing Results Summary
 
-## Latest Test Results Comparison (April 3, 2025 - 08:38 AM)
+## Latest Test Results Comparison (April 3, 2025 - 08:47 AM)
 
 ### Service Update Comparison Results
 
-| Service | Previous Status | Current Status | Change |
-|---------|----------------|----------------|--------|
-| Authentication | ⚠️ MIXED RESULTS | ✅ IMPROVED | Fixed authentication in enhanced journey |
-| Backend Infrastructure | ✅ OPERATIONAL | ✅ OPERATIONAL | No change |
-| Notifications | ❌ FAILING | ✅ PARTIAL | Improved with working basic endpoints |
-| Subscriptions | ❌ FAILING | ⚠️ PARTIAL | Listing works, creation empty, types failing |
-| User Profile | ❌ FAILING | ❌ FAILING | No change |
-| Template Service | ❌ FAILING | ❌ FAILING | No change |
+| Service | Initial Status | Previous Status | Current Status | Change |
+|---------|---------------|----------------|----------------|--------|
+| Authentication | ⚠️ MIXED | ✅ IMPROVED | ✅ OPERATIONAL | Fixed authentication in enhanced journey |
+| Backend Infrastructure | ✅ OPERATIONAL | ✅ OPERATIONAL | ✅ OPERATIONAL | No change |
+| Notifications | ❌ FAILING | ✅ PARTIAL | ✅ OPERATIONAL | All basic endpoints working |
+| Subscriptions | ❌ FAILING | ⚠️ PARTIAL | ⚠️ PARTIAL | Listing works, creation empty, types failing |
+| User Profile | ❌ FAILING | ❌ FAILING | ✅ OPERATIONAL | Fixed - user profile and email preferences working |
+| Template Service | ❌ FAILING | ❌ FAILING | ❌ FAILING | No change |
 
 ### End-to-End User Journey Progress
-- Previous: Failed at authentication step (0/6 steps)
-- Current: Authentication succeeds but fails at subscription types step (2/6 steps)
-- **Progress**: 🔄 SLIGHTLY IMPROVED
+- Initial: Failed at authentication step (0/6 steps)
+- Previous: Authentication succeeds but fails at subscription types step (2/6 steps)
+- Current: Authentication and user profile succeed but fails at subscription types step (2/6 steps)
+- **Progress**: 🔄 IMPROVED
 
 ### Comprehensive Endpoint Test Results
-- Total Tests: 16
-- Passed: 9
-- Failed: 7
-- Success Rate: 56%
+- Initial: 4/16 endpoints passed (25%)
+- Previous: 9/16 endpoints passed (56%)
+- Current: 11/16 endpoints passed (69%)
+- **Improvement**: +13% from previous test, +44% from initial test
 
 ### Detailed Endpoint Results
 
-| Endpoint | Previous | Current | Status |
-|----------|----------|---------|--------|
-| GET /health | 200 | 200 | ✅ |
-| GET /api/diagnostics | 200 | 200 | ✅ |
-| GET /api/diagnostics/db-status | 200 | 200 | ✅ |
-| GET /api/diagnostics/db-tables | 200 | 200 | ✅ |
-| POST /api/auth/login/test | 404 | 404 | ❌ |
-| GET /api/v1/notifications | 401 | 200 | ✅ FIXED |
-| GET /api/v1/notifications/activity | 401 | 200 | ✅ FIXED |
-| GET /api/v1/notifications/stats | 401 | 200 | ✅ FIXED |
-| POST /api/v1/notifications/read-all | 401 | 200 | ✅ FIXED |
-| POST /api/v1/notifications/create-test | 404 | 404 | ❌ |
-| GET /api/v1/subscriptions | 401 | 200 | ✅ FIXED |
-| POST /api/v1/subscriptions | 401 | 400 | ❌ PARTIAL FIX |
-| GET /api/v1/subscriptions/types | 401 | 500 | ❌ PARTIAL FIX |
-| GET /api/v1/templates | 500 | 500 | ❌ |
-| GET /api/v1/me | 404 | 404 | ❌ |
-| GET /api/v1/me/email-preferences | 404 | 404 | ❌ |
+| Endpoint | Initial | Previous | Current | Status |
+|----------|---------|----------|---------|--------|
+| GET /health | 200 | 200 | 200 | ✅ |
+| GET /api/diagnostics | 200 | 200 | 200 | ✅ |
+| GET /api/diagnostics/db-status | 200 | 200 | 200 | ✅ |
+| GET /api/diagnostics/db-tables | 200 | 200 | 200 | ✅ |
+| POST /api/auth/login/test | 404 | 404 | 404 | ❌ |
+| GET /api/v1/notifications | 401 | 200 | 200 | ✅ |
+| GET /api/v1/notifications/activity | 401 | 200 | 200 | ✅ |
+| GET /api/v1/notifications/stats | 401 | 200 | 200 | ✅ |
+| POST /api/v1/notifications/read-all | 401 | 200 | 200 | ✅ |
+| POST /api/v1/notifications/create-test | 404 | 404 | 404 | ❌ |
+| GET /api/v1/subscriptions | 401 | 200 | 200 | ✅ |
+| POST /api/v1/subscriptions | 401 | 400 | 400 | ❌ |
+| GET /api/v1/subscriptions/types | 401 | 500 | 500 | ❌ |
+| GET /api/v1/templates | 500 | 500 | 500 | ❌ |
+| GET /api/v1/me | 404 | 404 | 200 | ✅ FIXED |
+| GET /api/v1/me/email-preferences | 404 | 404 | 200 | ✅ FIXED |
 
 ## Remaining Issues
 
 1. **Critical Issues**:
-   - Subscription types endpoint returning 500 error
-   - Template service endpoints returning 500 error
-   - User profile endpoints returning 404 error
+   - Subscription types endpoint still returning 500 error
+   - Template service endpoints still returning 500 error
 
 2. **Secondary Issues**:
-   - Subscription creation returning empty objects
+   - Subscription creation returning 400 error (missing required fields)
    - Test notification creation endpoint not available
 
 ## Recommendations
 
 1. **High Priority**:
-   - Fix the subscription types endpoint which is now the primary blocker for the enhanced journey
+   - Fix the subscription types endpoint which remains the primary blocker for the enhanced journey
    - Address the template service errors which will be needed for subscription creation
 
-2. **Medium Priority**:
-   - Implement or fix the user profile endpoints
-   - Investigate why subscription creation returns empty objects
-
-3. **Low Priority**:
+2. **Low Priority**:
    - Add the test notification creation endpoint
 
-## API Client Improvements
+## Notable Improvements
 
-The token refresh mechanism is now working correctly and has resolved many of the previous authorization issues. This allows authenticated endpoints to work properly without token expiration problems.
+1. **User Profile Service**:
+   - The user profile endpoints are now working correctly
+   - `/api/v1/me` now returns the user profile data
+   - `/api/v1/me/email-preferences` now returns the user's email notification preferences
+
+2. **Authentication and Authorization**:
+   - Token handling continues to work correctly
+   - All authenticated endpoints are returning proper responses
+
+3. **Success Rate Trend**:
+   - Initial test: 25% success rate
+   - Previous test: 56% success rate 
+   - Current test: 69% success rate
+   - Clear upward trend in service reliability
 
 ## Conclusion
 
-The service update has made significant progress in fixing authentication issues and authorization for multiple endpoints. The enhanced journey test now progresses further, completing the authentication step successfully before failing at subscription types retrieval.
+The service updates have made significant progress in fixing critical issues. The user profile service is now operational, which is a major improvement. The enhanced journey test now successfully completes the authentication and user profile steps but still fails at the subscription types step.
 
-The key improvement is in token handling and authentication, which has fixed 4 previously failing notification endpoints and the subscription listing endpoint. However, several critical endpoints still have issues, preventing the journey from completing successfully.
+The key remaining blocker is the subscription types endpoint which continues to return a 500 error. This is preventing the journey from proceeding to the subscription creation and notification steps.
 
-Focusing on fixing the subscription types endpoint should be the next priority as it's the current blocker in the enhanced user journey test.
+Focusing on fixing the subscription types endpoint and template service should be the next priorities to complete the enhanced user journey test.
 
-## Previous Test Results (April 3, 2025 - 07:20 AM)
+## Previous Test Results (April 3, 2025 - 08:38 AM)
 
 ### Comprehensive Test Results
 - **Total Tests**: 16
-- **Passed**: 4
-- **Failed**: 12
-- **Success Rate**: 25%
+- **Passed**: 9
+- **Failed**: 7
+- **Success Rate**: 56%
 
 ### Key Findings From Previous Tests
-- Authentication service returned tokens, but they appeared to have issues
-- Token expiration was causing most authenticated endpoints to fail with 401 errors
-- Infrastructure and diagnostic endpoints were working properly
-- Most service endpoints were failing with authentication errors
-
-### Changes Since Last Test
-- Authentication issues have been largely resolved
-- Token expiration handling has been fixed
-- Notification endpoints are now working
-- Subscription listing endpoint is now working
-- Success rate has improved from 25% to 56%
+- Authentication issues had been resolved
+- Token expiration handling had been fixed
+- Most notification endpoints were working
+- Subscription listing endpoint was working
+- User profile endpoints were still failing

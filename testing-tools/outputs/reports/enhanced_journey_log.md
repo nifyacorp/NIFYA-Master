@@ -1,14 +1,14 @@
 # NIFYA Enhanced User Journey Test
-Start Time: 2025-04-03T08:37:51.714Z
+Start Time: 2025-04-03T08:47:20.255Z
 Test Settings: 10 notification poll attempts, 5000ms interval
-Session ID: 2025-04-03T08-37-51-680Z
+Session ID: 2025-04-03T08-47-20-218Z
 
 ## Test Steps
 
 ### Step 0: Initial Health Check
 Initial Health Check Successful
 - Status: healthy
-- Uptime: 165.469709658
+- Uptime: 62.05367016
 - Server Time: Not available
 
 ✅ Step completed successfully
@@ -22,8 +22,8 @@ Authentication Successful
 
 ### Step 2: User Profile
 User Profile Retrieved
-- Name: Test User (from token)
-- Email: user@example.com
+- Name: Not available
+- Email: Not available
 
 ✅ Step completed successfully
 

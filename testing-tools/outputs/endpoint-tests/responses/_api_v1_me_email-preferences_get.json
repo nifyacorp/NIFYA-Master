@@ -1,5 +1,5 @@
 {
-  "message": "Route GET:/api/v1/me/email-preferences not found",
-  "error": "Not Found",
-  "statusCode": 404
+  "email_notifications": "true",
+  "notification_email": "ratonxi@gmail.com",
+  "digest_time": null
 }
