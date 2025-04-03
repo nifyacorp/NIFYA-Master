@@ -1,0 +1,12 @@
+{
+  "success": true,
+  "status": 200,
+  "data": {
+    "total": 0,
+    "unread": 0,
+    "change": 0,
+    "isIncrease": false,
+    "byType": {}
+  },
+  "url": "https://backend-415554190254.us-central1.run.app/api/v1/notifications/stats"
+}

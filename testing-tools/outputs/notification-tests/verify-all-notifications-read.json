@@ -1,0 +1,9 @@
+{
+  "success": true,
+  "error": null,
+  "data": {
+    "all_read": true,
+    "total": 0,
+    "unread": 0
+  }
+}

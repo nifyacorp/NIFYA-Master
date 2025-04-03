@@ -1,0 +1,9 @@
+{
+  "success": false,
+  "status": 404,
+  "data": {
+    "message": "Route PATCH:/api/v1/me/notification-settings not found",
+    "error": "Not Found",
+    "statusCode": 404
+  }
+}

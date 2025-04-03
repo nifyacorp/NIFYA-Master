@@ -11,6 +11,8 @@ const logger = require('./core/logger');
 
 // Import test runners
 const subscriptionTests = require('./run-subscription-tests');
+const userProfileTests = require('./run-user-profile-tests');
+const notificationTests = require('./run-notification-tests');
 const integrationTests = require('./run-integration-tests');
 const allTestModules = require('./run-all-test-modules');
 
@@ -20,6 +22,16 @@ const TEST_TYPES = {
     name: 'Subscription API Tests',
     description: 'Tests for subscription management endpoints',
     runner: subscriptionTests.runAllTests
+  },
+  'user-profile': {
+    name: 'User Profile Tests',
+    description: 'Tests for user profile management endpoints',
+    runner: userProfileTests
+  },
+  'notification': {
+    name: 'Notification Tests',
+    description: 'Tests for notification management endpoints',
+    runner: notificationTests
   },
   'integration': {
     name: 'Integration Tests',

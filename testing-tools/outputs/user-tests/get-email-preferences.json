@@ -1,0 +1,9 @@
+{
+  "success": true,
+  "status": 200,
+  "data": {
+    "email_notifications": "true",
+    "notification_email": "ratonxi@gmail.com",
+    "digest_time": null
+  }
+}

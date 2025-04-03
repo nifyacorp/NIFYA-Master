@@ -37,8 +37,11 @@ node index.js help
 # List available test types
 node index.js list
 
-# Run a specific test type
-node index.js run subscription
+# Run specific test types
+node index.js run subscription   # Test subscription endpoints
+node index.js run user-profile   # Test user profile endpoints
+node index.js run notification   # Test notification endpoints
+node index.js run integration    # Test cross-service functionality
 
 # Run all test types
 node index.js run-all
@@ -55,6 +58,18 @@ npm run test:auth
 # or individual tests
 node tests/auth/login.js
 node tests/auth/test-login.js
+```
+
+### User Profile Tests
+
+Test user profile management, notification settings, and email preferences.
+
+```bash
+# Run user profile tests
+node run-user-profile-tests.js
+
+# Run as part of the test suite
+node index.js run user-profile
 ```
 
 ### Subscription Tests
@@ -97,16 +112,28 @@ This tests:
 
 ### Notification Tests
 
-Verify notification retrieval, polling, and activity tracking.
+Verify notification retrieval, management, and activity tracking.
 
 ```bash
+# Legacy tests
 npm run test:notifications
-# or individual tests
+# or individual legacy tests
 node tests/notifications/basic-list.js
 node tests/notifications/poll.js
 node tests/notifications/activity.js
 node tests/notifications/get-by-entity.js
+
+# Comprehensive notification management tests
+node run-notification-tests.js   # Run all notification tests
+node index.js run notification   # Run via the unified test runner
 ```
+
+The comprehensive notification tests verify:
+- Retrieving notifications with filtering
+- Marking notifications as read/unread
+- Deleting notifications
+- Notification statistics and activity
+- Query parameter handling
 
 ### Health and Diagnostics Tests
 

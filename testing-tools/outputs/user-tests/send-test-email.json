@@ -1,0 +1,10 @@
+{
+  "success": false,
+  "status": 500,
+  "data": {
+    "statusCode": 500,
+    "code": "SERVER_ERROR",
+    "error": "Internal Server Error",
+    "message": "Failed to send test email"
+  }
+}

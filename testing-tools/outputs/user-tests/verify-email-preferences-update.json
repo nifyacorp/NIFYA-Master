@@ -1,0 +1,11 @@
+{
+  "success": false,
+  "status": 200,
+  "data": {
+    "email_notifications": "true",
+    "notification_email": "ratonxi@gmail.com",
+    "digest_time": null
+  },
+  "error": "Email preferences update verification failed",
+  "details": "Email preferences do not contain the updated information"
+}
