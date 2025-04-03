@@ -8,7 +8,7 @@
 
 const fs = require('fs').promises;
 const path = require('path');
-const { makeApiRequest, loadAuthToken, saveResponseToFile } = require('../core/api-client');
+const { makeApiRequest, makeAuthenticatedRequest, loadAuthToken, refreshTokenIfNeeded, saveResponseToFile } = require('../core/api-client');
 const logger = require('../core/logger');
 const endpointConfig = require('../config/endpoints');
 
@@ -65,8 +65,11 @@ async function testEndpoint(endpoint, token) {
     const endTime = Date.now();
     const responseTime = endTime - startTime;
     
+    // Make sure we have the correct status code
+    const statusCode = response.statusCode || response.status;
+    
     // Define what counts as a "success" status code
-    const isSuccess = response.status >= 200 && response.status < 400;
+    const isSuccess = statusCode >= 200 && statusCode < 400;
     
     // Create test result object
     const result = {
@@ -74,7 +77,7 @@ async function testEndpoint(endpoint, token) {
       path: endpoint.path,
       method: endpoint.method,
       status: isSuccess ? 'PASSED' : 'FAILED',
-      statusCode: response.status,
+      statusCode: statusCode,
       responseTime,
       responseSize: response.raw ? response.raw.length : 0,
       authenticated: !!useToken
@@ -87,9 +90,9 @@ async function testEndpoint(endpoint, token) {
     
     // Log outcome
     if (isSuccess) {
-      logger.success(`✅ ${endpoint.method} ${endpoint.path} - ${response.status} (${responseTime}ms)`);
+      logger.success(`✅ ${endpoint.method} ${endpoint.path} - ${statusCode} (${responseTime}ms)`);
     } else {
-      logger.error(`❌ ${endpoint.method} ${endpoint.path} - ${response.status} (${responseTime}ms)`);
+      logger.error(`❌ ${endpoint.method} ${endpoint.path} - ${statusCode} (${responseTime}ms)`);
     }
     
     return result;
@@ -120,12 +123,13 @@ async function runAllEndpointTests() {
   // Ensure output directory exists
   await fs.mkdir(path.join(OUTPUT_DIR, 'responses'), { recursive: true });
   
-  // Get the auth token for tests that need it
-  const token = loadAuthToken();
+  // Get the auth token for tests that need it and refresh if needed
+  let token = await refreshTokenIfNeeded();
   if (!token) {
-    logger.error('Authentication token not found. Run auth/test-login.js first.');
+    logger.error('Failed to get valid authentication token. Run auth/test-login.js first.');
     process.exit(1);
   }
+  logger.info('Authentication token validated and refreshed if needed');
   
   // Initialize results object
   const testResults = {

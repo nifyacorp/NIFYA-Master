@@ -57,8 +57,11 @@ async function createSubscription(token = null) {
     apiClient.saveResponseToFile('create_subscription_response', response, OUTPUT_DIR);
     
     if (response.statusCode === 200 || response.statusCode === 201) {
-      // Extract subscription ID from response
-      const subscriptionId = response.data.id || response.data.data?.id;
+      // Extract subscription ID from response - handle multiple possible response structures
+      const subscriptionId = response.data.id || 
+                            response.data.data?.id || 
+                            response.data.data?.subscription?.id ||
+                            response.data.subscription?.id;
       
       if (subscriptionId) {
         // Save subscription ID to file
@@ -79,8 +82,13 @@ async function createSubscription(token = null) {
           data: response.data
         };
       } else {
-        // No ID in response
-        logger.error('Subscription creation failed: No ID in response', response.data, testName);
+        // Log the actual structure of the response for debugging
+        logger.warn('Subscription response structure:', { 
+          responseStructure: JSON.stringify(response.data, null, 2)
+        }, testName);
+        
+        // No ID in response or unrecognized structure
+        logger.error('Subscription creation failed: No ID found in response', response.data, testName);
         logger.testResult(testName, false, 'No subscription ID in response');
         return { success: false, error: 'No subscription ID in response' };
       }

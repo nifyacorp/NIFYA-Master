@@ -1,1 +1,1 @@
-{"status":"error","code":"DATABASE_ERROR","message":"Database operation failed: insert or update on table \"subscriptions\" violates foreign key constraint \"subscriptions_user_id_fkey\""}
+{"status":"success","data":{"subscription":{}}}

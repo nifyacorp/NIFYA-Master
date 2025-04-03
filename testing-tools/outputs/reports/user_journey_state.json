@@ -1,26 +1,27 @@
 {
-  "startTime": "2025-04-02T07:14:21.894Z",
+  "startTime": "2025-04-03T07:27:59.287Z",
   "steps": [
     {
       "name": "authentication",
       "success": true,
-      "timestamp": "2025-04-02T07:14:22.324Z"
+      "timestamp": "2025-04-03T07:27:59.709Z"
     },
     {
       "name": "create-subscription",
       "success": false,
-      "timestamp": "2025-04-02T07:14:22.594Z"
+      "timestamp": "2025-04-03T07:27:59.982Z"
     }
   ],
   "currentStep": "create-subscription",
   "auth": {
     "success": true,
-    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2NWM2MDc0ZC1kYmM0LTQwOTEtOGU0NS1iNmFlY2ZmZDlhYjkiLCJlbWFpbCI6InJhdG9ueGlAZ21haWwuY29tIiwibmFtZSI6IlRlc3QiLCJlbWFpbF92ZXJpZmllZCI6dHJ1ZSwidHlwZSI6ImFjY2VzcyIsImlhdCI6MTc0MzU3ODEzNiwiZXhwIjoxNzQzNTc5MDM2fQ.8Cjh_rfRJkD_eiQAOWb1bw1bbCb6Sv47GFcf8DABBQQ",
+    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2NWM2MDc0ZC1kYmM0LTQwOTEtOGU0NS1iNmFlY2ZmZDlhYjkiLCJlbWFpbCI6InJhdG9ueGlAZ21haWwuY29tIiwibmFtZSI6IlRlc3QiLCJlbWFpbF92ZXJpZmllZCI6dHJ1ZSwidHlwZSI6ImFjY2VzcyIsImlhdCI6MTc0MzY2NTM1NCwiZXhwIjoxNzQzNjY2MjU0fQ.HqNFxzFjxnGciJI1o1jkr1qg0FnNSu3GCkztMqrf8Jc",
+    "refreshToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2NWM2MDc0ZC1kYmM0LTQwOTEtOGU0NS1iNmFlY2ZmZDlhYjkiLCJlbWFpbCI6InJhdG9ueGlAZ21haWwuY29tIiwidHlwZSI6InJlZnJlc2giLCJpYXQiOjE3NDM2NjUzNTQsImV4cCI6MTc0NDI3MDE1NH0.Sa12lek4dlritFzcFLiL5YwBuinSSsv_RyWtb9MUDJ0",
     "userId": "65c6074d-dbc4-4091-8e45-b6aecffd9ab9"
   },
   "subscription": {
     "success": false,
-    "error": "Status code 500"
+    "error": "No subscription ID in response"
   },
   "processing": null,
   "notifications": null,

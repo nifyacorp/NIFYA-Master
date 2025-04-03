@@ -4,156 +4,9 @@ A comprehensive platform for intelligent notifications powered by AI. NIFYA prov
 
 ![NIFYA](https://ik.imagekit.io/appraisily/NYFIA/logo.png)
 
-## 🚀 Current Status (March 2025)
+## 📚 Repository Overview
 
-- **Frontend**: Fully operational with React, TypeScript, and Tailwind CSS
-- **Authentication**: Complete with OAuth and JWT authentication
-- **Notification System**: Implemented with real-time and email delivery
-- **Subscription Management**: Available with customizable templates and processing
-- **Data Validation**: Zod implemented in frontend, backend, and authentication services
-- **API Resilience**: Enhanced error handling and standardized responses
-- **Email Notifications**: Working with HTML templates and user preferences
-- **Current Focus**: Bug fixes and performance optimization across services
-
-## 🧪 Testing & Debugging
-
-For testing and debugging purposes, use the test credentials stored in the `test-credentials.md` file (gitignored). This file contains a test account that can be used across all environments.
-
-- Test site: https://clever-kelpie-60c3a6.netlify.app/
-- Comprehensive testing documentation available in [testing-documentation.md](testing-documentation.md)
-
-### 📋 Testing Tools for AI Assistants and Developers
-
-We've created a structured testing toolkit to help AI assistants and developers test the NIFYA platform efficiently. The toolkit is organized in the `/testing-tools` directory with a clear domain-oriented structure:
-
-```
-/testing-tools/
-├── config/              # Configuration files for endpoints and test data
-├── core/                # Core utilities for API client and logging
-├── tests/               # Test scripts organized by domain
-│   ├── auth/            # Authentication tests
-│   ├── subscriptions/   # Subscription tests  
-│   ├── notifications/   # Notification tests
-│   └── user-journeys/   # End-to-end user flows
-├── utils/               # Helper utilities and test runners
-├── docs/                # Documentation and analysis findings
-└── outputs/             # Test outputs (responses, logs, reports)
-```
-
-#### For AI Assistants
-
-The testing tools are designed to be easily understood and used by AI assistants:
-
-1. **Clear Directory Structure**: Tests are organized by domain (auth, subscriptions, notifications)
-2. **Self-Contained Tests**: Each test file contains necessary context and documentation
-3. **Structured Logging**: Tests produce consistent, detailed logs for analysis
-4. **Output Separation**: All outputs are stored in a dedicated directory for easy access
-5. **Configuration Files**: All endpoints and test data centralized for easy modification
-
-#### Quick Start for AI Assistants
-
-Here's how to quickly understand and use the testing toolkit:
-
-1. **Authentication Testing**:
-   ```javascript
-   // Tests login flow and stores authentication token
-   node testing-tools/tests/auth/login.js
-   ```
-
-2. **Subscription Testing**:
-   ```javascript
-   // Creates a test subscription
-   node testing-tools/tests/subscriptions/create.js
-   
-   // Processes an existing subscription
-   node testing-tools/tests/subscriptions/process.js
-   ```
-
-3. **Notification Testing**:
-   ```javascript
-   // Polls for notifications, with optional subscription ID filter
-   node testing-tools/tests/notifications/poll.js [subscriptionId] [maxAttempts] [interval]
-   ```
-
-4. **User Journey Testing**:
-   ```javascript
-   // Runs complete user flow from auth to notifications
-   node testing-tools/tests/user-journeys/standard-flow.js
-   ```
-
-5. **Running Multiple Tests**:
-   ```javascript
-   // Runs all tests in a specific domain or all tests
-   node testing-tools/utils/test-runner.js auth|subscriptions|notifications|all
-   ```
-
-#### Key Files to Analyze
-
-When debugging issues, these files will be most helpful:
-
-1. **API Client**: `/testing-tools/core/api-client.js` - Contains API request logic and auth handling
-2. **Endpoint Configuration**: `/testing-tools/config/endpoints.js` - Lists all API endpoints and test data
-3. **Test Results**: `/testing-tools/outputs/reports/` - Contains test reports and journey logs
-4. **API Responses**: `/testing-tools/outputs/responses/` - Contains raw API responses for analysis
-
-#### Common Issues and Solutions
-
-The testing tools help identify several common issues:
-
-1. **Authentication Headers**: If tests show `401 MISSING_HEADERS`, check the Authorization header format
-2. **Schema Validation**: `Invalid message format` errors in notifications indicate schema mismatches
-3. **Subscription Processing**: If no notifications appear, check the subscription worker logs
-4. **Topic/Subscription Mismatches**: PubSub errors indicate misconfigured topics
-
-#### Automated Analysis
-
-For a comprehensive analysis of the notification pipeline, refer to:
-`/testing-tools/docs/findings/NOTIFICATION-PIPELINE-CONCLUSIONS.md`
-
-### Automated Testing
-
-The repository includes automated testing scripts:
-- `debug-website.js`: Runs a comprehensive test of the website and generates a detailed bug report
-- `route-testing-script.js`: Tests all application routes and produces screenshots with error logs
-
-#### Running Tests
-
-You can run all tests using the provided test runner scripts:
-
-**For Linux/Mac:**
-```bash
-# Make the script executable
-chmod +x run-tests.sh
-
-# Run all tests
-./run-tests.sh
-```
-
-**For Windows:**
-```powershell
-# Run all tests
-.\run-tests.ps1
-```
-
-Or run individual test scripts:
-```bash
-# Install dependencies
-npm install puppeteer
-
-# Run the debug script
-node debug-website.js
-
-# Run the route testing script
-node route-testing-script.js
-```
-
-Test results are stored in:
-- Bug reports: `bugs-report.md`
-- Route test results: `route-test-results/`
-
-### Common Issues
-
-For common issues and their solutions, refer to the [testing documentation](testing-documentation.md#common-issues-and-solutions).
+This repository serves as the master repository containing all NIFYA microservices as submodules. Each submodule has its own repository, documentation, and deployment pipeline. This README provides a high-level overview of the entire platform architecture and guides you to the specific documentation for each component.
 
 ## 🏛️ System Architecture
 
@@ -207,69 +60,111 @@ NIFYA is built with a microservices architecture where specialized services hand
             └─────────────────┘
 ```
 
-### Functional Relationships
-
-The architecture above illustrates the following key relationships:
-
-1. **User Interaction Layer**
-   - Users interact with the Frontend to view content and create/manage subscriptions
-   - Frontend authenticates users via the Authentication Service using JWT
-   - Email Service sends notifications directly to users
-
-2. **Core Services Layer**
-   - Backend provides API endpoints for the Frontend
-   - Authentication Service validates user identity
-   - Backend orchestrates the overall system
-
-3. **Processing Layer**
-   - Subscription Worker processes subscription requests:
-     - Analyzes content using specialized parsers (BOE/DOGA)
-     - Publishes results for notification creation
-   - Notification Worker creates notifications from processing results
-   - Email Notification sends email summaries to users
-
-4. **Data Storage Layer**
-   - PostgreSQL Database stores all persistent data:
-     - User accounts and authentication
-     - Subscriptions and templates
-     - Notifications and delivery status
-
-5. **Messaging Layer**
-   - Google Cloud PubSub enables asynchronous communication between services
-
-### Data Flows
-
-#### Subscription Creation Flow
-1. User creates a subscription via Frontend
-2. Frontend sends request to Backend
-3. Backend stores subscription and publishes event to PubSub
-4. Subscription Worker processes the subscription
-5. Worker uses specialized parsers (BOE/DOGA) as needed
-6. Results are published to PubSub
-
-#### Notification Flow
-1. Notification Worker consumes processing results from PubSub
-2. Worker creates notifications in the database
-3. Worker publishes email notification events to PubSub
-4. Email Service sends emails to users
-5. Users view notifications in Frontend (via Backend API)
-
-## 📦 Submodules
+## 📦 Submodules Overview
 
 The repository contains the following submodules, each with its own specific functionality:
 
-| Submodule | Description | Deployment URL |
-|-----------|-------------|----------------|
-| **Frontend** | User interface and client-side application | https://clever-kelpie-60c3a6.netlify.app |
-| **Authentication Service** | Handles user authentication and authorization | https://authentication-service-415554190254.us-central1.run.app |
-| **Backend** | Core API and business logic | https://backend-415554190254.us-central1.run.app |
-| **Subscription Worker** | Manages subscription processing | https://subscription-worker-415554190254.us-central1.run.app |
-| **BOE Parser** | AI-powered analysis of Spanish Official Bulletin (BOE) | https://boe-parser-415554190254.us-central1.run.app |
-| **DOGA Parser** | AI-powered analysis of Galician Official Bulletin (DOGA) | https://doga-parser-415554190254.us-central1.run.app |
-| **Notification Worker** | Processes notification messages and stores them in the database | https://notification-worker-415554190254.us-central1.run.app |
-| **Email Notification** | Sends email summaries of notifications to users | https://email-notification-415554190254.us-central1.run.app |
+| Submodule | Description | Documentation Files | Function |
+|-----------|-------------|---------------------|----------|
+| **Frontend** | User interface and client-side application | [README.md](/frontend/README.md)<br>[CLAUDE.md](/frontend/CLAUDE.md) | Provides the user interface for interacting with the NIFYA platform |
+| **Authentication Service** | Handles user authentication and authorization | [README.md](/Authentication-Service/README.md) | Manages user authentication, JWT tokens, and OAuth integration |
+| **Backend** | Core API and business logic | [README.md](/backend/README.md)<br>[ENDPOINTS.md](/backend/ENDPOINTS.md) | Orchestrates the entire system and provides the main API endpoints |
+| **Subscription Worker** | Manages subscription processing | [README.md](/subscription-worker/README.md) | Processes subscriptions and sends results to notification services |
+| **BOE Parser** | AI-powered analysis of Spanish Official Bulletin (BOE) | [README.md](/boe-parser/README.md)<br>[CLAUDE.md](/boe-parser/CLAUDE.md) | Analyzes BOE content using AI and extracts relevant information |
+| **DOGA Parser** | AI-powered analysis of Galician Official Bulletin (DOGA) | [README.md](/doga-parser/README.md)<br>[CLAUDE.md](/doga-parser/CLAUDE.md) | Analyzes DOGA content using AI and extracts relevant information |
+| **Notification Worker** | Processes notification messages and stores them in the database | [README.md](/notification-worker/README.md)<br>[CLAUDE.md](/notification-worker/CLAUDE.md) | Creates notifications from processing results |
+| **Email Notification** | Sends email summaries of notifications to users | [README.md](/email-notification/README.md)<br>[CLAUDE.md](/email-notification/CLAUDE.md) | Sends email notifications based on user preferences |
 
-## 🔄 Communication Protocols
+## 🔄 Service Relationships & Communication Flows
+
+The NIFYA platform uses both HTTP/REST and PubSub for service communication:
+
+```
+┌──────────────────────┐                               ┌──────────────────────┐
+│                      │                               │                      │
+│   Client (Browser)   │                               │  Authentication      │
+│                      │                               │  Service             │
+└───────────┬──────────┘                               └───────────┬──────────┘
+            │                                                      │
+            │ HTTP/REST                                            │
+            │ (JWT Auth)                                           │
+            ▼                                                      ▼
+┌──────────────────────┐     HTTP/REST      ┌──────────────────────┐
+│                      │     (JWT Auth)     │                      │     HTTP/REST
+│   Frontend           ├────────────────────►   Backend            ├─────────────────┐
+│   (React/TypeScript) │                    │   (Node.js/Express)  │                 │
+│                      │◄────────────────────┤                      │                 │
+└──────────────────────┘                    └──────────┬─┬──────────┘                 │
+                                                       │ │                            │
+                                                       │ │                            │
+                    ┌───────────────────────────────────┘ │                          │
+                    │                                     │                          │
+                    │ PubSub Message                      │ PubSub Message           │
+                    │ (subscription_created)              │ (notification_created)   │
+                    ▼                                     ▼                          ▼
+     ┌──────────────────────┐              ┌──────────────────────┐     ┌──────────────────────┐
+     │                      │  PubSub      │                      │     │                      │
+     │  Subscription        │  Message     │  Notification        │     │  AI Parsers          │
+     │  Worker              ├─────────────►│  Worker              │     │  (BOE/DOGA)          │
+     │                      │  (results)   │                      │     │                      │
+     └──────────┬───────────┘              └──────────┬───────────┘     └──────────────────────┘
+                │                                     │                           ▲
+                │                                     │                           │
+                │ HTTP/REST                           │ PubSub Message            │
+                │ (process request)                   │ (email_notification)      │
+                ▼                                     ▼                           │
+     ┌──────────────────────┐              ┌──────────────────────┐               │
+     │                      │              │                      │               │
+     │  Parser Services     │              │  Email               │               │
+     │  (BOE/DOGA)          ├──────────────┘  Notification        │               │
+     │                      │                 Service              │───────────────┘
+     └──────────────────────┘              └──────────────────────┘
+```
+
+### Basic Data Flows
+
+#### User Authentication Flow
+```
+User ──► Frontend ──► Authentication Service ──► Database
+                            │
+                            └───► JWT Token ───► Frontend
+```
+
+#### Subscription Creation Flow
+```
+User ──► Frontend ──► Backend ──► Database
+                        │
+                        └───► PubSub ───► Subscription Worker
+```
+
+#### Notification Flow
+```
+Subscription Worker ──► AI Parser ──► Subscription Worker ──► PubSub ──► Notification Worker ──► Database
+                                                                            │
+                                                                            └───► PubSub ───► Email Service ──► User Email
+```
+
+## 🔑 Documentation Structure
+
+Each submodule contains its own documentation with detailed information about its functionality, API endpoints, deployment instructions, and more:
+
+1. **README.md** - Primary documentation for each submodule with overview, features, and setup instructions
+2. **CLAUDE.md** - AI assistant guidance file with codebase-specific instructions
+3. **Additional MD Files** - More specialized documentation for specific features or components
+
+### Where to Find Documentation
+
+- **Frontend Documentation**: `/frontend/README.md`, `/frontend/CLAUDE.md`
+- **Authentication Service Documentation**: `/Authentication-Service/README.md`
+- **Backend Documentation**: `/backend/README.md`, `/backend/ENDPOINTS.md`
+- **Subscription Worker Documentation**: `/subscription-worker/README.md`
+- **BOE Parser Documentation**: `/boe-parser/README.md`, `/boe-parser/CLAUDE.md`
+- **DOGA Parser Documentation**: `/doga-parser/README.md`, `/doga-parser/CLAUDE.md`
+- **Notification Worker Documentation**: `/notification-worker/README.md`, `/notification-worker/CLAUDE.md`
+- **Email Notification Documentation**: `/email-notification/README.md`, `/email-notification/CLAUDE.md`
+- **Testing Tools Documentation**: `/testing-tools/README.md`
+
+## 🔄 Common Communication Patterns
 
 ### HTTP/REST Communication
 
@@ -277,12 +172,12 @@ The following services communicate via REST APIs:
 
 #### Frontend → Authentication Service
 - **Protocol**: HTTP/REST
-- **Authentication**: JWT
+- **Authentication**: None (for login/register) / JWT (for authenticated requests)
 - **Key Endpoints**:
-  - `POST /auth/login`: User authentication
-  - `POST /auth/register`: User registration
-  - `POST /auth/refresh`: Token refresh
-  - `GET /auth/me`: Current user info
+  - `POST /api/auth/login`: User authentication
+  - `POST /api/auth/register`: User registration
+  - `POST /api/auth/refresh`: Token refresh
+  - `GET /api/auth/me`: Current user info
 
 #### Frontend → Backend
 - **Protocol**: HTTP/REST
@@ -301,141 +196,24 @@ The following services communicate via REST APIs:
 
 ### PubSub Messaging
 
-The following message-based communications occur via Google Cloud PubSub:
-
 #### 1. Subscription Worker → Notification Worker
 - **Topic**: `processor-results`
 - **Protocol**: PubSub
-- **Message Format**:
-  ```json
-  {
-    "version": "1.0",
-    "processor_type": "boe|doga|real_estate",
-    "timestamp": "ISO8601 timestamp",
-    "request": {
-      "subscription_id": "uuid",
-      "processing_id": "uuid",
-      "user_id": "uuid",
-      "prompts": ["search prompt 1", "search prompt 2"]
-    },
-    "results": {
-      "query_date": "2025-02-11",
-      "matches": [
-        {
-          "prompt": "search prompt 1",
-          "documents": [
-            {
-              "document_type": "boe_document",
-              "title": "Document Title",
-              "summary": "Document Summary",
-              "relevance_score": 0.95,
-              "links": {
-                "html": "https://example.com/doc.html",
-                "pdf": "https://example.com/doc.pdf"
-              }
-            }
-          ]
-        }
-      ]
-    }
-  }
-  ```
+- **Message Format**: Standardized JSON format with version, processor type, and results
 
 #### 2. Backend → Subscription Worker
 - **Topic**: `subscription-created` / `subscription-updated`
 - **Protocol**: PubSub
-- **Message Format**:
-  ```json
-  {
-    "event": "subscription_created|subscription_updated",
-    "subscription_id": "uuid",
-    "user_id": "uuid",
-    "timestamp": "ISO8601 timestamp",
-    "data": {
-      "type": "boe|doga|real_estate",
-      "prompts": ["prompt1", "prompt2"],
-      "frequency": "immediate|daily"
-    }
-  }
-  ```
+- **Message Format**: JSON with subscription details and user ID
 
 #### 3. Notification Worker → Email Service
 - **Topic**: `email-notifications`
 - **Protocol**: PubSub
-- **Message Format**:
-  ```json
-  {
-    "event": "notification_created",
-    "user_id": "uuid",
-    "timestamp": "ISO8601 timestamp",
-    "notification_data": {
-      "id": "uuid",
-      "title": "Notification Title",
-      "content": "Notification Content",
-      "subscription_id": "uuid",
-      "source_url": "https://example.com/source"
-    }
-  }
-  ```
+- **Message Format**: JSON with notification details and user ID
 
-### Database Access
+## 🧰 Development Guide
 
-All services share a PostgreSQL database with the following security approach:
-
-- **Row-Level Security (RLS)**: Database enforces access control at the row level
-- **Connection Pooling**: Each service maintains its own connection pool
-- **Context Setting**: Services set `app.current_user_id` for RLS enforcement
-
-#### Database Schema (High Level)
-- **users**: Core user data
-- **subscriptions**: User subscriptions with prompts and frequency
-- **notifications**: Messages generated for users based on subscriptions
-- **subscription_templates**: Reusable subscription configurations
-
-## 🔒 Security
-
-The system implements the following security measures across services:
-
-- **JWT Authentication**: Short-lived access tokens + refresh tokens
-- **API Keys**: For internal service-to-service communication
-- **Row-Level Security**: Database-enforced data isolation
-- **Secret Manager**: Secure storage of credentials and API keys
-- **Environment Variables**: Configuration without hardcoded secrets
-- **HTTPS**: All communications encrypted in transit
-
-### Authentication Headers Format
-
-**CRITICAL**: All authentication headers must follow this exact format:
-
-- **Authorization Header**: Always use `Bearer {token}` format (with space after "Bearer")
-- **User ID Header**: Always include `x-user-id` header with the user's ID
-
-Example correct headers:
-```
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...
-x-user-id: 65c6074d-dbc4-4091-8e45-b6aecffd9ab9
-```
-
-The backend strictly validates this format and will return a 401 MISSING_HEADERS error if not followed exactly. When working with authentication:
-
-1. Always use the auth utility functions in `src/lib/utils/auth-recovery.ts`
-2. Never manually construct the Authorization header without the "Bearer " prefix
-3. Use `verifyAuthHeaders()` before making API requests to ensure proper format
-
-## 🚀 Deployment
-
-All services are deployed to Google Cloud Run with the following configuration:
-
-- **CI/CD**: Each service has its own deployment pipeline
-- **Cloud Run**: Serverless containers for all services
-- **Cloud SQL**: PostgreSQL database with proxy connections
-- **Cloud Scheduler**: Triggers scheduled processes (daily subscription checks)
-- **Secret Manager**: Secure storage of credentials
-- **Cloud Storage**: Assets and static content storage
-
-## 🧩 Development
-
-Each service has its own development environment and setup. For local development:
+### Environment Setup
 
 1. Clone this repository with submodules:
    ```bash
@@ -451,15 +229,23 @@ Each service has its own development environment and setup. For local developmen
    - Workers (Subscription/Notification)
    - Frontend
 
-## 📊 Monitoring
+### Available Scripts
 
-The system includes structured logging across all services with the following information:
+Each submodule has its own scripts defined in its respective `package.json` file. See the CLAUDE.md file at the root of this repository for common build commands.
 
-- Request/response timing
-- Database operation metrics
-- Error tracking with stack traces
-- User action auditing
-- Performance metrics
+### Testing
+
+The repository includes comprehensive testing tools in the `/testing-tools` directory that can be used to test all aspects of the platform. See the [Testing Tools README](/testing-tools/README.md) for more information.
+
+```bash
+# Run the test suite for a specific component
+cd <component>
+npm test
+
+# Run the comprehensive test suite
+cd testing-tools
+node run-all-tests.js
+```
 
 ## 🔍 Troubleshooting
 
@@ -468,12 +254,12 @@ When troubleshooting the system, consider the following common integration point
 1. **Authentication Flow**: 
    - Verify JWT tokens are correctly passed and validated
    - Ensure tokens have proper `Bearer ` prefix (note the space)
-   - Check that the `x-user-id` header is included in all authenticated requests
+   - Check that the `X-User-ID` header is included in all authenticated requests
    - Validate that the user ID in the token matches the user ID in the header
 
 2. **Authentication Errors**:
    - `MISSING_HEADERS` error (401): Check Authorization header format, ensure it's `Bearer {token}`
-   - `USER_MISMATCH` error (401): Check that the user ID in the token matches the x-user-id header
+   - `USER_MISMATCH` error (401): Check that the user ID in the token matches the X-User-ID header
    - `TOKEN_EXPIRED` error: Refresh token or re-authenticate
 
 3. **PubSub Messages**: Check message format and topic subscriptions
@@ -484,115 +270,3 @@ When troubleshooting the system, consider the following common integration point
 ## 📖 License
 
 Copyright © 2025 NIFYA. All rights reserved.
-
-## Subscription Processing Flow
-
-The subscription processing system follows this flow:
-
-1. **Frontend Request**: 
-   - User clicks "Process Immediately" button in the frontend
-   - Frontend sends a POST request to `/api/v1/subscriptions/:id/process`
-
-2. **Backend Processing**:
-   - Backend receives the request and verifies ownership of the subscription
-   - Backend forwards the request to the Subscription Worker
-   - Path: `POST ${SUBSCRIPTION_WORKER_URL}/subscriptions/process-subscription/:id`
-
-3. **Subscription Worker Processing**:
-   - Worker receives the request and queues it for processing
-   - Worker fetches the subscription details from the database
-   - Worker determines the appropriate processor (BOE, DOGA, etc.)
-   - Worker calls the processor's `processSubscription` method
-   - For BOE subscriptions, it uses the BOEProcessor
-
-4. **BOE Parser Communication**:
-   - BOEProcessor makes a POST request to the BOE Parser service
-   - Path: `POST ${BOE_PARSER_URL}/analyze-text`
-   - Sends the subscription prompts and metadata
-   - Processes the results and generates notifications
-
-5. **Notification Creation**:
-   - Worker creates notifications based on processing results
-   - Notifications appear in the user's frontend interface
-
-## Troubleshooting Communication Issues
-
-If the subscription processing isn't working correctly, follow these steps:
-
-1. **Verify Backend Configuration**:
-   - Check that `SUBSCRIPTION_WORKER_URL` is correctly set in the backend environment
-   - Default fallback is `http://localhost:8080`
-   - Confirm in backend logs that the request is being forwarded to the worker
-
-2. **Verify Subscription Worker Configuration**:
-   - Check that `BOE_API_URL` is correctly set in the worker's environment variables
-   - Default is `https://boe-parser-415554190254.us-central1.run.app`
-   - Look for initialization logs from `boe-processor` showing the service URL
-
-3. **Check Connectivity**:
-   - Ensure the worker can reach the BOE Parser service
-   - Test connectivity: `curl -v https://boe-parser-415554190254.us-central1.run.app/health`
-   - Check network rules, firewall settings, or VPC configurations
-
-4. **Review Worker Logs**:
-   - Look for "Sending prompts to BOE analyzer" in logs
-   - Check for errors in the request interceptor logs
-   - Verify that "BOE analysis completed successfully" appears
-
-5. **Review Processor Logs**:
-   - The BOE Parser service should log incoming requests
-   - Check for authentication issues (API keys)
-   - Verify that the service is processing and returning results
-
-## Common Issues
-
-1. **Missing or Incorrect Environment Variables**:
-   - If the `BOE_API_URL` is not set or incorrect, the worker may not be able to communicate with the BOE Parser service
-   - Solution: Verify and update the environment variables in both the backend and worker services
-
-2. **Network Connectivity Issues**:
-   - If the worker cannot reach the BOE Parser service, requests will fail
-   - Solution: Check firewall rules, network policies, and ensure the BOE Parser service is running
-
-3. **Incorrect Endpoint Construction**:
-   - The worker must use the correct path to communicate with the BOE Parser
-   - Solution: Verify that the worker is using `/analyze-text` endpoint
-
-## Development Workflow
-
-1. Make changes to the relevant subservice code
-2. Commit your changes to the repository
-3. Push/sync your changes to trigger the build process
-4. Monitor the build process in the deployment platform
-
-## Build Process
-
-Each subservice has an independent build process triggered by changes to its respective code:
-
-1. Code changes are committed and pushed to the repository
-2. CI/CD pipeline detects changes and initiates the build process
-3. Tests are run to ensure code quality
-4. If tests pass, the service is built and deployed to its respective environment
-5. Deployment status can be monitored in the deployment platform
-
-## Testing
-
-Before deploying changes, it's recommended to run the automated test suite to verify functionality:
-
-```bash
-# Run the test suite for the frontend
-cd frontend
-npm test
-
-# Test the subscription flow
-node fix-subscription-form.js
-```
-
-## Troubleshooting Build Process
-
-If you encounter issues with the build process:
-
-1. Check the build logs in the CI/CD platform
-2. Verify that all dependencies are correctly specified
-3. Ensure that tests are passing locally before pushing changes
-4. Check for any API compatibility issues between services

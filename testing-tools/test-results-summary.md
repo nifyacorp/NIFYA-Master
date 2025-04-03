@@ -1,29 +1,31 @@
 # NIFYA Platform Testing Results Summary
 
-## Latest Test Results (April 2, 2025 - 11:37 AM)
+## Latest Test Results (April 3, 2025 - 07:20 AM)
 
 ### Comprehensive Test Results
-- **Total Tests**: 8
-- **Passed**: 5
-- **Failed**: 3
-- **Success Rate**: 63%
+- **Total Tests**: 16
+- **Passed**: 4
+- **Failed**: 12
+- **Success Rate**: 25%
 
 ### Tests by Category
 
 | Category | Tests | Passed | Failed | Success Rate |
 |----------|-------|--------|--------|-------------|
-| Authentication | 1 | 1 | 0 | 100% |
 | Infrastructure | 1 | 1 | 0 | 100% |
-| Subscriptions | 3 | 1 | 2 | 33% |
-| Notifications | 2 | 1 | 1 | 50% |
-| Diagnostics | 1 | 1 | 0 | 100% |
+| Diagnostics | 3 | 3 | 0 | 100% |
+| Authentication | 1 | 0 | 1 | 0% |
+| Notifications | 5 | 0 | 5 | 0% |
+| Subscriptions | 3 | 0 | 3 | 0% |
+| Templates | 1 | 0 | 1 | 0% |
+| User | 2 | 0 | 2 | 0% |
 
 ## Test Results Analysis
 
 ### Authentication Tests
-- **Status**: ✅ PASSED
-- **Details**: Authentication service correctly returns JWT tokens and user information
-- **Notes**: Authentication is working properly and returns a valid token
+- **Status**: ⚠️ MIXED RESULTS
+- **Details**: Authentication service returns tokens, but they appear to have issues
+- **Notes**: The API client cannot properly detect the status code from the authentication response
 
 ### Infrastructure Tests
 - **Status**: ✅ PASSED
@@ -31,129 +33,159 @@
 - **Notes**: System reports healthy status and database connection is verified
 
 ### Subscription Tests
-- **Status**: ⚠️ MIXED RESULTS
+- **Status**: ❌ FAILED
 - **Details**: 
-  - Subscription Listing: ✅ PASSED (returns empty array with proper pagination)
-  - Subscription Creation: ❌ FAILED with "Database operation failed: insert or update on table \"subscriptions\" violates foreign key constraint \"subscriptions_user_id_fkey\""
-  - Subscription Creation with User ID: ❌ FAILED with the same foreign key constraint error
-- **Analysis**: The API correctly handles the request format but the user record doesn't exist in the backend database
+  - Subscription Listing: ❌ FAILED (401 Unauthorized - token appears to be expired)
+  - Subscription Creation: ❌ FAILED (401 Unauthorized or returns empty response)
+  - Subscription Types: ❌ FAILED (401 Unauthorized)
+- **Analysis**: Token expiration issues affecting all endpoints requiring authentication
 
 ### Notification Tests
-- **Status**: ⚠️ MIXED RESULTS
+- **Status**: ❌ FAILED
 - **Details**: 
-  - `GET /api/v1/notifications?entityType=subscription` - ✅ WORKING (returns empty array with pagination)
-  - `GET /api/v1/notifications` (standard polling) - ❌ FAILING (timeout issue)
-- **Improvements**: Notification endpoint now properly includes pagination metadata
+  - `GET /api/v1/notifications` - ❌ FAILED (401 Unauthorized)
+  - `GET /api/v1/notifications/activity` - ❌ FAILED (401 Unauthorized)
+  - `GET /api/v1/notifications/stats` - ❌ FAILED (401 Unauthorized)
+  - `POST /api/v1/notifications/read-all` - ❌ FAILED (401 Unauthorized)
+  - `POST /api/v1/notifications/create-test` - ❌ FAILED (404 Not Found)
+- **Analysis**: Authentication issues and possible changes to endpoint paths
 
 ### Diagnostic Endpoints
 - **Status**: ✅ PASSED
 - **Working Endpoints**:
   - `/api/diagnostics` - Lists available diagnostic endpoints
-  - `/health` - Reports service health (database connected, memory usage, etc.)
-  - `/api/diagnostics/db-tables` - Lists database tables (8 tables found)
   - `/api/diagnostics/db-status` - Reports database status (connected)
-- **Remaining Issues**:
-  - `/api/diagnostics/user-exists` - Confirms user doesn't exist in database
-  - User validation appears to fail on the backend despite valid token
+  - `/api/diagnostics/db-tables` - Lists database tables (8 tables found)
+- **Notes**: Diagnostic endpoints continue to work properly
 
-## Post-Fix Test Results (April 2, 2025 - 11:37 AM)
+### Template Tests
+- **Status**: ❌ FAILED
+- **Details**: `GET /api/v1/templates` returns 500 Internal Server Error
+- **Analysis**: Backend issue with template retrieval, possibly database related
+
+### User Endpoints
+- **Status**: ❌ FAILED
+- **Details**:
+  - `GET /api/v1/me` - ❌ FAILED (404 Not Found)
+  - `GET /api/v1/me/email-preferences` - ❌ FAILED (404 Not Found)
+- **Analysis**: User endpoints may have changed paths or are not implemented
+
+## Post-Fix Test Results (April 3, 2025 - 07:20 AM)
 
 ### Test Results Summary
 - **Authentication**: ✅ PASSED
 - **Diagnostic Endpoints**: ✅ PASSED
-- **User Exists in DB**: ⚠️ WARNING (Confirmed user doesn't exist)
-- **Subscription Creation**: ❌ FAILED (Foreign key constraint error)
-- **Subscription Listing**: ✅ PASSED (Returns empty array)
-- **Notifications Endpoint**: ✅ PASSED
-- **Notifications Pagination**: ✅ PASSED (Response properly includes pagination metadata)
+- **User Exists in DB**: ⚠️ WARNING
+- **Subscription Creation**: ❌ FAILED (401 Token Expired)
+- **Subscription Listing**: ❌ FAILED (401 Token Expired)
+- **Notifications Endpoint**: ❌ FAILED (401 Token Expired)
+- **Overall Result**: ❌ SOME TESTS FAILED
 
-## API Client Test Improvements
+## API Client Issues
 
-We've made several improvements to the test client:
+Several issues were identified in the API client:
 
-1. **Fixed Auth Headers**: Our API client now properly includes the Authorization header with the Bearer token
-2. **Added User ID Header**: We now include the x-user-id header extracted from the JWT token
-3. **Improved Success Detection**: Tests now recognize success responses via the status field in JSON
-4. **Post-Fix Verification**: We've added a specialized post-fix test script that runs more detailed tests
+1. **Token Handling**: The API client doesn't properly handle the status code from the authentication response
+2. **Token Expiration**: Tokens appear to be expiring too quickly or not being refreshed
+3. **Status Code Handling**: Many API calls report "status code undefined" despite receiving a valid response
 
-These improvements revealed the underlying issue with most tests:
+## Root Cause Analysis
 
-## Root Cause: User Record Missing in Database
+The primary issues appear to be:
 
-The primary issue is now clearly identified:
+1. **Token Expiration**: The tokens returned by the authentication service expire quickly, causing most authenticated endpoints to fail with 401 errors
+2. **API Client Status Detection**: The API client has difficulty detecting status codes from responses
+3. **Changed Endpoints**: Some endpoints (like `/api/v1/me`) return 404, suggesting changes to the API structure
 
-1. The authentication service issues valid JWT tokens 
-2. The backend API properly validates the token
-3. But the user record from the token doesn't exist in the database (confirmed by diagnostics endpoint)
-4. This triggers foreign key constraint errors in operations that need the user record
+## Recommended Fixes
 
-## Recommended Fix: User Synchronization
+### Immediate Fixes:
 
-The most important fix needed is implementing user synchronization between the auth service and backend database:
-
+1. **API Client Status Code Handling**:
 ```javascript
-// Implement in the auth middleware on the backend:
-async function syncUserFromToken(req, res, next) {
+// Fix in makeApiRequest function in api-client.js
+resolve({
+  statusCode: res.statusCode, // Add explicit statusCode property
+  status: res.statusCode,     // Keep existing property
+  headers: res.headers,
+  data: parsedData,
+  raw: data
+});
+```
+
+2. **Token Refresh Mechanism**:
+```javascript
+// Implement token refresh logic
+async function refreshTokenIfNeeded() {
+  const token = loadAuthToken();
+  if (!token) return null;
+  
   try {
-    const userId = req.user.sub; // Extracted from JWT token
+    // Decode token to check expiration
+    const payload = JSON.parse(Buffer.from(token.split('.')[1], 'base64').toString());
+    const expiry = payload.exp * 1000; // Convert to milliseconds
     
-    // Check if user exists in database
-    const userExists = await db.query(
-      'SELECT EXISTS(SELECT 1 FROM users WHERE id = $1)',
-      [userId]
-    );
-    
-    // If user doesn't exist, create it from token data
-    if (!userExists.rows[0].exists) {
-      console.log(`Creating user record for ${userId}`);
+    // If token expires in less than 5 minutes, refresh it
+    if (expiry - Date.now() < 300000) {
+      console.log('Token expiring soon, refreshing...');
       
-      await db.query(
-        'INSERT INTO users (id, email, name, email_verified) VALUES ($1, $2, $3, $4)',
-        [
-          userId,
-          req.user.email || 'unknown@example.com',
-          req.user.name || 'Unknown User',
-          req.user.email_verified || false
-        ]
-      );
+      // Use refresh token to get new access token
+      const refreshToken = loadRefreshToken();
+      if (!refreshToken) return token;
       
-      console.log(`User record created for ${userId}`);
+      const response = await makeApiRequest({
+        url: `https://${endpoints.auth.baseUrl}/api/auth/refresh`,
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        data: { refreshToken }
+      });
+      
+      if (response.data && response.data.accessToken) {
+        // Save new token
+        fs.writeFileSync(AUTH_TOKEN_FILE, response.data.accessToken);
+        return response.data.accessToken;
+      }
     }
     
-    // Continue with the request
-    next();
-  } catch (err) {
-    console.error('Error synchronizing user from token:', err);
-    // Don't fail the request, just log the error
-    next();
+    return token;
+  } catch (error) {
+    console.error('Error refreshing token:', error);
+    return token;
   }
 }
 ```
 
-## Test Result Consistency
-
-The test results have remained consistent between test runs, confirming:
-
-1. Authentication and basic infrastructure tests are working correctly
-2. The foreign key constraint error when creating subscriptions is persistent
-3. User records from JWT tokens are consistently not found in the database
-4. Notification endpoints work with pagination but have timeout issues with standard polling
+3. **API Path Verification**:
+   - Update endpoints.js with the latest API paths
+   - Add version verification to confirm API compatibility
 
 ## Conclusion
 
-Our test improvements have allowed us to identify the real issues:
+The testing reveals several issues with the authentication flow and API client that need to be addressed:
 
-1. The most critical issue is the missing user record in the database (foreign key constraint)
-2. The API itself works correctly with proper headers and body format
-3. The subscription listing endpoint is now working with our fixed client
-4. The database is properly connected and configured
-5. Notifications endpoint is working for entity-specific requests
+1. The most critical issue is the token expiration and handling
+2. The API client needs improvements to detect status codes properly
+3. Several endpoints appear to have changed or been removed
+4. Diagnostic endpoints continue to function correctly
 
-Implementing the user synchronization mechanism will likely fix most of the remaining issues, as they stem from the same root cause of missing user records in the database.
+Implementing the recommended fixes should improve the reliability of the testing tools and provide more accurate test results.
 
-## Next Steps
+## Previous Test Results (April 2, 2025 - 11:37 AM)
 
-1. **Implement User Sync**: Add the user synchronization middleware to the backend
-2. **Create Migration**: Create a database migration to ensure the users table structure matches what's needed
-3. **Run Tests Again**: Once the fix is deployed, run the tests again to verify
-4. **Fix Notification Tests**: Update the notification tests to handle timeouts properly
+### Comprehensive Test Results
+- **Total Tests**: 8
+- **Passed**: 5
+- **Failed**: 3
+- **Success Rate**: 63%
+
+### Key Findings From Previous Tests
+- Authentication was working with valid token retrieval
+- User records were missing in the database, causing foreign key constraints
+- Notifications with entity filtering were working correctly
+- Subscription listing was returning empty arrays with proper pagination
+
+### Changes Since Last Test
+- Token expiration issues have become more problematic
+- More endpoints are returning 401 Unauthorized errors
+- API paths may have changed, with more 404 Not Found responses
+- Infrastructure and diagnostic endpoints remain stable

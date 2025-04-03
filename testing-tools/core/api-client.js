@@ -8,6 +8,7 @@
 const https = require('https');
 const fs = require('fs');
 const path = require('path');
+const endpoints = require('../config/endpoints');
 
 // Base directories
 const OUTPUT_DIR = path.join(__dirname, '..', 'outputs');
@@ -48,10 +49,28 @@ function getUserIdFromToken(token) {
  * @param {Object} options - Request options including url
  * @param {string|null} token - Optional auth token to include
  * @param {Object|null} data - Optional data to include in body
+ * @param {boolean} [attemptTokenRefresh=true] - Whether to attempt token refresh if needed
  * @returns {Promise<Object>} API response
  */
-function makeApiRequest(options, token = null, data = null) {
-  return new Promise((resolve, reject) => {
+/**
+ * Make an authenticated API request with automatic token refresh
+ * @param {Object} options - Request options
+ * @returns {Promise<Object>} API response
+ */
+async function makeAuthenticatedRequest(options) {
+  // First try to refresh the token if needed
+  const token = await refreshTokenIfNeeded();
+  if (!token) {
+    console.error('Could not get a valid token for authenticated request');
+    return { statusCode: 401, data: { error: 'Authentication required' } };
+  }
+  
+  // Make the request with the refreshed token
+  return makeApiRequest(options, token, null, false);
+}
+
+function makeApiRequest(options, token = null, data = null, attemptTokenRefresh = true) {
+  return new Promise(async (resolve, reject) => {
     try {
       // Parse URL if provided directly
       let requestOptions = {};
@@ -80,7 +99,13 @@ function makeApiRequest(options, token = null, data = null) {
         requestOptions.headers['Content-Type'] = 'application/json';
       }
       
-      // Add auth token if provided and not already present
+      // If token not provided but attemptTokenRefresh is true, try to load or refresh it
+      if (!token && attemptTokenRefresh && 
+          !(url.includes('login') || url.includes('auth/refresh'))) {
+        token = await refreshTokenIfNeeded();
+      }
+      
+      // Add auth token if available and not already present
       if (token && (!requestOptions.headers.Authorization && !requestOptions.headers.authorization)) {
         requestOptions.headers.Authorization = `Bearer ${token}`;
         
@@ -139,7 +164,8 @@ function makeApiRequest(options, token = null, data = null) {
             }
             
             resolve({
-              status: res.statusCode,
+              statusCode: res.statusCode, // Add explicit statusCode property
+              status: res.statusCode,     // Keep existing property for backward compatibility
               headers: res.headers,
               data: parsedData,
               raw: data
@@ -183,6 +209,112 @@ function loadAuthToken(filePath = path.join(OUTPUT_DIR, 'auth_token.txt')) {
     return fs.readFileSync(filePath, 'utf8').trim();
   } catch (error) {
     console.error(`Failed to load auth token from ${filePath}:`, error.message);
+    return null;
+  }
+}
+
+/**
+ * Load refresh token from file
+ * @param {string} [filePath] - Path to refresh token file
+ * @returns {string|null} Refresh token or null if loading fails
+ */
+function loadRefreshToken(filePath = path.join(OUTPUT_DIR, 'refresh_token.txt')) {
+  try {
+    return fs.readFileSync(filePath, 'utf8').trim();
+  } catch (error) {
+    console.error(`Failed to load refresh token from ${filePath}:`, error.message);
+    return null;
+  }
+}
+
+/**
+ * Check if token is expired or about to expire
+ * @param {string} token - JWT token to check
+ * @param {number} [bufferSeconds] - Buffer time in seconds (default: 300s = 5min)
+ * @returns {boolean} True if token is expired or about to expire
+ */
+function isTokenExpired(token, bufferSeconds = 300) {
+  try {
+    // JWT tokens are in the format: header.payload.signature
+    const parts = token.split('.');
+    if (parts.length !== 3) {
+      throw new Error('Invalid token format');
+    }
+    
+    // Decode the payload (middle part)
+    const payload = JSON.parse(Buffer.from(parts[1], 'base64').toString());
+    
+    // Check expiration
+    const exp = payload.exp; // Expiration time in seconds
+    if (!exp) {
+      console.warn('No expiration time found in token payload');
+      return false;
+    }
+    
+    // Calculate time until expiration in seconds
+    const currentTimeSeconds = Math.floor(Date.now() / 1000);
+    const timeUntilExpiry = exp - currentTimeSeconds;
+    
+    // Consider the token expired if it's already expired or about to expire within the buffer time
+    return timeUntilExpiry <= bufferSeconds;
+  } catch (error) {
+    console.error('Error checking token expiration:', error.message);
+    return true; // If we can't check, assume it's expired to be safe
+  }
+}
+
+/**
+ * Refresh the authentication token if it's expired or about to expire
+ * @returns {Promise<string|null>} New token or null if refresh failed
+ */
+async function refreshTokenIfNeeded() {
+  const token = loadAuthToken();
+  if (!token) {
+    console.error('No authentication token found');
+    return null;
+  }
+  
+  // Check if token is expired or about to expire
+  if (!isTokenExpired(token)) {
+    return token; // Token is still valid
+  }
+  
+  console.log('Token is expired or about to expire, attempting to refresh...');
+  
+  // Load refresh token
+  const refreshToken = loadRefreshToken();
+  if (!refreshToken) {
+    console.error('No refresh token found');
+    return null;
+  }
+  
+  try {
+    // Make refresh request
+    const response = await makeApiRequest({
+      url: `https://${endpoints.auth.baseUrl}/api/auth/refresh`,
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      data: { refreshToken }
+    });
+    
+    // Check response
+    if (response.statusCode === 200 && response.data && response.data.accessToken) {
+      // Save new tokens
+      fs.writeFileSync(path.join(OUTPUT_DIR, 'auth_token.txt'), response.data.accessToken);
+      if (response.data.refreshToken) {
+        fs.writeFileSync(path.join(OUTPUT_DIR, 'refresh_token.txt'), response.data.refreshToken);
+      }
+      
+      console.log('Token refreshed successfully');
+      return response.data.accessToken;
+    } else {
+      console.error('Failed to refresh token:', response.statusCode, response.data);
+      return null;
+    }
+  } catch (error) {
+    console.error('Error refreshing token:', error);
     return null;
   }
 }
@@ -276,7 +408,11 @@ ${details}
 module.exports = {
   getUserIdFromToken,
   makeApiRequest,
+  makeAuthenticatedRequest,
   loadAuthToken,
+  loadRefreshToken,
+  refreshTokenIfNeeded,
+  isTokenExpired,
   saveResponseToFile,
   appendTestDetails
 };

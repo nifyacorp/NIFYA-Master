@@ -14,6 +14,7 @@ const endpoints = require('../../config/endpoints');
 // Output directory for response files
 const OUTPUT_DIR = path.join(__dirname, '..', '..', 'outputs');
 const AUTH_TOKEN_FILE = path.join(OUTPUT_DIR, 'auth_token.txt');
+const REFRESH_TOKEN_FILE = path.join(OUTPUT_DIR, 'refresh_token.txt');
 const USER_ID_FILE = path.join(OUTPUT_DIR, 'user_id.txt');
 
 // Ensure output directory exists
@@ -59,13 +60,25 @@ async function testAuthentication() {
     // Save response to file
     apiClient.saveResponseToFile('auth_response', response, OUTPUT_DIR);
     
-    if (response.statusCode === 200 || response.statusCode === 201) {
+    // Make sure we have a proper status code
+    const statusCode = response.statusCode || response.status;
+    
+    if (statusCode === 200 || statusCode === 201) {
       const accessToken = response.data.accessToken || response.data.data?.token || response.data.token;
+      const refreshToken = response.data.refreshToken || response.data.data?.refreshToken;
       
       if (accessToken) {
         // Save token to file
         fs.writeFileSync(AUTH_TOKEN_FILE, accessToken);
         logger.success('Authentication successful! Access token saved', { tokenPreview: accessToken.substring(0, 10) + '...' }, testName);
+        
+        // Save refresh token if available
+        if (refreshToken) {
+          fs.writeFileSync(REFRESH_TOKEN_FILE, refreshToken);
+          logger.info('Refresh token saved', { tokenPreview: refreshToken.substring(0, 10) + '...' }, testName);
+        } else {
+          logger.warn('No refresh token found in response', null, testName);
+        }
         
         // Extract and save user ID if available
         const userId = response.data.user?.id || apiClient.getUserIdFromToken(accessToken);
@@ -79,11 +92,12 @@ async function testAuthentication() {
         // Log test result
         logger.testResult(testName, true, {
           accessToken: accessToken.substring(0, 10) + '...',
+          refreshToken: refreshToken ? (refreshToken.substring(0, 10) + '...') : 'Not available',
           userId: userId || 'Not extracted',
-          statusCode: response.statusCode
+          statusCode: statusCode
         });
         
-        return { success: true, token: accessToken, userId };
+        return { success: true, token: accessToken, refreshToken, userId };
       } else {
         // No token in response
         logger.error('Authentication failed: No access token in response', response.data, testName);
