@@ -1,0 +1,9 @@
+{
+  "error": "MISSING_HEADERS",
+  "message": "Authorization header is required",
+  "status": 401,
+  "details": {
+    "providedHeader": null
+  },
+  "timestamp": "2025-04-03T07:07:56.337Z"
+}

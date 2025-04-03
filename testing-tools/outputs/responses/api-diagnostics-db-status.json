@@ -2,12 +2,12 @@
   "status": "success",
   "database": {
     "connected": true,
-    "server_time": "2025-04-03T06:58:13.037Z",
+    "server_time": "2025-04-03T07:03:59.588Z",
     "tables_count": 8,
     "response_times": {
-      "basic_query_ms": 6,
-      "complex_query_ms": 6,
-      "transaction_ms": 5
+      "basic_query_ms": 33,
+      "complex_query_ms": 9,
+      "transaction_ms": 7
     }
   }
 }
