@@ -1,7 +1,7 @@
 {
   "status": "healthy",
-  "timestamp": "2025-04-03T08:20:47.972Z",
-  "uptime": 1315.219543541,
+  "timestamp": "2025-04-03T08:39:14.845Z",
+  "uptime": 169.287241586,
   "version": {
     "package": "1.0.0",
     "buildTimestamp": "$(date",
@@ -9,11 +9,11 @@
     "environment": "production"
   },
   "memory": {
-    "rss": 109125632,
-    "heapTotal": 41201664,
-    "heapUsed": 39079488,
-    "external": 3715232,
-    "arrayBuffers": 153173
+    "rss": 107900928,
+    "heapTotal": 39628800,
+    "heapUsed": 37805544,
+    "external": 3697472,
+    "arrayBuffers": 135541
   },
   "services": {
     "database": "connected"

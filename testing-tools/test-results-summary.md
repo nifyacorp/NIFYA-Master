@@ -1,6 +1,87 @@
 # NIFYA Platform Testing Results Summary
 
-## Latest Test Results (April 3, 2025 - 07:20 AM)
+## Latest Test Results Comparison (April 3, 2025 - 08:38 AM)
+
+### Service Update Comparison Results
+
+| Service | Previous Status | Current Status | Change |
+|---------|----------------|----------------|--------|
+| Authentication | ⚠️ MIXED RESULTS | ✅ IMPROVED | Fixed authentication in enhanced journey |
+| Backend Infrastructure | ✅ OPERATIONAL | ✅ OPERATIONAL | No change |
+| Notifications | ❌ FAILING | ✅ PARTIAL | Improved with working basic endpoints |
+| Subscriptions | ❌ FAILING | ⚠️ PARTIAL | Listing works, creation empty, types failing |
+| User Profile | ❌ FAILING | ❌ FAILING | No change |
+| Template Service | ❌ FAILING | ❌ FAILING | No change |
+
+### End-to-End User Journey Progress
+- Previous: Failed at authentication step (0/6 steps)
+- Current: Authentication succeeds but fails at subscription types step (2/6 steps)
+- **Progress**: 🔄 SLIGHTLY IMPROVED
+
+### Comprehensive Endpoint Test Results
+- Total Tests: 16
+- Passed: 9
+- Failed: 7
+- Success Rate: 56%
+
+### Detailed Endpoint Results
+
+| Endpoint | Previous | Current | Status |
+|----------|----------|---------|--------|
+| GET /health | 200 | 200 | ✅ |
+| GET /api/diagnostics | 200 | 200 | ✅ |
+| GET /api/diagnostics/db-status | 200 | 200 | ✅ |
+| GET /api/diagnostics/db-tables | 200 | 200 | ✅ |
+| POST /api/auth/login/test | 404 | 404 | ❌ |
+| GET /api/v1/notifications | 401 | 200 | ✅ FIXED |
+| GET /api/v1/notifications/activity | 401 | 200 | ✅ FIXED |
+| GET /api/v1/notifications/stats | 401 | 200 | ✅ FIXED |
+| POST /api/v1/notifications/read-all | 401 | 200 | ✅ FIXED |
+| POST /api/v1/notifications/create-test | 404 | 404 | ❌ |
+| GET /api/v1/subscriptions | 401 | 200 | ✅ FIXED |
+| POST /api/v1/subscriptions | 401 | 400 | ❌ PARTIAL FIX |
+| GET /api/v1/subscriptions/types | 401 | 500 | ❌ PARTIAL FIX |
+| GET /api/v1/templates | 500 | 500 | ❌ |
+| GET /api/v1/me | 404 | 404 | ❌ |
+| GET /api/v1/me/email-preferences | 404 | 404 | ❌ |
+
+## Remaining Issues
+
+1. **Critical Issues**:
+   - Subscription types endpoint returning 500 error
+   - Template service endpoints returning 500 error
+   - User profile endpoints returning 404 error
+
+2. **Secondary Issues**:
+   - Subscription creation returning empty objects
+   - Test notification creation endpoint not available
+
+## Recommendations
+
+1. **High Priority**:
+   - Fix the subscription types endpoint which is now the primary blocker for the enhanced journey
+   - Address the template service errors which will be needed for subscription creation
+
+2. **Medium Priority**:
+   - Implement or fix the user profile endpoints
+   - Investigate why subscription creation returns empty objects
+
+3. **Low Priority**:
+   - Add the test notification creation endpoint
+
+## API Client Improvements
+
+The token refresh mechanism is now working correctly and has resolved many of the previous authorization issues. This allows authenticated endpoints to work properly without token expiration problems.
+
+## Conclusion
+
+The service update has made significant progress in fixing authentication issues and authorization for multiple endpoints. The enhanced journey test now progresses further, completing the authentication step successfully before failing at subscription types retrieval.
+
+The key improvement is in token handling and authentication, which has fixed 4 previously failing notification endpoints and the subscription listing endpoint. However, several critical endpoints still have issues, preventing the journey from completing successfully.
+
+Focusing on fixing the subscription types endpoint should be the next priority as it's the current blocker in the enhanced user journey test.
+
+## Previous Test Results (April 3, 2025 - 07:20 AM)
 
 ### Comprehensive Test Results
 - **Total Tests**: 16
@@ -8,184 +89,15 @@
 - **Failed**: 12
 - **Success Rate**: 25%
 
-### Tests by Category
-
-| Category | Tests | Passed | Failed | Success Rate |
-|----------|-------|--------|--------|-------------|
-| Infrastructure | 1 | 1 | 0 | 100% |
-| Diagnostics | 3 | 3 | 0 | 100% |
-| Authentication | 1 | 0 | 1 | 0% |
-| Notifications | 5 | 0 | 5 | 0% |
-| Subscriptions | 3 | 0 | 3 | 0% |
-| Templates | 1 | 0 | 1 | 0% |
-| User | 2 | 0 | 2 | 0% |
-
-## Test Results Analysis
-
-### Authentication Tests
-- **Status**: ⚠️ MIXED RESULTS
-- **Details**: Authentication service returns tokens, but they appear to have issues
-- **Notes**: The API client cannot properly detect the status code from the authentication response
-
-### Infrastructure Tests
-- **Status**: ✅ PASSED
-- **Details**: The `/health` endpoint returns correct status information
-- **Notes**: System reports healthy status and database connection is verified
-
-### Subscription Tests
-- **Status**: ❌ FAILED
-- **Details**: 
-  - Subscription Listing: ❌ FAILED (401 Unauthorized - token appears to be expired)
-  - Subscription Creation: ❌ FAILED (401 Unauthorized or returns empty response)
-  - Subscription Types: ❌ FAILED (401 Unauthorized)
-- **Analysis**: Token expiration issues affecting all endpoints requiring authentication
-
-### Notification Tests
-- **Status**: ❌ FAILED
-- **Details**: 
-  - `GET /api/v1/notifications` - ❌ FAILED (401 Unauthorized)
-  - `GET /api/v1/notifications/activity` - ❌ FAILED (401 Unauthorized)
-  - `GET /api/v1/notifications/stats` - ❌ FAILED (401 Unauthorized)
-  - `POST /api/v1/notifications/read-all` - ❌ FAILED (401 Unauthorized)
-  - `POST /api/v1/notifications/create-test` - ❌ FAILED (404 Not Found)
-- **Analysis**: Authentication issues and possible changes to endpoint paths
-
-### Diagnostic Endpoints
-- **Status**: ✅ PASSED
-- **Working Endpoints**:
-  - `/api/diagnostics` - Lists available diagnostic endpoints
-  - `/api/diagnostics/db-status` - Reports database status (connected)
-  - `/api/diagnostics/db-tables` - Lists database tables (8 tables found)
-- **Notes**: Diagnostic endpoints continue to work properly
-
-### Template Tests
-- **Status**: ❌ FAILED
-- **Details**: `GET /api/v1/templates` returns 500 Internal Server Error
-- **Analysis**: Backend issue with template retrieval, possibly database related
-
-### User Endpoints
-- **Status**: ❌ FAILED
-- **Details**:
-  - `GET /api/v1/me` - ❌ FAILED (404 Not Found)
-  - `GET /api/v1/me/email-preferences` - ❌ FAILED (404 Not Found)
-- **Analysis**: User endpoints may have changed paths or are not implemented
-
-## Post-Fix Test Results (April 3, 2025 - 07:20 AM)
-
-### Test Results Summary
-- **Authentication**: ✅ PASSED
-- **Diagnostic Endpoints**: ✅ PASSED
-- **User Exists in DB**: ⚠️ WARNING
-- **Subscription Creation**: ❌ FAILED (401 Token Expired)
-- **Subscription Listing**: ❌ FAILED (401 Token Expired)
-- **Notifications Endpoint**: ❌ FAILED (401 Token Expired)
-- **Overall Result**: ❌ SOME TESTS FAILED
-
-## API Client Issues
-
-Several issues were identified in the API client:
-
-1. **Token Handling**: The API client doesn't properly handle the status code from the authentication response
-2. **Token Expiration**: Tokens appear to be expiring too quickly or not being refreshed
-3. **Status Code Handling**: Many API calls report "status code undefined" despite receiving a valid response
-
-## Root Cause Analysis
-
-The primary issues appear to be:
-
-1. **Token Expiration**: The tokens returned by the authentication service expire quickly, causing most authenticated endpoints to fail with 401 errors
-2. **API Client Status Detection**: The API client has difficulty detecting status codes from responses
-3. **Changed Endpoints**: Some endpoints (like `/api/v1/me`) return 404, suggesting changes to the API structure
-
-## Recommended Fixes
-
-### Immediate Fixes:
-
-1. **API Client Status Code Handling**:
-```javascript
-// Fix in makeApiRequest function in api-client.js
-resolve({
-  statusCode: res.statusCode, // Add explicit statusCode property
-  status: res.statusCode,     // Keep existing property
-  headers: res.headers,
-  data: parsedData,
-  raw: data
-});
-```
-
-2. **Token Refresh Mechanism**:
-```javascript
-// Implement token refresh logic
-async function refreshTokenIfNeeded() {
-  const token = loadAuthToken();
-  if (!token) return null;
-  
-  try {
-    // Decode token to check expiration
-    const payload = JSON.parse(Buffer.from(token.split('.')[1], 'base64').toString());
-    const expiry = payload.exp * 1000; // Convert to milliseconds
-    
-    // If token expires in less than 5 minutes, refresh it
-    if (expiry - Date.now() < 300000) {
-      console.log('Token expiring soon, refreshing...');
-      
-      // Use refresh token to get new access token
-      const refreshToken = loadRefreshToken();
-      if (!refreshToken) return token;
-      
-      const response = await makeApiRequest({
-        url: `https://${endpoints.auth.baseUrl}/api/auth/refresh`,
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        data: { refreshToken }
-      });
-      
-      if (response.data && response.data.accessToken) {
-        // Save new token
-        fs.writeFileSync(AUTH_TOKEN_FILE, response.data.accessToken);
-        return response.data.accessToken;
-      }
-    }
-    
-    return token;
-  } catch (error) {
-    console.error('Error refreshing token:', error);
-    return token;
-  }
-}
-```
-
-3. **API Path Verification**:
-   - Update endpoints.js with the latest API paths
-   - Add version verification to confirm API compatibility
-
-## Conclusion
-
-The testing reveals several issues with the authentication flow and API client that need to be addressed:
-
-1. The most critical issue is the token expiration and handling
-2. The API client needs improvements to detect status codes properly
-3. Several endpoints appear to have changed or been removed
-4. Diagnostic endpoints continue to function correctly
-
-Implementing the recommended fixes should improve the reliability of the testing tools and provide more accurate test results.
-
-## Previous Test Results (April 2, 2025 - 11:37 AM)
-
-### Comprehensive Test Results
-- **Total Tests**: 8
-- **Passed**: 5
-- **Failed**: 3
-- **Success Rate**: 63%
-
 ### Key Findings From Previous Tests
-- Authentication was working with valid token retrieval
-- User records were missing in the database, causing foreign key constraints
-- Notifications with entity filtering were working correctly
-- Subscription listing was returning empty arrays with proper pagination
+- Authentication service returned tokens, but they appeared to have issues
+- Token expiration was causing most authenticated endpoints to fail with 401 errors
+- Infrastructure and diagnostic endpoints were working properly
+- Most service endpoints were failing with authentication errors
 
 ### Changes Since Last Test
-- Token expiration issues have become more problematic
-- More endpoints are returning 401 Unauthorized errors
-- API paths may have changed, with more 404 Not Found responses
-- Infrastructure and diagnostic endpoints remain stable
+- Authentication issues have been largely resolved
+- Token expiration handling has been fixed
+- Notification endpoints are now working
+- Subscription listing endpoint is now working
+- Success rate has improved from 25% to 56%

@@ -1,25 +1,35 @@
 {
-  "startTime": "2025-04-03T08:07:12.201Z",
+  "startTime": "2025-04-03T08:37:51.714Z",
   "steps": [
     {
       "name": "health-check",
       "success": true,
-      "timestamp": "2025-04-03T08:07:13.024Z"
+      "timestamp": "2025-04-03T08:37:56.596Z"
     },
     {
       "name": "authentication",
+      "success": true,
+      "timestamp": "2025-04-03T08:37:56.931Z"
+    },
+    {
+      "name": "user-profile",
+      "success": true,
+      "timestamp": "2025-04-03T08:37:57.339Z"
+    },
+    {
+      "name": "subscription-types",
       "success": false,
-      "timestamp": "2025-04-03T08:07:13.307Z"
+      "timestamp": "2025-04-03T08:37:57.539Z"
     }
   ],
-  "currentStep": "authentication",
+  "currentStep": "subscription-types",
   "health": {
     "success": true,
     "status": "healthy",
     "data": {
       "status": "healthy",
-      "timestamp": "2025-04-03T08:08:27.439Z",
-      "uptime": 574.686492337,
+      "timestamp": "2025-04-03T08:39:11.027Z",
+      "uptime": 165.469709658,
       "version": {
         "package": "1.0.0",
         "buildTimestamp": "$(date",
@@ -27,11 +37,11 @@
         "environment": "production"
       },
       "memory": {
-        "rss": 107548672,
-        "heapTotal": 39628800,
-        "heapUsed": 36811544,
-        "external": 3695972,
-        "arrayBuffers": 134273
+        "rss": 107630592,
+        "heapTotal": 39366656,
+        "heapUsed": 36972440,
+        "external": 3695955,
+        "arrayBuffers": 134256
       },
       "services": {
         "database": "connected"
@@ -39,11 +49,24 @@
     }
   },
   "auth": {
+    "success": true,
+    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2NWM2MDc0ZC1kYmM0LTQwOTEtOGU0NS1iNmFlY2ZmZDlhYjkiLCJlbWFpbCI6InJhdG9ueGlAZ21haWwuY29tIiwibmFtZSI6IlRlc3QiLCJlbWFpbF92ZXJpZmllZCI6dHJ1ZSwidHlwZSI6ImFjY2VzcyIsImlhdCI6MTc0MzY2OTU1MSwiZXhwIjoxNzQzNjcwNDUxfQ.eniqH_SvAq7SlUL7-b8ny9fGxFZgeMCeayvKeNlSRPU",
+    "refreshToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2NWM2MDc0ZC1kYmM0LTQwOTEtOGU0NS1iNmFlY2ZmZDlhYjkiLCJlbWFpbCI6InJhdG9ueGlAZ21haWwuY29tIiwidHlwZSI6InJlZnJlc2giLCJpYXQiOjE3NDM2Njk1NTEsImV4cCI6MTc0NDI3NDM1MX0.Em_7lH9kkmEduc4D2eOmFvSAWOeYVxl2MdkG7QJ21CE",
+    "userId": "65c6074d-dbc4-4091-8e45-b6aecffd9ab9"
+  },
+  "userProfile": {
+    "success": true,
+    "data": {
+      "id": "65c6074d-dbc4-4091-8e45-b6aecffd9ab9",
+      "name": "Test User (from token)",
+      "email": "user@example.com"
+    },
+    "warning": "User profile unavailable, using token data"
+  },
+  "subscriptionTypes": {
     "success": false,
     "error": "Status code 500"
   },
-  "userProfile": null,
-  "subscriptionTypes": null,
   "subscriptionList": null,
   "subscription": null,
   "processing": null,
