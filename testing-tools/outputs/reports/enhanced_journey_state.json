@@ -1,0 +1,80 @@
+{
+  "startTime": "2025-04-03T07:50:38.974Z",
+  "steps": [
+    {
+      "name": "health-check",
+      "success": true,
+      "timestamp": "2025-04-03T07:50:39.220Z"
+    },
+    {
+      "name": "authentication",
+      "success": true,
+      "timestamp": "2025-04-03T07:50:39.593Z"
+    },
+    {
+      "name": "user-profile",
+      "success": true,
+      "timestamp": "2025-04-03T07:50:40.006Z"
+    },
+    {
+      "name": "subscription-types",
+      "success": false,
+      "timestamp": "2025-04-03T07:50:40.201Z"
+    }
+  ],
+  "currentStep": "subscription-types",
+  "health": {
+    "success": true,
+    "status": "healthy",
+    "data": {
+      "status": "healthy",
+      "timestamp": "2025-04-03T07:51:53.630Z",
+      "uptime": 2980.289649523,
+      "version": {
+        "package": "1.0.0",
+        "buildTimestamp": "$(date",
+        "commitSha": "unknown",
+        "environment": "production"
+      },
+      "memory": {
+        "rss": 112312320,
+        "heapTotal": 43560960,
+        "heapUsed": 41615000,
+        "external": 3760523,
+        "arrayBuffers": 198112
+      },
+      "services": {
+        "database": "connected"
+      }
+    }
+  },
+  "auth": {
+    "success": true,
+    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2NWM2MDc0ZC1kYmM0LTQwOTEtOGU0NS1iNmFlY2ZmZDlhYjkiLCJlbWFpbCI6InJhdG9ueGlAZ21haWwuY29tIiwibmFtZSI6IlRlc3QiLCJlbWFpbF92ZXJpZmllZCI6dHJ1ZSwidHlwZSI6ImFjY2VzcyIsImlhdCI6MTc0MzY2NjcxMywiZXhwIjoxNzQzNjY3NjEzfQ.a0i2qVUyQrEEdA82ne_s94zRGlVflOdbjzM6Be6LQtk",
+    "refreshToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2NWM2MDc0ZC1kYmM0LTQwOTEtOGU0NS1iNmFlY2ZmZDlhYjkiLCJlbWFpbCI6InJhdG9ueGlAZ21haWwuY29tIiwidHlwZSI6InJlZnJlc2giLCJpYXQiOjE3NDM2NjY3MTMsImV4cCI6MTc0NDI3MTUxM30.Pw6n1gTGTgL_VC3Oct2C6D0pd6gTlz_QYIKFjiQ4ivA",
+    "userId": "65c6074d-dbc4-4091-8e45-b6aecffd9ab9"
+  },
+  "userProfile": {
+    "success": true,
+    "data": {
+      "id": "65c6074d-dbc4-4091-8e45-b6aecffd9ab9",
+      "name": "Test User (from token)",
+      "email": "user@example.com"
+    },
+    "warning": "User profile unavailable, using token data"
+  },
+  "subscriptionTypes": {
+    "success": false,
+    "error": "Status code 500"
+  },
+  "subscriptionList": null,
+  "subscription": null,
+  "processing": null,
+  "notifications": null,
+  "debug": {
+    "backendHealth": null,
+    "subscriptionDetails": null,
+    "notificationDetails": null
+  },
+  "success": false
+}

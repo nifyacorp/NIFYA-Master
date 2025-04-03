@@ -1,27 +1,34 @@
 {
-  "startTime": "2025-04-03T07:27:59.287Z",
+  "startTime": "2025-04-03T07:38:15.468Z",
   "steps": [
     {
       "name": "authentication",
       "success": true,
-      "timestamp": "2025-04-03T07:27:59.709Z"
+      "timestamp": "2025-04-03T07:38:15.945Z"
     },
     {
       "name": "create-subscription",
       "success": false,
-      "timestamp": "2025-04-03T07:27:59.982Z"
+      "timestamp": "2025-04-03T07:38:16.291Z"
     }
   ],
   "currentStep": "create-subscription",
   "auth": {
     "success": true,
-    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2NWM2MDc0ZC1kYmM0LTQwOTEtOGU0NS1iNmFlY2ZmZDlhYjkiLCJlbWFpbCI6InJhdG9ueGlAZ21haWwuY29tIiwibmFtZSI6IlRlc3QiLCJlbWFpbF92ZXJpZmllZCI6dHJ1ZSwidHlwZSI6ImFjY2VzcyIsImlhdCI6MTc0MzY2NTM1NCwiZXhwIjoxNzQzNjY2MjU0fQ.HqNFxzFjxnGciJI1o1jkr1qg0FnNSu3GCkztMqrf8Jc",
-    "refreshToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2NWM2MDc0ZC1kYmM0LTQwOTEtOGU0NS1iNmFlY2ZmZDlhYjkiLCJlbWFpbCI6InJhdG9ueGlAZ21haWwuY29tIiwidHlwZSI6InJlZnJlc2giLCJpYXQiOjE3NDM2NjUzNTQsImV4cCI6MTc0NDI3MDE1NH0.Sa12lek4dlritFzcFLiL5YwBuinSSsv_RyWtb9MUDJ0",
+    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2NWM2MDc0ZC1kYmM0LTQwOTEtOGU0NS1iNmFlY2ZmZDlhYjkiLCJlbWFpbCI6InJhdG9ueGlAZ21haWwuY29tIiwibmFtZSI6IlRlc3QiLCJlbWFpbF92ZXJpZmllZCI6dHJ1ZSwidHlwZSI6ImFjY2VzcyIsImlhdCI6MTc0MzY2NTk3MCwiZXhwIjoxNzQzNjY2ODcwfQ._1o9BQ4-JtSLkV5JJshLW49k0_jw1RBTG8iag9Y3ZI0",
+    "refreshToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2NWM2MDc0ZC1kYmM0LTQwOTEtOGU0NS1iNmFlY2ZmZDlhYjkiLCJlbWFpbCI6InJhdG9ueGlAZ21haWwuY29tIiwidHlwZSI6InJlZnJlc2giLCJpYXQiOjE3NDM2NjU5NzAsImV4cCI6MTc0NDI3MDc3MH0.3xn52v1dmj8a5acMG13SfwY5qj89-y5mUQXyToNhrro",
     "userId": "65c6074d-dbc4-4091-8e45-b6aecffd9ab9"
   },
   "subscription": {
     "success": false,
-    "error": "No subscription ID in response"
+    "error": "API returned empty subscription object with success status",
+    "data": {
+      "status": "success",
+      "data": {
+        "subscription": {}
+      }
+    },
+    "apiIssue": true
   },
   "processing": null,
   "notifications": null,

@@ -1,0 +1,5 @@
+{
+  "message": "Route GET:/api/v1/me not found",
+  "error": "Not Found",
+  "statusCode": 404
+}

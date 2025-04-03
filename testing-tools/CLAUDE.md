@@ -29,6 +29,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 - Include proper test result reporting
 - Save API responses to the outputs directory
 - Follow API authentication header requirements
+- Never use simulated data or mock up, NEVER
 
 ## Project Structure
 - **/config**: Endpoint configuration

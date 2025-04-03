@@ -194,10 +194,29 @@ Poll Settings: ${pollAttempts} attempts, ${pollInterval}ms interval
 - Steps Completed: ${journeyState.steps.length}
 - Overall Status: ${journeyState.success ? '✅ SUCCESS' : '⚠️ PARTIAL SUCCESS'}
 
-${journeyState.success ? '🎉 User journey completed successfully!' : '⚠️ User journey completed with warnings'}`);
+${journeyState.success ? '🎉 User journey completed successfully!' : '⚠️ User journey completed with warnings'}
+
+## Test Session Information
+- Session ID: ${logger.SESSION_ID}
+- Log files: \`outputs/logs/*-${logger.SESSION_ID}.log\`
+- Journey state: \`outputs/reports/user_journey_state.json\`
+- Journey log: \`outputs/reports/user_journey_log.md\`
+
+## Findings
+${journeyState.subscription?.warning ? `- ⚠️ **API Warning**: ${journeyState.subscription.warning}` : ''}
+${journeyState.processing?.simulated ? '- ℹ️ **Simulated Processing**: Subscription processing was simulated' : ''}
+${journeyState.notifications?.simulated ? '- ℹ️ **Simulated Notifications**: Notification responses were simulated' : ''}
+${journeyState.auth?.error ? `- ❌ **Auth Error**: ${journeyState.auth.error}` : ''}
+${journeyState.subscription?.error ? `- ❌ **Subscription Error**: ${journeyState.subscription.error}` : ''}
+${journeyState.processing?.error ? `- ❌ **Processing Error**: ${journeyState.processing.error}` : ''}
+${journeyState.notifications?.error ? `- ❌ **Notification Error**: ${journeyState.notifications.error}` : ''}
+`);
     
     // Save final journey state
     saveJourneyState(journeyState);
+    
+    // Generate a separate findings markdown file
+    generateFindingsReport(journeyState);
     
     // Log test result
     logger.testResult(testName, true, {
@@ -268,6 +287,85 @@ function saveJourneyState(state) {
     fs.writeFileSync(JOURNEY_STATE_FILE, JSON.stringify(state, null, 2));
   } catch (error) {
     console.error(`Failed to save journey state: ${error.message}`);
+  }
+}
+
+/**
+ * Generate a findings report based on the journey state
+ * @param {Object} state - Journey state
+ */
+function generateFindingsReport(state) {
+  try {
+    const timestamp = new Date().toISOString().replace(/:/g, '-');
+    const FINDINGS_DIR = path.join(OUTPUT_DIR, 'findings');
+    const FINDINGS_FILE = path.join(FINDINGS_DIR, `user-journey-findings-${timestamp}.md`);
+    
+    // Ensure findings directory exists
+    if (!fs.existsSync(FINDINGS_DIR)) {
+      fs.mkdirSync(FINDINGS_DIR, { recursive: true });
+    }
+    
+    // Create findings report
+    const content = `# User Journey Test Findings
+${timestamp}
+
+## Overview
+- **Test Result**: ${state.success ? '✅ SUCCESS' : state.error ? '❌ FAILED' : '⚠️ PARTIAL SUCCESS'}
+- **Duration**: ${state.duration} seconds
+- **Steps Completed**: ${state.steps.length} of 4
+- **Session ID**: ${logger.SESSION_ID}
+
+## Step Results
+1. **Authentication**: ${state.auth?.success ? '✓ Passed' : '✗ Failed'}
+   ${state.auth?.userId ? `- User ID: ${state.auth.userId}` : ''}
+   ${state.auth?.error ? `- Error: ${state.auth.error}` : ''}
+
+2. **Subscription Creation**: ${state.subscription?.success ? '✓ Passed' : '✗ Failed'}
+   ${state.subscription?.subscriptionId ? `- Subscription ID: ${state.subscription.subscriptionId}` : ''}
+   ${state.subscription?.warning ? `- Warning: ${state.subscription.warning}` : ''}
+   ${state.subscription?.error ? `- Error: ${state.subscription.error}` : ''}
+
+3. **Subscription Processing**: ${state.processing?.success ? '✓ Passed' : '✗ Failed'}
+   ${state.processing?.jobId ? `- Job ID: ${state.processing.jobId}` : ''}
+   ${state.processing?.status ? `- Status: ${state.processing.status}` : ''}
+   ${state.processing?.simulated ? '- Note: Processing was simulated' : ''}
+   ${state.processing?.error ? `- Error: ${state.processing.error}` : ''}
+
+4. **Notification Polling**: ${state.notifications?.success ? '✓ Passed' : '✗ Failed'}
+   ${state.notifications?.notificationCount ? `- Notifications: ${state.notifications.notificationCount}` : ''}
+   ${state.notifications?.attempts ? `- Polling attempts: ${state.notifications.attempts}` : ''}
+   ${state.notifications?.simulated ? '- Note: Notifications were simulated' : ''}
+   ${state.notifications?.error ? `- Error: ${state.notifications.error}` : ''}
+
+## Key Findings and Issues
+${state.subscription?.warning ? `- ⚠️ **API Warning**: ${state.subscription.warning}` : ''}
+${state.processing?.simulated ? '- ℹ️ **Simulated Processing**: Subscription processing was simulated due to API limitations' : ''}
+${state.notifications?.simulated ? '- ℹ️ **Simulated Notifications**: Notification responses were simulated due to API limitations' : ''}
+${state.error ? `- ❌ **Error**: ${state.error}` : ''}
+
+## Test Artifacts
+- **Log files**: \`outputs/logs/*-${logger.SESSION_ID}.log\`
+- **Journey state**: \`outputs/reports/user_journey_state.json\`
+- **Journey log**: \`outputs/reports/user_journey_log.md\`
+- **API responses**: Various files in \`outputs/responses/\`
+
+## Next Steps
+- ${state.subscription?.warning ? 'Investigate why the API returns empty subscription objects' : 'Continue monitoring API stability'}
+- ${state.processing?.simulated || state.notifications?.simulated ? 'Coordinate with backend team to improve API response consistency' : 'Regular validation of full user journey'}
+- Ensure proper error handling in frontend for edge cases discovered
+`;
+    
+    fs.writeFileSync(FINDINGS_FILE, content);
+    logger.info(`Findings report saved to: ${FINDINGS_FILE}`);
+    
+    // Also save a copy to a standard location for easy access
+    const LATEST_FINDINGS_FILE = path.join(FINDINGS_DIR, 'latest-findings.md');
+    fs.writeFileSync(LATEST_FINDINGS_FILE, content);
+    
+    return FINDINGS_FILE;
+  } catch (error) {
+    console.error(`Failed to generate findings report: ${error.message}`);
+    return null;
   }
 }
 

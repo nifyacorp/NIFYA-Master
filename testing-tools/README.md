@@ -79,10 +79,18 @@ node tests/admin/diagnose-database.js
 End-to-end workflow tests from authentication to notification processing.
 
 ```bash
+# Standard journey test
 npm run test:journey
-# or individual tests
+
+# Enhanced journey test with debug capabilities
+npm run test:enhanced-journey
+
+# Or individual tests
 node tests/user-journeys/standard-flow.js
+node tests/user-journeys/enhanced-flow.js
 ```
+
+See [User Journey Tests Guide](./docs/USER-JOURNEY-TESTS.md) for detailed information.
 
 ### Comprehensive API Tests
 
@@ -108,6 +116,10 @@ Test results are saved to the `outputs` directory:
 - `outputs/logs/`: Detailed logs for each test execution
 - `outputs/responses/`: Raw API responses captured during testing
 - `outputs/reports/`: Human-readable markdown reports
+- `outputs/findings/`: Test findings and issue reports
+- `outputs/debug/`: Debug information from backend debug endpoints
+
+See [Debug Endpoints Guide](./docs/DEBUG-ENDPOINTS-GUIDE.md) for information about backend debugging capabilities.
 
 ### Example Output
 

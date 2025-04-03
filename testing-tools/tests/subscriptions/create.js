@@ -87,6 +87,31 @@ async function createSubscription(token = null) {
           responseStructure: JSON.stringify(response.data, null, 2)
         }, testName);
         
+        // Error case: If the response indicates success but has an empty subscription object
+        // This is an API issue that should be reported as an error
+        if (response.data.status === 'success' && response.data.data?.subscription && 
+            Object.keys(response.data.data.subscription).length === 0) {
+          
+          const errorMessage = 'API returned empty subscription object with success status';
+          logger.error(errorMessage, response.data, testName);
+          
+          // Log test result as failure
+          logger.testResult(testName, false, {
+            name: subscriptionData.name,
+            type: subscriptionData.type,
+            statusCode: response.statusCode,
+            error: errorMessage,
+            responseData: JSON.stringify(response.data)
+          });
+          
+          return { 
+            success: false,
+            error: errorMessage,
+            data: response.data,
+            apiIssue: true
+          };
+        }
+        
         // No ID in response or unrecognized structure
         logger.error('Subscription creation failed: No ID found in response', response.data, testName);
         logger.testResult(testName, false, 'No subscription ID in response');

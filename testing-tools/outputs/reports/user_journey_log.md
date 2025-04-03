@@ -1,5 +1,5 @@
 # NIFYA User Journey Test
-Start Time: 2025-04-03T07:27:59.287Z
+Start Time: 2025-04-03T07:38:15.468Z
 Poll Settings: 10 attempts, 5000ms interval
 
 ## Test Steps
@@ -12,6 +12,6 @@ Authentication Successful
 ✅ Step completed successfully
 
 ### Step 2: Create Subscription
-Subscription Creation Failed: No subscription ID in response
+Subscription Creation Failed: API returned empty subscription object with success status
       
 🛑 Journey terminated at subscription creation step

@@ -9,6 +9,7 @@
     "test:subscriptions": "node tests/subscriptions/list.js && node tests/subscriptions/minimal-create.js",
     "test:notifications": "node tests/notifications/poll.js",
     "test:journey": "node tests/user-journeys/standard-flow.js",
+    "test:enhanced-journey": "node tests/user-journeys/enhanced-flow.js",
     "test:diagnostics": "node tests/admin/diagnose-database.js",
     "start:proxy": "node frontend-tests/mock-server/mock-api-server.js",
     "report": "node utils/generate-report.js"
