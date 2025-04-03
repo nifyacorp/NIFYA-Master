@@ -44,3 +44,6 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 | Authentication | https://authentication-service-415554190254.us-central1.run.app |
 | Backend | https://backend-415554190254.us-central1.run.app |
 | Others | See deployment documentation |
+
+## Security
+- IF YOU FIND ANY TRACE OF MOCKUP DATA REMOVE IT ASAP

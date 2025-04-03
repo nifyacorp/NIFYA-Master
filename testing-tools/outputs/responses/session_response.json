@@ -1,0 +1,4 @@
+{
+  "raw": "<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n<meta charset=\"utf-8\">\n<title>Error</title>\n</head>\n<body>\n<pre>Cannot GET /api/auth/sessions</pre>\n</body>\n</html>\n",
+  "_parseError": "Unexpected token '<', \"<!DOCTYPE \"... is not valid JSON"
+}

@@ -51,14 +51,26 @@ node index.js run-all
 
 ### Authentication Tests
 
-Verify login functionality and token management.
+Verify login functionality, token management, session validation, and profile access.
 
 ```bash
-npm run test:auth
+# Run comprehensive authentication tests
+node run-auth-tests.js
+
+# Run as part of the test suite
+node index.js run auth
+
 # or individual tests
 node tests/auth/login.js
 node tests/auth/test-login.js
 ```
+
+The comprehensive authentication tests verify:
+- Login and token acquisition
+- User profile retrieval
+- Session validation and management
+- Token refresh functionality
+- Session revocation
 
 ### User Profile Tests
 

@@ -1,6 +1,6 @@
 # NIFYA User Profile API Test Results
 
-**Test Time:** 2025-04-03T10:58:07.824Z
+**Test Time:** 2025-04-03T11:14:27.229Z
 
 ## Overview
 
@@ -27,7 +27,7 @@ This test suite validates the user profile management endpoints that allow users
 
 | Status | Success Rate | Details |
 |--------|--------------|---------|
-| ❌ FAILED | 37.50% | [View Detailed Report](user-profile-test-2025-04-03T10-58-07.817Z.md) |
+| ❌ FAILED | 37.50% | [View Detailed Report](user-profile-test-2025-04-03T11-14-27.220Z.md) |
 
 ### Test Details
 
@@ -41,7 +41,7 @@ This test suite validates the user profile management endpoints that allow users
 | Get Email Preferences | ✅ PASSED | Request successful with status 200 |
 | Update Email Preferences | ✅ PASSED | Request successful with status 200 |
 | Verify Email Preferences Update | ❌ FAILED | Email preferences do not contain the updated information |
-| Send Test Email | ❌ FAILED | {"statusCode":500,"code":"SERVER_ERROR","error":"Internal Server Error","message":"Failed to send test email"} |
+| Send Test Email | ❌ FAILED | {"statusCode":500,"code":"PUBSUB_ERROR","error":"Internal Server Error","message":"Failed to send test email - messaging service unavailable"} |
 
 ## User Profile Schema
 
@@ -74,9 +74,9 @@ The user profile contains the following structure:
 The email preferences contain the following structure:
 ```json
 {
-  "email_notifications": "string",
-  "notification_email": "string",
-  "digest_time": null
+  "email_notifications": "boolean",
+  "notification_email": null,
+  "digest_time": "string"
 }
 ```
 
@@ -103,4 +103,4 @@ The user profile management system has critical failures and requires immediate 
 - Check database connection and schema for user-related tables
 
 ---
-Generated on: 2025-04-03T10:58:07.824Z
+Generated on: 2025-04-03T11:14:27.229Z

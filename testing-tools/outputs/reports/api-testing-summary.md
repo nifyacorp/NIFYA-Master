@@ -2,19 +2,30 @@
 
 ## Overview
 
-This document summarizes the comprehensive API testing framework implemented for the NIFYA platform. The framework provides detailed testing for three major API areas: Subscription Management, User Profile Management, and Notification Management.
+This document summarizes the comprehensive API testing framework implemented for the NIFYA platform. The framework provides detailed testing for four major API areas: Authentication Service, Subscription Management, User Profile Management, and Notification Management.
 
 ## Test Categories and Status
 
 | API Category | Success Rate | Status | Key Findings |
 |--------------|--------------|--------|-------------|
+| Authentication Service | 80.00% | ⚠️ GOOD | Login, profile, token refresh working; session endpoint missing |
 | Subscription Management | 75.00% | ⚠️ PARTIAL | Missing subscription types endpoint, empty response objects |
 | User Profile Management | 37.50% | ❌ FAILING | Missing PATCH endpoints, data persistence issues |
 | Notification Management | 100.00% | ✅ EXCELLENT | All endpoints functioning correctly |
 
 ## Framework Components
 
-### 1. Subscription Management Tests
+### 1. Authentication Service Tests
+
+Tests all authentication-related endpoints including:
+- Login and token management
+- Session validation and management
+- Token refresh
+- Session revocation
+
+**Status:** Test suite implemented but not yet executed to establish baseline.
+
+### 2. Subscription Management Tests
 
 Tests all subscription-related endpoints including:
 - Create, read, update, delete operations
@@ -27,7 +38,7 @@ Tests all subscription-related endpoints including:
 - Subscription creation returns empty objects
 - Data persistence issues in subscription operations
 
-### 2. User Profile Management Tests
+### 3. User Profile Management Tests
 
 Tests all user profile-related endpoints including:
 - Retrieving user profile information
@@ -41,7 +52,7 @@ Tests all user profile-related endpoints including:
 - Email test endpoint failures
 - Data persistence issues in email preferences
 
-### 3. Notification Management Tests
+### 4. Notification Management Tests
 
 Tests all notification-related endpoints including:
 - Retrieving notifications with filtering
@@ -64,6 +75,7 @@ The framework includes:
    - `run-subscription-tests.js`
    - `run-user-profile-tests.js`
    - `run-notification-tests.js`
+   - `run-auth-tests.js`
    - `run-integration-tests.js`
 
 3. **Reporting System**:
@@ -96,6 +108,7 @@ The framework includes:
 Based on the test results, we recommend the following actions:
 
 1. **High Priority**:
+   - Run the new authentication service tests to establish baseline health
    - Fix the subscription types endpoint (500 error)
    - Implement missing PATCH endpoints for user profile management
    - Fix empty object responses in subscription creation
@@ -119,6 +132,7 @@ Based on the test results, we recommend the following actions:
 node index.js run <test-type>
 
 # Available test types:
+# - auth
 # - subscription
 # - user-profile
 # - notification
@@ -126,6 +140,7 @@ node index.js run <test-type>
 # - comprehensive
 
 # Run individual test suites
+node run-auth-tests.js
 node run-subscription-tests.js
 node run-user-profile-tests.js
 node run-notification-tests.js
@@ -139,16 +154,13 @@ node index.js run-all
 
 Test results are saved to the following locations:
 - `outputs/reports/`: Detailed markdown reports
-- `outputs/subscription-tests/`: Subscription test results
-- `outputs/user-tests/`: User profile test results
-- `outputs/notification-tests/`: Notification test results
-- `outputs/integration/`: Integration test results
+- `outputs/responses/`: Raw API responses
 
 ## Conclusion
 
 The NIFYA API testing framework provides comprehensive validation of the platform's API functionality. It has identified several critical issues that need to be addressed, particularly in the subscription and user profile management areas. The notification management system is fully operational and meets all requirements.
 
-By addressing the identified issues according to the provided recommendations, the NIFYA platform will achieve a much higher level of stability and reliability.
+With the addition of authentication service tests, the framework now covers all major API areas of the NIFYA platform. By addressing the identified issues according to the provided recommendations, the NIFYA platform will achieve a much higher level of stability and reliability.
 
 ---
 Generated: April 3, 2025

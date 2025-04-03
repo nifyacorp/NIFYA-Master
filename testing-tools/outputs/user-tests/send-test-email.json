@@ -3,8 +3,8 @@
   "status": 500,
   "data": {
     "statusCode": 500,
-    "code": "SERVER_ERROR",
+    "code": "PUBSUB_ERROR",
     "error": "Internal Server Error",
-    "message": "Failed to send test email"
+    "message": "Failed to send test email - messaging service unavailable"
   }
 }

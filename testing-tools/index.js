@@ -13,6 +13,7 @@ const logger = require('./core/logger');
 const subscriptionTests = require('./run-subscription-tests');
 const userProfileTests = require('./run-user-profile-tests');
 const notificationTests = require('./run-notification-tests');
+const authTests = require('./run-auth-tests');
 const integrationTests = require('./run-integration-tests');
 const allTestModules = require('./run-all-test-modules');
 
@@ -32,6 +33,11 @@ const TEST_TYPES = {
     name: 'Notification Tests',
     description: 'Tests for notification management endpoints',
     runner: notificationTests
+  },
+  'auth': {
+    name: 'Authentication Tests',
+    description: 'Tests for authentication service endpoints',
+    runner: authTests
   },
   'integration': {
     name: 'Integration Tests',
@@ -182,9 +188,12 @@ async function generateFinalReport(results) {
 
 The test results show the current status of the NIFYA platform services:
 
-1. **Subscription Management**: ${results.subscription?.error ? '❌ Has issues' : '✅ Operational'}
-2. **Cross-Service Integration**: ${results.integration?.error ? '❌ Has issues' : '✅ Operational'}
-3. **End-to-End Functionality**: ${results.comprehensive?.error ? '❌ Has issues' : '✅ Operational'}
+1. **Authentication Service**: ${results.auth?.error ? '❌ Has issues' : '✅ Operational'}
+2. **Subscription Management**: ${results.subscription?.error ? '❌ Has issues' : '✅ Operational'}
+3. **User Profile Management**: ${results['user-profile']?.error ? '❌ Has issues' : '✅ Operational'}
+4. **Notification Management**: ${results.notification?.error ? '❌ Has issues' : '✅ Operational'}
+5. **Cross-Service Integration**: ${results.integration?.error ? '❌ Has issues' : '✅ Operational'}
+6. **End-to-End Functionality**: ${results.comprehensive?.error ? '❌ Has issues' : '✅ Operational'}
 
 ## Next Steps
 

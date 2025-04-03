@@ -1,9 +1,41 @@
 {
-  "success": false,
-  "status": 500,
+  "success": true,
+  "status": 200,
   "data": {
-    "status": "error",
-    "code": "TYPE_FETCH_ERROR",
-    "message": "Failed to fetch subscription types"
+    "status": "success",
+    "data": {
+      "types": [
+        {
+          "id": "boe",
+          "name": "BOE",
+          "description": "Boletín Oficial del Estado",
+          "icon": "FileText",
+          "isSystem": true,
+          "createdBy": null,
+          "createdAt": "2025-04-03T11:26:34.663Z",
+          "updatedAt": "2025-04-03T11:26:34.663Z"
+        },
+        {
+          "id": "doga",
+          "name": "DOGA",
+          "description": "Diario Oficial de Galicia",
+          "icon": "FileText",
+          "isSystem": true,
+          "createdBy": null,
+          "createdAt": "2025-04-03T11:26:34.663Z",
+          "updatedAt": "2025-04-03T11:26:34.663Z"
+        },
+        {
+          "id": "real-estate",
+          "name": "Inmobiliaria",
+          "description": "Búsquedas inmobiliarias",
+          "icon": "Home",
+          "isSystem": true,
+          "createdBy": null,
+          "createdAt": "2025-04-03T11:26:34.663Z",
+          "updatedAt": "2025-04-03T11:26:34.663Z"
+        }
+      ]
+    }
   }
 }
