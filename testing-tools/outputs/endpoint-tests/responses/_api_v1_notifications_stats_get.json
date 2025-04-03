@@ -1,7 +1,7 @@
 {
-  "error": "TOKEN_EXPIRED",
-  "message": "Token has expired",
-  "status": 401,
-  "details": {},
-  "timestamp": "2025-04-03T07:20:47.787Z"
+  "total": 0,
+  "unread": 0,
+  "change": 0,
+  "isIncrease": false,
+  "byType": {}
 }

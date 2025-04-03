@@ -1,33 +1,55 @@
-# NIFYA Enhanced User Journey Test
-Start Time: 2025-04-03T07:50:38.974Z
-Test Settings: 10 notification poll attempts, 5000ms interval
-Session ID: 2025-04-03T07-50-38-936Z
+# NIFYA Enhanced User Journey Test Summary
+Date: 2025-04-03T08:19:50.943Z
 
-## Test Steps
+## Test Results Summary
 
-### Step 0: Initial Health Check
-Initial Health Check Successful
-- Status: healthy
-- Uptime: 2980.289649523
-- Server Time: Not available
+### Authentication Service
+- Status: ✅ OPERATIONAL
+- Authentication endpoints are working correctly
+- Login successful on direct test
+- Token generation and refresh working correctly
 
-✅ Step completed successfully
+### Backend Service
+- Status: ✅ OPERATIONAL
+- Health check endpoint working: `GET /health`
+- Diagnostics endpoints working: `GET /api/diagnostics`, `GET /api/diagnostics/db-status`, `GET /api/diagnostics/db-tables`
+- Database connection verified and healthy
 
-### Step 1: Authentication
-Authentication Successful
-- User ID: 65c6074d-dbc4-4091-8e45-b6aecffd9ab9
-- Token: eyJhbGciOi...
+### Notifications Service
+- Status: ⚠️ PARTIAL
+- Basic notification endpoints working: `GET /api/v1/notifications`, `GET /api/v1/notifications/activity`, `GET /api/v1/notifications/stats`, `POST /api/v1/notifications/read-all`
+- Test notification creation endpoint not available: `POST /api/v1/notifications/create-test`
 
-✅ Step completed successfully
+### Subscription Service
+- Status: ⚠️ PARTIAL
+- Subscription listing working: `GET /api/v1/subscriptions`
+- Subscription creation returning empty objects: `POST /api/v1/subscriptions`
+- Subscription types endpoint failing: `GET /api/v1/subscriptions/types`
 
-### Step 2: User Profile
-User Profile Retrieved
-- Name: Test User (from token)
-- Email: user@example.com
+### User Service
+- Status: ❌ FAILING
+- User profile endpoints not available: `GET /api/v1/me`, `GET /api/v1/me/email-preferences`
 
-✅ Step completed successfully
+### Template Service
+- Status: ❌ FAILING
+- Template listing endpoint failing: `GET /api/v1/templates`
 
-### Step 3: Subscription Types
-Subscription Types Retrieval Failed: Status code 500
-      
-🛑 Journey terminated at subscription types step
+## End-to-End User Journey
+- Status: ❌ FAILED
+- Authentication step succeeds
+- Subscription creation step fails with empty response object
+- Notification polling step not reached
+
+## Recommendations
+1. Investigate the subscription creation endpoint returning empty objects
+2. Restore the template service endpoints
+3. Fix user profile endpoints 
+4. Address the errors in subscription types endpoint
+5. Once these issues are resolved, retry the enhanced journey test
+
+## Test Details
+- 16 endpoints tested
+- 9 endpoints successful (56%)
+- 7 endpoints failed (44%)
+
+This report was generated based on automated testing using the NIFYA testing tools.

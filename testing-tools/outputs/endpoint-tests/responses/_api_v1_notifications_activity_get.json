@@ -1,7 +1,33 @@
 {
-  "error": "TOKEN_EXPIRED",
-  "message": "Token has expired",
-  "status": 401,
-  "details": {},
-  "timestamp": "2025-04-03T07:20:47.638Z"
+  "activityByDay": [
+    {
+      "day": "Mon",
+      "count": 0
+    },
+    {
+      "day": "Tue",
+      "count": 0
+    },
+    {
+      "day": "Wed",
+      "count": 0
+    },
+    {
+      "day": "Thu",
+      "count": 0
+    },
+    {
+      "day": "Fri",
+      "count": 0
+    },
+    {
+      "day": "Sat",
+      "count": 0
+    },
+    {
+      "day": "Sun",
+      "count": 0
+    }
+  ],
+  "sources": []
 }

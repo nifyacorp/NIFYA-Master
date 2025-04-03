@@ -1,9 +1,5 @@
 {
-  "error": "MISSING_HEADERS",
-  "message": "Authorization header is required",
-  "status": 401,
-  "details": {
-    "providedHeader": null
-  },
-  "timestamp": "2025-04-03T07:20:48.523Z"
+  "status": "error",
+  "code": "INTERNAL_SERVER_ERROR",
+  "message": "An unexpected error occurred"
 }

@@ -1,22 +1,22 @@
 {
-  "startTime": "2025-04-03T07:38:15.468Z",
+  "startTime": "2025-04-03T08:19:39.495Z",
   "steps": [
     {
       "name": "authentication",
       "success": true,
-      "timestamp": "2025-04-03T07:38:15.945Z"
+      "timestamp": "2025-04-03T08:19:39.875Z"
     },
     {
       "name": "create-subscription",
       "success": false,
-      "timestamp": "2025-04-03T07:38:16.291Z"
+      "timestamp": "2025-04-03T08:19:40.136Z"
     }
   ],
   "currentStep": "create-subscription",
   "auth": {
     "success": true,
-    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2NWM2MDc0ZC1kYmM0LTQwOTEtOGU0NS1iNmFlY2ZmZDlhYjkiLCJlbWFpbCI6InJhdG9ueGlAZ21haWwuY29tIiwibmFtZSI6IlRlc3QiLCJlbWFpbF92ZXJpZmllZCI6dHJ1ZSwidHlwZSI6ImFjY2VzcyIsImlhdCI6MTc0MzY2NTk3MCwiZXhwIjoxNzQzNjY2ODcwfQ._1o9BQ4-JtSLkV5JJshLW49k0_jw1RBTG8iag9Y3ZI0",
-    "refreshToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2NWM2MDc0ZC1kYmM0LTQwOTEtOGU0NS1iNmFlY2ZmZDlhYjkiLCJlbWFpbCI6InJhdG9ueGlAZ21haWwuY29tIiwidHlwZSI6InJlZnJlc2giLCJpYXQiOjE3NDM2NjU5NzAsImV4cCI6MTc0NDI3MDc3MH0.3xn52v1dmj8a5acMG13SfwY5qj89-y5mUQXyToNhrro",
+    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2NWM2MDc0ZC1kYmM0LTQwOTEtOGU0NS1iNmFlY2ZmZDlhYjkiLCJlbWFpbCI6InJhdG9ueGlAZ21haWwuY29tIiwibmFtZSI6IlRlc3QiLCJlbWFpbF92ZXJpZmllZCI6dHJ1ZSwidHlwZSI6ImFjY2VzcyIsImlhdCI6MTc0MzY2ODQ1NCwiZXhwIjoxNzQzNjY5MzU0fQ.yuZRStB0oob28nrzeqAGeGAoal0_-ZZUsspUPx_gsoQ",
+    "refreshToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2NWM2MDc0ZC1kYmM0LTQwOTEtOGU0NS1iNmFlY2ZmZDlhYjkiLCJlbWFpbCI6InJhdG9ueGlAZ21haWwuY29tIiwidHlwZSI6InJlZnJlc2giLCJpYXQiOjE3NDM2Njg0NTQsImV4cCI6MTc0NDI3MzI1NH0.zBLk3FhRXrJ71S7K_cq0MTAe_NwkTrquaxlXVCbjjaE",
     "userId": "65c6074d-dbc4-4091-8e45-b6aecffd9ab9"
   },
   "subscription": {

@@ -1,7 +1,4 @@
 {
-  "error": "TOKEN_EXPIRED",
-  "message": "Token has expired",
-  "status": 401,
-  "details": {},
-  "timestamp": "2025-04-03T07:20:47.943Z"
+  "message": "All notifications marked as read",
+  "updated": 0
 }
