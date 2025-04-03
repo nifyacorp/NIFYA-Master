@@ -1,9 +1,8 @@
 {
   "success": false,
-  "status": 404,
+  "status": 504,
   "data": {
-    "message": "Route PATCH:/api/v1/me not found",
-    "error": "Not Found",
-    "statusCode": 404
+    "raw": "upstream request timeout",
+    "_parseError": "Unexpected token 'u', \"upstream r\"... is not valid JSON"
   }
 }

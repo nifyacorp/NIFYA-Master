@@ -4,85 +4,22 @@
   "data": {
     "status": "success",
     "data": {
-      "subscriptions": [
-        {
-          "id": "mock-boe-0",
-          "name": "boe Subscription 1",
-          "type": "boe",
-          "description": "This is a mock subscription created from stats data (boe)",
-          "prompts": [
-            "keyword1",
-            "keyword2"
-          ],
-          "frequency": "daily",
-          "active": true
-        },
-        {
-          "id": "mock-real-estate-1",
-          "name": "real-estate Subscription 2",
-          "type": "real-estate",
-          "description": "This is a mock subscription created from stats data (real-estate)",
-          "prompts": [
-            "keyword1",
-            "keyword2"
-          ],
-          "frequency": "immediate",
-          "active": true
-        },
-        {
-          "id": "mock-boe-2",
-          "name": "boe Subscription 3",
-          "type": "boe",
-          "description": "This is a mock subscription created from stats data (boe)",
-          "prompts": [
-            "keyword1",
-            "keyword2"
-          ],
-          "frequency": "daily",
-          "active": true
-        },
-        {
-          "id": "mock-real-estate-3",
-          "name": "real-estate Subscription 4",
-          "type": "real-estate",
-          "description": "This is a mock subscription created from stats data (real-estate)",
-          "prompts": [
-            "keyword1",
-            "keyword2"
-          ],
-          "frequency": "immediate",
-          "active": true
-        },
-        {
-          "id": "mock-boe-4",
-          "name": "boe Subscription 5",
-          "type": "boe",
-          "description": "This is a mock subscription created from stats data (boe)",
-          "prompts": [
-            "keyword1",
-            "keyword2"
-          ],
-          "frequency": "daily",
-          "active": true
-        },
-        {
-          "id": "mock-real-estate-5",
-          "name": "real-estate Subscription 6",
-          "type": "real-estate",
-          "description": "This is a mock subscription created from stats data (real-estate)",
-          "prompts": [
-            "keyword1",
-            "keyword2"
-          ],
-          "frequency": "immediate",
-          "active": true
-        }
-      ],
+      "subscriptions": [],
       "pagination": {
-        "total": 6,
+        "total": 0,
         "page": 1,
         "limit": 20,
-        "totalPages": 1
+        "totalPages": 0
+      },
+      "filters": {
+        "type": null,
+        "status": "all",
+        "search": null,
+        "frequency": "all",
+        "dateRange": {
+          "from": null,
+          "to": null
+        }
       }
     }
   }

@@ -1,10 +1,10 @@
 {
-  "success": true,
-  "status": 201,
+  "success": false,
+  "status": 400,
   "data": {
-    "status": "success",
-    "data": {
-      "subscription": {}
-    }
+    "statusCode": 400,
+    "code": "FST_ERR_VALIDATION",
+    "error": "Bad Request",
+    "message": "body/prompts must match exactly one schema in oneOf"
   }
 }
