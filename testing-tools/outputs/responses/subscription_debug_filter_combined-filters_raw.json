@@ -1,1 +1,1 @@
-{"status":"error","code":"SUBSCRIPTION_NOT_FOUND","message":"Subscription not found"}
+{"status":"success","message":"Diagnostic filter information","data":{"originalQuery":{"type":"boe","status":"active","limit":"10"},"parsedQuery":{"type":{"value":"boe","type":"string","asBoolean":false},"status":{"value":"active","type":"string","asBoolean":false},"limit":{"value":"10","type":"string","asBoolean":false}},"headerInfo":{"contentType":"application/json"}}}

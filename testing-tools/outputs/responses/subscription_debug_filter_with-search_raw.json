@@ -1,1 +1,1 @@
-{"status":"error","code":"SUBSCRIPTION_NOT_FOUND","message":"Subscription not found"}
+{"status":"success","message":"Diagnostic filter information","data":{"originalQuery":{"search":"test"},"parsedQuery":{"search":{"value":"test","type":"string","asBoolean":false}},"headerInfo":{"contentType":"application/json"}}}

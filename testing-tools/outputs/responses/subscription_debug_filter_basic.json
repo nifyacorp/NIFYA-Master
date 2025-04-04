@@ -1,5 +1,11 @@
 {
-  "status": "error",
-  "code": "SUBSCRIPTION_NOT_FOUND",
-  "message": "Subscription not found"
+  "status": "success",
+  "message": "Diagnostic filter information",
+  "data": {
+    "originalQuery": {},
+    "parsedQuery": {},
+    "headerInfo": {
+      "contentType": "application/json"
+    }
+  }
 }
