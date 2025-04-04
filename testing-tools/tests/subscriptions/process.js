@@ -16,44 +16,49 @@ const SUBSCRIPTION_ID_FILE = path.join(OUTPUT_DIR, 'latest_subscription_id.txt')
 
 /**
  * Process an existing subscription
- * @param {string} [subscriptionId] - ID of the subscription to process (will be loaded from file if not provided)
- * @param {string} [token] - Authentication token (will be loaded from file if not provided)
+ * @param {string} token - Authentication token
+ * @param {string} userId - User ID
+ * @param {string} subscriptionId - ID of the subscription to process
+ * @param {boolean} [useAltEndpoint=false] - Whether to use the alternative endpoint
  * @returns {Promise<Object>} Test result
  */
-async function processSubscription(subscriptionId = null, token = null) {
+async function processSubscription(token, userId, subscriptionId, useAltEndpoint = false) {
   const testName = 'process-subscription';
   logger.info('Starting subscription processing test', null, testName);
   
-  // Load token if not provided
+  // Validate token
   if (!token) {
-    token = apiClient.loadAuthToken();
-    if (!token) {
-      logger.error('No authentication token available', null, testName);
-      logger.testResult(testName, false, 'No authentication token available');
-      return { success: false, error: 'No authentication token available' };
-    }
+    logger.error('No authentication token provided', null, testName);
+    logger.testResult(testName, false, 'No authentication token provided');
+    return { success: false, error: 'No authentication token provided' };
   }
   
-  // Load subscription ID from file if not provided
+  // Validate user ID
+  if (!userId) {
+    logger.error('No user ID provided', null, testName);
+    logger.testResult(testName, false, 'No user ID provided');
+    return { success: false, error: 'No user ID provided' };
+  }
+  
+  // Validate subscription ID
   if (!subscriptionId) {
-    try {
-      subscriptionId = fs.readFileSync(SUBSCRIPTION_ID_FILE, 'utf8').trim();
-      logger.info(`Loaded subscription ID from file: ${subscriptionId}`, null, testName);
-    } catch (error) {
-      logger.error('No subscription ID available', error, testName);
-      logger.testResult(testName, false, 'No subscription ID available');
-      return { success: false, error: 'No subscription ID available' };
-    }
+    logger.error('No subscription ID provided', null, testName);
+    logger.testResult(testName, false, 'No subscription ID provided');
+    return { success: false, error: 'No subscription ID provided' };
   }
   
   // Request options
   const options = {
     hostname: endpoints.backend.baseUrl,
     port: 443,
-    path: endpoints.backend.subscriptions.process(subscriptionId),
+    path: useAltEndpoint 
+      ? endpoints.backend.subscriptions.processAlt(subscriptionId) 
+      : endpoints.backend.subscriptions.process(subscriptionId),
     method: 'POST',
     headers: {
-      'Content-Type': 'application/json'
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${token}`,
+      'x-user-id': userId
     }
   };
   

@@ -1,0 +1,48 @@
+{
+  "timestamp": "2025-04-04T21-54-13.867Z",
+  "tests": {
+    "notification_pipeline": {
+      "name": "Notification Pipeline",
+      "success": false,
+      "error": "loginTest is not a function"
+    },
+    "subscription_journey": {
+      "name": "Subscription Journey",
+      "success": false,
+      "details": {
+        "success": false,
+        "duration": 295,
+        "steps": [
+          {
+            "name": "Authentication",
+            "startTime": 1743803653922,
+            "success": true,
+            "details": {
+              "userId": "65c6074d-dbc4-4091-8e45-b6aecffd9ab9"
+            },
+            "duration": 5
+          },
+          {
+            "name": "Create Subscription",
+            "startTime": 1743803653931,
+            "success": false,
+            "error": "Invalid subscription creation response",
+            "duration": 255
+          }
+        ],
+        "errors": [
+          {
+            "step": "Create Subscription",
+            "message": "Invalid subscription creation response"
+          }
+        ]
+      }
+    }
+  },
+  "summary": {
+    "total": 2,
+    "passed": 0,
+    "failed": 2,
+    "skipped": 0
+  }
+}

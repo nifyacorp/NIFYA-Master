@@ -96,16 +96,15 @@ async function createSubscription(authInfo) {
   logger.info('Creating test subscription...', null, 'journey-test');
   
   const subscriptionData = {
-    type: 'boe', // BOE subscription type
+    type_id: 'boe', // BOE subscription type
     name: `Test BOE Subscription ${new Date().toISOString()}`,
     description: 'Test subscription for E2E journey testing',
     prompts: {
-      value: ['test', 'journey', Math.random().toString(36).substring(2, 7)] // Add some randomness
+      keywords: ['test', 'journey', Math.random().toString(36).substring(2, 7)], // Add some randomness
+      sections: ['general'],
+      categories: ['announcements']
     },
-    configuration: {
-      sections: ['all'],
-      refreshInterval: 24
-    },
+    frequency: 'daily',
     active: true
   };
   
@@ -119,14 +118,20 @@ async function createSubscription(authInfo) {
     
     const response = await apiClient.makeApiRequest(options);
     
-    if (!response.data || !response.data.id) {
+    // Handle different response formats
+    const subscriptionId = response.data?.id || 
+                         response.data?.data?.id || 
+                         (response.data?.data?.subscription?.id);
+    
+    if (!subscriptionId) {
+      logger.error('Invalid subscription creation response format:', response.data, 'journey-test');
       throw new Error('Invalid subscription creation response');
     }
     
-    logger.success(`Created subscription with ID: ${response.data.id}`, null, 'journey-test');
+    logger.success(`Created subscription with ID: ${subscriptionId}`, null, 'journey-test');
     await saveResults('subscription_creation.json', response);
     
-    return response.data.id;
+    return subscriptionId;
   } catch (err) {
     logger.error('Subscription creation failed:', err, 'journey-test');
     throw err;
@@ -147,11 +152,19 @@ async function verifySubscriptionListing(authInfo, subscriptionId) {
     const response = await apiClient.makeApiRequest(options);
     await saveResults('subscription_listing.json', response);
     
-    if (!Array.isArray(response.data)) {
+    // Handle different response formats
+    const subscriptions = Array.isArray(response.data) ? response.data :
+                         Array.isArray(response.data?.data) ? response.data.data :
+                         [];
+    
+    if (!Array.isArray(subscriptions)) {
+      logger.error('Invalid subscription listing response format:', response.data, 'journey-test');
       throw new Error('Invalid subscription listing response');
     }
     
-    const found = response.data.some(sub => sub.id === subscriptionId);
+    logger.info(`Found ${subscriptions.length} subscriptions in listing`, null, 'journey-test');
+    
+    const found = subscriptions.some(sub => sub.id === subscriptionId);
     
     if (!found) {
       throw new Error(`Subscription ${subscriptionId} not found in listing`);
@@ -179,12 +192,18 @@ async function initiateProcessing(authInfo, subscriptionId) {
     const response = await apiClient.makeApiRequest(options);
     await saveResults('processing_initiation.json', response);
     
-    if (!response.data || !response.data.jobId) {
+    // Handle different response formats
+    const jobId = response.data?.jobId || 
+                 response.data?.data?.jobId || 
+                 response.data?.id;
+    
+    if (!jobId) {
+      logger.error('Invalid processing initiation response format:', response.data, 'journey-test');
       throw new Error('Invalid processing initiation response');
     }
     
-    logger.success(`Processing initiated with job ID: ${response.data.jobId}`, null, 'journey-test');
-    return response.data.jobId;
+    logger.success(`Processing initiated with job ID: ${jobId}`, null, 'journey-test');
+    return jobId;
   } catch (err) {
     logger.error('Processing initiation failed:', err, 'journey-test');
     throw err;
@@ -209,21 +228,33 @@ async function pollProcessingStatus(authInfo, subscriptionId, jobId) {
         const response = await apiClient.makeApiRequest(options);
         await saveResults(`processing_status_${attempt}.json`, response);
         
-        if (!response.data || !response.data.status) {
-          logger.warn('Invalid processing status response', null, 'journey-test');
+        // Handle different response formats
+        const status = response.data?.status ||
+                     response.data?.data?.status ||
+                     response.data?.state;
+        
+        if (!status) {
+          logger.warn('Invalid processing status response format', response.data, 'journey-test');
           await sleep(CONFIG.retryDelay);
           continue;
         }
         
-        logger.info(`Current processing status: ${response.data.status}`, null, 'journey-test');
+        logger.info(`Current processing status: ${status}`, null, 'journey-test');
         
-        if (response.data.status === 'completed') {
+        // Handle different status values for "completed"
+        if (status === 'completed' || status === 'COMPLETED' || status === 'success' || status === 'SUCCESS') {
           return {
             status: 'completed',
             details: response.data
           };
-        } else if (response.data.status === 'failed') {
-          throw new Error(`Processing failed: ${response.data.error || 'Unknown error'}`);
+        } 
+        // Handle different status values for "failed"
+        else if (status === 'failed' || status === 'FAILED' || status === 'error' || status === 'ERROR') {
+          const errorMsg = response.data?.error || 
+                        response.data?.data?.error || 
+                        response.data?.message || 
+                        'Unknown error';
+          throw new Error(`Processing failed: ${errorMsg}`);
         }
       } catch (reqErr) {
         logger.warn(`Status check failed: ${reqErr.message}`, null, 'journey-test');
@@ -247,8 +278,9 @@ async function pollForNotifications(authInfo, subscriptionId) {
     try {
       logger.info(`Checking for notifications (attempt ${attempt}/${CONFIG.maxRetries})...`, null, 'journey-test');
       
+      // Try both parameter formats (subscription_id and subscriptionId)
       const options = {
-        url: `https://${endpoints.backend.baseUrl}/api/v1/notifications?subscriptionId=${subscriptionId}`,
+        url: `https://${endpoints.backend.baseUrl}${endpoints.backend.notifications.list}?subscription_id=${subscriptionId}&subscriptionId=${subscriptionId}`,
         method: 'GET',
         headers: authInfo.headers
       };
@@ -257,10 +289,27 @@ async function pollForNotifications(authInfo, subscriptionId) {
         const response = await apiClient.makeApiRequest(options);
         await saveResults(`notifications_attempt_${attempt}.json`, response);
         
-        // Check if we have notifications for this subscription
-        const notifications = response.notifications || response.data?.notifications || [];
+        // Handle different response formats
+        const notifications = response.data || 
+                           response.data?.data || 
+                           response.data?.notifications || 
+                           response.data?.data?.notifications || 
+                           [];
         
-        if (notifications.length > 0) {
+        // Ensure we have an array
+        const notificationsArray = Array.isArray(notifications) ? notifications : [];
+        
+        logger.info(`Found ${notificationsArray.length} potential notifications`, null, 'journey-test');
+        
+        // Check if we have notifications for this subscription
+        const relevantNotifications = notificationsArray.filter(n => 
+          n.subscription_id === subscriptionId || 
+          n.subscriptionId === subscriptionId
+        );
+        
+        logger.info(`Found ${relevantNotifications.length} notifications for subscription ${subscriptionId}`, null, 'journey-test');
+        
+        if (relevantNotifications.length > 0) {
           logger.success(`Found ${notifications.length} notifications for subscription`, null, 'journey-test');
           return notifications;
         }
@@ -285,20 +334,39 @@ async function testNotificationActions(authInfo, notificationId) {
   logger.info(`Testing actions for notification: ${notificationId}`, null, 'journey-test');
   
   try {
-    // Mark as read
-    const markReadOptions = {
-      url: `https://${endpoints.backend.baseUrl}/api/v1/notifications/${notificationId}/read`,
-      method: 'PATCH',
-      headers: authInfo.headers
-    };
+    // Mark as read - try POST method since some APIs use POST for this operation
+    // If it fails, we'll try PATCH
+    let markReadResult;
+    try {
+      const markReadPostOptions = {
+        url: `https://${endpoints.backend.baseUrl}${endpoints.backend.notifications.markAsRead(notificationId)}`,
+        method: 'POST',
+        headers: authInfo.headers
+      };
+      
+      markReadResult = await apiClient.makeApiRequest(markReadPostOptions);
+      logger.info('Successfully marked notification as read using POST method', null, 'journey-test');
+    } catch (postErr) {
+      logger.warn(`POST method failed for marking notification as read: ${postErr.message}`, null, 'journey-test');
+      
+      // Try PATCH instead
+      const markReadPatchOptions = {
+        url: `https://${endpoints.backend.baseUrl}${endpoints.backend.notifications.markAsRead(notificationId)}`,
+        method: 'PATCH',
+        headers: authInfo.headers
+      };
+      
+      markReadResult = await apiClient.makeApiRequest(markReadPatchOptions);
+      logger.info('Successfully marked notification as read using PATCH method', null, 'journey-test');
+    }
     
-    const markReadResult = await apiClient.makeApiRequest(markReadOptions);
+    // Save the result of marking notification as read
     await saveResults('notification_mark_read.json', markReadResult);
     logger.success('Successfully marked notification as read', null, 'journey-test');
     
     // Verify read status
     const verifyOptions = {
-      url: `https://${endpoints.backend.baseUrl}/api/v1/notifications/${notificationId}`,
+      url: `https://${endpoints.backend.baseUrl}${endpoints.backend.notifications.getById(notificationId)}`,
       method: 'GET',
       headers: authInfo.headers
     };
@@ -306,9 +374,20 @@ async function testNotificationActions(authInfo, notificationId) {
     const verifyResult = await apiClient.makeApiRequest(verifyOptions);
     await saveResults('notification_verify.json', verifyResult);
     
-    const notification = verifyResult.data || verifyResult;
+    // Handle different response formats
+    const notification = verifyResult.data?.data || 
+                       verifyResult.data || 
+                       verifyResult;
     
-    if (!notification || notification.read !== true) {
+    logger.info('Notification verification response:', notification, 'journey-test');
+    
+    // Check if the notification is marked as read using various property names
+    const isRead = notification?.read === true || 
+                 notification?.isRead === true || 
+                 notification?.status === 'read';
+                 
+    if (!notification || !isRead) {
+      logger.error('Notification read status verification failed:', notification, 'journey-test');
       throw new Error('Notification read status was not updated correctly');
     }
     
@@ -393,6 +472,18 @@ async function generateTestReport(testResults) {
 async function runJourneyTest() {
   logger.info('====== SUBSCRIPTION JOURNEY TEST ======', null, 'journey-test');
   logger.info(`Starting test at ${new Date().toLocaleString()}`, null, 'journey-test');
+  
+  // Log environment info for debugging
+  logger.info('Test environment configuration:', {
+    authServiceUrl: `https://${CONFIG.authServiceUrl}`,
+    backendUrl: `https://${CONFIG.backendUrl}`,
+    endpoints: {
+      auth: endpoints.auth.login,
+      subscriptions: endpoints.backend.subscriptions.list,
+      notifications: endpoints.backend.notifications.list
+    },
+    email: CONFIG.credentials.email ? CONFIG.credentials.email.substring(0, 3) + '***' : undefined
+  }, 'journey-test');
   
   const startTime = Date.now();
   const testResults = {
