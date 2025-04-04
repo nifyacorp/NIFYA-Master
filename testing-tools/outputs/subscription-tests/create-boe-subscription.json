@@ -5,8 +5,8 @@
     "status": "success",
     "data": {
       "subscription": {
-        "id": "4e452f99-ee6d-4037-a1b2-0d91f242a288",
-        "name": "Test BOE Subscription 2025-04-04T12:30:42.319Z",
+        "id": "dedf65f7-4123-47bd-bd9f-03ada4483b9d",
+        "name": "Test BOE Subscription 2025-04-04T12:46:01.013Z",
         "type": "boe",
         "description": "",
         "prompts": [

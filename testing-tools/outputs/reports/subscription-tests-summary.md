@@ -1,12 +1,12 @@
 # NIFYA Subscription API Test Results
 
-**Test Time:** 2025-04-04T12:30:45.184Z
+**Test Time:** 2025-04-04T12:46:03.883Z
 
 ## Summary
 
 | Test Suite | Status | Success Rate | Details |
 |------------|--------|--------------|---------|
-| Subscription Management APIs | ❌ FAILED | 57.14% | [View Details](subscription-management-test-2025-04-04T12-30-45.176Z.md) |
+| Subscription Management APIs | ❌ FAILED | 57.14% | [View Details](subscription-management-test-2025-04-04T12-46-03.875Z.md) |
 
 ## Overall System Health
 
@@ -28,7 +28,7 @@ These tests cover:
 ## Next Steps
 
 ### Issues to Address
-- Get Subscription Details: Request failed with status 500
+- Get Subscription Details: Request failed with status 404
 - Update Subscription: Request failed with status 404
 - Toggle Subscription: Request failed with status 404
 - Get Subscription Status: Request failed with status 500
@@ -42,4 +42,4 @@ These tests cover:
 - Run tests again after fixes
 
 ---
-Generated on: 2025-04-04T12:30:45.184Z
+Generated on: 2025-04-04T12:46:03.883Z

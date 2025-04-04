@@ -5,8 +5,8 @@
     "status": "success",
     "data": {
       "subscription": {
-        "id": "15cfefc3-bf8a-4099-8317-339eaa99e791",
-        "name": "Test Real Estate Subscription 2025-04-04T12:30:42.319Z",
+        "id": "be7f78a1-831a-4961-9f4d-f308a2394a55",
+        "name": "Test Real Estate Subscription 2025-04-04T12:46:01.013Z",
         "type": "real-estate",
         "description": "",
         "prompts": [

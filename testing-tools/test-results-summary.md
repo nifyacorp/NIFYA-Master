@@ -1,6 +1,20 @@
 # NIFYA Platform Testing Results Summary
 
-## Latest Test Results Comparison (April 3, 2025 - 11:45 AM)
+## Latest Test Results (April 4, 2025)
+
+**New Backend Version Test Summary:**
+
+| Category | Success Rate | Status |
+|----------|--------------|--------|
+| Overall | 78% | ⚠️ PARTIAL SUCCESS |
+| Authentication | 100% | ✅ PASS |
+| Subscriptions | 57% | ⚠️ PARTIAL SUCCESS |
+| Notifications | 50% | ⚠️ PARTIAL SUCCESS |
+| Infrastructure | 100% | ✅ PASS |
+
+The new backend version shows significant improvement in authentication reliability but still has issues with subscription detail endpoints and notification processing.
+
+## Previous Test Results Comparison (April 3, 2025 - 11:45 AM)
 
 ### Service Update Comparison Results
 

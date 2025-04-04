@@ -1,0 +1,12 @@
+{
+  "success": true,
+  "status": 200,
+  "data": {
+    "status": "success",
+    "message": "Subscription deletion processed",
+    "details": {
+      "id": "dedf65f7-4123-47bd-bd9f-03ada4483b9d",
+      "alreadyRemoved": true
+    }
+  }
+}

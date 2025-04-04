@@ -2,7 +2,7 @@
   "success": false,
   "status": 404,
   "data": {
-    "message": "Route POST:/api/v1/subscriptions/4e452f99-ee6d-4037-a1b2-0d91f242a288/toggle not found",
+    "message": "Route POST:/api/v1/subscriptions/dedf65f7-4123-47bd-bd9f-03ada4483b9d/toggle not found",
     "error": "Not Found",
     "statusCode": 404
   }

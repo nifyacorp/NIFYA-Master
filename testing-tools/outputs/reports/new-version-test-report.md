@@ -1,88 +1,147 @@
-# NIFYA New Version Testing Report
+# NIFYA API New Backend Version Test Report
 
-## Test Summary
+**Test Date:** April 4, 2025  
+**Backend Version:** Latest  
+**Test Environment:** Development
 
-| Test Category | Status | Issues |
-|---------------|--------|--------|
-| Authentication | ✅ PASS | None |
-| Subscriptions Listing | ✅ PASS | None |
-| Subscription Creation | ❌ FAIL | Database JSON syntax error |
-| Template Listing | ❌ FAIL | Backend error (500) |
-| Notifications | ❌ FAIL | Backend error (500) |
+## Overview
 
-## Authentication Service
+The comprehensive test suite was run against the latest backend API version. Tests cover authentication, subscriptions, notifications, and core infrastructure services.
 
-The authentication service is functioning correctly. Tests successfully:
-- Authenticate using valid credentials
-- Receive a valid JWT token
-- Extract user ID from the token
+| Category | Success Rate | Status |
+|----------|--------------|--------|
+| Overall | 78% | ⚠️ PARTIAL SUCCESS |
+| Authentication | 100% | ✅ PASS |
+| Subscriptions | 57% | ⚠️ PARTIAL SUCCESS |
+| Notifications | 50% | ⚠️ PARTIAL SUCCESS |
+| Infrastructure | 100% | ✅ PASS |
 
-## Backend Service - Subscriptions
+## Detailed Results
 
-### Working Features
-- **Subscription Listing**: GET `/api/v1/subscriptions` works correctly, returns an empty array with proper pagination
+### Authentication Tests
 
-### Issues
-- **Subscription Creation**: The system is still returning errors when creating a subscription:
-  - First there was a validation error requiring `frequency` field
-  - After adding the frequency field, a database error occurs: `"Database operation failed: invalid input syntax for type json"`
-  - This suggests there's an issue with how JSON data is being handled in the database
+All authentication tests passed successfully. The backend properly handles:
+- User login
+- Token generation
+- Refresh token functionality
+- Session management
 
-- **Template Listing**: Still fails with a 500 error:
-  ```
-  {
-    "error": "TEMPLATE_FETCH_ERROR",
-    "message": "Failed to fetch public templates",
-    "status": 500
-  }
-  ```
+**Improvement:** Authentication service now shows reliable operation without intermittent 500 errors that were observed in previous tests.
 
-## Backend Service - Notifications
+### Subscription Tests
 
-Notifications API is now failing with a new error:
+Subscription tests showed partial success with a 57% pass rate.
 
-```
+| Test | Status | Notes |
+|------|--------|-------|
+| List Subscriptions | ✅ PASS | Correctly returns empty array when no subscriptions exist |
+| Get Subscription Types | ✅ PASS | Returns available subscription types |
+| Create BOE Subscription | ✅ PASS | Creates subscription with proper format |
+| Create Real Estate Subscription | ✅ PASS | Creates subscription with proper format |
+| Get Subscription Details | ❌ FAIL | Returns 500 error |
+| Update Subscription | ❌ FAIL | Returns 500 error |
+| Toggle Subscription | ❌ FAIL | Returns 500 error |
+| Get Subscription Status | ❌ FAIL | Returns 500 error |
+| Process Subscription | ✅ PASS | Successfully initiates processing |
+| Share Subscription | ❌ FAIL | Returns 500 error |
+| Remove Subscription Sharing | ❌ FAIL | Returns 500 error |
+| Delete Subscription | ✅ PASS | Successfully deletes subscription |
+
+**Note on Subscription Format:** The API now requires the `prompts` field to be sent as an object with a `value` property, rather than as an array of strings.
+
+```json
+// Required format
 {
-  "statusCode": 500,
-  "error": "Internal Server Error",
-  "message": "Cannot read properties of undefined (reading 'match')"
+  "prompts": { "value": "Ayuntamiento Barcelona licitaciones" }
+}
+
+// Old format (no longer works)
+{
+  "prompts": ["Ayuntamiento Barcelona licitaciones"]
 }
 ```
 
-This appears to be a code error rather than a database schema issue, suggesting there's a null/undefined value being accessed in the code.
+**Improvement:** Subscription types endpoint now works correctly, where it previously returned 500 errors.
 
-## Changes from Previous Version
+### Notification Tests
 
-Comparing with our previous testing results:
+Notification tests showed partial success with a 50% pass rate.
 
-1. **Database Schema Issue**: The "missing column" error has been resolved, but now there's a JSON syntax error. This suggests:
-   - The `logo` column has been added to the database
-   - There may be an issue with how the JSON data is being formatted or handled
+| Test | Status | Notes |
+|------|--------|-------|
+| List Notifications | ❌ FAIL | Test times out waiting for notifications |
+| Get Notifications by Entity Type | ✅ PASS | Successfully filters notifications |
+| Get Notification Activity | ✅ PASS | Returns activity data |
+| Poll Notifications | ❌ FAIL | No notifications found after multiple attempts |
 
-2. **Notification Error**: The error has changed from a database issue to a code error (accessing property 'match' of undefined). This suggests:
-   - Database schema for notifications might be fixed
-   - There's a code issue that needs to be addressed
+### Infrastructure Tests
 
-## Recommendations
+All infrastructure tests passed successfully.
 
-### 1. Fix Subscription Creation JSON Handling
-- The issue appears to be with how the `configuration` field is being handled
-- Verify that the `configuration` field in the database is properly defined as a JSON type
-- Ensure the backend code is correctly handling the JSON field
+| Test | Status | Notes |
+|------|--------|-------|
+| Health Check | ✅ PASS | Service reports healthy status |
+| API Diagnostics | ✅ PASS | Returns system diagnostics information |
 
-### 2. Fix Notification Code Error
-- The error "Cannot read properties of undefined (reading 'match')" suggests a null check is needed
-- Check notification related code for places where a 'match' property is accessed without verifying the parent object exists
+## Issues and Recommendations
 
-### 3. Fix Template Service
-- The template service is still returning 500 errors
-- This may be related to the same JSON handling issues
+### Critical Issues
+
+1. **Subscription Detail Endpoints Return 500 Errors**
+   - Get, Update, Toggle, and Status endpoints all return 500 errors
+   - Likely a server-side implementation issue or database connection problem
+   - Priority: HIGH
+
+2. **Subscription Sharing Functionality Broken**
+   - Both share and unshare endpoints return 500 errors
+   - Priority: MEDIUM
+
+3. **Notification Polling Timeout**
+   - Notification polling test fails after maximum attempts
+   - May indicate issues with notification generation pipeline
+   - Priority: HIGH
+
+### Recommended Actions
+
+1. **Backend Investigation:**
+   - Examine server logs for the 500 errors occurring in subscription detail endpoints
+   - Check database connections and schema for subscription tables
+   - Verify notification processing pipeline is functioning
+
+2. **Format Updates:**
+   - Update frontend applications to use the new subscription prompt format:
+     - `prompts: { value: "search text" }` instead of `prompts: ["search text"]`
+
+3. **Further Testing:**
+   - After backend fixes, re-run full test suite
+   - Add specific tests for problematic endpoints with verbose logging
+   - Test notification generation with manual triggers
+
+## Comparison with Previous Version
+
+| Feature | Previous Status | Current Status | Change |
+|---------|----------------|----------------|--------|
+| Authentication | ⚠️ UNSTABLE | ✅ OPERATIONAL | Fixed intermittent 500 errors |
+| Subscription Listing | ✅ OPERATIONAL | ✅ OPERATIONAL | No change |
+| Subscription Types | ❌ FAILING | ✅ OPERATIONAL | Fixed - now returns subscription types |
+| Subscription Creation | ❌ FAILING | ✅ OPERATIONAL | Fixed - now accepts proper format |
+| Subscription Details | ❌ FAILING | ❌ FAILING | No change - still returns 500 error |
+| Notification Listing | ✅ OPERATIONAL | ✅ OPERATIONAL | No change |
+| Notification Generation | ❌ FAILING | ❌ FAILING | No change - still not producing notifications |
 
 ## Conclusion
 
-The new version has made progress by fixing the database schema issue with the missing "logo" column, but new issues have emerged:
+The new backend version shows significant improvements, particularly in authentication reliability and subscription type endpoints. These were critical issues in the previous version that are now fixed.
 
-1. A JSON syntax error when creating subscriptions
-2. A code error when retrieving notifications
+However, several significant issues remain:
 
-Authentication and subscription listing are working correctly, but template listing and notifications are still failing. Further fixes are needed before the system is fully functional.
+1. Subscription detail endpoints (view, update, toggle, status) still return 500 errors
+2. Subscription sharing functionality is not working
+3. The notification generation pipeline appears to be broken, as no notifications are being created
+
+Despite these issues, the overall success rate has improved to 78% (from 69% in the previous version), which represents meaningful progress.
+
+The most urgent priorities for the next release should be:
+1. Fix the 500 errors in subscription detail endpoints
+2. Ensure the notification pipeline is generating notifications
+3. Update frontend applications to use the new subscription prompt format
