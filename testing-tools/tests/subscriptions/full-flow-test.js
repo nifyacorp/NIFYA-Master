@@ -216,7 +216,7 @@ async function createSubscription(token, userId) {
       name: subscriptionName,
       type: "boe",
       templateId: "boe-default",
-      prompts: ["Test Barcelona licitaciones"],
+      prompts: { value: "Test Barcelona licitaciones" },
       frequency: "daily",
       configuration: {},
       logo: null

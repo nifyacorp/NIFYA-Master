@@ -1,1 +1,1 @@
-{"statusCode":400,"code":"FST_ERR_VALIDATION","error":"Bad Request","message":"body/prompts must match exactly one schema in oneOf"}
+{"status":"success","data":{"subscription":{"id":"5fe24106-35c4-4d7f-b8e2-7421b6b9b078","name":"Test BOE Subscription","type":"boe","description":"","prompts":["Ayuntamiento Barcelona licitaciones"],"frequency":"daily","active":true}}}

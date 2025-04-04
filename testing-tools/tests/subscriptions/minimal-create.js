@@ -38,8 +38,11 @@ async function createMinimalSubscription(token = null) {
   const subscriptionData = {
     name: "Test BOE Subscription",
     type: "boe",
-    prompts: ["Ayuntamiento Barcelona licitaciones"], // Back to array format
-    frequency: "daily"
+    templateId: "boe-default",
+    prompts: { value: "Ayuntamiento Barcelona licitaciones" },
+    frequency: "daily",
+    configuration: {},
+    logo: null
   };
   
   // Request options
@@ -65,8 +68,17 @@ async function createMinimalSubscription(token = null) {
     apiClient.saveResponseToFile('minimal_subscription_response', response, RESPONSES_DIR);
     
     if (response.statusCode === 200 || response.statusCode === 201) {
-      // Extract subscription ID from response
-      const subscriptionId = response.data.id || response.data.data?.id;
+      // Extract subscription ID from response - handle different response formats
+      let subscriptionId;
+      if (response.data.data?.subscription?.id) {
+        subscriptionId = response.data.data.subscription.id;
+      } else if (response.data.data?.id) {
+        subscriptionId = response.data.data.id;
+      } else if (response.data.subscription?.id) {
+        subscriptionId = response.data.subscription.id;
+      } else if (response.data.id) {
+        subscriptionId = response.data.id;
+      }
       
       if (subscriptionId) {
         // Save subscription ID to file

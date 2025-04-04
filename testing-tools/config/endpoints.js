@@ -136,7 +136,7 @@ module.exports = {
       name: "Test BOE Subscription",
       type: "boe",
       templateId: "boe-default",
-      prompts: ["Ayuntamiento Barcelona licitaciones"],
+      prompts: { value: "Ayuntamiento Barcelona licitaciones" },
       frequency: "daily",
       configuration: {},
       logo: null

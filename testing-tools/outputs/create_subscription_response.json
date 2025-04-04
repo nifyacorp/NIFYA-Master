@@ -1,6 +1,6 @@
 {
-  "status": "success",
-  "data": {
-    "subscription": {}
-  }
+  "statusCode": 400,
+  "code": "FST_ERR_VALIDATION",
+  "error": "Bad Request",
+  "message": "body/prompts must match exactly one schema in oneOf"
 }
