@@ -1,12 +1,12 @@
 # NIFYA Subscription API Test Results
 
-**Test Time:** 2025-04-04T12:46:03.883Z
+**Test Time:** 2025-04-04T15:32:09.739Z
 
 ## Summary
 
 | Test Suite | Status | Success Rate | Details |
 |------------|--------|--------------|---------|
-| Subscription Management APIs | ❌ FAILED | 57.14% | [View Details](subscription-management-test-2025-04-04T12-46-03.875Z.md) |
+| Subscription Management APIs | ❌ FAILED | 57.14% | [View Details](subscription-management-test-2025-04-04T15-32-09.732Z.md) |
 
 ## Overall System Health
 
@@ -42,4 +42,4 @@ These tests cover:
 - Run tests again after fixes
 
 ---
-Generated on: 2025-04-04T12:46:03.883Z
+Generated on: 2025-04-04T15:32:09.739Z

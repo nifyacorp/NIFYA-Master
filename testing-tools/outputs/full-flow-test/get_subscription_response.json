@@ -1,5 +1,5 @@
 {
   "status": "error",
-  "code": "DATABASE_ERROR",
-  "message": "Database operation failed: column s.logo does not exist"
+  "code": "SUBSCRIPTION_NOT_FOUND",
+  "message": "Subscription not found"
 }
