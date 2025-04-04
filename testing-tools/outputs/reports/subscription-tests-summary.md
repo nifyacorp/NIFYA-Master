@@ -1,16 +1,16 @@
 # NIFYA Subscription API Test Results
 
-**Test Time:** 2025-04-03T12:07:08.301Z
+**Test Time:** 2025-04-04T12:30:45.184Z
 
 ## Summary
 
 | Test Suite | Status | Success Rate | Details |
 |------------|--------|--------------|---------|
-| Subscription Management APIs | ❌ FAILED | 66.67% | [View Details](subscription-management-test-2025-04-03T12-07-08.293Z.md) |
+| Subscription Management APIs | ❌ FAILED | 57.14% | [View Details](subscription-management-test-2025-04-04T12-30-45.176Z.md) |
 
 ## Overall System Health
 
-### ⚠️ MODERATE ISSUES (66.67%)
+### ⚠️ MODERATE ISSUES (57.14%)
 The subscription API system has significant issues that need attention.
 
 Problems were found in: Subscription Management APIs
@@ -27,14 +27,19 @@ These tests cover:
 
 ## Next Steps
 
-### Critical Issues to Fix
-- Create BOE Subscription: Request failed with status 400
+### Issues to Address
+- Get Subscription Details: Request failed with status 500
+- Update Subscription: Request failed with status 404
+- Toggle Subscription: Request failed with status 404
+- Get Subscription Status: Request failed with status 500
+- Share Subscription: Request failed with status 400
+- Remove Subscription Sharing: Request failed with status 400
 
 ### Recommended Actions
-- Fix critical subscription APIs first (creation and processing)
+- Review and fix failing endpoints
 - Check authentication service stability
 - Verify database connection and schema
 - Run tests again after fixes
 
 ---
-Generated on: 2025-04-03T12:07:08.301Z
+Generated on: 2025-04-04T12:30:45.184Z

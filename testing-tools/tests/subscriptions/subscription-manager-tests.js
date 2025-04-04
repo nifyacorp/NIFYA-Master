@@ -28,7 +28,7 @@ const TEST_SUBSCRIPTIONS = {
     name: "Test BOE Subscription " + new Date().toISOString(),
     type: "boe",
     templateId: "boe-default",
-    prompts: ["Ayuntamiento Barcelona licitaciones"],
+    prompts: { value: "Ayuntamiento Barcelona licitaciones" },
     frequency: "daily",
     configuration: {},
     logo: null
@@ -37,7 +37,7 @@ const TEST_SUBSCRIPTIONS = {
     name: "Test Real Estate Subscription " + new Date().toISOString(),
     type: "real-estate",
     templateId: "real-estate-rental",
-    prompts: ["Barcelona, 2 bedrooms, < 1200€"],
+    prompts: { value: "Barcelona, 2 bedrooms, < 1200€" },
     frequency: "daily",
     configuration: {
       location: "Barcelona",
@@ -170,7 +170,7 @@ async function runSubscriptionTests() {
   
   // Track created subscriptions for cleanup
   const createdSubscriptions = [];
-  let currentSubscriptionId = null;
+  let currentSubscriptionId = null; // Will be set when first subscription is created
   
   // Helper to make authenticated API requests
   async function makeAuthorizedRequest({ method, endpoint, data = null }) {
@@ -289,8 +289,16 @@ async function runSubscriptionTests() {
   
   // If subscription was created, save ID for later tests
   if (createResult.success && createResult.data) {
-    const subscription = createResult.data.data || createResult.data;
-    currentSubscriptionId = subscription.id || subscription._id;
+    // Handle different response formats
+    if (createResult.data.data?.subscription?.id) {
+      currentSubscriptionId = createResult.data.data.subscription.id;
+    } else if (createResult.data.data?.id) {
+      currentSubscriptionId = createResult.data.data.id;
+    } else if (createResult.data.subscription?.id) {
+      currentSubscriptionId = createResult.data.subscription.id;
+    } else if (createResult.data.id) {
+      currentSubscriptionId = createResult.data.id;
+    }
     
     if (currentSubscriptionId) {
       createdSubscriptions.push(currentSubscriptionId);
@@ -311,8 +319,17 @@ async function runSubscriptionTests() {
     
     // Save ID if successful
     if (createRealEstateResult.success && createRealEstateResult.data) {
-      const subscription = createRealEstateResult.data.data || createRealEstateResult.data;
-      const subscriptionId = subscription.id || subscription._id;
+      let subscriptionId;
+      // Handle different response formats
+      if (createRealEstateResult.data.data?.subscription?.id) {
+        subscriptionId = createRealEstateResult.data.data.subscription.id;
+      } else if (createRealEstateResult.data.data?.id) {
+        subscriptionId = createRealEstateResult.data.data.id;
+      } else if (createRealEstateResult.data.subscription?.id) {
+        subscriptionId = createRealEstateResult.data.subscription.id;
+      } else if (createRealEstateResult.data.id) {
+        subscriptionId = createRealEstateResult.data.id;
+      }
       
       if (subscriptionId) {
         createdSubscriptions.push(subscriptionId);
@@ -337,7 +354,7 @@ async function runSubscriptionTests() {
       method: 'PUT',
       data: {
         name: `Updated BOE Subscription ${new Date().toISOString()}`,
-        prompts: ["Ayuntamiento Barcelona contratos públicos"]
+        prompts: { value: "Ayuntamiento Barcelona contratos públicos" }
       }
     });
     

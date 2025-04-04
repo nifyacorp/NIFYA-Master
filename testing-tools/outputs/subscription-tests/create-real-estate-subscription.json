@@ -4,7 +4,17 @@
   "data": {
     "status": "success",
     "data": {
-      "subscription": {}
+      "subscription": {
+        "id": "15cfefc3-bf8a-4099-8317-339eaa99e791",
+        "name": "Test Real Estate Subscription 2025-04-04T12:30:42.319Z",
+        "type": "real-estate",
+        "description": "",
+        "prompts": [
+          "Barcelona, 2 bedrooms, < 1200€"
+        ],
+        "frequency": "daily",
+        "active": true
+      }
     }
   }
 }

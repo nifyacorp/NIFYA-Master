@@ -1,0 +1,9 @@
+{
+  "success": false,
+  "status": 404,
+  "data": {
+    "message": "Route PUT:/api/v1/subscriptions/4e452f99-ee6d-4037-a1b2-0d91f242a288 not found",
+    "error": "Not Found",
+    "statusCode": 404
+  }
+}

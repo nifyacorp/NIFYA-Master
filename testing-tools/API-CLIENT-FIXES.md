@@ -17,6 +17,11 @@ This document summarizes the fixes implemented to address the issues identified 
    - No storage of refresh tokens for subsequent use
    - No automatic token refresh before making authenticated requests
 
+4. **Subscription Format Issues**:
+   - Subscription API requires a new format for the `prompts` field
+   - Backend API validation fails with the old format
+   - Some subscription endpoints return 500 errors
+
 ## Implemented Fixes
 
 ### 1. Token Status Code Handling
@@ -109,8 +114,89 @@ The system should now:
 - Store and use refresh tokens
 - Consistently handle authentication across all tests
 
+## Subscription API Format Requirements
+
+During testing of the subscription API endpoints, we discovered that the format of the `prompts` field has changed in the backend API:
+
+### Previous Format
+```json
+{
+  "name": "Test BOE Subscription",
+  "type": "boe",
+  "templateId": "boe-default",
+  "prompts": ["Ayuntamiento Barcelona licitaciones"],
+  "frequency": "daily",
+  "configuration": {},
+  "logo": null
+}
+```
+
+### New Required Format
+```json
+{
+  "name": "Test BOE Subscription",
+  "type": "boe",
+  "templateId": "boe-default",
+  "prompts": { "value": "Ayuntamiento Barcelona licitaciones" },
+  "frequency": "daily",
+  "configuration": {},
+  "logo": null
+}
+```
+
+This change affects the following endpoints:
+- POST `/api/v1/subscriptions` (Create subscription)
+- PATCH/PUT `/api/v1/subscriptions/:id` (Update subscription)
+
+## Current API Status
+
+### Working Endpoints
+- Authentication (login, refresh token)
+- List subscriptions
+- Create subscription (with updated format)
+- Process subscription
+
+### Endpoints with Issues
+- Get subscription details (returns 500 error)
+- Update subscription (format issue)
+- Toggle subscription (returns 500 error)
+- Get subscription status (returns 500 error)
+- Share/unshare subscription (returns 500 error)
+
+## Fixed Tests
+The following test files have been updated to use the new format:
+- `tests/subscriptions/minimal-create.js`
+- `tests/subscriptions/full-flow-test.js`
+- `tests/subscriptions/subscription-manager-tests.js`
+- `config/endpoints.js` (test data)
+
+## Response Format
+The API returns subscription objects with a standard format:
+
+```json
+{
+  "status": "success",
+  "data": {
+    "subscription": {
+      "id": "89baa42b-8dc9-4044-8559-820559adf858",
+      "name": "Test BOE Subscription",
+      "type": "boe",
+      "description": "",
+      "prompts": [
+        "Ayuntamiento Barcelona licitaciones"
+      ],
+      "frequency": "daily",
+      "active": true
+    }
+  }
+}
+```
+
+Note that even though the API requires the prompts to be sent as an object with a `value` property, it returns the prompts as an array of strings. This suggests that the backend is transforming the format internally.
+
 ## Ongoing Considerations
 
 1. If the authentication service changes its response format, we may need to update the token extraction logic
 2. We should consider adding more robust error handling for network issues
 3. For production environments, token refresh should be implemented with proper retry logic and circuit breakers
+4. Backend API endpoint issues (500 errors) need to be investigated by the backend team

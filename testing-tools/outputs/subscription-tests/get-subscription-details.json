@@ -1,0 +1,9 @@
+{
+  "success": false,
+  "status": 500,
+  "data": {
+    "status": "error",
+    "code": "DATABASE_ERROR",
+    "message": "Database operation failed: column s.logo does not exist"
+  }
+}

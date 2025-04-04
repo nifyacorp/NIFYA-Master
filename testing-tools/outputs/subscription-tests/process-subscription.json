@@ -1,0 +1,9 @@
+{
+  "success": true,
+  "status": 202,
+  "data": {
+    "status": "success",
+    "message": "Subscription processing request accepted",
+    "subscription_id": "4e452f99-ee6d-4037-a1b2-0d91f242a288"
+  }
+}

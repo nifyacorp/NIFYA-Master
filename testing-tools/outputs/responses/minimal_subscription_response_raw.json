@@ -1,1 +1,1 @@
-{"status":"success","data":{"subscription":{"id":"5fe24106-35c4-4d7f-b8e2-7421b6b9b078","name":"Test BOE Subscription","type":"boe","description":"","prompts":["Ayuntamiento Barcelona licitaciones"],"frequency":"daily","active":true}}}
+{"status":"success","data":{"subscription":{"id":"89baa42b-8dc9-4044-8559-820559adf858","name":"Test BOE Subscription","type":"boe","description":"","prompts":["Ayuntamiento Barcelona licitaciones"],"frequency":"daily","active":true}}}

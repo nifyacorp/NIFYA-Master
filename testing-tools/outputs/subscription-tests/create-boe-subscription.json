@@ -1,10 +1,20 @@
 {
-  "success": false,
-  "status": 400,
+  "success": true,
+  "status": 201,
   "data": {
-    "statusCode": 400,
-    "code": "FST_ERR_VALIDATION",
-    "error": "Bad Request",
-    "message": "body/prompts must match exactly one schema in oneOf"
+    "status": "success",
+    "data": {
+      "subscription": {
+        "id": "4e452f99-ee6d-4037-a1b2-0d91f242a288",
+        "name": "Test BOE Subscription 2025-04-04T12:30:42.319Z",
+        "type": "boe",
+        "description": "",
+        "prompts": [
+          "Ayuntamiento Barcelona licitaciones"
+        ],
+        "frequency": "daily",
+        "active": true
+      }
+    }
   }
 }
