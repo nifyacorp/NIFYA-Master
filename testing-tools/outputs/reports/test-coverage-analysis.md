@@ -13,7 +13,7 @@ This document analyzes the current test coverage of the NIFYA Backend API endpoi
 | `/notifications` | GET | ✅ | tests/notifications/notification-management-tests.js |
 | `/notifications/:id/read` | PATCH | ✅ | tests/notifications/notification-management-tests.js |
 | `/notifications/:id` | DELETE | ✅ | tests/notifications/notification-management-tests.js |
-| `/notifications/delete-all` | DELETE | ❌ | Not Covered |
+| `/notifications/delete-all` | DELETE | ✅ | tests/notifications/delete-all.js |
 | `/notifications/stats` | GET | ✅ | tests/notifications/notification-management-tests.js |
 | `/notifications/activity` | GET | ✅ | tests/notifications/activity.js |
 | `/notifications/read-all` | POST | ✅ | tests/notifications/notification-management-tests.js |

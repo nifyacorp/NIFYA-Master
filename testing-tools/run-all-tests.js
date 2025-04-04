@@ -53,6 +53,44 @@ const tests = [
     category: 'subscriptions',
     critical: false
   },
+  {
+    name: 'Subscriptions: Extended Debug Filter',
+    command: 'node tests/subscriptions/debug-filter-extended.js',
+    category: 'subscriptions',
+    critical: false
+  },
+  {
+    name: 'Subscriptions: Create Type',
+    command: 'node tests/subscriptions/create-subscription-type.js',
+    category: 'subscriptions',
+    critical: false
+  },
+  
+  // Template tests
+  {
+    name: 'Templates: List',
+    command: 'node tests/subscriptions/templates.js',
+    category: 'templates',
+    critical: true
+  },
+  {
+    name: 'Templates: Details',
+    command: 'node tests/templates/template-details.js',
+    category: 'templates',
+    critical: false
+  },
+  {
+    name: 'Templates: Create',
+    command: 'node tests/templates/create-template.js',
+    category: 'templates',
+    critical: false
+  },
+  {
+    name: 'Templates: Subscribe',
+    command: 'node tests/templates/subscribe-from-template.js',
+    category: 'templates',
+    critical: false
+  },
   
   // Notification tests
   {
@@ -71,6 +109,20 @@ const tests = [
     name: 'Notifications: Activity',
     command: 'node tests/notifications/activity.js',
     category: 'notifications',
+    critical: false
+  },
+  {
+    name: 'Notifications: Delete All',
+    command: 'node tests/notifications/delete-all.js',
+    category: 'notifications',
+    critical: false
+  },
+  
+  // API Explorer tests
+  {
+    name: 'Explorer: API Documentation',
+    command: 'node tests/explorer/api-explorer.js',
+    category: 'documentation',
     critical: false
   },
   

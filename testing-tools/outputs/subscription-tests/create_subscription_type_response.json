@@ -1,0 +1,5 @@
+{
+  "status": "error",
+  "code": "TYPE_CREATE_ERROR",
+  "message": "Failed to create subscription type"
+}

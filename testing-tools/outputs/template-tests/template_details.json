@@ -1,0 +1,21 @@
+{
+  "template": {
+    "id": "boe-general",
+    "name": "BOE General",
+    "description": "Seguimiento general del Boletín Oficial del Estado",
+    "type": "boe",
+    "prompts": [
+      "disposición",
+      "ley",
+      "real decreto"
+    ],
+    "icon": "GanttChart",
+    "logo": "https://www.boe.es/favicon.ico",
+    "metadata": {
+      "category": "government",
+      "source": "boe"
+    },
+    "isBuiltIn": true,
+    "frequency": "daily"
+  }
+}
