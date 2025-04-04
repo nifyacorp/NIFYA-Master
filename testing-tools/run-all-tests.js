@@ -47,6 +47,12 @@ const tests = [
     category: 'subscriptions',
     critical: false
   },
+  {
+    name: 'Subscriptions: Debug Filter',
+    command: 'node tests/subscriptions/debug-filter.js',
+    category: 'subscriptions',
+    critical: false
+  },
   
   // Notification tests
   {

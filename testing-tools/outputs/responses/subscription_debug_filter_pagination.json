@@ -1,0 +1,5 @@
+{
+  "status": "error",
+  "code": "SUBSCRIPTION_NOT_FOUND",
+  "message": "Subscription not found"
+}

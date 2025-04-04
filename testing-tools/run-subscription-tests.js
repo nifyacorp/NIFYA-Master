@@ -11,6 +11,8 @@ const logger = require('./core/logger');
 
 // Import test suites
 const subscriptionManagerTests = require('./tests/subscriptions/subscription-manager-tests');
+const debugFilterTest = require('./tests/subscriptions/debug-filter');
+const debugFilterExtendedTest = require('./tests/subscriptions/debug-filter-extended');
 
 // Available test suites
 const TEST_SUITES = {
@@ -18,6 +20,16 @@ const TEST_SUITES = {
     name: 'Subscription Management APIs',
     description: 'Tests all subscription CRUD operations, processing, and sharing',
     run: subscriptionManagerTests
+  },
+  'debug-filter': {
+    name: 'Subscription Debug Filter',
+    description: 'Tests the diagnostic endpoint for subscription filtering',
+    run: debugFilterTest
+  },
+  'debug-filter-extended': {
+    name: 'Extended Subscription Debug Filter',
+    description: 'Tests subscription filtering with comparative analysis between endpoints',
+    run: debugFilterExtendedTest
   }
 };
 
@@ -70,6 +82,7 @@ These tests cover:
 - Subscription processing workflow
 - Subscription sharing functionality
 - Handling of different subscription types
+- Diagnostic tools and filter parameter parsing
 - Error cases and edge conditions
 
 ## Next Steps

@@ -39,7 +39,8 @@ module.exports = {
       share: (id) => `/api/v1/subscriptions/${id}/share`,
       removeSharing: (id) => `/api/v1/subscriptions/${id}/share`,
       types: '/api/v1/subscriptions/types',
-      createType: '/api/v1/subscriptions/types'
+      createType: '/api/v1/subscriptions/types',
+      debugFilter: '/api/v1/subscriptions/debug-filter'
     },
     
     // Notification endpoints

@@ -1,0 +1,22 @@
+{
+  "status": "success",
+  "data": {
+    "subscriptions": [],
+    "pagination": {
+      "total": 0,
+      "page": 1,
+      "limit": 5,
+      "totalPages": 0
+    },
+    "filters": {
+      "type": null,
+      "status": "all",
+      "search": null,
+      "frequency": "all",
+      "dateRange": {
+        "from": null,
+        "to": null
+      }
+    }
+  }
+}

@@ -279,6 +279,20 @@ async function runSubscriptionTests() {
     method: 'GET'
   });
   
+  // Test 2.1: Debug Filter Endpoint
+  await runTest({
+    name: 'Debug Filter Endpoint',
+    endpoint: endpoints.backend.subscriptions.debugFilter,
+    method: 'GET'
+  });
+  
+  // Test 2.2: Debug Filter with Parameters
+  await runTest({
+    name: 'Debug Filter with Parameters',
+    endpoint: `${endpoints.backend.subscriptions.debugFilter}?type=boe&status=active&limit=10`,
+    method: 'GET'
+  });
+  
   // Test 3: Create BOE Subscription
   const createResult = await runTest({
     name: 'Create BOE Subscription',

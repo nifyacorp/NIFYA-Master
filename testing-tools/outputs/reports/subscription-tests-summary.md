@@ -1,19 +1,19 @@
 # NIFYA Subscription API Test Results
 
-**Test Time:** 2025-04-04T15:32:09.739Z
+**Test Time:** 2025-04-04T16:01:20.033Z
 
 ## Summary
 
 | Test Suite | Status | Success Rate | Details |
 |------------|--------|--------------|---------|
-| Subscription Management APIs | ❌ FAILED | 57.14% | [View Details](subscription-management-test-2025-04-04T15-32-09.732Z.md) |
+| Extended Subscription Debug Filter | ❌ FAILED | 50.00% | [View Details](subscription-filter-diagnostic-2025-04-04T16-01-20-019Z.md) |
 
 ## Overall System Health
 
-### ⚠️ MODERATE ISSUES (57.14%)
+### ⚠️ MODERATE ISSUES (50.00%)
 The subscription API system has significant issues that need attention.
 
-Problems were found in: Subscription Management APIs
+Problems were found in: Extended Subscription Debug Filter
 
 ## Test Coverage
 
@@ -23,17 +23,14 @@ These tests cover:
 - Subscription processing workflow
 - Subscription sharing functionality
 - Handling of different subscription types
+- Diagnostic tools and filter parameter parsing
 - Error cases and edge conditions
 
 ## Next Steps
 
 ### Issues to Address
-- Get Subscription Details: Request failed with status 404
-- Update Subscription: Request failed with status 404
-- Toggle Subscription: Request failed with status 404
-- Get Subscription Status: Request failed with status 500
-- Share Subscription: Request failed with status 400
-- Remove Subscription Sharing: Request failed with status 400
+- debugFilter: Failed
+- listEndpoint: Failed
 
 ### Recommended Actions
 - Review and fix failing endpoints
@@ -42,4 +39,4 @@ These tests cover:
 - Run tests again after fixes
 
 ---
-Generated on: 2025-04-04T15:32:09.739Z
+Generated on: 2025-04-04T16:01:20.033Z
