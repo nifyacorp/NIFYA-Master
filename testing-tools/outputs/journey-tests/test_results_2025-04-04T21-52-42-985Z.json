@@ -1,0 +1,29 @@
+{
+  "timestamp": "2025-04-04T21:52:42.985Z",
+  "success": false,
+  "duration": 5127,
+  "steps": [
+    {
+      "name": "Authentication",
+      "startTime": 1743803557862,
+      "success": true,
+      "details": {
+        "userId": "65c6074d-dbc4-4091-8e45-b6aecffd9ab9"
+      },
+      "duration": 5
+    },
+    {
+      "name": "Create Subscription",
+      "startTime": 1743803557871,
+      "success": false,
+      "error": "Invalid subscription creation response",
+      "duration": 5113
+    }
+  ],
+  "errors": [
+    {
+      "step": "Create Subscription",
+      "message": "Invalid subscription creation response"
+    }
+  ]
+}

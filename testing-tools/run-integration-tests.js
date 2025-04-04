@@ -11,6 +11,7 @@ const logger = require('./core/logger');
 
 // Import tests
 const pipelineTest = require('./tests/integration/test-notification-pipeline');
+const journeyTest = require('./tests/integration/subscription-journey-test');
 
 // Output directory for reports
 const REPORT_DIR = path.join(__dirname, 'outputs', 'reports');
@@ -59,6 +60,33 @@ async function runAllTests() {
     logger.error(`Error running notification pipeline test: ${err.message}`);
     results.tests.notification_pipeline = {
       name: 'Notification Pipeline',
+      success: false,
+      error: err.message
+    };
+    results.summary.failed++;
+    results.summary.total++;
+  }
+  
+  // Run subscription journey test
+  logger.info('Running subscription journey test');
+  try {
+    const journeyResult = await journeyTest.runJourneyTest();
+    results.tests.subscription_journey = {
+      name: 'Subscription Journey',
+      success: journeyResult.success,
+      details: journeyResult
+    };
+    
+    if (journeyResult.success) {
+      results.summary.passed++;
+    } else {
+      results.summary.failed++;
+    }
+    results.summary.total++;
+  } catch (err) {
+    logger.error(`Error running subscription journey test: ${err.message}`);
+    results.tests.subscription_journey = {
+      name: 'Subscription Journey',
       success: false,
       error: err.message
     };
