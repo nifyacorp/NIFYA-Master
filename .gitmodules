@@ -15,7 +15,7 @@
 	url = https://github.com/nifyacorp/email-notification.git
 [submodule "frontend"]
 	path = frontend
-	url = https://github.com/nifyacorp/frontend.git
+	url = https://github.com/nifyacorp/main_page.git
 [submodule "notification-worker"]
 	path = notification-worker
 	url = https://github.com/nifyacorp/notification-worker.git
