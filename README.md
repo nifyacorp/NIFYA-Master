@@ -270,3 +270,52 @@ When troubleshooting the system, consider the following common integration point
 ## 📖 License
 
 Copyright © 2025 NIFYA. All rights reserved.
+
+# Collect All Logs Script
+
+This script automates the collection of all runtime logs from multiple Google Cloud Run services into a single consolidated file with unique identifiers for each log entry.
+
+## Usage
+
+1.  **Ensure Google Cloud SDK is installed and configured:** You need to have `gcloud` installed and authenticated with the necessary permissions to read logs from your Google Cloud project.
+2.  **Run the script:** Execute `collect_all_logs.bat` from your command line or terminal.
+
+## Functionality
+
+-   **Creates Directory:** Checks for a `CollectLogs` directory in the current location. If it doesn't exist, it creates one.
+-   **Defines Services:** Collects logs from these Cloud Run services:
+    -   `backend`
+    -   `main_page`
+    -   `subscription-worker`
+    -   `notification-worker`
+    -   `boe-parser`
+-   **Consolidates Logs:**
+    -   Defines a single output file: `CollectLogs\consolidated_runtime_logs.log`.
+    -   **Overwrites** the existing log file every time the script runs to ensure you always have the latest logs.
+    -   Assigns each log entry a unique identifier (UUID) in the format: `[YYYYMMDD_HHMMSS_service-name_sequential-number]`.
+    -   Collects up to 500 log entries per service (including all severity levels).
+    -   Organizes logs by service with clear section headers.
+    -   Timestamps the start and end of the collection process.
+
+## Output File
+
+The script generates/overwrites the file `CollectLogs\consolidated_runtime_logs.log`. This file contains all logs from all specified services, with each log entry having a unique identifier prefix for easier tracking and reference.
+
+## Sample Output Format
+
+```
+Collecting logs started at 08/04/2025 0:10:15
+==========================================
+
+================ LOGS FOR backend - STARTED ================
+[20250408_101015_backend_1] Server started on port 8080
+[20250408_101015_backend_2] Connected to database successfully
+[20250408_101015_backend_3] Error connecting to database: connection refused
+================ LOGS FOR backend - COMPLETED ================
+
+================ LOGS FOR main_page - STARTED ================
+[20250408_101015_main_page_4] Application started
+[20250408_101015_main_page_5] User request received for profile page
+================ LOGS FOR main_page - COMPLETED ================
+...
+```
