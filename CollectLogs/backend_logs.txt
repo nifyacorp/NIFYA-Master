@@ -1,0 +1,1263 @@
+---
+insertId: -62utgme10cqi
+logName: projects/delta-entity-447812-p2/logs/cloudaudit.googleapis.com%2Fsystem_event
+protoPayload:
+  '@type': type.googleapis.com/google.cloud.audit.AuditLog
+  methodName: /Services.ReplaceService
+  resourceName: namespaces/delta-entity-447812-p2/services/backend
+  response:
+    '@type': type.googleapis.com/google.cloud.run.v1.Service
+    apiVersion: serving.knative.dev/v1
+    kind: Service
+    metadata:
+      annotations:
+        run.googleapis.com/client-name: gcloud
+        run.googleapis.com/client-version: 517.0.0
+        run.googleapis.com/ingress: all
+        run.googleapis.com/ingress-status: all
+        run.googleapis.com/operation-id: 8ea96353-2c18-474d-8456-33dcad47f758
+        run.googleapis.com/urls: '["https://backend-415554190254.us-central1.run.app","https://backend-dykajutu3a-uc.a.run.app"]'
+        serving.knative.dev/creator: nifyacorp@gmail.com
+        serving.knative.dev/lastModifier: 415554190254-compute@developer.gserviceaccount.com
+      creationTimestamp: '2025-01-24T12:22:35.260644Z'
+      generation: 652
+      labels:
+        cloud.googleapis.com/location: us-central1
+        commit-sha: 567ccd6a71a4c45791ea05702e58b37f31f2e769
+        gcb-build-id: cd9ae63d-ead6-4b12-af95-977cef110716
+        gcb-trigger-id: 54791a61-75c6-4977-9a95-e24df112c8ed
+        gcb-trigger-region: global
+        managed-by: gcp-cloud-build-deploy-cloud-run
+      name: backend
+      namespace: '415554190254'
+      resourceVersion: AAYyNaiVaOI
+      selfLink: /apis/serving.knative.dev/v1/namespaces/415554190254/services/backend
+      uid: da86f9c5-686d-460b-94f7-3b40a2c7dc11
+    spec:
+      template:
+        metadata:
+          annotations:
+            autoscaling.knative.dev/maxScale: '100'
+            run.googleapis.com/client-name: gcloud
+            run.googleapis.com/client-version: 517.0.0
+            run.googleapis.com/cloudsql-instances: delta-entity-447812-p2:us-central1:nifya-db
+            run.googleapis.com/startup-cpu-boost: 'true'
+          labels:
+            client.knative.dev/nonce: yiyyvlumff
+            commit-sha: 567ccd6a71a4c45791ea05702e58b37f31f2e769
+            gcb-build-id: cd9ae63d-ead6-4b12-af95-977cef110716
+            gcb-trigger-id: 54791a61-75c6-4977-9a95-e24df112c8ed
+            gcb-trigger-region: global
+            managed-by: gcp-cloud-build-deploy-cloud-run
+            run.googleapis.com/startupProbeType: Default
+        spec:
+          containerConcurrency: 80
+          containers:
+          - env:
+            - name: DB_USER
+              value: postgres
+            - name: DB_NAME
+              value: nifya
+            - name: DB_PASSWORD
+              value: Nf2025!DB#pG9$kL
+            - name: GOOGLE_CLOUD_PROJECT
+              value: delta-entity-447812-p2
+            - name: SUBSCRIPTION_WORKER_URL
+              value: https://subscription-worker-415554190254.us-central1.run.app
+            - name: GITHUB_REPO
+              value: backend
+            image: us-central1-docker.pkg.dev/delta-entity-447812-p2/cloud-run-source-deploy/backend/backend:567ccd6a71a4c45791ea05702e58b37f31f2e769
+            name: placeholder-1
+            ports:
+            - containerPort: 8080
+              name: http1
+            resources:
+              limits:
+                cpu: 1000m
+                memory: 512Mi
+            startupProbe:
+              failureThreshold: 1
+              periodSeconds: 240
+              tcpSocket:
+                port: 8080
+              timeoutSeconds: 240
+          serviceAccountName: 415554190254-compute@developer.gserviceaccount.com
+          timeoutSeconds: 300
+      traffic:
+      - latestRevision: true
+        percent: 100
+    status:
+      address:
+        url: https://backend-dykajutu3a-uc.a.run.app
+      conditions:
+      - lastTransitionTime: '2025-04-07T19:58:23.283426Z'
+        status: 'True'
+        type: Ready
+      - lastTransitionTime: '2025-04-07T19:58:18.917620Z'
+        status: 'True'
+        type: ConfigurationsReady
+      - lastTransitionTime: '2025-04-07T19:58:23.252907Z'
+        status: 'True'
+        type: RoutesReady
+      latestCreatedRevisionName: backend-00651-ksm
+      latestReadyRevisionName: backend-00651-ksm
+      observedGeneration: 652
+      traffic:
+      - latestRevision: true
+        percent: 100
+        revisionName: backend-00651-ksm
+      url: https://backend-dykajutu3a-uc.a.run.app
+  serviceName: run.googleapis.com
+  status:
+    message: Ready condition status changed to True for Service backend.
+receiveTimestamp: '2025-04-07T19:58:23.704066756Z'
+resource:
+  labels:
+    configuration_name: ''
+    location: us-central1
+    project_id: delta-entity-447812-p2
+    revision_name: ''
+    service_name: backend
+  type: cloud_run_revision
+severity: INFO
+timestamp: '2025-04-07T19:58:23.295190Z'
+---
+insertId: 1yplwe19b74
+logName: projects/delta-entity-447812-p2/logs/cloudaudit.googleapis.com%2Fsystem_event
+protoPayload:
+  '@type': type.googleapis.com/google.cloud.audit.AuditLog
+  methodName: /Services.ReplaceService
+  resourceName: namespaces/delta-entity-447812-p2/revisions/backend-00651-ksm
+  response:
+    '@type': type.googleapis.com/google.cloud.run.v1.Revision
+    apiVersion: serving.knative.dev/v1
+    kind: Revision
+    metadata:
+      annotations:
+        autoscaling.knative.dev/maxScale: '100'
+        run.googleapis.com/client-name: gcloud
+        run.googleapis.com/client-version: 517.0.0
+        run.googleapis.com/cloudsql-instances: delta-entity-447812-p2:us-central1:nifya-db
+        run.googleapis.com/operation-id: 8ea96353-2c18-474d-8456-33dcad47f758
+        run.googleapis.com/startup-cpu-boost: 'true'
+        serving.knative.dev/creator: 415554190254-compute@developer.gserviceaccount.com
+      creationTimestamp: '2025-04-07T19:57:39.880336Z'
+      generation: 1
+      labels:
+        client.knative.dev/nonce: yiyyvlumff
+        cloud.googleapis.com/location: us-central1
+        commit-sha: 567ccd6a71a4c45791ea05702e58b37f31f2e769
+        gcb-build-id: cd9ae63d-ead6-4b12-af95-977cef110716
+        gcb-trigger-id: 54791a61-75c6-4977-9a95-e24df112c8ed
+        gcb-trigger-region: global
+        managed-by: gcp-cloud-build-deploy-cloud-run
+        run.googleapis.com/startupProbeType: Default
+        serving.knative.dev/configuration: backend
+        serving.knative.dev/configurationGeneration: '651'
+        serving.knative.dev/route: backend
+        serving.knative.dev/service: backend
+        serving.knative.dev/serviceUid: da86f9c5-686d-460b-94f7-3b40a2c7dc11
+      name: backend-00651-ksm
+      namespace: '415554190254'
+      ownerReferences:
+      - apiVersion: serving.knative.dev/v1
+        blockOwnerDeletion: true
+        controller: true
+        kind: Configuration
+        name: backend
+        uid: 7ba97fd9-2c11-4f7d-a2c2-a47215da489c
+      resourceVersion: AAYyNahQAVw
+      selfLink: /apis/serving.knative.dev/v1/namespaces/415554190254/revisions/backend-00651-ksm
+      uid: d200ece9-e3e2-460c-a8b7-cfd3c4721fe8
+    spec:
+      containerConcurrency: 80
+      containers:
+      - env:
+        - name: DB_USER
+          value: postgres
+        - name: DB_NAME
+          value: nifya
+        - name: DB_PASSWORD
+          value: Nf2025!DB#pG9$kL
+        - name: GOOGLE_CLOUD_PROJECT
+          value: delta-entity-447812-p2
+        - name: SUBSCRIPTION_WORKER_URL
+          value: https://subscription-worker-415554190254.us-central1.run.app
+        - name: GITHUB_REPO
+          value: backend
+        image: us-central1-docker.pkg.dev/delta-entity-447812-p2/cloud-run-source-deploy/backend/backend@sha256:c7bc8ef1ebe11279de8c2c0ee480b9651d02610c5408c1e219ebb77fd738f677
+        name: placeholder-1
+        ports:
+        - containerPort: 8080
+          name: http1
+        resources:
+          limits:
+            cpu: 1000m
+            memory: 512Mi
+        startupProbe:
+          failureThreshold: 1
+          periodSeconds: 240
+          tcpSocket:
+            port: 8080
+          timeoutSeconds: 240
+      serviceAccountName: 415554190254-compute@developer.gserviceaccount.com
+      timeoutSeconds: 300
+    status:
+      conditions:
+      - lastTransitionTime: '2025-04-07T19:58:18.734940Z'
+        message: Deploying revision succeeded in 38.85s.
+        status: 'True'
+        type: Ready
+      - lastTransitionTime: '2025-04-07T19:58:18.691457Z'
+        message: Containers became healthy in 4.76s.
+        status: 'True'
+        type: ContainerHealthy
+      - lastTransitionTime: '2025-04-07T19:57:42.781516Z'
+        message: Container image import completed in 2.32s.
+        status: 'True'
+        type: ContainerReady
+      - lastTransitionTime: '2025-04-07T19:58:13.630785Z'
+        message: Provisioning imported containers completed in 30.85s. Checking container
+          health.
+        status: 'True'
+        type: ResourcesAvailable
+      containerStatuses:
+      - imageDigest: us-central1-docker.pkg.dev/delta-entity-447812-p2/cloud-run-source-deploy/backend/backend@sha256:c7bc8ef1ebe11279de8c2c0ee480b9651d02610c5408c1e219ebb77fd738f677
+        name: placeholder-1
+      imageDigest: us-central1-docker.pkg.dev/delta-entity-447812-p2/cloud-run-source-deploy/backend/backend@sha256:c7bc8ef1ebe11279de8c2c0ee480b9651d02610c5408c1e219ebb77fd738f677
+      logUrl: https://console.cloud.google.com/logs/viewer?project=delta-entity-447812-p2&resource=cloud_run_revision/service_name/backend/revision_name/backend-00651-ksm&advancedFilter=resource.type%3D%22cloud_run_revision%22%0Aresource.labels.service_name%3D%22backend%22%0Aresource.labels.revision_name%3D%22backend-00651-ksm%22
+      observedGeneration: 1
+  serviceName: run.googleapis.com
+  status:
+    message: 'Ready condition status changed to True for Revision backend-00651-ksm
+      with message: Deploying revision succeeded in 38.85s.'
+receiveTimestamp: '2025-04-07T19:58:19.645715084Z'
+resource:
+  labels:
+    configuration_name: backend
+    location: us-central1
+    project_id: delta-entity-447812-p2
+    revision_name: backend-00651-ksm
+    service_name: backend
+  type: cloud_run_revision
+severity: INFO
+timestamp: '2025-04-07T19:58:18.748468Z'
+---
+insertId: 67f42e5a000a41e401c410f1
+labels:
+  commit-sha: 567ccd6a71a4c45791ea05702e58b37f31f2e769
+  gcb-build-id: cd9ae63d-ead6-4b12-af95-977cef110716
+  gcb-trigger-id: 54791a61-75c6-4977-9a95-e24df112c8ed
+  gcb-trigger-region: global
+  instanceId: 00afae804303cffdda956fcf8b0f2c55bee56cce36dc2240ac8359ba8c242afe9cbe7cb2fe12d2788c490986112f0798493fc98b5864aa9866a923f7348632a52dab56c2ba
+  managed-by: gcp-cloud-build-deploy-cloud-run
+logName: projects/delta-entity-447812-p2/logs/run.googleapis.com%2Fvarlog%2Fsystem
+receiveTimestamp: '2025-04-07T19:58:18.674887165Z'
+resource:
+  labels:
+    configuration_name: backend
+    location: us-central1
+    project_id: delta-entity-447812-p2
+    revision_name: backend-00651-ksm
+    service_name: backend
+  type: cloud_run_revision
+severity: INFO
+textPayload: Default STARTUP TCP probe succeeded after 1 attempt for container "placeholder-1"
+  on port 8080.
+timestamp: '2025-04-07T19:58:18.672228Z'
+---
+insertId: 67f42e5a000a40780ed99736
+jsonPayload:
+  hostname: localhost
+  level: 30
+  msg: Server listening at http://0.0.0.0:8080
+  pid: 1
+  time: 1744055898666
+labels:
+  commit-sha: 567ccd6a71a4c45791ea05702e58b37f31f2e769
+  gcb-build-id: cd9ae63d-ead6-4b12-af95-977cef110716
+  gcb-trigger-id: 54791a61-75c6-4977-9a95-e24df112c8ed
+  gcb-trigger-region: global
+  instanceId: 00afae804303cffdda956fcf8b0f2c55bee56cce36dc2240ac8359ba8c242afe9cbe7cb2fe12d2788c490986112f0798493fc98b5864aa9866a923f7348632a52dab56c2ba
+  managed-by: gcp-cloud-build-deploy-cloud-run
+logName: projects/delta-entity-447812-p2/logs/run.googleapis.com%2Fstdout
+receiveTimestamp: '2025-04-07T19:58:18.924548835Z'
+resource:
+  labels:
+    configuration_name: backend
+    location: us-central1
+    project_id: delta-entity-447812-p2
+    revision_name: backend-00651-ksm
+    service_name: backend
+  type: cloud_run_revision
+timestamp: '2025-04-07T19:58:18.671864Z'
+---
+insertId: 67f42e5a000a2cb65532b077
+labels:
+  commit-sha: 567ccd6a71a4c45791ea05702e58b37f31f2e769
+  gcb-build-id: cd9ae63d-ead6-4b12-af95-977cef110716
+  gcb-trigger-id: 54791a61-75c6-4977-9a95-e24df112c8ed
+  gcb-trigger-region: global
+  instanceId: 00afae804303cffdda956fcf8b0f2c55bee56cce36dc2240ac8359ba8c242afe9cbe7cb2fe12d2788c490986112f0798493fc98b5864aa9866a923f7348632a52dab56c2ba
+  managed-by: gcp-cloud-build-deploy-cloud-run
+logName: projects/delta-entity-447812-p2/logs/run.googleapis.com%2Fstdout
+receiveTimestamp: '2025-04-07T19:58:18.924548835Z'
+resource:
+  labels:
+    configuration_name: backend
+    location: us-central1
+    project_id: delta-entity-447812-p2
+    revision_name: backend-00651-ksm
+    service_name: backend
+  type: cloud_run_revision
+textPayload: Server listening on 8080
+timestamp: '2025-04-07T19:58:18.666806Z'
+---
+insertId: 67f42e5a00050953e54e8017
+labels:
+  commit-sha: 567ccd6a71a4c45791ea05702e58b37f31f2e769
+  gcb-build-id: cd9ae63d-ead6-4b12-af95-977cef110716
+  gcb-trigger-id: 54791a61-75c6-4977-9a95-e24df112c8ed
+  gcb-trigger-region: global
+  instanceId: 00afae804303cffdda956fcf8b0f2c55bee56cce36dc2240ac8359ba8c242afe9cbe7cb2fe12d2788c490986112f0798493fc98b5864aa9866a923f7348632a52dab56c2ba
+  managed-by: gcp-cloud-build-deploy-cloud-run
+logName: projects/delta-entity-447812-p2/logs/run.googleapis.com%2Fstdout
+receiveTimestamp: '2025-04-07T19:58:18.595743463Z'
+resource:
+  labels:
+    configuration_name: backend
+    location: us-central1
+    project_id: delta-entity-447812-p2
+    revision_name: backend-00651-ksm
+    service_name: backend
+  type: cloud_run_revision
+textPayload: Database initialized successfully.
+timestamp: '2025-04-07T19:58:18.330067Z'
+---
+insertId: 67f42e5a0005094d2ded939c
+labels:
+  commit-sha: 567ccd6a71a4c45791ea05702e58b37f31f2e769
+  gcb-build-id: cd9ae63d-ead6-4b12-af95-977cef110716
+  gcb-trigger-id: 54791a61-75c6-4977-9a95-e24df112c8ed
+  gcb-trigger-region: global
+  instanceId: 00afae804303cffdda956fcf8b0f2c55bee56cce36dc2240ac8359ba8c242afe9cbe7cb2fe12d2788c490986112f0798493fc98b5864aa9866a923f7348632a52dab56c2ba
+  managed-by: gcp-cloud-build-deploy-cloud-run
+logName: projects/delta-entity-447812-p2/logs/run.googleapis.com%2Fstdout
+receiveTimestamp: '2025-04-07T19:58:18.595743463Z'
+resource:
+  labels:
+    configuration_name: backend
+    location: us-central1
+    project_id: delta-entity-447812-p2
+    revision_name: backend-00651-ksm
+    service_name: backend
+  type: cloud_run_revision
+textPayload: Database initialization completed successfully
+timestamp: '2025-04-07T19:58:18.330061Z'
+---
+insertId: 67f42e5a00050948ce1303d5
+labels:
+  commit-sha: 567ccd6a71a4c45791ea05702e58b37f31f2e769
+  gcb-build-id: cd9ae63d-ead6-4b12-af95-977cef110716
+  gcb-trigger-id: 54791a61-75c6-4977-9a95-e24df112c8ed
+  gcb-trigger-region: global
+  instanceId: 00afae804303cffdda956fcf8b0f2c55bee56cce36dc2240ac8359ba8c242afe9cbe7cb2fe12d2788c490986112f0798493fc98b5864aa9866a923f7348632a52dab56c2ba
+  managed-by: gcp-cloud-build-deploy-cloud-run
+logName: projects/delta-entity-447812-p2/logs/run.googleapis.com%2Fstdout
+receiveTimestamp: '2025-04-07T19:58:18.595743463Z'
+resource:
+  labels:
+    configuration_name: backend
+    location: us-central1
+    project_id: delta-entity-447812-p2
+    revision_name: backend-00651-ksm
+    service_name: backend
+  type: cloud_run_revision
+textPayload: ? Startup migration completed successfully
+timestamp: '2025-04-07T19:58:18.330056Z'
+---
+insertId: 67f42e5a00050922f827c6a4
+labels:
+  commit-sha: 567ccd6a71a4c45791ea05702e58b37f31f2e769
+  gcb-build-id: cd9ae63d-ead6-4b12-af95-977cef110716
+  gcb-trigger-id: 54791a61-75c6-4977-9a95-e24df112c8ed
+  gcb-trigger-region: global
+  instanceId: 00afae804303cffdda956fcf8b0f2c55bee56cce36dc2240ac8359ba8c242afe9cbe7cb2fe12d2788c490986112f0798493fc98b5864aa9866a923f7348632a52dab56c2ba
+  managed-by: gcp-cloud-build-deploy-cloud-run
+logName: projects/delta-entity-447812-p2/logs/run.googleapis.com%2Fstdout
+receiveTimestamp: '2025-04-07T19:58:18.595743463Z'
+resource:
+  labels:
+    configuration_name: backend
+    location: us-central1
+    project_id: delta-entity-447812-p2
+    revision_name: backend-00651-ksm
+    service_name: backend
+  type: cloud_run_revision
+textPayload: ? Database schema is up to date
+timestamp: '2025-04-07T19:58:18.330018Z'
+---
+insertId: 67f42e5a0005091d906c1089
+labels:
+  commit-sha: 567ccd6a71a4c45791ea05702e58b37f31f2e769
+  gcb-build-id: cd9ae63d-ead6-4b12-af95-977cef110716
+  gcb-trigger-id: 54791a61-75c6-4977-9a95-e24df112c8ed
+  gcb-trigger-region: global
+  instanceId: 00afae804303cffdda956fcf8b0f2c55bee56cce36dc2240ac8359ba8c242afe9cbe7cb2fe12d2788c490986112f0798493fc98b5864aa9866a923f7348632a52dab56c2ba
+  managed-by: gcp-cloud-build-deploy-cloud-run
+logName: projects/delta-entity-447812-p2/logs/run.googleapis.com%2Fstdout
+receiveTimestamp: '2025-04-07T19:58:18.595743463Z'
+resource:
+  labels:
+    configuration_name: backend
+    location: us-central1
+    project_id: delta-entity-447812-p2
+    revision_name: backend-00651-ksm
+    service_name: backend
+  type: cloud_run_revision
+textPayload: '}'
+timestamp: '2025-04-07T19:58:18.330013Z'
+---
+insertId: 67f42e5a000509197e4b5c26
+labels:
+  commit-sha: 567ccd6a71a4c45791ea05702e58b37f31f2e769
+  gcb-build-id: cd9ae63d-ead6-4b12-af95-977cef110716
+  gcb-trigger-id: 54791a61-75c6-4977-9a95-e24df112c8ed
+  gcb-trigger-region: global
+  instanceId: 00afae804303cffdda956fcf8b0f2c55bee56cce36dc2240ac8359ba8c242afe9cbe7cb2fe12d2788c490986112f0798493fc98b5864aa9866a923f7348632a52dab56c2ba
+  managed-by: gcp-cloud-build-deploy-cloud-run
+logName: projects/delta-entity-447812-p2/logs/run.googleapis.com%2Fstdout
+receiveTimestamp: '2025-04-07T19:58:18.595743463Z'
+resource:
+  labels:
+    configuration_name: backend
+    location: us-central1
+    project_id: delta-entity-447812-p2
+    revision_name: backend-00651-ksm
+    service_name: backend
+  type: cloud_run_revision
+textPayload: "  timestamp: '2025-04-07T19:58:18.330Z'"
+timestamp: '2025-04-07T19:58:18.330009Z'
+---
+insertId: 67f42e5a0005091511bcacfa
+labels:
+  commit-sha: 567ccd6a71a4c45791ea05702e58b37f31f2e769
+  gcb-build-id: cd9ae63d-ead6-4b12-af95-977cef110716
+  gcb-trigger-id: 54791a61-75c6-4977-9a95-e24df112c8ed
+  gcb-trigger-region: global
+  instanceId: 00afae804303cffdda956fcf8b0f2c55bee56cce36dc2240ac8359ba8c242afe9cbe7cb2fe12d2788c490986112f0798493fc98b5864aa9866a923f7348632a52dab56c2ba
+  managed-by: gcp-cloud-build-deploy-cloud-run
+logName: projects/delta-entity-447812-p2/logs/run.googleapis.com%2Fstdout
+receiveTimestamp: '2025-04-07T19:58:18.595743463Z'
+resource:
+  labels:
+    configuration_name: backend
+    location: us-central1
+    project_id: delta-entity-447812-p2
+    revision_name: backend-00651-ksm
+    service_name: backend
+  type: cloud_run_revision
+textPayload: "  path: 'startup-migration',"
+timestamp: '2025-04-07T19:58:18.330005Z'
+---
+insertId: 67f42e5a0005090fdde36f6f
+labels:
+  commit-sha: 567ccd6a71a4c45791ea05702e58b37f31f2e769
+  gcb-build-id: cd9ae63d-ead6-4b12-af95-977cef110716
+  gcb-trigger-id: 54791a61-75c6-4977-9a95-e24df112c8ed
+  gcb-trigger-region: global
+  instanceId: 00afae804303cffdda956fcf8b0f2c55bee56cce36dc2240ac8359ba8c242afe9cbe7cb2fe12d2788c490986112f0798493fc98b5864aa9866a923f7348632a52dab56c2ba
+  managed-by: gcp-cloud-build-deploy-cloud-run
+logName: projects/delta-entity-447812-p2/logs/run.googleapis.com%2Fstdout
+receiveTimestamp: '2025-04-07T19:58:18.595743463Z'
+resource:
+  labels:
+    configuration_name: backend
+    location: us-central1
+    project_id: delta-entity-447812-p2
+    revision_name: backend-00651-ksm
+    service_name: backend
+  type: cloud_run_revision
+textPayload: "  requestId: 'migration-1744055898316',"
+timestamp: '2025-04-07T19:58:18.329999Z'
+---
+insertId: 67f42e5a00050909b74a4c06
+labels:
+  commit-sha: 567ccd6a71a4c45791ea05702e58b37f31f2e769
+  gcb-build-id: cd9ae63d-ead6-4b12-af95-977cef110716
+  gcb-trigger-id: 54791a61-75c6-4977-9a95-e24df112c8ed
+  gcb-trigger-region: global
+  instanceId: 00afae804303cffdda956fcf8b0f2c55bee56cce36dc2240ac8359ba8c242afe9cbe7cb2fe12d2788c490986112f0798493fc98b5864aa9866a923f7348632a52dab56c2ba
+  managed-by: gcp-cloud-build-deploy-cloud-run
+logName: projects/delta-entity-447812-p2/logs/run.googleapis.com%2Fstdout
+receiveTimestamp: '2025-04-07T19:58:18.595743463Z'
+resource:
+  labels:
+    configuration_name: backend
+    location: us-central1
+    project_id: delta-entity-447812-p2
+    revision_name: backend-00651-ksm
+    service_name: backend
+  type: cloud_run_revision
+textPayload: '? Schema version 20250402000100 already applied, skipping migration:
+  {'
+timestamp: '2025-04-07T19:58:18.329993Z'
+---
+insertId: 67f42e5a00050857e53e8ae2
+labels:
+  commit-sha: 567ccd6a71a4c45791ea05702e58b37f31f2e769
+  gcb-build-id: cd9ae63d-ead6-4b12-af95-977cef110716
+  gcb-trigger-id: 54791a61-75c6-4977-9a95-e24df112c8ed
+  gcb-trigger-region: global
+  instanceId: 00afae804303cffdda956fcf8b0f2c55bee56cce36dc2240ac8359ba8c242afe9cbe7cb2fe12d2788c490986112f0798493fc98b5864aa9866a923f7348632a52dab56c2ba
+  managed-by: gcp-cloud-build-deploy-cloud-run
+logName: projects/delta-entity-447812-p2/logs/run.googleapis.com%2Fstdout
+receiveTimestamp: '2025-04-07T19:58:18.595743463Z'
+resource:
+  labels:
+    configuration_name: backend
+    location: us-central1
+    project_id: delta-entity-447812-p2
+    revision_name: backend-00651-ksm
+    service_name: backend
+  type: cloud_run_revision
+textPayload: "Database connection released { timestamp: '2025-04-07T19:58:18.330Z'\
+  \ }"
+timestamp: '2025-04-07T19:58:18.329815Z'
+---
+insertId: 67f42e5a000508414edd0b3a
+labels:
+  commit-sha: 567ccd6a71a4c45791ea05702e58b37f31f2e769
+  gcb-build-id: cd9ae63d-ead6-4b12-af95-977cef110716
+  gcb-trigger-id: 54791a61-75c6-4977-9a95-e24df112c8ed
+  gcb-trigger-region: global
+  instanceId: 00afae804303cffdda956fcf8b0f2c55bee56cce36dc2240ac8359ba8c242afe9cbe7cb2fe12d2788c490986112f0798493fc98b5864aa9866a923f7348632a52dab56c2ba
+  managed-by: gcp-cloud-build-deploy-cloud-run
+logName: projects/delta-entity-447812-p2/logs/run.googleapis.com%2Fstdout
+receiveTimestamp: '2025-04-07T19:58:18.595743463Z'
+resource:
+  labels:
+    configuration_name: backend
+    location: us-central1
+    project_id: delta-entity-447812-p2
+    revision_name: backend-00651-ksm
+    service_name: backend
+  type: cloud_run_revision
+textPayload: '}'
+timestamp: '2025-04-07T19:58:18.329793Z'
+---
+insertId: 67f42e5a0005083ddeb54a2c
+labels:
+  commit-sha: 567ccd6a71a4c45791ea05702e58b37f31f2e769
+  gcb-build-id: cd9ae63d-ead6-4b12-af95-977cef110716
+  gcb-trigger-id: 54791a61-75c6-4977-9a95-e24df112c8ed
+  gcb-trigger-region: global
+  instanceId: 00afae804303cffdda956fcf8b0f2c55bee56cce36dc2240ac8359ba8c242afe9cbe7cb2fe12d2788c490986112f0798493fc98b5864aa9866a923f7348632a52dab56c2ba
+  managed-by: gcp-cloud-build-deploy-cloud-run
+logName: projects/delta-entity-447812-p2/logs/run.googleapis.com%2Fstdout
+receiveTimestamp: '2025-04-07T19:58:18.595743463Z'
+resource:
+  labels:
+    configuration_name: backend
+    location: us-central1
+    project_id: delta-entity-447812-p2
+    revision_name: backend-00651-ksm
+    service_name: backend
+  type: cloud_run_revision
+textPayload: "  timestamp: '2025-04-07T19:58:18.330Z'"
+timestamp: '2025-04-07T19:58:18.329789Z'
+---
+insertId: 67f42e5a000508391b176096
+labels:
+  commit-sha: 567ccd6a71a4c45791ea05702e58b37f31f2e769
+  gcb-build-id: cd9ae63d-ead6-4b12-af95-977cef110716
+  gcb-trigger-id: 54791a61-75c6-4977-9a95-e24df112c8ed
+  gcb-trigger-region: global
+  instanceId: 00afae804303cffdda956fcf8b0f2c55bee56cce36dc2240ac8359ba8c242afe9cbe7cb2fe12d2788c490986112f0798493fc98b5864aa9866a923f7348632a52dab56c2ba
+  managed-by: gcp-cloud-build-deploy-cloud-run
+logName: projects/delta-entity-447812-p2/logs/run.googleapis.com%2Fstdout
+receiveTimestamp: '2025-04-07T19:58:18.595743463Z'
+resource:
+  labels:
+    configuration_name: backend
+    location: us-central1
+    project_id: delta-entity-447812-p2
+    revision_name: backend-00651-ksm
+    service_name: backend
+  type: cloud_run_revision
+textPayload: '  rowCount: 1,'
+timestamp: '2025-04-07T19:58:18.329785Z'
+---
+insertId: 67f42e5a000508340bd0ba35
+labels:
+  commit-sha: 567ccd6a71a4c45791ea05702e58b37f31f2e769
+  gcb-build-id: cd9ae63d-ead6-4b12-af95-977cef110716
+  gcb-trigger-id: 54791a61-75c6-4977-9a95-e24df112c8ed
+  gcb-trigger-region: global
+  instanceId: 00afae804303cffdda956fcf8b0f2c55bee56cce36dc2240ac8359ba8c242afe9cbe7cb2fe12d2788c490986112f0798493fc98b5864aa9866a923f7348632a52dab56c2ba
+  managed-by: gcp-cloud-build-deploy-cloud-run
+logName: projects/delta-entity-447812-p2/logs/run.googleapis.com%2Fstdout
+receiveTimestamp: '2025-04-07T19:58:18.595743463Z'
+resource:
+  labels:
+    configuration_name: backend
+    location: us-central1
+    project_id: delta-entity-447812-p2
+    revision_name: backend-00651-ksm
+    service_name: backend
+  type: cloud_run_revision
+textPayload: "  duration: '3ms',"
+timestamp: '2025-04-07T19:58:18.329780Z'
+---
+insertId: 67f42e5a0005082cdc854e65
+labels:
+  commit-sha: 567ccd6a71a4c45791ea05702e58b37f31f2e769
+  gcb-build-id: cd9ae63d-ead6-4b12-af95-977cef110716
+  gcb-trigger-id: 54791a61-75c6-4977-9a95-e24df112c8ed
+  gcb-trigger-region: global
+  instanceId: 00afae804303cffdda956fcf8b0f2c55bee56cce36dc2240ac8359ba8c242afe9cbe7cb2fe12d2788c490986112f0798493fc98b5864aa9866a923f7348632a52dab56c2ba
+  managed-by: gcp-cloud-build-deploy-cloud-run
+logName: projects/delta-entity-447812-p2/logs/run.googleapis.com%2Fstdout
+receiveTimestamp: '2025-04-07T19:58:18.595743463Z'
+resource:
+  labels:
+    configuration_name: backend
+    location: us-central1
+    project_id: delta-entity-447812-p2
+    revision_name: backend-00651-ksm
+    service_name: backend
+  type: cloud_run_revision
+textPayload: "  text: 'SELECT version FROM schema_version WHERE version = $1',"
+timestamp: '2025-04-07T19:58:18.329772Z'
+---
+insertId: 67f42e5a000508218db89c3f
+labels:
+  commit-sha: 567ccd6a71a4c45791ea05702e58b37f31f2e769
+  gcb-build-id: cd9ae63d-ead6-4b12-af95-977cef110716
+  gcb-trigger-id: 54791a61-75c6-4977-9a95-e24df112c8ed
+  gcb-trigger-region: global
+  instanceId: 00afae804303cffdda956fcf8b0f2c55bee56cce36dc2240ac8359ba8c242afe9cbe7cb2fe12d2788c490986112f0798493fc98b5864aa9866a923f7348632a52dab56c2ba
+  managed-by: gcp-cloud-build-deploy-cloud-run
+logName: projects/delta-entity-447812-p2/logs/run.googleapis.com%2Fstdout
+receiveTimestamp: '2025-04-07T19:58:18.595743463Z'
+resource:
+  labels:
+    configuration_name: backend
+    location: us-central1
+    project_id: delta-entity-447812-p2
+    revision_name: backend-00651-ksm
+    service_name: backend
+  type: cloud_run_revision
+textPayload: 'Query executed successfully: {'
+timestamp: '2025-04-07T19:58:18.329761Z'
+---
+insertId: 67f42e5a0004fd23cd8001ca
+labels:
+  commit-sha: 567ccd6a71a4c45791ea05702e58b37f31f2e769
+  gcb-build-id: cd9ae63d-ead6-4b12-af95-977cef110716
+  gcb-trigger-id: 54791a61-75c6-4977-9a95-e24df112c8ed
+  gcb-trigger-region: global
+  instanceId: 00afae804303cffdda956fcf8b0f2c55bee56cce36dc2240ac8359ba8c242afe9cbe7cb2fe12d2788c490986112f0798493fc98b5864aa9866a923f7348632a52dab56c2ba
+  managed-by: gcp-cloud-build-deploy-cloud-run
+logName: projects/delta-entity-447812-p2/logs/run.googleapis.com%2Fstdout
+receiveTimestamp: '2025-04-07T19:58:18.595743463Z'
+resource:
+  labels:
+    configuration_name: backend
+    location: us-central1
+    project_id: delta-entity-447812-p2
+    revision_name: backend-00651-ksm
+    service_name: backend
+  type: cloud_run_revision
+textPayload: '}'
+timestamp: '2025-04-07T19:58:18.326947Z'
+---
+insertId: 67f42e5a0004fd1f57354fbe
+labels:
+  commit-sha: 567ccd6a71a4c45791ea05702e58b37f31f2e769
+  gcb-build-id: cd9ae63d-ead6-4b12-af95-977cef110716
+  gcb-trigger-id: 54791a61-75c6-4977-9a95-e24df112c8ed
+  gcb-trigger-region: global
+  instanceId: 00afae804303cffdda956fcf8b0f2c55bee56cce36dc2240ac8359ba8c242afe9cbe7cb2fe12d2788c490986112f0798493fc98b5864aa9866a923f7348632a52dab56c2ba
+  managed-by: gcp-cloud-build-deploy-cloud-run
+logName: projects/delta-entity-447812-p2/logs/run.googleapis.com%2Fstdout
+receiveTimestamp: '2025-04-07T19:58:18.595743463Z'
+resource:
+  labels:
+    configuration_name: backend
+    location: us-central1
+    project_id: delta-entity-447812-p2
+    revision_name: backend-00651-ksm
+    service_name: backend
+  type: cloud_run_revision
+textPayload: "  timestamp: '2025-04-07T19:58:18.327Z'"
+timestamp: '2025-04-07T19:58:18.326943Z'
+---
+insertId: 67f42e5a0004fd1b7d036126
+labels:
+  commit-sha: 567ccd6a71a4c45791ea05702e58b37f31f2e769
+  gcb-build-id: cd9ae63d-ead6-4b12-af95-977cef110716
+  gcb-trigger-id: 54791a61-75c6-4977-9a95-e24df112c8ed
+  gcb-trigger-region: global
+  instanceId: 00afae804303cffdda956fcf8b0f2c55bee56cce36dc2240ac8359ba8c242afe9cbe7cb2fe12d2788c490986112f0798493fc98b5864aa9866a923f7348632a52dab56c2ba
+  managed-by: gcp-cloud-build-deploy-cloud-run
+logName: projects/delta-entity-447812-p2/logs/run.googleapis.com%2Fstdout
+receiveTimestamp: '2025-04-07T19:58:18.595743463Z'
+resource:
+  labels:
+    configuration_name: backend
+    location: us-central1
+    project_id: delta-entity-447812-p2
+    revision_name: backend-00651-ksm
+    service_name: backend
+  type: cloud_run_revision
+textPayload: '  paramCount: 1,'
+timestamp: '2025-04-07T19:58:18.326939Z'
+---
+insertId: 67f42e5a0004fd1710cb9cd6
+labels:
+  commit-sha: 567ccd6a71a4c45791ea05702e58b37f31f2e769
+  gcb-build-id: cd9ae63d-ead6-4b12-af95-977cef110716
+  gcb-trigger-id: 54791a61-75c6-4977-9a95-e24df112c8ed
+  gcb-trigger-region: global
+  instanceId: 00afae804303cffdda956fcf8b0f2c55bee56cce36dc2240ac8359ba8c242afe9cbe7cb2fe12d2788c490986112f0798493fc98b5864aa9866a923f7348632a52dab56c2ba
+  managed-by: gcp-cloud-build-deploy-cloud-run
+logName: projects/delta-entity-447812-p2/logs/run.googleapis.com%2Fstdout
+receiveTimestamp: '2025-04-07T19:58:18.595743463Z'
+resource:
+  labels:
+    configuration_name: backend
+    location: us-central1
+    project_id: delta-entity-447812-p2
+    revision_name: backend-00651-ksm
+    service_name: backend
+  type: cloud_run_revision
+textPayload: "  text: 'SELECT version FROM schema_version WHERE version = $1',"
+timestamp: '2025-04-07T19:58:18.326935Z'
+---
+insertId: 67f42e5a0004fd0e616570ca
+labels:
+  commit-sha: 567ccd6a71a4c45791ea05702e58b37f31f2e769
+  gcb-build-id: cd9ae63d-ead6-4b12-af95-977cef110716
+  gcb-trigger-id: 54791a61-75c6-4977-9a95-e24df112c8ed
+  gcb-trigger-region: global
+  instanceId: 00afae804303cffdda956fcf8b0f2c55bee56cce36dc2240ac8359ba8c242afe9cbe7cb2fe12d2788c490986112f0798493fc98b5864aa9866a923f7348632a52dab56c2ba
+  managed-by: gcp-cloud-build-deploy-cloud-run
+logName: projects/delta-entity-447812-p2/logs/run.googleapis.com%2Fstdout
+receiveTimestamp: '2025-04-07T19:58:18.595743463Z'
+resource:
+  labels:
+    configuration_name: backend
+    location: us-central1
+    project_id: delta-entity-447812-p2
+    revision_name: backend-00651-ksm
+    service_name: backend
+  type: cloud_run_revision
+textPayload: 'Database connection obtained for query: {'
+timestamp: '2025-04-07T19:58:18.326926Z'
+---
+insertId: 67f42e5a0004fc9c123a0ade
+labels:
+  commit-sha: 567ccd6a71a4c45791ea05702e58b37f31f2e769
+  gcb-build-id: cd9ae63d-ead6-4b12-af95-977cef110716
+  gcb-trigger-id: 54791a61-75c6-4977-9a95-e24df112c8ed
+  gcb-trigger-region: global
+  instanceId: 00afae804303cffdda956fcf8b0f2c55bee56cce36dc2240ac8359ba8c242afe9cbe7cb2fe12d2788c490986112f0798493fc98b5864aa9866a923f7348632a52dab56c2ba
+  managed-by: gcp-cloud-build-deploy-cloud-run
+logName: projects/delta-entity-447812-p2/logs/run.googleapis.com%2Fstdout
+receiveTimestamp: '2025-04-07T19:58:18.595743463Z'
+resource:
+  labels:
+    configuration_name: backend
+    location: us-central1
+    project_id: delta-entity-447812-p2
+    revision_name: backend-00651-ksm
+    service_name: backend
+  type: cloud_run_revision
+textPayload: "Database connection released { timestamp: '2025-04-07T19:58:18.327Z'\
+  \ }"
+timestamp: '2025-04-07T19:58:18.326812Z'
+---
+insertId: 67f42e5a0004fc685a0afe7a
+labels:
+  commit-sha: 567ccd6a71a4c45791ea05702e58b37f31f2e769
+  gcb-build-id: cd9ae63d-ead6-4b12-af95-977cef110716
+  gcb-trigger-id: 54791a61-75c6-4977-9a95-e24df112c8ed
+  gcb-trigger-region: global
+  instanceId: 00afae804303cffdda956fcf8b0f2c55bee56cce36dc2240ac8359ba8c242afe9cbe7cb2fe12d2788c490986112f0798493fc98b5864aa9866a923f7348632a52dab56c2ba
+  managed-by: gcp-cloud-build-deploy-cloud-run
+logName: projects/delta-entity-447812-p2/logs/run.googleapis.com%2Fstdout
+receiveTimestamp: '2025-04-07T19:58:18.595743463Z'
+resource:
+  labels:
+    configuration_name: backend
+    location: us-central1
+    project_id: delta-entity-447812-p2
+    revision_name: backend-00651-ksm
+    service_name: backend
+  type: cloud_run_revision
+textPayload: '}'
+timestamp: '2025-04-07T19:58:18.326760Z'
+---
+insertId: 67f42e5a0004fc64a6f35d3d
+labels:
+  commit-sha: 567ccd6a71a4c45791ea05702e58b37f31f2e769
+  gcb-build-id: cd9ae63d-ead6-4b12-af95-977cef110716
+  gcb-trigger-id: 54791a61-75c6-4977-9a95-e24df112c8ed
+  gcb-trigger-region: global
+  instanceId: 00afae804303cffdda956fcf8b0f2c55bee56cce36dc2240ac8359ba8c242afe9cbe7cb2fe12d2788c490986112f0798493fc98b5864aa9866a923f7348632a52dab56c2ba
+  managed-by: gcp-cloud-build-deploy-cloud-run
+logName: projects/delta-entity-447812-p2/logs/run.googleapis.com%2Fstdout
+receiveTimestamp: '2025-04-07T19:58:18.595743463Z'
+resource:
+  labels:
+    configuration_name: backend
+    location: us-central1
+    project_id: delta-entity-447812-p2
+    revision_name: backend-00651-ksm
+    service_name: backend
+  type: cloud_run_revision
+textPayload: "  timestamp: '2025-04-07T19:58:18.327Z'"
+timestamp: '2025-04-07T19:58:18.326756Z'
+---
+insertId: 67f42e5a0004fc6149c23041
+labels:
+  commit-sha: 567ccd6a71a4c45791ea05702e58b37f31f2e769
+  gcb-build-id: cd9ae63d-ead6-4b12-af95-977cef110716
+  gcb-trigger-id: 54791a61-75c6-4977-9a95-e24df112c8ed
+  gcb-trigger-region: global
+  instanceId: 00afae804303cffdda956fcf8b0f2c55bee56cce36dc2240ac8359ba8c242afe9cbe7cb2fe12d2788c490986112f0798493fc98b5864aa9866a923f7348632a52dab56c2ba
+  managed-by: gcp-cloud-build-deploy-cloud-run
+logName: projects/delta-entity-447812-p2/logs/run.googleapis.com%2Fstdout
+receiveTimestamp: '2025-04-07T19:58:18.595743463Z'
+resource:
+  labels:
+    configuration_name: backend
+    location: us-central1
+    project_id: delta-entity-447812-p2
+    revision_name: backend-00651-ksm
+    service_name: backend
+  type: cloud_run_revision
+textPayload: '  rowCount: 1,'
+timestamp: '2025-04-07T19:58:18.326753Z'
+---
+insertId: 67f42e5a0004fc5d2c330320
+labels:
+  commit-sha: 567ccd6a71a4c45791ea05702e58b37f31f2e769
+  gcb-build-id: cd9ae63d-ead6-4b12-af95-977cef110716
+  gcb-trigger-id: 54791a61-75c6-4977-9a95-e24df112c8ed
+  gcb-trigger-region: global
+  instanceId: 00afae804303cffdda956fcf8b0f2c55bee56cce36dc2240ac8359ba8c242afe9cbe7cb2fe12d2788c490986112f0798493fc98b5864aa9866a923f7348632a52dab56c2ba
+  managed-by: gcp-cloud-build-deploy-cloud-run
+logName: projects/delta-entity-447812-p2/logs/run.googleapis.com%2Fstdout
+receiveTimestamp: '2025-04-07T19:58:18.595743463Z'
+resource:
+  labels:
+    configuration_name: backend
+    location: us-central1
+    project_id: delta-entity-447812-p2
+    revision_name: backend-00651-ksm
+    service_name: backend
+  type: cloud_run_revision
+textPayload: "  duration: '3ms',"
+timestamp: '2025-04-07T19:58:18.326749Z'
+---
+insertId: 67f42e5a0004fc5ac6ea47d5
+labels:
+  commit-sha: 567ccd6a71a4c45791ea05702e58b37f31f2e769
+  gcb-build-id: cd9ae63d-ead6-4b12-af95-977cef110716
+  gcb-trigger-id: 54791a61-75c6-4977-9a95-e24df112c8ed
+  gcb-trigger-region: global
+  instanceId: 00afae804303cffdda956fcf8b0f2c55bee56cce36dc2240ac8359ba8c242afe9cbe7cb2fe12d2788c490986112f0798493fc98b5864aa9866a923f7348632a52dab56c2ba
+  managed-by: gcp-cloud-build-deploy-cloud-run
+logName: projects/delta-entity-447812-p2/logs/run.googleapis.com%2Fstdout
+receiveTimestamp: '2025-04-07T19:58:18.595743463Z'
+resource:
+  labels:
+    configuration_name: backend
+    location: us-central1
+    project_id: delta-entity-447812-p2
+    revision_name: backend-00651-ksm
+    service_name: backend
+  type: cloud_run_revision
+textPayload: "    \"        WHERE table_schema = '...\","
+timestamp: '2025-04-07T19:58:18.326746Z'
+---
+insertId: 67f42e5a0004fc568fd300bb
+labels:
+  commit-sha: 567ccd6a71a4c45791ea05702e58b37f31f2e769
+  gcb-build-id: cd9ae63d-ead6-4b12-af95-977cef110716
+  gcb-trigger-id: 54791a61-75c6-4977-9a95-e24df112c8ed
+  gcb-trigger-region: global
+  instanceId: 00afae804303cffdda956fcf8b0f2c55bee56cce36dc2240ac8359ba8c242afe9cbe7cb2fe12d2788c490986112f0798493fc98b5864aa9866a923f7348632a52dab56c2ba
+  managed-by: gcp-cloud-build-deploy-cloud-run
+logName: projects/delta-entity-447812-p2/logs/run.googleapis.com%2Fstdout
+receiveTimestamp: '2025-04-07T19:58:18.595743463Z'
+resource:
+  labels:
+    configuration_name: backend
+    location: us-central1
+    project_id: delta-entity-447812-p2
+    revision_name: backend-00651-ksm
+    service_name: backend
+  type: cloud_run_revision
+textPayload: "    '        SELECT FROM information_schema.tables \\n' +"
+timestamp: '2025-04-07T19:58:18.326742Z'
+---
+insertId: 67f42e5a0004fc52352322c7
+labels:
+  commit-sha: 567ccd6a71a4c45791ea05702e58b37f31f2e769
+  gcb-build-id: cd9ae63d-ead6-4b12-af95-977cef110716
+  gcb-trigger-id: 54791a61-75c6-4977-9a95-e24df112c8ed
+  gcb-trigger-region: global
+  instanceId: 00afae804303cffdda956fcf8b0f2c55bee56cce36dc2240ac8359ba8c242afe9cbe7cb2fe12d2788c490986112f0798493fc98b5864aa9866a923f7348632a52dab56c2ba
+  managed-by: gcp-cloud-build-deploy-cloud-run
+logName: projects/delta-entity-447812-p2/logs/run.googleapis.com%2Fstdout
+receiveTimestamp: '2025-04-07T19:58:18.595743463Z'
+resource:
+  labels:
+    configuration_name: backend
+    location: us-central1
+    project_id: delta-entity-447812-p2
+    revision_name: backend-00651-ksm
+    service_name: backend
+  type: cloud_run_revision
+textPayload: "    '      SELECT EXISTS (\\n' +"
+timestamp: '2025-04-07T19:58:18.326738Z'
+---
+insertId: 67f42e5a0004fc4e1dfd69e3
+labels:
+  commit-sha: 567ccd6a71a4c45791ea05702e58b37f31f2e769
+  gcb-build-id: cd9ae63d-ead6-4b12-af95-977cef110716
+  gcb-trigger-id: 54791a61-75c6-4977-9a95-e24df112c8ed
+  gcb-trigger-region: global
+  instanceId: 00afae804303cffdda956fcf8b0f2c55bee56cce36dc2240ac8359ba8c242afe9cbe7cb2fe12d2788c490986112f0798493fc98b5864aa9866a923f7348632a52dab56c2ba
+  managed-by: gcp-cloud-build-deploy-cloud-run
+logName: projects/delta-entity-447812-p2/logs/run.googleapis.com%2Fstdout
+receiveTimestamp: '2025-04-07T19:58:18.595743463Z'
+resource:
+  labels:
+    configuration_name: backend
+    location: us-central1
+    project_id: delta-entity-447812-p2
+    revision_name: backend-00651-ksm
+    service_name: backend
+  type: cloud_run_revision
+textPayload: "  text: '\\n' +"
+timestamp: '2025-04-07T19:58:18.326734Z'
+---
+insertId: 67f42e5a0004fc4787765e0e
+labels:
+  commit-sha: 567ccd6a71a4c45791ea05702e58b37f31f2e769
+  gcb-build-id: cd9ae63d-ead6-4b12-af95-977cef110716
+  gcb-trigger-id: 54791a61-75c6-4977-9a95-e24df112c8ed
+  gcb-trigger-region: global
+  instanceId: 00afae804303cffdda956fcf8b0f2c55bee56cce36dc2240ac8359ba8c242afe9cbe7cb2fe12d2788c490986112f0798493fc98b5864aa9866a923f7348632a52dab56c2ba
+  managed-by: gcp-cloud-build-deploy-cloud-run
+logName: projects/delta-entity-447812-p2/logs/run.googleapis.com%2Fstdout
+receiveTimestamp: '2025-04-07T19:58:18.595743463Z'
+resource:
+  labels:
+    configuration_name: backend
+    location: us-central1
+    project_id: delta-entity-447812-p2
+    revision_name: backend-00651-ksm
+    service_name: backend
+  type: cloud_run_revision
+textPayload: 'Query executed successfully: {'
+timestamp: '2025-04-07T19:58:18.326727Z'
+---
+insertId: 67f42e5a0004f0f97ea29ff7
+labels:
+  commit-sha: 567ccd6a71a4c45791ea05702e58b37f31f2e769
+  gcb-build-id: cd9ae63d-ead6-4b12-af95-977cef110716
+  gcb-trigger-id: 54791a61-75c6-4977-9a95-e24df112c8ed
+  gcb-trigger-region: global
+  instanceId: 00afae804303cffdda956fcf8b0f2c55bee56cce36dc2240ac8359ba8c242afe9cbe7cb2fe12d2788c490986112f0798493fc98b5864aa9866a923f7348632a52dab56c2ba
+  managed-by: gcp-cloud-build-deploy-cloud-run
+logName: projects/delta-entity-447812-p2/logs/run.googleapis.com%2Fstdout
+receiveTimestamp: '2025-04-07T19:58:18.595743463Z'
+resource:
+  labels:
+    configuration_name: backend
+    location: us-central1
+    project_id: delta-entity-447812-p2
+    revision_name: backend-00651-ksm
+    service_name: backend
+  type: cloud_run_revision
+textPayload: '}'
+timestamp: '2025-04-07T19:58:18.323833Z'
+---
+insertId: 67f42e5a0004f0f5db31e97b
+labels:
+  commit-sha: 567ccd6a71a4c45791ea05702e58b37f31f2e769
+  gcb-build-id: cd9ae63d-ead6-4b12-af95-977cef110716
+  gcb-trigger-id: 54791a61-75c6-4977-9a95-e24df112c8ed
+  gcb-trigger-region: global
+  instanceId: 00afae804303cffdda956fcf8b0f2c55bee56cce36dc2240ac8359ba8c242afe9cbe7cb2fe12d2788c490986112f0798493fc98b5864aa9866a923f7348632a52dab56c2ba
+  managed-by: gcp-cloud-build-deploy-cloud-run
+logName: projects/delta-entity-447812-p2/logs/run.googleapis.com%2Fstdout
+receiveTimestamp: '2025-04-07T19:58:18.595743463Z'
+resource:
+  labels:
+    configuration_name: backend
+    location: us-central1
+    project_id: delta-entity-447812-p2
+    revision_name: backend-00651-ksm
+    service_name: backend
+  type: cloud_run_revision
+textPayload: "  timestamp: '2025-04-07T19:58:18.324Z'"
+timestamp: '2025-04-07T19:58:18.323829Z'
+---
+insertId: 67f42e5a0004f0f112d8c6ec
+labels:
+  commit-sha: 567ccd6a71a4c45791ea05702e58b37f31f2e769
+  gcb-build-id: cd9ae63d-ead6-4b12-af95-977cef110716
+  gcb-trigger-id: 54791a61-75c6-4977-9a95-e24df112c8ed
+  gcb-trigger-region: global
+  instanceId: 00afae804303cffdda956fcf8b0f2c55bee56cce36dc2240ac8359ba8c242afe9cbe7cb2fe12d2788c490986112f0798493fc98b5864aa9866a923f7348632a52dab56c2ba
+  managed-by: gcp-cloud-build-deploy-cloud-run
+logName: projects/delta-entity-447812-p2/logs/run.googleapis.com%2Fstdout
+receiveTimestamp: '2025-04-07T19:58:18.595743463Z'
+resource:
+  labels:
+    configuration_name: backend
+    location: us-central1
+    project_id: delta-entity-447812-p2
+    revision_name: backend-00651-ksm
+    service_name: backend
+  type: cloud_run_revision
+textPayload: '  paramCount: 1,'
+timestamp: '2025-04-07T19:58:18.323825Z'
+---
+insertId: 67f42e5a0004f0ed5a0e4b1d
+labels:
+  commit-sha: 567ccd6a71a4c45791ea05702e58b37f31f2e769
+  gcb-build-id: cd9ae63d-ead6-4b12-af95-977cef110716
+  gcb-trigger-id: 54791a61-75c6-4977-9a95-e24df112c8ed
+  gcb-trigger-region: global
+  instanceId: 00afae804303cffdda956fcf8b0f2c55bee56cce36dc2240ac8359ba8c242afe9cbe7cb2fe12d2788c490986112f0798493fc98b5864aa9866a923f7348632a52dab56c2ba
+  managed-by: gcp-cloud-build-deploy-cloud-run
+logName: projects/delta-entity-447812-p2/logs/run.googleapis.com%2Fstdout
+receiveTimestamp: '2025-04-07T19:58:18.595743463Z'
+resource:
+  labels:
+    configuration_name: backend
+    location: us-central1
+    project_id: delta-entity-447812-p2
+    revision_name: backend-00651-ksm
+    service_name: backend
+  type: cloud_run_revision
+textPayload: "    \"        WHERE table_schema = '...\","
+timestamp: '2025-04-07T19:58:18.323821Z'
+---
+insertId: 67f42e5a0004f0e9c02e2cc1
+labels:
+  commit-sha: 567ccd6a71a4c45791ea05702e58b37f31f2e769
+  gcb-build-id: cd9ae63d-ead6-4b12-af95-977cef110716
+  gcb-trigger-id: 54791a61-75c6-4977-9a95-e24df112c8ed
+  gcb-trigger-region: global
+  instanceId: 00afae804303cffdda956fcf8b0f2c55bee56cce36dc2240ac8359ba8c242afe9cbe7cb2fe12d2788c490986112f0798493fc98b5864aa9866a923f7348632a52dab56c2ba
+  managed-by: gcp-cloud-build-deploy-cloud-run
+logName: projects/delta-entity-447812-p2/logs/run.googleapis.com%2Fstdout
+receiveTimestamp: '2025-04-07T19:58:18.595743463Z'
+resource:
+  labels:
+    configuration_name: backend
+    location: us-central1
+    project_id: delta-entity-447812-p2
+    revision_name: backend-00651-ksm
+    service_name: backend
+  type: cloud_run_revision
+textPayload: "    '        SELECT FROM information_schema.tables \\n' +"
+timestamp: '2025-04-07T19:58:18.323817Z'
+---
+insertId: 67f42e5a0004f0e51cc8400e
+labels:
+  commit-sha: 567ccd6a71a4c45791ea05702e58b37f31f2e769
+  gcb-build-id: cd9ae63d-ead6-4b12-af95-977cef110716
+  gcb-trigger-id: 54791a61-75c6-4977-9a95-e24df112c8ed
+  gcb-trigger-region: global
+  instanceId: 00afae804303cffdda956fcf8b0f2c55bee56cce36dc2240ac8359ba8c242afe9cbe7cb2fe12d2788c490986112f0798493fc98b5864aa9866a923f7348632a52dab56c2ba
+  managed-by: gcp-cloud-build-deploy-cloud-run
+logName: projects/delta-entity-447812-p2/logs/run.googleapis.com%2Fstdout
+receiveTimestamp: '2025-04-07T19:58:18.595743463Z'
+resource:
+  labels:
+    configuration_name: backend
+    location: us-central1
+    project_id: delta-entity-447812-p2
+    revision_name: backend-00651-ksm
+    service_name: backend
+  type: cloud_run_revision
+textPayload: "    '      SELECT EXISTS (\\n' +"
+timestamp: '2025-04-07T19:58:18.323813Z'
+---
+insertId: 67f42e5a0004f0e0cd2f9963
+labels:
+  commit-sha: 567ccd6a71a4c45791ea05702e58b37f31f2e769
+  gcb-build-id: cd9ae63d-ead6-4b12-af95-977cef110716
+  gcb-trigger-id: 54791a61-75c6-4977-9a95-e24df112c8ed
+  gcb-trigger-region: global
+  instanceId: 00afae804303cffdda956fcf8b0f2c55bee56cce36dc2240ac8359ba8c242afe9cbe7cb2fe12d2788c490986112f0798493fc98b5864aa9866a923f7348632a52dab56c2ba
+  managed-by: gcp-cloud-build-deploy-cloud-run
+logName: projects/delta-entity-447812-p2/logs/run.googleapis.com%2Fstdout
+receiveTimestamp: '2025-04-07T19:58:18.595743463Z'
+resource:
+  labels:
+    configuration_name: backend
+    location: us-central1
+    project_id: delta-entity-447812-p2
+    revision_name: backend-00651-ksm
+    service_name: backend
+  type: cloud_run_revision
+textPayload: "  text: '\\n' +"
+timestamp: '2025-04-07T19:58:18.323808Z'
+---
+insertId: 67f42e5a0004f0db2e831488
+labels:
+  commit-sha: 567ccd6a71a4c45791ea05702e58b37f31f2e769
+  gcb-build-id: cd9ae63d-ead6-4b12-af95-977cef110716
+  gcb-trigger-id: 54791a61-75c6-4977-9a95-e24df112c8ed
+  gcb-trigger-region: global
+  instanceId: 00afae804303cffdda956fcf8b0f2c55bee56cce36dc2240ac8359ba8c242afe9cbe7cb2fe12d2788c490986112f0798493fc98b5864aa9866a923f7348632a52dab56c2ba
+  managed-by: gcp-cloud-build-deploy-cloud-run
+logName: projects/delta-entity-447812-p2/logs/run.googleapis.com%2Fstdout
+receiveTimestamp: '2025-04-07T19:58:18.595743463Z'
+resource:
+  labels:
+    configuration_name: backend
+    location: us-central1
+    project_id: delta-entity-447812-p2
+    revision_name: backend-00651-ksm
+    service_name: backend
+  type: cloud_run_revision
+textPayload: 'Database connection obtained for query: {'
+timestamp: '2025-04-07T19:58:18.323803Z'
+---
+insertId: 67f42e5a0004f003356ad7a9
+labels:
+  commit-sha: 567ccd6a71a4c45791ea05702e58b37f31f2e769
+  gcb-build-id: cd9ae63d-ead6-4b12-af95-977cef110716
+  gcb-trigger-id: 54791a61-75c6-4977-9a95-e24df112c8ed
+  gcb-trigger-region: global
+  instanceId: 00afae804303cffdda956fcf8b0f2c55bee56cce36dc2240ac8359ba8c242afe9cbe7cb2fe12d2788c490986112f0798493fc98b5864aa9866a923f7348632a52dab56c2ba
+  managed-by: gcp-cloud-build-deploy-cloud-run
+logName: projects/delta-entity-447812-p2/logs/run.googleapis.com%2Fstdout
+receiveTimestamp: '2025-04-07T19:58:18.595743463Z'
+resource:
+  labels:
+    configuration_name: backend
+    location: us-central1
+    project_id: delta-entity-447812-p2
+    revision_name: backend-00651-ksm
+    service_name: backend
+  type: cloud_run_revision
+textPayload: "Database connection released { timestamp: '2025-04-07T19:58:18.324Z'\
+  \ }"
+timestamp: '2025-04-07T19:58:18.323587Z'
+---
+insertId: 67f42e5a0004efb01386bf5e
+labels:
+  commit-sha: 567ccd6a71a4c45791ea05702e58b37f31f2e769
+  gcb-build-id: cd9ae63d-ead6-4b12-af95-977cef110716
+  gcb-trigger-id: 54791a61-75c6-4977-9a95-e24df112c8ed
+  gcb-trigger-region: global
+  instanceId: 00afae804303cffdda956fcf8b0f2c55bee56cce36dc2240ac8359ba8c242afe9cbe7cb2fe12d2788c490986112f0798493fc98b5864aa9866a923f7348632a52dab56c2ba
+  managed-by: gcp-cloud-build-deploy-cloud-run
+logName: projects/delta-entity-447812-p2/logs/run.googleapis.com%2Fstdout
+receiveTimestamp: '2025-04-07T19:58:18.595743463Z'
+resource:
+  labels:
+    configuration_name: backend
+    location: us-central1
+    project_id: delta-entity-447812-p2
+    revision_name: backend-00651-ksm
+    service_name: backend
+  type: cloud_run_revision
+textPayload: '}'
+timestamp: '2025-04-07T19:58:18.323504Z'
+---
+insertId: 67f42e5a0004efabbf11c68a
+labels:
+  commit-sha: 567ccd6a71a4c45791ea05702e58b37f31f2e769
+  gcb-build-id: cd9ae63d-ead6-4b12-af95-977cef110716
+  gcb-trigger-id: 54791a61-75c6-4977-9a95-e24df112c8ed
+  gcb-trigger-region: global
+  instanceId: 00afae804303cffdda956fcf8b0f2c55bee56cce36dc2240ac8359ba8c242afe9cbe7cb2fe12d2788c490986112f0798493fc98b5864aa9866a923f7348632a52dab56c2ba
+  managed-by: gcp-cloud-build-deploy-cloud-run
+logName: projects/delta-entity-447812-p2/logs/run.googleapis.com%2Fstdout
+receiveTimestamp: '2025-04-07T19:58:18.595743463Z'
+resource:
+  labels:
+    configuration_name: backend
+    location: us-central1
+    project_id: delta-entity-447812-p2
+    revision_name: backend-00651-ksm
+    service_name: backend
+  type: cloud_run_revision
+textPayload: "  timestamp: '2025-04-07T19:58:18.323Z'"
+timestamp: '2025-04-07T19:58:18.323499Z'
+---
+insertId: 67f42e5a0004efa644fb506d
+labels:
+  commit-sha: 567ccd6a71a4c45791ea05702e58b37f31f2e769
+  gcb-build-id: cd9ae63d-ead6-4b12-af95-977cef110716
+  gcb-trigger-id: 54791a61-75c6-4977-9a95-e24df112c8ed
+  gcb-trigger-region: global
+  instanceId: 00afae804303cffdda956fcf8b0f2c55bee56cce36dc2240ac8359ba8c242afe9cbe7cb2fe12d2788c490986112f0798493fc98b5864aa9866a923f7348632a52dab56c2ba
+  managed-by: gcp-cloud-build-deploy-cloud-run
+logName: projects/delta-entity-447812-p2/logs/run.googleapis.com%2Fstdout
+receiveTimestamp: '2025-04-07T19:58:18.595743463Z'
+resource:
+  labels:
+    configuration_name: backend
+    location: us-central1
+    project_id: delta-entity-447812-p2
+    revision_name: backend-00651-ksm
+    service_name: backend
+  type: cloud_run_revision
+textPayload: '  rowCount: 1,'
+timestamp: '2025-04-07T19:58:18.323494Z'
+---
+insertId: 67f42e5a0004efa22ed86124
+labels:
+  commit-sha: 567ccd6a71a4c45791ea05702e58b37f31f2e769
+  gcb-build-id: cd9ae63d-ead6-4b12-af95-977cef110716
+  gcb-trigger-id: 54791a61-75c6-4977-9a95-e24df112c8ed
+  gcb-trigger-region: global
+  instanceId: 00afae804303cffdda956fcf8b0f2c55bee56cce36dc2240ac8359ba8c242afe9cbe7cb2fe12d2788c490986112f0798493fc98b5864aa9866a923f7348632a52dab56c2ba
+  managed-by: gcp-cloud-build-deploy-cloud-run
+logName: projects/delta-entity-447812-p2/logs/run.googleapis.com%2Fstdout
+receiveTimestamp: '2025-04-07T19:58:18.595743463Z'
+resource:
+  labels:
+    configuration_name: backend
+    location: us-central1
+    project_id: delta-entity-447812-p2
+    revision_name: backend-00651-ksm
+    service_name: backend
+  type: cloud_run_revision
+textPayload: "  duration: '7ms',"
+timestamp: '2025-04-07T19:58:18.323490Z'
+---
+insertId: 67f42e5a0004ef9e0b523e5d
+labels:
+  commit-sha: 567ccd6a71a4c45791ea05702e58b37f31f2e769
+  gcb-build-id: cd9ae63d-ead6-4b12-af95-977cef110716
+  gcb-trigger-id: 54791a61-75c6-4977-9a95-e24df112c8ed
+  gcb-trigger-region: global
+  instanceId: 00afae804303cffdda956fcf8b0f2c55bee56cce36dc2240ac8359ba8c242afe9cbe7cb2fe12d2788c490986112f0798493fc98b5864aa9866a923f7348632a52dab56c2ba
+  managed-by: gcp-cloud-build-deploy-cloud-run
+logName: projects/delta-entity-447812-p2/logs/run.googleapis.com%2Fstdout
+receiveTimestamp: '2025-04-07T19:58:18.595743463Z'
+resource:
+  labels:
+    configuration_name: backend
+    location: us-central1
+    project_id: delta-entity-447812-p2
+    revision_name: backend-00651-ksm
+    service_name: backend
+  type: cloud_run_revision
+textPayload: "    \"        WHERE table_schema = '...\","
+timestamp: '2025-04-07T19:58:18.323486Z'
