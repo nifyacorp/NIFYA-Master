@@ -1,0 +1,30 @@
+{
+  "success": true,
+  "baseUrl": "https://notification-worker-415554190254.us-central1.run.app",
+  "endpoint": "/debug/status",
+  "status": 200,
+  "timestamp": "2025-04-05T18:24:05.646Z",
+  "service_info": {
+    "service": "notification-worker",
+    "status": "running",
+    "uptime": 379.906842769,
+    "started_at": "2025-04-05T18:17:46.786Z",
+    "mode": "full",
+    "environment": "production",
+    "version": "1.0.0",
+    "health": {
+      "database": "connected",
+      "pubsub": "connected",
+      "subscription": "active"
+    },
+    "metrics": {
+      "messages_processed": 0,
+      "successful_messages": 0,
+      "validation_errors": 0,
+      "processing_errors": 0,
+      "db_unavailable_errors": 0,
+      "memory_usage": 99.57421875
+    },
+    "timestamp": "2025-04-05T18:24:05.646Z"
+  }
+}

@@ -1,0 +1,162 @@
+{
+  "traceId": "5006d50b-596d-425c-9ae1-6950f66298aa",
+  "userId": "65c6074d-dbc4-4091-8e45-b6aecffd9ab9",
+  "startTime": "2025-04-05T18:36:57.906Z",
+  "endTime": "2025-04-05T18:36:59.501Z",
+  "status": "error",
+  "events": [
+    {
+      "id": "32efce18-d305-4eb9-aedb-34db272a0873",
+      "timestamp": "2025-04-05T18:36:59.305Z",
+      "stage": "authentication",
+      "serviceId": "auth_service",
+      "eventType": "auth_start",
+      "data": {}
+    },
+    {
+      "id": "11e0b489-84aa-4db3-962d-8646b980d2d9",
+      "timestamp": "2025-04-05T18:36:59.307Z",
+      "stage": "authentication",
+      "serviceId": "auth_service",
+      "eventType": "auth_complete",
+      "data": {
+        "userId": "65c6074d-dbc4-4091-8e45-b6aecffd9ab9"
+      }
+    },
+    {
+      "id": "160afc48-0410-43ec-b233-8d6ceda2c7c0",
+      "timestamp": "2025-04-05T18:36:59.309Z",
+      "stage": "subscription_creation",
+      "serviceId": "backend",
+      "eventType": "create_subscription_start",
+      "data": {}
+    },
+    {
+      "id": "4c5738e7-d0d7-425d-afd1-d1cd0def63ca",
+      "timestamp": "2025-04-05T18:36:59.498Z",
+      "stage": "subscription_creation",
+      "serviceId": "backend",
+      "eventType": "create_subscription_error",
+      "data": {
+        "error": "Failed to extract subscription ID from response"
+      }
+    }
+  ],
+  "stages": {
+    "authentication": {
+      "status": "completed",
+      "startTime": "2025-04-05T18:36:59.305Z",
+      "endTime": "2025-04-05T18:36:59.307Z",
+      "data": {
+        "userId": "65c6074d-dbc4-4091-8e45-b6aecffd9ab9"
+      }
+    },
+    "subscription_creation": {
+      "status": "error",
+      "startTime": "2025-04-05T18:36:59.309Z",
+      "endTime": "2025-04-05T18:36:59.498Z",
+      "data": {
+        "error": "Failed to extract subscription ID from response"
+      },
+      "error": "Failed to extract subscription ID from response"
+    },
+    "subscription_processing": {
+      "status": "pending",
+      "startTime": null,
+      "endTime": null,
+      "data": {}
+    },
+    "subscription_worker": {
+      "status": "pending",
+      "startTime": null,
+      "endTime": null,
+      "data": {}
+    },
+    "boe_parser": {
+      "status": "pending",
+      "startTime": null,
+      "endTime": null,
+      "data": {}
+    },
+    "notification_worker": {
+      "status": "pending",
+      "startTime": null,
+      "endTime": null,
+      "data": {}
+    },
+    "notification_delivery": {
+      "status": "pending",
+      "startTime": null,
+      "endTime": null,
+      "data": {}
+    }
+  },
+  "metrics": {
+    "totalDuration": 1.595,
+    "stagesDuration": {
+      "authentication": 0.002
+    },
+    "messageCount": 0
+  },
+  "healthChecks": {
+    "timestamp": "2025-04-05T18:36:57.922Z",
+    "services": {
+      "backend": {
+        "status": "healthy",
+        "statusCode": 200,
+        "data": {
+          "status": "healthy",
+          "timestamp": "2025-04-05T18:36:58.251Z",
+          "uptime": 1115.810993689,
+          "version": {
+            "package": "1.0.0",
+            "buildTimestamp": "$(date",
+            "commitSha": "unknown",
+            "environment": "production"
+          },
+          "memory": {
+            "rss": 116514816,
+            "heapTotal": 45133824,
+            "heapUsed": 43394872,
+            "external": 3749741,
+            "arrayBuffers": 186850
+          },
+          "services": {
+            "database": "connected"
+          }
+        }
+      },
+      "auth": {
+        "status": "healthy",
+        "statusCode": 200,
+        "data": {
+          "status": "ok"
+        }
+      },
+      "subscriptionWorker": {
+        "status": "error",
+        "error": "Request failed with status code 404",
+        "isAxiosError": true,
+        "errorCode": "ERR_BAD_REQUEST"
+      },
+      "notificationWorker": {
+        "status": "healthy",
+        "statusCode": 200,
+        "data": {
+          "status": "OK",
+          "service": "notification-worker",
+          "timestamp": "2025-04-05T18:36:59.265Z",
+          "uptime": 1153.526459384,
+          "memory": {
+            "rss": "100 MB",
+            "heapTotal": "28 MB",
+            "heapUsed": "27 MB"
+          },
+          "database": {
+            "connected": true
+          }
+        }
+      }
+    }
+  }
+}

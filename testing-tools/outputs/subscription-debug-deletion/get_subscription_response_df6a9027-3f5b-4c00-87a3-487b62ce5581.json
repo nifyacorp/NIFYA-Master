@@ -1,0 +1,16 @@
+{
+  "status": "success",
+  "data": {
+    "subscription": {
+      "id": "df6a9027-3f5b-4c00-87a3-487b62ce5581",
+      "name": "Test BOE Subscription",
+      "type": "boe",
+      "description": "",
+      "prompts": [
+        "Ayuntamiento Barcelona licitaciones"
+      ],
+      "frequency": "daily",
+      "active": true
+    }
+  }
+}

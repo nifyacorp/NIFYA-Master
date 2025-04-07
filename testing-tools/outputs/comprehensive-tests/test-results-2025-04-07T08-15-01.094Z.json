@@ -1,0 +1,315 @@
+{
+  "timestamp": "2025-04-07T08:14:02.916Z",
+  "summary": {
+    "total": 18,
+    "passed": 12,
+    "failed": 6,
+    "skipped": 0
+  },
+  "categories": {
+    "authentication": {
+      "total": 1,
+      "passed": 1,
+      "failed": 0
+    },
+    "infrastructure": {
+      "total": 1,
+      "passed": 1,
+      "failed": 0
+    },
+    "subscriptions": {
+      "total": 6,
+      "passed": 4,
+      "failed": 2
+    },
+    "templates": {
+      "total": 4,
+      "passed": 2,
+      "failed": 2
+    },
+    "notifications": {
+      "total": 4,
+      "passed": 3,
+      "failed": 1
+    },
+    "documentation": {
+      "total": 1,
+      "passed": 0,
+      "failed": 1
+    },
+    "diagnostics": {
+      "total": 1,
+      "passed": 1,
+      "failed": 0
+    }
+  },
+  "tests": [
+    {
+      "name": "Authentication: Login",
+      "category": "authentication",
+      "success": true,
+      "output": [
+        "\u001b[36m[2025-04-07T08:14:02.970Z] [INFO] Starting test login...\u001b[0m",
+        "\u001b[32m[2025-04-07T08:14:03.344Z] [SUCCESS] Authentication successful! Token saved (first 10 chars): eyJhbGciOi...\u001b[0m",
+        "\u001b[36m[2025-04-07T08:14:03.345Z] [INFO] Test login completed successfully\u001b[0m"
+      ],
+      "critical": true
+    },
+    {
+      "name": "Infrastructure: Health Check",
+      "category": "infrastructure",
+      "success": true,
+      "output": [
+        "\u001b[36m[2025-04-07T08:14:03.401Z] [INFO] Starting health check test\u001b[0m",
+        "\u001b[32m[2025-04-07T08:14:03.661Z] [SUCCESS] Health check successful:",
+        "\u001b[33m[2025-04-07T08:14:03.661Z] [WARN] Database connection status is not confirmed\u001b[0m",
+        "\u001b[36m[2025-04-07T08:14:03.661Z] [INFO] Health check test completed successfully\u001b[0m"
+      ],
+      "critical": true
+    },
+    {
+      "name": "Subscriptions: List",
+      "category": "subscriptions",
+      "success": true,
+      "output": [
+        "\u001b[36m[2025-04-07T08:14:03.719Z] [INFO] Starting list subscriptions test\u001b[0m",
+        "\u001b[36m[2025-04-07T08:14:03.721Z] [INFO] Fetching subscriptions: backend-415554190254.us-central1.run.app/api/v1/subscriptions\u001b[0m",
+        "\u001b[32m[2025-04-07T08:14:03.997Z] [SUCCESS] Retrieved 20 subscriptions\u001b[0m",
+        "\u001b[32m[2025-04-07T08:14:03.997Z] [SUCCESS] Test list-subscriptions: PASSED",
+        "\u001b[32m[2025-04-07T08:14:03.998Z] [SUCCESS] Subscription listing test completed successfully\u001b[0m",
+        "\u001b[36m[2025-04-07T08:14:03.999Z] [INFO] Retrieved 20 subscriptions\u001b[0m"
+      ],
+      "critical": true
+    },
+    {
+      "name": "Subscriptions: Create",
+      "category": "subscriptions",
+      "success": true,
+      "output": [
+        "\u001b[36m[2025-04-07T08:14:04.057Z] [INFO] Starting minimal subscription creation test\u001b[0m",
+        "\u001b[36m[2025-04-07T08:14:04.059Z] [INFO] Creating minimal subscription: backend-415554190254.us-central1.run.app/api/v1/subscriptions",
+        "\u001b[32m[2025-04-07T08:14:04.325Z] [SUCCESS] Minimal subscription created with ID: 9bf0ee5d-7c37-41e1-936f-e54aff4e82b9\u001b[0m",
+        "\u001b[32m[2025-04-07T08:14:04.326Z] [SUCCESS] Test minimal-create-subscription: PASSED",
+        "\u001b[32m[2025-04-07T08:14:04.326Z] [SUCCESS] Minimal subscription creation test completed successfully\u001b[0m",
+        "\u001b[36m[2025-04-07T08:14:04.327Z] [INFO] Created subscription ID: 9bf0ee5d-7c37-41e1-936f-e54aff4e82b9\u001b[0m"
+      ],
+      "critical": true
+    },
+    {
+      "name": "Subscriptions: Create with User ID",
+      "category": "subscriptions",
+      "success": false,
+      "output": [
+        "\u001b[36m[2025-04-07T08:14:04.389Z] [INFO] Starting subscription creation with explicit user_id test\u001b[0m",
+        "\u001b[36m[2025-04-07T08:14:04.392Z] [INFO] Creating subscription with user_id: backend-415554190254.us-central1.run.app/api/v1/subscriptions",
+        "\u001b[31m[2025-04-07T08:14:04.622Z] [ERROR] Subscription creation failed with status code 400",
+        "\u001b[31m[2025-04-07T08:14:04.622Z] [ERROR] Test user-id-create-subscription: FAILED",
+        "\u001b[32m[2025-04-07T08:14:04.623Z] [SUCCESS] Subscription creation with user_id test completed\u001b[0m"
+      ],
+      "critical": false
+    },
+    {
+      "name": "Subscriptions: Debug Filter",
+      "category": "subscriptions",
+      "success": true,
+      "output": [
+        "\u001b[36m[2025-04-07T08:14:04.684Z] [INFO] Starting subscription debug-filter test\u001b[0m",
+        "\u001b[36m[2025-04-07T08:14:04.686Z] [INFO] Testing debug-filter with params: {}\u001b[0m",
+        "\u001b[32m[2025-04-07T08:14:04.937Z] [SUCCESS] Debug filter response for 'basic' obtained successfully\u001b[0m",
+        "\u001b[36m[2025-04-07T08:14:04.937Z] [INFO] Testing debug-filter with params: {\"type\":\"boe\"}\u001b[0m",
+        "\u001b[32m[2025-04-07T08:14:05.067Z] [SUCCESS] Debug filter response for 'type-filter' obtained successfully\u001b[0m",
+        "\u001b[36m[2025-04-07T08:14:05.067Z] [INFO] Testing debug-filter with params: {\"status\":\"active\"}\u001b[0m",
+        "\u001b[32m[2025-04-07T08:14:05.204Z] [SUCCESS] Debug filter response for 'status-filter' obtained successfully\u001b[0m",
+        "\u001b[36m[2025-04-07T08:14:05.205Z] [INFO] Testing debug-filter with params: {\"createdAfter\":\"2025-01-01\"}\u001b[0m",
+        "\u001b[32m[2025-04-07T08:14:05.332Z] [SUCCESS] Debug filter response for 'date-filter' obtained successfully\u001b[0m",
+        "\u001b[36m[2025-04-07T08:14:05.333Z] [INFO] Testing debug-filter with params: {\"type\":\"boe\",\"status\":\"active\",\"limit\":10}\u001b[0m",
+        "\u001b[32m[2025-04-07T08:14:05.474Z] [SUCCESS] Debug filter response for 'combined-filters' obtained successfully\u001b[0m",
+        "\u001b[32m[2025-04-07T08:14:05.474Z] [SUCCESS] All debug filter tests passed (5/5)\u001b[0m",
+        "\u001b[32m[2025-04-07T08:14:05.474Z] [SUCCESS] Test subscription-debug-filter: PASSED",
+        "\u001b[32m[2025-04-07T08:14:05.475Z] [SUCCESS] Subscription debug-filter test completed successfully\u001b[0m",
+        "\u001b[36m[2025-04-07T08:14:05.475Z] [INFO] basic: Successful test\u001b[0m",
+        "\u001b[36m[2025-04-07T08:14:05.475Z] [INFO] type-filter: Successful test\u001b[0m",
+        "\u001b[36m[2025-04-07T08:14:05.475Z] [INFO] status-filter: Successful test\u001b[0m",
+        "\u001b[36m[2025-04-07T08:14:05.476Z] [INFO] date-filter: Successful test\u001b[0m",
+        "\u001b[36m[2025-04-07T08:14:05.476Z] [INFO] combined-filters: Successful test\u001b[0m"
+      ],
+      "critical": false
+    },
+    {
+      "name": "Subscriptions: Extended Debug Filter",
+      "category": "subscriptions",
+      "success": true,
+      "output": [
+        "\u001b[36m[2025-04-07T08:14:05.534Z] [INFO] Starting extended subscription debug-filter test\u001b[0m",
+        "\u001b[36m[2025-04-07T08:14:05.536Z] [INFO] Testing with params: {}\u001b[0m",
+        "\u001b[36m[2025-04-07T08:14:05.536Z] [INFO] Testing debug-filter endpoint with params: {}\u001b[0m",
+        "\u001b[36m[2025-04-07T08:14:05.766Z] [INFO] Testing list endpoint with params: {}\u001b[0m",
+        "\u001b[36m[2025-04-07T08:14:05.917Z] [INFO] Testing with params: {\"type\":\"boe\"}\u001b[0m",
+        "\u001b[36m[2025-04-07T08:14:05.917Z] [INFO] Testing debug-filter endpoint with params: {\"type\":\"boe\"}\u001b[0m",
+        "\u001b[36m[2025-04-07T08:14:06.052Z] [INFO] Testing list endpoint with params: {\"type\":\"boe\"}\u001b[0m",
+        "\u001b[36m[2025-04-07T08:14:06.203Z] [INFO] Testing with params: {\"status\":\"active\"}\u001b[0m",
+        "\u001b[36m[2025-04-07T08:14:06.203Z] [INFO] Testing debug-filter endpoint with params: {\"status\":\"active\"}\u001b[0m",
+        "\u001b[36m[2025-04-07T08:14:06.332Z] [INFO] Testing list endpoint with params: {\"status\":\"active\"}\u001b[0m",
+        "\u001b[36m[2025-04-07T08:14:06.486Z] [INFO] Testing with params: {\"createdAfter\":\"2025-01-01\"}\u001b[0m",
+        "\u001b[36m[2025-04-07T08:14:06.486Z] [INFO] Testing debug-filter endpoint with params: {\"createdAfter\":\"2025-01-01\"}\u001b[0m",
+        "\u001b[36m[2025-04-07T08:14:06.648Z] [INFO] Testing list endpoint with params: {\"createdAfter\":\"2025-01-01\"}\u001b[0m",
+        "\u001b[36m[2025-04-07T08:14:06.788Z] [INFO] Testing with params: {\"type\":\"boe\",\"status\":\"active\",\"limit\":10}\u001b[0m",
+        "\u001b[36m[2025-04-07T08:14:06.788Z] [INFO] Testing debug-filter endpoint with params: {\"type\":\"boe\",\"status\":\"active\",\"limit\":10}\u001b[0m",
+        "\u001b[36m[2025-04-07T08:14:06.924Z] [INFO] Testing list endpoint with params: {\"type\":\"boe\",\"status\":\"active\",\"limit\":10}\u001b[0m",
+        "\u001b[36m[2025-04-07T08:14:07.101Z] [INFO] Testing with params: {\"search\":\"test\"}\u001b[0m",
+        "\u001b[36m[2025-04-07T08:14:07.101Z] [INFO] Testing debug-filter endpoint with params: {\"search\":\"test\"}\u001b[0m",
+        "\u001b[36m[2025-04-07T08:14:07.229Z] [INFO] Testing list endpoint with params: {\"search\":\"test\"}\u001b[0m",
+        "\u001b[36m[2025-04-07T08:14:07.382Z] [INFO] Testing with params: {\"sortBy\":\"createdAt\",\"sortOrder\":\"desc\"}\u001b[0m",
+        "\u001b[36m[2025-04-07T08:14:07.382Z] [INFO] Testing debug-filter endpoint with params: {\"sortBy\":\"createdAt\",\"sortOrder\":\"desc\"}\u001b[0m",
+        "\u001b[36m[2025-04-07T08:14:07.540Z] [INFO] Testing list endpoint with params: {\"sortBy\":\"createdAt\",\"sortOrder\":\"desc\"}\u001b[0m",
+        "\u001b[36m[2025-04-07T08:14:07.684Z] [INFO] Testing with params: {\"page\":1,\"limit\":5}\u001b[0m",
+        "\u001b[36m[2025-04-07T08:14:07.685Z] [INFO] Testing debug-filter endpoint with params: {\"page\":1,\"limit\":5}\u001b[0m",
+        "\u001b[36m[2025-04-07T08:14:07.813Z] [INFO] Testing list endpoint with params: {\"page\":1,\"limit\":5}\u001b[0m",
+        "\u001b[36m[2025-04-07T08:14:07.956Z] [INFO] Diagnostic report saved to C:\\Users\\Andres\\Documents\\GitHub\\NIFYA-Master\\testing-tools\\outputs\\reports\\subscription-filter-diagnostic-2025-04-07T08-14-07-955Z.md\u001b[0m",
+        "\u001b[32m[2025-04-07T08:14:07.956Z] [SUCCESS] All filter tests passed\u001b[0m",
+        "\u001b[32m[2025-04-07T08:14:07.956Z] [SUCCESS] Test subscription-debug-filter-extended: PASSED",
+        "\u001b[32m[2025-04-07T08:14:07.957Z] [SUCCESS] Extended subscription debug-filter test completed successfully\u001b[0m",
+        "\u001b[36m[2025-04-07T08:14:07.957Z] [INFO] Diagnostic report available at: C:\\Users\\Andres\\Documents\\GitHub\\NIFYA-Master\\testing-tools\\outputs\\reports\\subscription-filter-diagnostic-2025-04-07T08-14-07-955Z.md\u001b[0m"
+      ],
+      "critical": false
+    },
+    {
+      "name": "Subscriptions: Create Type",
+      "category": "subscriptions",
+      "success": false,
+      "error": "Command failed: node tests/subscriptions/create-subscription-type.js",
+      "critical": false
+    },
+    {
+      "name": "Templates: List",
+      "category": "templates",
+      "success": true,
+      "output": [
+        "\u001b[36m[2025-04-07T08:14:08.630Z] [INFO] Starting subscription templates test\u001b[0m",
+        "\u001b[36m[2025-04-07T08:14:08.632Z] [INFO] Fetching subscription templates: backend-415554190254.us-central1.run.app/api/v1/templates\u001b[0m",
+        "\u001b[32m[2025-04-07T08:14:08.862Z] [SUCCESS] Retrieved 3 templates\u001b[0m",
+        "\u001b[32m[2025-04-07T08:14:08.862Z] [SUCCESS] Test list-templates: PASSED",
+        "\u001b[32m[2025-04-07T08:14:08.863Z] [SUCCESS] Template listing test completed successfully\u001b[0m",
+        "\u001b[36m[2025-04-07T08:14:08.863Z] [INFO] Retrieved 3 templates\u001b[0m"
+      ],
+      "critical": true
+    },
+    {
+      "name": "Templates: Details",
+      "category": "templates",
+      "success": true,
+      "output": [
+        "\u001b[36m[2025-04-07T08:14:08.924Z] [INFO] Starting template details test\u001b[0m",
+        "\u001b[36m[2025-04-07T08:14:08.927Z] [INFO] Authenticating user...\u001b[0m",
+        "\u001b[36m[2025-04-07T08:14:08.928Z] [INFO] Starting authentication test\u001b[0m",
+        "\u001b[36m[2025-04-07T08:14:08.928Z] [INFO] Sending authentication request to: authentication-service-415554190254.us-central1.run.app/api/auth/login\u001b[0m",
+        "\u001b[32m[2025-04-07T08:14:09.345Z] [SUCCESS] Authentication successful! Access token saved",
+        "\u001b[36m[2025-04-07T08:14:09.346Z] [INFO] Refresh token saved",
+        "\u001b[36m[2025-04-07T08:14:09.346Z] [INFO] User ID saved: 65c6074d-dbc4-4091-8e45-b6aecffd9ab9\u001b[0m",
+        "\u001b[32m[2025-04-07T08:14:09.347Z] [SUCCESS] Test auth-login: PASSED",
+        "\u001b[36m[2025-04-07T08:14:09.347Z] [INFO] Getting template list...\u001b[0m",
+        "\u001b[36m[2025-04-07T08:14:09.528Z] [INFO] Testing with template ID: boe-general\u001b[0m",
+        "\u001b[36m[2025-04-07T08:14:09.528Z] [INFO] Getting template details...\u001b[0m",
+        "\u001b[32m[2025-04-07T08:14:09.653Z] [SUCCESS] Template details test passed\u001b[0m",
+        "\u001b[32m[2025-04-07T08:14:09.653Z] [SUCCESS] Template details test completed successfully\u001b[0m"
+      ],
+      "critical": false
+    },
+    {
+      "name": "Templates: Create",
+      "category": "templates",
+      "success": false,
+      "error": "Command failed: node tests/templates/create-template.js",
+      "critical": false
+    },
+    {
+      "name": "Templates: Subscribe",
+      "category": "templates",
+      "success": false,
+      "error": "Command failed: node tests/templates/subscribe-from-template.js",
+      "critical": false
+    },
+    {
+      "name": "Notifications: List",
+      "category": "notifications",
+      "success": false,
+      "error": "Command failed: node tests/notifications/poll.js",
+      "critical": true
+    },
+    {
+      "name": "Notifications: By Entity Type",
+      "category": "notifications",
+      "success": true,
+      "output": [
+        "\u001b[36m[2025-04-07T08:14:58.432Z] [INFO] Starting notifications by entity test\u001b[0m",
+        "\u001b[36m[2025-04-07T08:14:58.434Z] [INFO] Testing notifications for entity type: subscription, with entityId param\u001b[0m",
+        "\u001b[33m[2025-04-07T08:14:58.706Z] [WARN] Received 200 status but data is not in expected format\u001b[0m",
+        "\u001b[32m[2025-04-07T08:14:58.706Z] [SUCCESS] Test notifications-by-entity: PASSED but with unexpected format",
+        "\u001b[32m[2025-04-07T08:14:58.706Z] [SUCCESS] Notifications by entity test completed\u001b[0m"
+      ],
+      "critical": false
+    },
+    {
+      "name": "Notifications: Activity",
+      "category": "notifications",
+      "success": true,
+      "output": [
+        "\u001b[36m[2025-04-07T08:14:58.765Z] [INFO] Starting notification activity test\u001b[0m",
+        "\u001b[36m[2025-04-07T08:14:58.767Z] [INFO] Fetching notification activity: backend-415554190254.us-central1.run.app/api/v1/notifications/activity\u001b[0m",
+        "\u001b[32m[2025-04-07T08:14:59.035Z] [SUCCESS] Retrieved notification activity successfully\u001b[0m",
+        "\u001b[32m[2025-04-07T08:14:59.035Z] [SUCCESS] Test notification-activity: PASSED\u001b[0m",
+        "\u001b[32m[2025-04-07T08:14:59.035Z] [SUCCESS] Notification activity test completed\u001b[0m"
+      ],
+      "critical": false
+    },
+    {
+      "name": "Notifications: Delete All",
+      "category": "notifications",
+      "success": true,
+      "output": [
+        "\u001b[36m[2025-04-07T08:14:59.094Z] [INFO] Starting delete all notifications test\u001b[0m",
+        "\u001b[36m[2025-04-07T08:14:59.096Z] [INFO] Authenticating user...\u001b[0m",
+        "\u001b[36m[2025-04-07T08:14:59.096Z] [INFO] Starting authentication test\u001b[0m",
+        "\u001b[36m[2025-04-07T08:14:59.097Z] [INFO] Sending authentication request to: authentication-service-415554190254.us-central1.run.app/api/auth/login\u001b[0m",
+        "\u001b[32m[2025-04-07T08:14:59.504Z] [SUCCESS] Authentication successful! Access token saved",
+        "\u001b[36m[2025-04-07T08:14:59.505Z] [INFO] Refresh token saved",
+        "\u001b[36m[2025-04-07T08:14:59.505Z] [INFO] User ID saved: 65c6074d-dbc4-4091-8e45-b6aecffd9ab9\u001b[0m",
+        "\u001b[32m[2025-04-07T08:14:59.505Z] [SUCCESS] Test auth-login: PASSED",
+        "\u001b[36m[2025-04-07T08:14:59.506Z] [INFO] Getting initial notification count...\u001b[0m",
+        "\u001b[36m[2025-04-07T08:14:59.764Z] [INFO] Initial notification count: 0\u001b[0m",
+        "\u001b[36m[2025-04-07T08:14:59.764Z] [INFO] Deleting all notifications...\u001b[0m",
+        "\u001b[32m[2025-04-07T08:14:59.896Z] [SUCCESS] Successfully deleted all notifications\u001b[0m",
+        "\u001b[36m[2025-04-07T08:14:59.896Z] [INFO] Verifying notifications were deleted...\u001b[0m",
+        "\u001b[36m[2025-04-07T08:15:00.045Z] [INFO] Final notification count: 0\u001b[0m",
+        "\u001b[32m[2025-04-07T08:15:00.046Z] [SUCCESS] Delete all notifications test passed\u001b[0m",
+        "\u001b[32m[2025-04-07T08:15:00.046Z] [SUCCESS] Delete all notifications test completed successfully\u001b[0m"
+      ],
+      "critical": false
+    },
+    {
+      "name": "Explorer: API Documentation",
+      "category": "documentation",
+      "success": false,
+      "error": "Command failed: node tests/explorer/api-explorer.js",
+      "critical": false
+    },
+    {
+      "name": "Diagnostics: API Info",
+      "category": "diagnostics",
+      "success": true,
+      "output": [
+        "\u001b[36m[2025-04-07T08:15:00.388Z] [INFO] Starting database diagnostic test\u001b[0m",
+        "\u001b[36m[2025-04-07T08:15:00.390Z] [INFO] Testing endpoint: /health\u001b[0m",
+        "\u001b[32m[2025-04-07T08:15:00.698Z] [SUCCESS] Endpoint /health returned success: {",
+        "\u001b[36m[2025-04-07T08:15:00.698Z] [INFO] Testing endpoint: /api/diagnostics\u001b[0m",
+        "\u001b[32m[2025-04-07T08:15:00.824Z] [SUCCESS] Endpoint /api/diagnostics returned success: {",
+        "\u001b[36m[2025-04-07T08:15:00.825Z] [INFO] Testing endpoint: /api/diagnostics/db-status\u001b[0m",
+        "\u001b[32m[2025-04-07T08:15:00.958Z] [SUCCESS] Endpoint /api/diagnostics/db-status returned success: {",
+        "\u001b[36m[2025-04-07T08:15:00.959Z] [INFO] Testing endpoint: /api/diagnostics/db-tables\u001b[0m",
+        "\u001b[32m[2025-04-07T08:15:01.084Z] [SUCCESS] Endpoint /api/diagnostics/db-tables returned success: {",
+        "\u001b[32m[2025-04-07T08:15:01.085Z] [SUCCESS] Database diagnostic test completed\u001b[0m"
+      ],
+      "critical": false
+    }
+  ]
+}

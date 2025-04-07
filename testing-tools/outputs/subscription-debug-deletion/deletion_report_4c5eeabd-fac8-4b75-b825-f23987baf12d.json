@@ -1,0 +1,14 @@
+{
+  "subscriptionId": "4c5eeabd-fac8-4b75-b825-f23987baf12d",
+  "standardDeletionSuccess": true,
+  "verificationSuccess": false,
+  "finalDiagnosticCheck": {
+    "exists": false
+  },
+  "deletionResult": {
+    "success": true
+  },
+  "verificationResult": {
+    "deleted": false
+  }
+}

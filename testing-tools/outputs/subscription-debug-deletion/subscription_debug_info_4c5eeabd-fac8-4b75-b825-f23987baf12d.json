@@ -1,0 +1,5 @@
+{
+  "message": "Route GET:/debug/subscription/4c5eeabd-fac8-4b75-b825-f23987baf12d not found",
+  "error": "Not Found",
+  "statusCode": 404
+}

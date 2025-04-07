@@ -1,0 +1,5 @@
+{
+  "message": "Route GET:/api/diagnostics/subscription-test/subscription-exists/63230a72-6cf6-4109-993b-5725aacb3e7f not found",
+  "error": "Not Found",
+  "statusCode": 404
+}

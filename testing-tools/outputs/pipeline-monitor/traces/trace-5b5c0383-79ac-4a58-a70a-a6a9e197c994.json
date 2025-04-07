@@ -1,0 +1,495 @@
+{
+  "traceId": "5b5c0383-79ac-4a58-a70a-a6a9e197c994",
+  "userId": "65c6074d-dbc4-4091-8e45-b6aecffd9ab9",
+  "subscriptionId": "b062b3b6-1b46-4278-be54-a0d1536b495b",
+  "startTime": "2025-04-05T18:37:16.228Z",
+  "endTime": "2025-04-05T18:37:44.764Z",
+  "status": "error",
+  "events": [
+    {
+      "id": "e236165b-d65f-4712-bf21-144ebbbd1310",
+      "timestamp": "2025-04-05T18:37:17.261Z",
+      "stage": "authentication",
+      "serviceId": "auth_service",
+      "eventType": "auth_start",
+      "data": {}
+    },
+    {
+      "id": "0e123014-82d1-4fa5-9dec-d388c837039b",
+      "timestamp": "2025-04-05T18:37:17.263Z",
+      "stage": "authentication",
+      "serviceId": "auth_service",
+      "eventType": "auth_complete",
+      "data": {
+        "userId": "65c6074d-dbc4-4091-8e45-b6aecffd9ab9"
+      }
+    },
+    {
+      "id": "fccad34b-3b6a-4c55-a5e5-5b1547ad408c",
+      "timestamp": "2025-04-05T18:37:17.265Z",
+      "stage": "subscription_creation",
+      "serviceId": "backend",
+      "eventType": "create_subscription_start",
+      "data": {}
+    },
+    {
+      "id": "2e7376c4-05db-43c5-a159-98087aca7914",
+      "timestamp": "2025-04-05T18:37:17.453Z",
+      "stage": "subscription_creation",
+      "serviceId": "backend",
+      "eventType": "create_subscription_complete",
+      "data": {
+        "subscriptionId": "b062b3b6-1b46-4278-be54-a0d1536b495b",
+        "subscriptionData": {
+          "name": "Monitor Test 2025-04-05T18:37:17",
+          "type": "boe",
+          "templateId": "boe-default",
+          "prompts": {
+            "value": "Ayuntamiento Barcelona licitaciones"
+          },
+          "frequency": "daily",
+          "configuration": {},
+          "logo": null,
+          "metadata": {
+            "trace_id": "5b5c0383-79ac-4a58-a70a-a6a9e197c994",
+            "test": true,
+            "created_by": "notification-pipeline-monitor"
+          }
+        }
+      }
+    },
+    {
+      "id": "2187128c-39c8-4bd7-8875-d37e682c3bdc",
+      "timestamp": "2025-04-05T18:37:17.455Z",
+      "stage": "subscription_processing",
+      "serviceId": "backend",
+      "eventType": "process_subscription_start",
+      "data": {
+        "subscriptionId": "b062b3b6-1b46-4278-be54-a0d1536b495b"
+      }
+    },
+    {
+      "id": "b0b3fb7a-69ad-4df6-b54b-77375ca63e2b",
+      "timestamp": "2025-04-05T18:37:17.603Z",
+      "stage": "subscription_processing",
+      "serviceId": "backend",
+      "eventType": "process_subscription_backend_complete",
+      "data": {
+        "subscriptionId": "b062b3b6-1b46-4278-be54-a0d1536b495b",
+        "status": 202,
+        "data": {
+          "status": "success",
+          "message": "Subscription processing request accepted",
+          "subscription_id": "b062b3b6-1b46-4278-be54-a0d1536b495b"
+        }
+      }
+    },
+    {
+      "id": "5346c6f3-f99b-4575-9237-d13e675cf95b",
+      "timestamp": "2025-04-05T18:37:17.603Z",
+      "stage": "subscription_worker",
+      "serviceId": "subscription_worker",
+      "eventType": "worker_receive_task_start",
+      "data": {
+        "subscriptionId": "b062b3b6-1b46-4278-be54-a0d1536b495b",
+        "traceId": "5b5c0383-79ac-4a58-a70a-a6a9e197c994"
+      }
+    },
+    {
+      "id": "da0f6685-ec39-4621-a44c-e4b379a40327",
+      "timestamp": "2025-04-05T18:37:17.603Z",
+      "stage": "boe_parser",
+      "serviceId": "boe_parser",
+      "eventType": "parser_receive_subscription_start",
+      "data": {
+        "subscriptionId": "b062b3b6-1b46-4278-be54-a0d1536b495b",
+        "traceId": "5b5c0383-79ac-4a58-a70a-a6a9e197c994"
+      }
+    },
+    {
+      "id": "e094ad9c-4325-4e3e-afa1-8213905a44de",
+      "timestamp": "2025-04-05T18:37:27.606Z",
+      "stage": "subscription_worker",
+      "serviceId": "subscription_worker",
+      "eventType": "worker_process_complete",
+      "data": {
+        "subscriptionId": "b062b3b6-1b46-4278-be54-a0d1536b495b"
+      }
+    },
+    {
+      "id": "9d299cb5-b4db-4929-96ef-2cbfcc9ba2e5",
+      "timestamp": "2025-04-05T18:37:27.606Z",
+      "stage": "boe_parser",
+      "serviceId": "boe_parser",
+      "eventType": "parser_process_complete",
+      "data": {
+        "subscriptionId": "b062b3b6-1b46-4278-be54-a0d1536b495b"
+      }
+    },
+    {
+      "id": "ca6443fa-8523-4a90-ab59-81773592fb4d",
+      "timestamp": "2025-04-05T18:37:27.606Z",
+      "stage": "subscription_processing",
+      "serviceId": "backend",
+      "eventType": "process_subscription_complete",
+      "data": {
+        "subscriptionId": "b062b3b6-1b46-4278-be54-a0d1536b495b"
+      }
+    },
+    {
+      "id": "1c46d2f8-d90d-4296-aa59-1f47a3e9fe17",
+      "timestamp": "2025-04-05T18:37:27.606Z",
+      "stage": "notification_worker",
+      "serviceId": "notification_worker",
+      "eventType": "worker_received_parser_message",
+      "data": {
+        "subscriptionId": "b062b3b6-1b46-4278-be54-a0d1536b495b",
+        "traceId": "5b5c0383-79ac-4a58-a70a-a6a9e197c994"
+      }
+    },
+    {
+      "id": "3bbc48c6-229a-4398-85aa-e2d903e07cb1",
+      "timestamp": "2025-04-05T18:37:27.606Z",
+      "stage": "notification_delivery",
+      "serviceId": "notification_worker",
+      "eventType": "wait_notifications_start",
+      "data": {
+        "subscriptionId": "b062b3b6-1b46-4278-be54-a0d1536b495b",
+        "maxWaitTime": 60000
+      }
+    },
+    {
+      "id": "21df770e-cd91-4622-90a3-e70f60beb691",
+      "timestamp": "2025-04-05T18:37:27.801Z",
+      "stage": "notification_worker",
+      "serviceId": "notification_worker",
+      "eventType": "worker_status_check",
+      "data": {
+        "status": "running",
+        "uptime": 1182.042201532,
+        "metrics": {
+          "messages_processed": 0,
+          "successful_messages": 0,
+          "validation_errors": 0,
+          "processing_errors": 0,
+          "db_unavailable_errors": 0,
+          "memory_usage": 99.83203125
+        }
+      }
+    },
+    {
+      "id": "a31ed236-d6bf-409c-83e4-d6ebb8713d2a",
+      "timestamp": "2025-04-05T18:37:27.801Z",
+      "stage": "notification_worker",
+      "serviceId": "notification_worker",
+      "eventType": "worker_processing_status",
+      "data": {
+        "subscriptionId": "b062b3b6-1b46-4278-be54-a0d1536b495b",
+        "status": "running",
+        "metrics": {
+          "messages_processed": 0,
+          "successful_messages": 0,
+          "validation_errors": 0,
+          "processing_errors": 0,
+          "db_unavailable_errors": 0,
+          "memory_usage": 99.83203125
+        }
+      }
+    },
+    {
+      "id": "d3ca1cb8-32aa-4623-a1b4-ebd94f2230e2",
+      "timestamp": "2025-04-05T18:37:28.067Z",
+      "stage": "notification_delivery",
+      "serviceId": "backend",
+      "eventType": "notification_check",
+      "data": {
+        "subscriptionId": "b062b3b6-1b46-4278-be54-a0d1536b495b",
+        "attempt": 1,
+        "found": 0,
+        "total": 0
+      }
+    },
+    {
+      "id": "5c7828ea-8daf-474a-b9c4-5ef735b3e1fd",
+      "timestamp": "2025-04-05T18:37:28.366Z",
+      "stage": "notification_worker",
+      "serviceId": "notification_worker",
+      "eventType": "worker_notifications_check",
+      "data": {
+        "subscriptionId": "b062b3b6-1b46-4278-be54-a0d1536b495b",
+        "count": 0,
+        "status": 200
+      }
+    },
+    {
+      "id": "28ac394e-0025-453a-95f0-56da38220a5b",
+      "timestamp": "2025-04-05T18:37:33.598Z",
+      "stage": "notification_worker",
+      "serviceId": "notification_worker",
+      "eventType": "worker_status_check",
+      "data": {
+        "status": "running",
+        "uptime": 1187.840504645,
+        "metrics": {
+          "messages_processed": 0,
+          "successful_messages": 0,
+          "validation_errors": 0,
+          "processing_errors": 0,
+          "db_unavailable_errors": 0,
+          "memory_usage": 100.07421875
+        }
+      }
+    },
+    {
+      "id": "748ce117-e1e6-4a54-9a96-1a1f695fe5a6",
+      "timestamp": "2025-04-05T18:37:33.598Z",
+      "stage": "notification_worker",
+      "serviceId": "notification_worker",
+      "eventType": "worker_processing_status",
+      "data": {
+        "subscriptionId": "b062b3b6-1b46-4278-be54-a0d1536b495b",
+        "status": "running",
+        "metrics": {
+          "messages_processed": 0,
+          "successful_messages": 0,
+          "validation_errors": 0,
+          "processing_errors": 0,
+          "db_unavailable_errors": 0,
+          "memory_usage": 100.07421875
+        }
+      }
+    },
+    {
+      "id": "c7de5164-e957-406e-965a-cbc4e2354219",
+      "timestamp": "2025-04-05T18:37:33.819Z",
+      "stage": "notification_delivery",
+      "serviceId": "backend",
+      "eventType": "notification_check",
+      "data": {
+        "subscriptionId": "b062b3b6-1b46-4278-be54-a0d1536b495b",
+        "attempt": 2,
+        "found": 0,
+        "total": 0
+      }
+    },
+    {
+      "id": "02632808-e144-4374-8163-a811793aa0e6",
+      "timestamp": "2025-04-05T18:37:34.140Z",
+      "stage": "notification_worker",
+      "serviceId": "notification_worker",
+      "eventType": "worker_notifications_check",
+      "data": {
+        "subscriptionId": "b062b3b6-1b46-4278-be54-a0d1536b495b",
+        "count": 0,
+        "status": 200
+      }
+    },
+    {
+      "id": "52843ebb-ec7a-41b4-981f-20d7e53efb08",
+      "timestamp": "2025-04-05T18:37:39.409Z",
+      "stage": "notification_delivery",
+      "serviceId": "backend",
+      "eventType": "notification_check",
+      "data": {
+        "subscriptionId": "b062b3b6-1b46-4278-be54-a0d1536b495b",
+        "attempt": 3,
+        "found": 0,
+        "total": 0
+      }
+    },
+    {
+      "id": "223bf0a8-9c4e-4f09-b601-734d6f59f970",
+      "timestamp": "2025-04-05T18:37:39.760Z",
+      "stage": "notification_worker",
+      "serviceId": "notification_worker",
+      "eventType": "worker_notifications_check",
+      "data": {
+        "subscriptionId": "b062b3b6-1b46-4278-be54-a0d1536b495b",
+        "count": 0,
+        "status": 200
+      }
+    },
+    {
+      "id": "11e4f138-70c1-45e2-ad1a-8850e69f2786",
+      "timestamp": "2025-04-05T18:37:44.764Z",
+      "stage": "notification_delivery",
+      "serviceId": "notification_worker",
+      "eventType": "wait_notifications_timeout",
+      "data": {
+        "subscriptionId": "b062b3b6-1b46-4278-be54-a0d1536b495b",
+        "attempts": 3
+      }
+    }
+  ],
+  "stages": {
+    "authentication": {
+      "status": "completed",
+      "startTime": "2025-04-05T18:37:17.261Z",
+      "endTime": "2025-04-05T18:37:17.263Z",
+      "data": {
+        "userId": "65c6074d-dbc4-4091-8e45-b6aecffd9ab9"
+      }
+    },
+    "subscription_creation": {
+      "status": "completed",
+      "startTime": "2025-04-05T18:37:17.265Z",
+      "endTime": "2025-04-05T18:37:17.453Z",
+      "data": {
+        "subscriptionId": "b062b3b6-1b46-4278-be54-a0d1536b495b",
+        "subscriptionData": {
+          "name": "Monitor Test 2025-04-05T18:37:17",
+          "type": "boe",
+          "templateId": "boe-default",
+          "prompts": {
+            "value": "Ayuntamiento Barcelona licitaciones"
+          },
+          "frequency": "daily",
+          "configuration": {},
+          "logo": null,
+          "metadata": {
+            "trace_id": "5b5c0383-79ac-4a58-a70a-a6a9e197c994",
+            "test": true,
+            "created_by": "notification-pipeline-monitor"
+          }
+        }
+      }
+    },
+    "subscription_processing": {
+      "status": "completed",
+      "startTime": "2025-04-05T18:37:17.455Z",
+      "endTime": "2025-04-05T18:37:27.606Z",
+      "data": {
+        "subscriptionId": "b062b3b6-1b46-4278-be54-a0d1536b495b",
+        "status": 202,
+        "data": {
+          "status": "success",
+          "message": "Subscription processing request accepted",
+          "subscription_id": "b062b3b6-1b46-4278-be54-a0d1536b495b"
+        }
+      }
+    },
+    "subscription_worker": {
+      "status": "completed",
+      "startTime": "2025-04-05T18:37:17.603Z",
+      "endTime": "2025-04-05T18:37:27.606Z",
+      "data": {
+        "subscriptionId": "b062b3b6-1b46-4278-be54-a0d1536b495b",
+        "traceId": "5b5c0383-79ac-4a58-a70a-a6a9e197c994"
+      }
+    },
+    "boe_parser": {
+      "status": "completed",
+      "startTime": "2025-04-05T18:37:17.603Z",
+      "endTime": "2025-04-05T18:37:27.606Z",
+      "data": {
+        "subscriptionId": "b062b3b6-1b46-4278-be54-a0d1536b495b",
+        "traceId": "5b5c0383-79ac-4a58-a70a-a6a9e197c994"
+      }
+    },
+    "notification_worker": {
+      "status": "pending",
+      "startTime": null,
+      "endTime": null,
+      "data": {
+        "subscriptionId": "b062b3b6-1b46-4278-be54-a0d1536b495b",
+        "traceId": "5b5c0383-79ac-4a58-a70a-a6a9e197c994",
+        "status": 200,
+        "uptime": 1187.840504645,
+        "metrics": {
+          "messages_processed": 0,
+          "successful_messages": 0,
+          "validation_errors": 0,
+          "processing_errors": 0,
+          "db_unavailable_errors": 0,
+          "memory_usage": 100.07421875
+        },
+        "count": 0
+      }
+    },
+    "notification_delivery": {
+      "status": "in_progress",
+      "startTime": "2025-04-05T18:37:27.606Z",
+      "endTime": null,
+      "data": {
+        "subscriptionId": "b062b3b6-1b46-4278-be54-a0d1536b495b",
+        "maxWaitTime": 60000,
+        "attempt": 3,
+        "found": 0,
+        "total": 0,
+        "attempts": 3
+      }
+    }
+  },
+  "metrics": {
+    "totalDuration": 28.536,
+    "stagesDuration": {
+      "authentication": 0.002,
+      "subscription_creation": 0.188,
+      "subscription_processing": 10.151,
+      "subscription_worker": 10.003,
+      "boe_parser": 10.003
+    },
+    "messageCount": 0
+  },
+  "healthChecks": {
+    "timestamp": "2025-04-05T18:37:16.244Z",
+    "services": {
+      "backend": {
+        "status": "healthy",
+        "statusCode": 200,
+        "data": {
+          "status": "healthy",
+          "timestamp": "2025-04-05T18:37:16.519Z",
+          "uptime": 1134.07875242,
+          "version": {
+            "package": "1.0.0",
+            "buildTimestamp": "$(date",
+            "commitSha": "unknown",
+            "environment": "production"
+          },
+          "memory": {
+            "rss": 116776960,
+            "heapTotal": 45395968,
+            "heapUsed": 43039784,
+            "external": 3741453,
+            "arrayBuffers": 178530
+          },
+          "services": {
+            "database": "connected"
+          }
+        }
+      },
+      "auth": {
+        "status": "healthy",
+        "statusCode": 200,
+        "data": {
+          "status": "ok"
+        }
+      },
+      "subscriptionWorker": {
+        "status": "error",
+        "error": "Request failed with status code 404",
+        "isAxiosError": true,
+        "errorCode": "ERR_BAD_REQUEST"
+      },
+      "notificationWorker": {
+        "status": "healthy",
+        "statusCode": 200,
+        "data": {
+          "status": "OK",
+          "service": "notification-worker",
+          "timestamp": "2025-04-05T18:37:17.173Z",
+          "uptime": 1171.433849378,
+          "memory": {
+            "rss": "100 MB",
+            "heapTotal": "28 MB",
+            "heapUsed": "26 MB"
+          },
+          "database": {
+            "connected": true
+          }
+        }
+      }
+    }
+  }
+}

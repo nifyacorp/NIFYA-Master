@@ -1,0 +1,14 @@
+{
+  "status": "success",
+  "data": {
+    "subscription": {
+      "id": "4c5eeabd-fac8-4b75-b825-f23987baf12d",
+      "name": "Test BOE Subscription 2025-04-04T21:54:13.933Z",
+      "type": "boe",
+      "description": "Test subscription for E2E journey testing",
+      "prompts": [],
+      "frequency": "daily",
+      "active": true
+    }
+  }
+}
