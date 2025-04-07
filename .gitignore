@@ -37,6 +37,10 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 
+# Specific log files to ignore
+logs_*.txt
+**/logs_*.txt
+
 # Runtime data
 pids/
 *.pid
