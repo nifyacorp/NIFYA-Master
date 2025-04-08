@@ -46,14 +46,31 @@ Collected on: $(Get-Date)
 
 "@
     
-    $buildLogsCmd = "gcloud builds list --filter=""source.repoSource.repoName=$service"" --limit=1 --format=""value(id)"""
+    # Get the most recent build ID for the service using a more specific filter
+    $buildLogsCmd = "gcloud builds list --filter=""tags='$service'"" --limit=1 --format=""value(id)"""
     $buildId = Invoke-Expression $buildLogsCmd
     
+    if (-not $buildId) {
+        # Try alternative filter if tag-based search fails
+        $buildLogsCmd = "gcloud builds list --filter=""substitutions.REPO_NAME='$service'"" --limit=1 --format=""value(id)"""
+        $buildId = Invoke-Expression $buildLogsCmd
+    }
+    
     if ($buildId) {
-        $buildLogsDetailCmd = "gcloud builds log $buildId"
+        Write-Host "    Found build ID: $buildId"
+        $buildLogsDetailCmd = "gcloud builds log $buildId --format=""value(status,logUrl,steps.args,steps.status)"""
         $buildLogs = Invoke-Expression $buildLogsDetailCmd
         if ($buildLogs) {
+            Add-Content -Path $outputPath -Value "Build ID: $buildId"
             Add-Content -Path $outputPath -Value $buildLogs
+            
+            # Get detailed step logs
+            Write-Host "    Fetching detailed build steps..."
+            $detailedLogs = Invoke-Expression "gcloud builds log $buildId"
+            if ($detailedLogs) {
+                Add-Content -Path $outputPath -Value "`nDetailed Build Steps:`n"
+                Add-Content -Path $outputPath -Value $detailedLogs
+            }
         } else {
             Add-Content -Path $outputPath -Value "No build logs found for build ID: $buildId"
         }
