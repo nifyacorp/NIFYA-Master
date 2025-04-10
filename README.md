@@ -319,3 +319,35 @@ Collecting logs started at 08/04/2025 0:10:15
 ================ LOGS FOR main_page - COMPLETED ================
 ...
 ```
+
+## Database Schema
+
+The NIFYA platform uses PostgreSQL with a clean, consistent schema. The core tables are:
+
+### Core Tables
+
+| Table | Description |
+|-------|-------------|
+| `users` | Stores user accounts and profile information |
+| `subscription_types` | Defines available subscription types (BOE, DOGA, real-estate, etc.) |
+| `subscriptions` | User subscriptions for different data sources |
+| `subscription_processing` | Tracks processing status of subscriptions |
+| `notifications` | Notifications for users based on subscription matches |
+| `user_email_preferences` | User preferences for email notifications |
+
+### Schema Management
+
+The database schema is managed through a consolidated single-schema approach:
+
+1. Schema version tracking via the `schema_version` table
+2. Consolidated schema file in `backend/consolidated-schema.sql` - the single source of truth
+3. Automatic schema initialization on application startup
+
+### Database Initialization
+
+When the backend service starts, it:
+1. Checks database connection
+2. Loads and applies the consolidated schema
+3. Ensures default records exist (subscription types, etc.)
+
+See [Backend Documentation](./backend/README.md) for detailed database implementation information.
