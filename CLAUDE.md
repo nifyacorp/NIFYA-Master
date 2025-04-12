@@ -11,31 +11,28 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 - **Services**: `npm start` (run service), `npm run lint` (lint code), `npm run format` (format code)
 - **Testing**: `npm test` (run all tests), `npm test -- --testNamePattern="test name"` (single test), `vitest` (notification worker)
 
+## Code Style Guidelines
+- **Architecture**: Domain-driven with feature-based organization
+- **TypeScript**: Strict mode, explicit type annotations, no `any` types
+- **JavaScript**: ES modules, async/await for asynchronous code
+- **Imports**: Sort external→internal, group by functionality (dependencies, internal modules, UI components)
+- **Naming**: PascalCase (components/classes), camelCase (functions/variables/hooks), UPPER_CASE (constants)
+- **Components**: Feature-based organization, shared UI components in `/ui` directory
+- **State**: Context + custom hooks, React Query for API data
+- **Error Handling**: ErrorBoundary components, consistent API error handling, Zod for validation
+- **Formatting**: 2-space indentation, max 80-100 chars per line
+- **Styling**: TailwindCSS with utility-first approach, shadcn/ui component patterns
+
 ## Authentication Headers
-- **CRITICAL**: Read the [Authentication Headers Guide](AUTH-HEADER-GUIDE.md) for proper token format
 - **Format**: Always use `Bearer {token}` format (with space after "Bearer") for Authorization header
 - **User ID**: Include `x-user-id` header with user's ID in all authenticated requests
 - **Error Check**: `MISSING_HEADERS` (401) error indicates incorrect Authorization header format
-- **Utilities**: Use `verifyAuthHeaders()` from `auth-recovery.ts` before making API requests
-
-## Code Style Guidelines
-- **Architecture**: Domain-driven with core/infrastructure/interfaces layers
-- **TypeScript**: Strict mode, proper type annotations, no `any` types
-- **JavaScript**: ES modules, async/await for asynchronous code
-- **Imports**: Sort external->internal, group by functionality
-- **Naming**: PascalCase (classes), camelCase (functions/variables), UPPER_CASE (constants)
-- **Error Handling**: AppError with standardized codes, Zod for validation
-- **Formatting**: 2-space indentation, max 80-100 chars per line
-- **API**: Standard response structure with status and data
-- **Database**: Parameterized queries, respect Row-Level Security
-- **Logging**: Include context with requestId, path, and method
-- **WebSockets**: Never use WebSocket connections in this project
+- **Utilities**: Use `useAuth()` hook for auth state and methods
 
 ## CI/CD
 - When changes are synced, cloud builds start automatically
 - Each subservice has its own build/deployment pipeline
 - Always let builds complete before testing again
-- Use the same testing script for consistent results
 
 ## Services/URLs
 | Service | URL |
@@ -43,8 +40,8 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 | Frontend | https://clever-kelpie-60c3a6.netlify.app |
 | Authentication | https://authentication-service-415554190254.us-central1.run.app |
 | Backend | https://backend-415554190254.us-central1.run.app |
-| Others | See deployment documentation |
 
 ## Security
-- IF YOU FIND ANY TRACE OF MOCKUP DATA REMOVE IT ASAP
 - NEVER USE MOCKUP DATA, IF YOU FIND MOCKUP DATA OR TRACES OF MOCKUP DATA REMOVE THE CODE AND THE DATA ASAP
+- All API requests must include proper authentication headers
+- Sensitive data should never be committed to the repository
