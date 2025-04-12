@@ -351,3 +351,7 @@ When the backend service starts, it:
 3. Ensures default records exist (subscription types, etc.)
 
 See [Backend Documentation](./backend/README.md) for detailed database implementation information.
+
+## Recent Updates
+
+- **User Settings Implementation**: Added structured storage of user preferences using a JSONB metadata field. See the [detailed documentation](backend/docs/user-settings.md).
