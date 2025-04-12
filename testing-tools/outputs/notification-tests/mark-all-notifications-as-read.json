@@ -1,9 +1,0 @@
-{
-  "success": true,
-  "status": 200,
-  "data": {
-    "message": "All notifications marked as read",
-    "updated": 0
-  },
-  "url": "https://backend-415554190254.us-central1.run.app/api/v1/notifications/read-all"
-}

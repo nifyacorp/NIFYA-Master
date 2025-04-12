@@ -1,9 +1,0 @@
-{
-  "success": true,
-  "status": 202,
-  "data": {
-    "status": "success",
-    "message": "Subscription processing request accepted",
-    "subscription_id": "5287efcd-9ff1-455c-8150-b6b63ed644aa"
-  }
-}

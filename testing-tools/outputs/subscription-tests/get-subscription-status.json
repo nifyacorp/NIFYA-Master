@@ -1,9 +1,0 @@
-{
-  "success": false,
-  "status": 500,
-  "data": {
-    "statusCode": 500,
-    "error": "Internal Server Error",
-    "message": "Cannot read properties of undefined (reading 'match')"
-  }
-}

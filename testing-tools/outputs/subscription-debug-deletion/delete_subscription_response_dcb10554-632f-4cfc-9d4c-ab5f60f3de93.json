@@ -1,8 +1,0 @@
-{
-  "status": "success",
-  "message": "Subscription deletion processed",
-  "details": {
-    "id": "dcb10554-632f-4cfc-9d4c-ab5f60f3de93",
-    "alreadyRemoved": true
-  }
-}

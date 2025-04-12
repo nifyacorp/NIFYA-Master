@@ -1,1 +1,0 @@
-{"status":"success","message":"Diagnostic filter information","data":{"originalQuery":{"type":"boe"},"parsedQuery":{"type":{"value":"boe","type":"string","asBoolean":false}},"headerInfo":{"contentType":"application/json"}}}

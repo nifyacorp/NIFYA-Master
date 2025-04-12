@@ -1,9 +1,0 @@
-{
-  "success": false,
-  "status": 404,
-  "data": {
-    "status": "error",
-    "code": "SUBSCRIPTION_NOT_FOUND",
-    "message": "Subscription not found"
-  }
-}

@@ -1,5 +1,0 @@
-{
-  "message": "Route GET:/api/notifications?subscriptionId=bbcde7bb-bc04-4a0b-8c47-01682a31cc15 not found",
-  "error": "Not Found",
-  "statusCode": 404
-}

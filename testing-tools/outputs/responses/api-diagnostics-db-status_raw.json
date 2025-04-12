@@ -1,1 +1,0 @@
-{"status":"success","database":{"connected":true,"server_time":"2025-04-03T12:56:24.877Z","tables_count":8,"response_times":{"basic_query_ms":2,"complex_query_ms":6,"transaction_ms":5}}}

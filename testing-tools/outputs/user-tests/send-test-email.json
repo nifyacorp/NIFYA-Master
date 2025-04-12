@@ -1,8 +1,0 @@
-{
-  "success": true,
-  "status": 200,
-  "data": {
-    "message": "Test email sent successfully",
-    "email": "test@example.com"
-  }
-}

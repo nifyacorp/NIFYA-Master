@@ -1,1 +1,0 @@
-{"status":"healthy","timestamp":"2025-04-03T10:32:25.306Z","uptime":313.096503609,"version":{"package":"1.0.0","buildTimestamp":"$(date","commitSha":"unknown","environment":"production"},"memory":{"rss":110034944,"heapTotal":41988096,"heapUsed":39294992,"external":3707412,"arrayBuffers":145521},"services":{"database":"connected"}}
