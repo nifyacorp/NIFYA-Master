@@ -2,7 +2,7 @@
 
 A comprehensive platform for intelligent notifications powered by AI. NIFYA provides personalized alerts for official bulletins (BOE, DOGA), real estate listings, and more through a microservices architecture.
 
-![NIFYA](https://ik.imagekit.io/appraisily/NYFIA/logo.png)
+![NIFYA](https://storage.googleapis.com/nifya-assets/WebPage/logo_Nifya.webp)
 
 ## 📚 Repository Overview
 
