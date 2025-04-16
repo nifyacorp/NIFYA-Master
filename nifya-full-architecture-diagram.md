@@ -11,7 +11,7 @@ This diagram illustrates the complete flow of the NIFYA platform, including the 
                      ┌─────────────────┐                           ┌─────────────────┐
                      │     Frontend    │                           │ Authentication  │
      ┌─────┐         │    (React/TS)   │◄────JWT Auth─────────────►│    Service      │
-     │     │         │                 │                           │                 │
+     │     │         │    frontend...  │                           │ authentication..│
      │User │◄──Email─┤                 │                           └────────┬────────┘
      │     │         └────────┬────────┘                                    │
      └─────┘                  │                                             │
@@ -21,7 +21,7 @@ This diagram illustrates the complete flow of the NIFYA platform, including the 
        │            ┌─────────────────┐                           ┌─────────────────┐
        │            │     Backend     │                           │                 │
        │            │    (Node.js)    │◄───────Store/Retrieve────►│    Database     │
-       │            │                 │                           │   (PostgreSQL)  │
+       │            │    backend...   │                           │   (PostgreSQL)  │
        │            └────────┬────────┘                           └─────────────────┘
        │                     │                                             ▲
        │                     │                                             │
@@ -35,7 +35,7 @@ This diagram illustrates the complete flow of the NIFYA platform, including the 
        │            ┌──────────────────┐                                   │
        │            │ Subscription     │                                   │
        │            │    Worker        │◄───────Store/Retrieve─────────────┘
-       │            │                  │                                   ▲
+       │            │ subscription-... │                                   ▲
        │            └────────┬─────────┘                                   │
        │                     │                                             │
        │                     ├───────────────────┐                         │
@@ -43,7 +43,7 @@ This diagram illustrates the complete flow of the NIFYA platform, including the 
        │                     ▼                   ▼                         │
        │            ┌──────────────────┐ ┌──────────────────┐             │
        │            │   BOE Parser     │ │   DOGA Parser    │             │
-       │            │                  │ │                  │             │
+       │            │   boe-parser...  │ │  doga-parser...  │             │
        │            └────────┬─────────┘ └────────┬─────────┘             │
        │                     │                    │                        │
        │                     └──────┬─────────────┘                        │
@@ -58,7 +58,8 @@ This diagram illustrates the complete flow of the NIFYA platform, including the 
        │            ┌──────────────────────────┐                           │
        │            │     Notification         │                           │
        │            │        Worker            │◄───Store/Retrieve─────────┘
-       │            └────────────┬─────────────┘                           ▲
+       │            │  notification-worker...  │                           ▲
+       │            └────────────┬─────────────┘                           │
        │                         │                                         │
        │                         ├───────────────────┐                     │
        │                         │                   │                     │
@@ -72,7 +73,7 @@ This diagram illustrates the complete flow of the NIFYA platform, including the 
        │                     │            ┌──────────────────┐              │
        │                     │            │ Email            │              │
        └─────────────────────┴───────────►│ Notification     │───Store/Retrieve─┘
-                                          │ Service          │
+                                          │ email-notification..│
                                           └──────────────────┘
 ```
 
@@ -238,17 +239,20 @@ This diagram illustrates the complete flow of the NIFYA platform, including the 
 - Form for creating subscriptions with templates
 - Dashboard for viewing notifications
 - Uses JWT tokens for authentication with backend
+- **Deployment URL**: https://clever-kelpie-60c3a6.netlify.app
 
 ### Authentication Service
 - Manages user registration and login
 - Issues JWT tokens
 - Handles password reset, Google OAuth
+- **Deployment URL**: https://authentication-service-415554190254.us-central1.run.app
 
 ### Backend (Node.js)
 - RESTful API for subscriptions and notifications
 - Stores subscriptions in database
 - Publishes subscription events to PubSub
 - Handles authentication
+- **Deployment URL**: https://backend-415554190254.us-central1.run.app
 
 ### Subscription Worker
 - Processes subscription creation/updates
@@ -256,28 +260,34 @@ This diagram illustrates the complete flow of the NIFYA platform, including the 
 - Routes to appropriate parser service based on type
 - Handles retry logic with exponential backoff
 - Publishes results to processor-results topic
+- **Deployment URL**: https://subscription-worker-415554190254.us-central1.run.app
 
 ### Parser Services (BOE, DOGA)
 - Analyze text queries against publication content
 - Use AI to find relevant matches
 - Return standardized results
 - Specialized for specific document sources
+- **BOE Parser URL**: https://boe-parser-415554190254.us-central1.run.app
+- **DOGA Parser URL**: https://doga-parser-415554190254.us-central1.run.app
 
 ### Notification Worker
 - Consumes processor results from PubSub
 - Creates notification records in database
 - Triggers email notifications (immediate/daily)
 - Sends realtime notifications via WebSockets
+- **Deployment URL**: https://notification-worker-415554190254.us-central1.run.app
 
 ### Email Notification Service
 - Formats and sends email notifications
 - Handles immediate alerts and daily digests
 - Respects user notification preferences
+- **Deployment URL**: https://email-notification-415554190254.us-central1.run.app
 
 ### Database (PostgreSQL)
 - Stores user accounts, subscriptions, and notifications
 - Uses Row-Level Security (RLS) for data isolation
 - Provides transaction support and data integrity
+- Hosted on Google Cloud SQL
 
 ## 4. Communication Formats
 
@@ -366,3 +376,13 @@ This diagram illustrates the complete flow of the NIFYA platform, including the 
 - Fallback patterns for service unavailability
 - Structured logging for traceability
 - Request/response validation at each step
+
+## 6. Deployment Information
+
+All microservices are deployed on Google Cloud Run in the us-central1 region with the following configuration:
+- Containerized services with automatic scaling
+- Google Cloud Secret Manager for sensitive configuration
+- Google Cloud Pub/Sub for asynchronous messaging
+- Google Cloud SQL for PostgreSQL database
+- Cloud Storage for static assets
+- Cloud Scheduler for periodic tasks
