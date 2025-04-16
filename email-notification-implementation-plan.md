@@ -1,211 +1,302 @@
-# Email Notification Implementation Plan
+# Email Notification Service Implementation Plan
 
-## Overview
+## Current Status
 
-This plan outlines the steps to implement a daily email notification digest feature for NIFYA users based on the existing email-notification submodule. The feature will allow users to receive a daily summary of all their notifications via email, enhancing the user experience by providing important updates even when users aren't actively using the application.
+The email notification service already has a robust foundation with:
+- Email sending capabilities via Gmail/OAuth
+- Database connectivity
+- Template rendering with Handlebars
+- PubSub integration for both immediate and daily notifications
+- Express server with health check and test endpoints
 
-## Current Components
+## Enhancement Requirements
 
-The email-notification submodule already provides:
+1. Daily email digests with notifications from the last 24 hours
+2. Proper database connectivity for retrieving user notifications
+3. Tracking of sent emails to avoid duplicates
 
-1. **Email sending infrastructure** with Gmail OAuth2 authentication
-2. **Template rendering** using Handlebars
-3. **PubSub integration** for receiving notification events
-4. **Daily digest aggregation** logic
-5. **Retry mechanisms** for handling transient failures
+## Implementation Plan
 
-## Implementation Steps
+### 1. Scheduled Daily Email Processing
 
-### Phase 1: Database Schema Updates and User Preferences (Week 1)
-
-1. **Update User Schema**:
-   - Add `email_notifications` flag (boolean) to user preferences
-   - Add `digest_time` preference (time of day to receive digests)
-
-```sql
-ALTER TABLE users ADD COLUMN email_notifications BOOLEAN DEFAULT FALSE;
-ALTER TABLE users ADD COLUMN notification_email VARCHAR(255);
-ALTER TABLE users ADD COLUMN digest_time TIME DEFAULT '08:00:00';
-```
-
-2. **Update Notifications Schema**:
-   - Add `email_sent` flag to track which notifications have been included in emails
-
-```sql
-ALTER TABLE notifications ADD COLUMN email_sent BOOLEAN DEFAULT FALSE;
-ALTER TABLE notifications ADD COLUMN email_sent_at TIMESTAMP;
-```
-
-3. **Create User Preference UI**:
-   - Add email notification toggle to user settings page
-   - Add field for notification email (may differ from account email)
-   - Add selector for preferred digest time
-
-### Phase 2: Backend Integration (Week 2)
-
-1. **Integrate Email Notification Service**:
-   - Deploy the email-notification service as a standalone microservice
-   - Configure environment variables and secrets
-
-2. **Set Up PubSub Topics and Subscriptions**:
-   - Create `email-notifications-daily` topic
-   - Create subscription for the email service to listen to this topic
-
-3. **Modify Notification Service**:
-   - Update `notification-service.js` to publish to the email notification topic
-   - Add logic to check user preferences before publishing
+#### 1.1 Create a Scheduled Job
+- Implement a cron-like scheduler using `node-cron` to trigger daily digest processing at a specific time (e.g., 9 AM)
+- Modify `src/index.js` to initialize this scheduler when the service starts
 
 ```javascript
-// In notification-service.js
-async function createNotification({ userId, type, content, transactionId }) {
-  // Existing notification creation code...
-  
-  // Check if user has email notifications enabled
-  const user = await getUserPreferences(userId);
-  if (user.email_notifications && user.notification_email) {
-    // Publish to email notification topic
-    await publishToTopic('email-notifications-daily', {
-      userId,
-      email: user.notification_email,
-      notification: {
-        id: notificationId,
-        type,
-        title: extractNotificationTitle(content, type, userId),
-        content,
-        timestamp: new Date().toISOString()
-      }
+// In src/index.js
+import cron from 'node-cron';
+import { processDailyDigests } from './services/notifications.js';
+
+// Schedule daily digest processing at 9 AM
+cron.schedule('0 9 * * *', async () => {
+  logger.info('Starting scheduled daily digest processing');
+  try {
+    await processDailyDigests();
+    logger.info('Scheduled daily digest processing completed successfully');
+  } catch (error) {
+    logger.error('Scheduled daily digest processing failed', {
+      error: error.message,
+      stack: error.stack
     });
+  }
+});
+```
+
+#### 1.2 Email Sending Strategy Options
+
+We have two main options for sending emails:
+
+##### Option 1: Continue using Gmail API (Current Implementation)
+
+**Pros:**
+- Already implemented and working
+- No additional cost
+- Direct control over sending process
+- Current template system with Handlebars is sufficient
+
+**Cons:**
+- Gmail has sending limits (2,000 emails/day for regular accounts)
+- Potentially lower deliverability rates
+- Less analytics and tracking capabilities
+
+##### Option 2: Implement Email Service Provider (e.g., SendGrid, Mailchimp)
+
+**Pros:**
+- Higher sending limits
+- Better deliverability rates
+- Advanced analytics and tracking
+- Pre-built templates and template editors
+
+**Cons:**
+- Additional cost based on volume
+- Integration effort required
+- New dependency to manage
+
+**Recommendation:** 
+For the current scale, continue with the Gmail API approach as it's already implemented and working. The existing Handlebars template system provides sufficient flexibility. As the service scales beyond 1,000 users, consider migrating to a dedicated email service provider.
+
+Implementation for continuing with Gmail:
+```javascript
+// No changes needed to the sending mechanism
+// Continue using the existing email.js service
+```
+
+#### 1.3 Scheduling Strategy Options
+
+We have two main options for scheduling the daily digest process:
+
+##### Option 1: In-Service Scheduling (node-cron)
+
+**Pros:**
+- Simple implementation
+- No additional services to deploy and maintain
+- Contained within the email service
+
+**Cons:**
+- If the service restarts, the scheduler also restarts
+- Less reliable for critical scheduling
+- Not distributed (runs on a single instance)
+
+##### Option 2: Dedicated Scheduling Service (Cloud Scheduler + PubSub)
+
+**Pros:**
+- More reliable and durable
+- Decoupled from the email service
+- Better for production environments
+- Centralized scheduling management
+
+**Cons:**
+- Requires additional configuration
+- Slightly more complex architecture
+
+**Recommendation:**
+For production, implement Option 2 with Cloud Scheduler triggering a PubSub topic that the email service subscribes to. This provides better reliability and separation of concerns.
+
+Implementation for Cloud Scheduler approach:
+```javascript
+// In src/services/pubsub.js, add a new subscription handler
+
+export async function startScheduledDigestSubscriber() {
+  const subscription = pubsub.subscription('scheduled-daily-digest-sub');
+
+  subscription.on('message', async (message) => {
+    try {
+      logger.info('Received scheduled digest trigger', { messageId: message.id });
+      
+      await processDailyDigests();
+      
+      message.ack();
+      logger.info('Successfully processed scheduled digest', { messageId: message.id });
+    } catch (error) {
+      logger.error('Failed to process scheduled digest', { 
+        messageId: message.id, 
+        error: error.message 
+      });
+      message.nack();
+    }
+  });
+
+  subscription.on('error', (error) => {
+    logger.error('Scheduled digest subscription error', { error: error.message });
+  });
+
+  logger.info('Started scheduled digest subscriber');
+}
+
+// In src/index.js
+await startScheduledDigestSubscriber();
+```
+
+Cloud Scheduler configuration:
+```
+Name: daily-digest-trigger
+Frequency: 0 9 * * * (9 AM daily)
+Target type: Pub/Sub
+Topic: projects/PROJECT_ID/topics/scheduled-daily-digest
+Message: {"action":"process_daily_digest"}
+```
+
+### 2. Database Query Optimization
+
+#### 2.1 Improve Notification Retrieval
+- Enhance the `getUsersWithNewNotifications` and `getUserNotifications` functions to efficiently retrieve notifications from the last 24 hours
+- Add parameters for controlling the time window
+
+```javascript
+// Add time window parameter for more flexible queries
+export async function getUserNotifications(userId, options = {}) {
+  const { hoursBack = 24, markAsRead = true } = options;
+  
+  try {
+    const query = `
+      SELECT
+        n.id,
+        n.title,
+        n.content,
+        n.source_url,
+        n.metadata,
+        n.created_at,
+        s.name as subscription_name,
+        s.type_id
+      FROM notifications n
+      JOIN subscriptions s ON s.id = n.subscription_id
+      WHERE
+        n.user_id = $1
+        AND n.created_at > NOW() - INTERVAL '${hoursBack} hours'
+        AND NOT n.email_sent
+      ORDER BY n.created_at DESC;
+    `;
+
+    const result = await pool.query(query, [userId]);
+    logger.info(`Found ${result.rows.length} notifications for user ${userId} in last ${hoursBack} hours`);
+    return result.rows;
+  } catch (error) {
+    logger.error('Error getting user notifications', {
+      error: error.message,
+      userId,
+      stack: error.stack
+    });
+    throw error;
   }
 }
 ```
 
-4. **Create Scheduled Job**:
-   - Set up Cloud Scheduler to trigger daily digest processing
-   - Configure the job to run at multiple times to handle different user preferences
+#### 2.2 Track Email Sending Status
+- Enhance the `markNotificationsAsSent` function to include a timestamp
+- Ensure notifications are only sent once by checking the `email_sent` flag
 
-### Phase 3: Testing and Monitoring (Week 3)
+### 3. Email Content and Template Enhancement
 
-1. **Integration Testing**:
-   - Test end-to-end flow from notification creation to email delivery
-   - Verify that notifications are properly grouped by subscription
-   - Test with various notification types and content
+#### 3.1 Improve the Daily Email Template
+- Update the daily digest template to better group notifications by subscription
+- Add more contextual information about notification sources
+- Enhance readability and user experience
 
-2. **Performance Testing**:
-   - Test with large numbers of notifications
-   - Verify handling of concurrent email sending
-   - Test with various user time preferences
+#### 3.2 Add User Preferences Management
+- Allow users to configure their notification preferences
+- Respect user time zone preferences for sending daily digests
+- Implement frequency settings (daily/weekly/immediate)
 
-3. **Set Up Monitoring**:
-   - Create dashboards for email delivery success rates
-   - Set up alerts for delivery failures
-   - Monitor PubSub message processing
+### 4. Error Handling and Retry Mechanism
 
-### Phase 4: Frontend Implementation (Week 4)
+#### 4.1 Enhance Resilience
+- Implement proper retry mechanisms for failed database queries
+- Add circuit breaker pattern for external services
+- Improve error logging with detailed context
 
-1. **User Preference UI Implementation**:
-   - Build UI components for email notification settings
-   - Implement API endpoints for saving preferences
-   - Add validation for email addresses
+#### 4.2 Transaction Support
+- Implement database transactions to ensure consistency
+- Add atomic operations for marking notifications as sent
 
-2. **Email Preview Feature**:
-   - Add option to preview what the daily digest will look like
-   - Create API endpoint that generates a sample digest
+### 5. Monitoring and Operations
 
-3. **User Documentation**:
-   - Update help documentation to explain email notification features
-   - Create FAQ section for email notifications
+#### 5.1 Add Metrics Collection
+- Track successful and failed email sends
+- Monitor database performance
+- Set up alerts for service degradation
 
-## Technical Architecture
+#### 5.2 Dashboard and Reporting
+- Create admin dashboard for monitoring email service status
+- Generate reports on email delivery rates and user engagement
 
-```
-                                    ┌─────────────────┐
-                                    │  Cloud Scheduler │
-                                    └────────┬────────┘
-                                             │
-                 ┌───────────────┐  Triggers │  ┌────────────────────┐
-                 │ Notification  │           │  │ Email Notification  │
-                 │   Service     │           └─▶│      Service        │
-                 └───────┬───────┘              └──────────┬─────────┘
-                         │                                 │
-                         │                                 │
-                         ▼                                 ▼
-                ┌─────────────────┐             ┌───────────────────┐
-                │   PubSub Topic  │◀────────────│  Daily Digest     │
-                │                 │             │   Processing      │
-                └─────────────────┘             └───────┬───────────┘
-                                                        │
-                                                        ▼
-                                               ┌─────────────────────┐
-                                               │   Gmail OAuth API   │
-                                               └─────────────────────┘
-```
+## Implementation Priority
 
-## Database Modifications
+1. **High Priority**: Daily email scheduling, database query optimization
+2. **Medium Priority**: Error handling improvements, email template enhancements
+3. **Low Priority**: Metrics collection, admin dashboard
 
-```
-User Preferences:
-+-------------------+-------------+------+-----+---------+-------+
-| Field             | Type        | Null | Key | Default | Extra |
-+-------------------+-------------+------+-----+---------+-------+
-| id                | varchar(36) | NO   | PRI | NULL    |       |
-| email_notifications | boolean   | NO   |     | false   |       |
-| notification_email | varchar(255)| YES  |     | NULL    |       |
-| digest_time       | time        | NO   |     | 08:00:00|       |
-+-------------------+-------------+------+-----+---------+-------+
+## Dependencies
 
-Notifications:
-+-------------------+-------------+------+-----+---------+-------+
-| Field             | Type        | Null | Key | Default | Extra |
-+-------------------+-------------+------+-----+---------+-------+
-| id                | varchar(36) | NO   | PRI | NULL    |       |
-| email_sent        | boolean     | NO   |     | false   |       |
-| email_sent_at     | timestamp   | YES  |     | NULL    |       |
-+-------------------+-------------+------+-----+---------+-------+
-```
+- Node.js runtime environment
+- PostgreSQL database
+- Google Cloud PubSub
+- Gmail API for sending emails (or email service provider if chosen)
+- Secret Manager for credentials
+- Cloud Scheduler (if using dedicated scheduling)
 
-## Environment Variables
+## Timeline
 
-```
-# Email Service Configuration
-EMAIL_SERVICE_URL=https://email-service-url
-PUBSUB_EMAIL_TOPIC=email-notifications-daily
+- Week 1: Implement scheduled job processing and database query optimization
+- Week 2: Enhance error handling and email templates
+- Week 3: Add monitoring and metrics collection
 
-# Gmail OAuth2 Configuration
-GMAIL_USER=nifya-notifications@gmail.com
-GMAIL_CLIENT_ID=your-client-id
-GMAIL_CLIENT_SECRET=your-client-secret
-GMAIL_REFRESH_TOKEN=your-refresh-token
+## Success Criteria
 
-# Service Configuration
-MAX_EMAILS_PER_BATCH=50
-EMAIL_RETRY_ATTEMPTS=3
-```
+- Daily emails are sent reliably to all users with notifications
+- No duplicate notifications are sent
+- System gracefully handles errors and retries when needed
+- Performance is maintained with growing user base
 
-## Risks and Mitigations
+## Limitations and Considerations
 
-| Risk | Impact | Likelihood | Mitigation |
-|------|--------|------------|------------|
-| Email deliverability issues | High | Medium | Implement robust retry mechanisms; monitor delivery rates |
-| High notification volume overwhelms service | High | Low | Implement rate limiting and batching; scale service horizontally |
-| User spam complaints | Medium | Medium | Clear unsubscribe options; respect user preferences |
-| Data privacy concerns | High | Low | Ensure compliance with data protection regulations; limit sensitive data in emails |
-| Email template rendering issues | Medium | Low | Thorough testing with various notification types; fallback templates |
+### Gmail API Limitations
+- Sending limit of 2,000 emails per day for standard Gmail accounts
+- Email size limited to 25MB
+- Rate limits for API requests
+- Potential deliverability issues compared to dedicated email services
 
-## Success Metrics
+### Scheduling Limitations
+- In-service scheduling (node-cron) is less reliable for production use
+- Service restarts will reset the scheduler
+- Single-instance scheduling doesn't scale horizontally
 
-- **Delivery Rate**: >99% successful email deliveries
-- **Open Rate**: >30% open rate for notification emails
-- **User Adoption**: >40% of active users enabling email notifications
-- **User Retention**: Increased engagement from users receiving email digests
+### Scalability Considerations
+- Current implementation suitable for up to ~1,000 users
+- For higher scale, consider:
+  - Migrating to a dedicated email service provider
+  - Implementing a distributed task queue (e.g., Cloud Tasks)
+  - Sharding users across multiple sending instances
+  - Implementing more sophisticated rate limiting
 
-## Future Enhancements
+### Monitoring Needs
+- Track email bounces and delivery failures
+- Monitor template rendering performance
+- Track database query performance
+- Alert on abnormal sending patterns
 
-1. **Notification Preferences by Type**: Allow users to choose which notification types they receive via email
-2. **Immediate Critical Notifications**: Option for immediate emails for high-priority notifications
-3. **Custom Digest Frequency**: Allow users to choose daily, weekly, or custom frequencies
-4. **Rich Email Templates**: Enhanced email templates with branding and interactive elements
-5. **Mobile-Responsive Design**: Optimize email templates for mobile viewing
-
-## Conclusion
-
-The implementation of email notification digests will enhance user engagement by providing timely updates without requiring users to actively check the application. The existing email-notification submodule provides a solid foundation, requiring primarily integration work rather than building new functionality from scratch. This feature will be particularly valuable for retaining users who don't log in frequently but still want to stay informed about important updates.
+### Disaster Recovery
+- Implement retry mechanism for failed sends
+- Store email send status in database for recovery
+- Consider implementing a dead-letter queue for failed notifications
+- Regular backups of email templates and configuration
