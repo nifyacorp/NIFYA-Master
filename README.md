@@ -72,6 +72,7 @@ The repository contains the following submodules, each with its own specific fun
 | **Subscription Worker** | Manages subscription processing | [README.md](/subscription-worker/README.md) | Processes subscriptions and sends results to notification services |
 | **BOE Parser** | AI-powered analysis of Spanish Official Bulletin (BOE) | [README.md](/boe-parser/README.md)<br>[CLAUDE.md](/boe-parser/CLAUDE.md) | Analyzes BOE content using AI and extracts relevant information |
 | **DOGA Parser** | AI-powered analysis of Galician Official Bulletin (DOGA) | [README.md](/doga-parser/README.md)<br>[CLAUDE.md](/doga-parser/CLAUDE.md) | Analyzes DOGA content using AI and extracts relevant information |
+| **EU Parser** | AI-powered analysis of European Union legislation and documents | [README.md](/eu-parser/README.md) | Analyzes EU legislation and documents using AI and extracts relevant information |
 | **Notification Worker** | Processes notification messages and stores them in the database | [README.md](/notification-worker/README.md)<br>[CLAUDE.md](/notification-worker/CLAUDE.md) | Creates notifications from processing results |
 | **Email Notification** | Sends email summaries of notifications to users | [README.md](/email-notification/README.md)<br>[CLAUDE.md](/email-notification/CLAUDE.md) | Sends email notifications based on user preferences |
 
@@ -194,6 +195,14 @@ The following services communicate via REST APIs:
 - **Key Endpoints**:
   - `POST /analyze-text`: Submit queries for content analysis
 
+#### Subscription Worker → Content Parsers (BOE/DOGA/EU)
+- **Protocol**: HTTP/REST
+- **Authentication**: API Key in `Authorization` header
+- **Request Format**: JSON with prompts and metadata
+- **Key Endpoints**:
+  - `POST /analyze-text`: Submit queries for content analysis
+  - `POST /analyze-eu-document`: Submit EU document IDs/URLs for analysis (EU Parser only)
+
 ### PubSub Messaging
 
 #### 1. Subscription Worker → Notification Worker
@@ -289,6 +298,8 @@ This script automates the collection of all runtime logs from multiple Google Cl
     -   `subscription-worker`
     -   `notification-worker`
     -   `boe-parser`
+    -   `doga-parser`
+    -   `eu-parser`
 -   **Consolidates Logs:**
     -   Defines a single output file: `CollectLogs\consolidated_runtime_logs.log`.
     -   **Overwrites** the existing log file every time the script runs to ensure you always have the latest logs.
