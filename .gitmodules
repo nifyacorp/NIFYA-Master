@@ -25,3 +25,6 @@
 [submodule "subscription-worker"]
 	path = subscription-worker
 	url = https://github.com/nifyacorp/subscription-worker.git 
+[submodule "eu-parser"]
+	path = eu-parser
+	url = https://github.com/nifyacorp/eu-parser.git
