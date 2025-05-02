@@ -38,6 +38,31 @@ The following table lists the core microservices within the NIFYA ecosystem:
 
 *(Note: Technology stack is assumed and may vary)*
 
+## Development Best Practices
+
+### Avoiding Hardcoded Fallbacks
+
+IMPORTANT: Never use hardcoded fallback values in your code, especially for data that should be retrieved from the database. Using hardcoded values:
+
+- Masks real issues (like database connectivity problems)
+- Prevents new data from being visible to users
+- Creates inconsistencies between what's in the database and what users see
+- Makes testing more difficult since real data flows aren't being exercised
+
+Instead:
+- Always fetch data from its source (database, API, etc.)
+- Properly handle and display errors when data cannot be retrieved
+- Use empty arrays or appropriate data structures when no data is available
+- Write clear error messages that help diagnose the real problem
+
+### Error Handling
+
+Implement proper error handling at all layers of the application:
+- Capture detailed error information for logging
+- Return appropriate HTTP status codes
+- Provide user-friendly error messages in the UI
+- Log all errors with sufficient context for debugging
+
 ## Inter-Service Communication Flow
 
 1.  **User Interaction:** Users interact with the `Frontend`.
