@@ -37,29 +37,24 @@ if (-not (Test-Path -Path $logDir)) {
 $serviceLogScript = {
     param($service, $logUuid, $logDir, $serviceIndex, $totalServices)
     
-    Write-Host "[$serviceIndex/$totalServices] Starting collection for $service service..."
+    Write-Host ("[$serviceIndex/$totalServices] Starting collection for " + $service + " service...")
     
     # Define output file path for this service
     $outputPath = "$logDir\$service.log"
     
     # Create the file with headers
-    Set-Content -Path $outputPath -Value @"
-==============================================================
-NIFYA Logs for $service - Version ID: $logUuid
-Collected on: $(Get-Date)
-==============================================================
-
-"@
+    $header = "==============================================================" + [Environment]::NewLine
+    $header += "NIFYA Logs for $service - Version ID: $logUuid" + [Environment]::NewLine
+    $header += "Collected on: $(Get-Date)" + [Environment]::NewLine
+    $header += "==============================================================" + [Environment]::NewLine + [Environment]::NewLine
+    Set-Content -Path $outputPath -Value $header
     
     # Collect build logs first
-    Write-Host "[$serviceIndex/$totalServices] Fetching build logs for $service..."
-    $buildLogsHeader = @"
-==============================================================
-                      BUILD LOGS
-==============================================================
-
-"@
-    Add-Content -Path $outputPath -Value $buildLogsHeader
+    Write-Host ("[$serviceIndex/$totalServices] Fetching build logs for " + $service + "...")
+    $buildHeader = "==============================================================" + [Environment]::NewLine
+    $buildHeader += "                      BUILD LOGS" + [Environment]::NewLine
+    $buildHeader += "==============================================================" + [Environment]::NewLine + [Environment]::NewLine
+    Add-Content -Path $outputPath -Value $buildHeader
     
     # Get the most recent build ID for the service using a more specific filter
     $buildLogsCmd = "gcloud builds list --filter=""tags='$service'"" --limit=1 --format=""value(id)"""
@@ -72,7 +67,7 @@ Collected on: $(Get-Date)
     }
     
     if ($buildId) {
-        Write-Host "[$serviceIndex/$totalServices] Found build ID for $service: $buildId"
+        Write-Host ("[$serviceIndex/$totalServices] Found build ID for " + $service + ": " + $buildId)
         $buildLogsDetailCmd = "gcloud builds log $buildId --format=""value(status,logUrl,steps.args,steps.status)"""
         $buildLogs = Invoke-Expression $buildLogsDetailCmd
         if ($buildLogs) {
@@ -80,7 +75,7 @@ Collected on: $(Get-Date)
             Add-Content -Path $outputPath -Value $buildLogs
             
             # Get detailed step logs
-            Write-Host "[$serviceIndex/$totalServices] Fetching detailed build steps for $service..."
+            Write-Host ("[$serviceIndex/$totalServices] Fetching detailed build steps for " + $service + "...")
             $detailedLogs = Invoke-Expression "gcloud builds log $buildId"
             if ($detailedLogs) {
                 Add-Content -Path $outputPath -Value "`nDetailed Build Steps:`n"
@@ -94,16 +89,13 @@ Collected on: $(Get-Date)
     }
     
     # Add separator between build and runtime logs
-    Add-Content -Path $outputPath -Value @"
-
-==============================================================
-                     RUNTIME LOGS
-==============================================================
-
-"@
+    $runtimeHeader = [Environment]::NewLine + "==============================================================" + [Environment]::NewLine
+    $runtimeHeader += "                     RUNTIME LOGS" + [Environment]::NewLine
+    $runtimeHeader += "==============================================================" + [Environment]::NewLine + [Environment]::NewLine
+    Add-Content -Path $outputPath -Value $runtimeHeader
     
     # Collect runtime logs
-    Write-Host "[$serviceIndex/$totalServices] Fetching runtime logs for $service..."
+    Write-Host ("[$serviceIndex/$totalServices] Fetching runtime logs for " + $service + "...")
     # Set log limit based on service
     $logLimit = if ($service -eq "backend") { 1000 } else { 200 }
     $runtimeLogsCmd = "gcloud logging read ""resource.type=cloud_run_revision AND resource.labels.service_name=$service"" --limit=$logLimit --format=""value(timestamp,textPayload)"""
@@ -116,18 +108,16 @@ Collected on: $(Get-Date)
     }
     
     # Add footer
-    Add-Content -Path $outputPath -Value @"
-
-==============================================================
-End of log collection for $service
-Collection completed at: $(Get-Date)
-==============================================================
-"@
+    $footer = [Environment]::NewLine + "==============================================================" + [Environment]::NewLine
+    $footer += "End of log collection for $service" + [Environment]::NewLine
+    $footer += "Collection completed at: $(Get-Date)" + [Environment]::NewLine
+    $footer += "==============================================================" + [Environment]::NewLine
+    Add-Content -Path $outputPath -Value $footer
 
     # Also save to standard location for backward compatibility
     Copy-Item -Path $outputPath -Destination "CollectLogs\$service.log" -Force
     
-    Write-Host "[$serviceIndex/$totalServices] Completed log collection for $service"
+    Write-Host ("[$serviceIndex/$totalServices] Completed log collection for " + $service)
     return "Completed: $service"
 }
 
