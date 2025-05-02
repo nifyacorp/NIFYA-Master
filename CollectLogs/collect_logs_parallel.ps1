@@ -9,10 +9,6 @@ Write-Host "Switching to Nifia Corporation account..."
 Write-Host "Setting GCP project..."
 & gcloud config set project delta-entity-447812-p2
 
-# Create a UUID for this log collection
-$logUuid = [guid]::NewGuid().ToString()
-Write-Host "Log UUID: $logUuid"
-
 # Define all services to collect logs from
 $services = @(
     "backend",
@@ -26,25 +22,24 @@ $services = @(
     "main-page"
 )
 
-# Create a directory for the current log collection if it doesn't exist
-$logDir = "CollectLogs\$logUuid"
-if (-not (Test-Path -Path $logDir)) {
-    New-Item -ItemType Directory -Path $logDir | Out-Null
-    Write-Host "Created log directory: $logDir"
+# Ensure CollectLogs directory exists
+if (-not (Test-Path -Path "CollectLogs")) {
+    New-Item -ItemType Directory -Path "CollectLogs" | Out-Null
+    Write-Host "Created CollectLogs directory"
 }
 
 # Define the script block that will run for each service
 $serviceLogScript = {
-    param($service, $logUuid, $logDir, $serviceIndex, $totalServices)
+    param($service, $serviceIndex, $totalServices)
     
     Write-Host ("[$serviceIndex/$totalServices] Starting collection for " + $service + " service...")
     
     # Define output file path for this service
-    $outputPath = "$logDir\$service.log"
+    $outputPath = "CollectLogs\$service.log"
     
     # Create the file with headers
     $header = "==============================================================" + [Environment]::NewLine
-    $header += "NIFYA Logs for $service - Version ID: $logUuid" + [Environment]::NewLine
+    $header += "NIFYA Logs for $service" + [Environment]::NewLine
     $header += "Collected on: $(Get-Date)" + [Environment]::NewLine
     $header += "==============================================================" + [Environment]::NewLine + [Environment]::NewLine
     Set-Content -Path $outputPath -Value $header
@@ -113,9 +108,6 @@ $serviceLogScript = {
     $footer += "Collection completed at: $(Get-Date)" + [Environment]::NewLine
     $footer += "==============================================================" + [Environment]::NewLine
     Add-Content -Path $outputPath -Value $footer
-
-    # Also save to standard location for backward compatibility
-    Copy-Item -Path $outputPath -Destination "CollectLogs\$service.log" -Force
     
     Write-Host ("[$serviceIndex/$totalServices] Completed log collection for " + $service)
     return "Completed: $service"
@@ -123,65 +115,32 @@ $serviceLogScript = {
 
 # Define maximum number of concurrent jobs
 $maxConcurrentJobs = 3
-Write-Host "Using parallel processing with maximum $maxConcurrentJobs concurrent jobs"
+Write-Host "Using parallel processing with maximum $maxConcurrentJobs concurrent jobs (controlled by PowerShell)"
 
-# Track jobs
+# Start all jobs immediately
 $jobs = @()
-$completedServices = 0
 $totalServices = $services.Count
 
-# Start initial batch of jobs
-$jobCount = [Math]::Min($maxConcurrentJobs, $services.Count)
-for ($i = 0; $i -lt $jobCount; $i++) {
+for ($i = 0; $i -lt $services.Count; $i++) {
     $service = $services[$i]
     $serviceIndex = $i + 1
     
     Write-Host "Starting job for service $service ($serviceIndex/$totalServices)"
-    $job = Start-Job -ScriptBlock $serviceLogScript -ArgumentList $service, $logUuid, $logDir, $serviceIndex, $totalServices
-    $jobs += @{
-        Index = $i
-        Service = $service
-        Job = $job
-    }
+    $job = Start-Job -ScriptBlock $serviceLogScript -ArgumentList $service, $serviceIndex, $totalServices
+    $jobs += $job
 }
 
-# Process services in a pipeline fashion
-$nextServiceIndex = $jobCount
-while ($completedServices -lt $totalServices) {
-    # Check for completed jobs
-    foreach ($jobInfo in @($jobs)) {
-        if ($jobInfo.Job.State -eq "Completed") {
-            # Get job results
-            $result = Receive-Job -Job $jobInfo.Job
-            Write-Host "Job completed for $($jobInfo.Service): $result"
-            
-            # Clean up job
-            Remove-Job -Job $jobInfo.Job
-            $jobs = $jobs | Where-Object { $_.Index -ne $jobInfo.Index }
-            
-            # Start a new job if there are more services
-            if ($nextServiceIndex -lt $services.Count) {
-                $service = $services[$nextServiceIndex]
-                $currentIndex = $nextServiceIndex + 1
-                
-                Write-Host "Starting job for service $service ($currentIndex/$totalServices)"
-                $job = Start-Job -ScriptBlock $serviceLogScript -ArgumentList $service, $logUuid, $logDir, $currentIndex, $totalServices
-                $jobs += @{
-                    Index = $nextServiceIndex
-                    Service = $service
-                    Job = $job
-                }
-                
-                $nextServiceIndex++
-            }
-            
-            $completedServices++
-        }
+# Wait for all jobs to complete
+if ($jobs.Count -gt 0) {
+    Write-Host "Waiting for all $($jobs.Count) jobs to complete..."
+    $jobs | Wait-Job | ForEach-Object {
+        $result = Receive-Job -Job $_
+        Write-Host "Job completed: $result"
+        Remove-Job -Job $_
     }
-    
-    # Short pause to avoid CPU thrashing
-    Start-Sleep -Milliseconds 500
+} else {
+    Write-Host "No jobs were started successfully."
 }
 
-Write-Host "Log collection complete with UUID: $logUuid"
-Write-Host "Logs saved to individual files in CollectLogs\ and archived in $logDir" 
+Write-Host "Log collection complete"
+Write-Host "Logs saved to individual files in CollectLogs\" 
