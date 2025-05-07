@@ -25,3 +25,6 @@
 [submodule "eu-parser"]
 	path = eu-parser
 	url = https://github.com/nifyacorp/eu-parser.git
+[submodule "Authentication-Service"]
+	path = Authentication-Service
+	url = https://github.com/nifyacorp/Authentication-Service.git
