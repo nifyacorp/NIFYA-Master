@@ -22,20 +22,25 @@ $services = @(
     "main-page"
 )
 
+# Define base directory for logs - using current script directory
+$scriptDir = $PSScriptRoot
+$baseLogDir = Join-Path -Path $scriptDir -ChildPath ".."
+$logDirPath = Join-Path -Path $baseLogDir -ChildPath "CollectLogs"
+
 # Ensure CollectLogs directory exists
-if (-not (Test-Path -Path "CollectLogs")) {
-    New-Item -ItemType Directory -Path "CollectLogs" | Out-Null
-    Write-Host "Created CollectLogs directory"
+if (-not (Test-Path -Path $logDirPath)) {
+    New-Item -ItemType Directory -Path $logDirPath | Out-Null
+    Write-Host "Created CollectLogs directory at $logDirPath"
 }
 
 # Define the script block that will run for each service
 $serviceLogScript = {
-    param($service, $serviceIndex, $totalServices)
+    param($service, $serviceIndex, $totalServices, $logDirPath)
     
     Write-Host ("[$serviceIndex/$totalServices] Starting collection for " + $service + " service...")
     
     # Define output file path for this service
-    $outputPath = "CollectLogs\$service.log"
+    $outputPath = Join-Path -Path $logDirPath -ChildPath "$service.log"
     
     # Create the file with headers
     $header = "==============================================================" + [Environment]::NewLine
@@ -126,7 +131,7 @@ for ($i = 0; $i -lt $services.Count; $i++) {
     $serviceIndex = $i + 1
     
     Write-Host "Starting job for service $service ($serviceIndex/$totalServices)"
-    $job = Start-Job -ScriptBlock $serviceLogScript -ArgumentList $service, $serviceIndex, $totalServices
+    $job = Start-Job -ScriptBlock $serviceLogScript -ArgumentList $service, $serviceIndex, $totalServices, $logDirPath
     $jobs += $job
 }
 
@@ -143,4 +148,4 @@ if ($jobs.Count -gt 0) {
 }
 
 Write-Host "Log collection complete"
-Write-Host "Logs saved to individual files in CollectLogs\" 
+Write-Host "Logs saved to individual files in $logDirPath" 

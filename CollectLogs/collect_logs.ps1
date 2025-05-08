@@ -26,11 +26,16 @@ $services = @(
     "main-page"
 )
 
+# Define base directory for logs - using current script directory
+$scriptDir = $PSScriptRoot
+$baseLogDir = Join-Path -Path $scriptDir -ChildPath ".."
+$logDirPath = Join-Path -Path $baseLogDir -ChildPath "CollectLogs"
+
 # Create a directory for the current log collection if it doesn't exist
-$logDir = "CollectLogs\$logUuid"
-if (-not (Test-Path -Path $logDir)) {
-    New-Item -ItemType Directory -Path $logDir | Out-Null
-    Write-Host "Created log directory: $logDir"
+$logArchiveDir = Join-Path -Path $logDirPath -ChildPath $logUuid
+if (-not (Test-Path -Path $logArchiveDir)) {
+    New-Item -ItemType Directory -Path $logArchiveDir | Out-Null
+    Write-Host "Created log directory: $logArchiveDir"
 }
 
 # Loop through services and collect logs
@@ -38,8 +43,8 @@ foreach ($service in $services) {
     Write-Host "Collecting logs for $service service..."
     
     # Define output file path for this service
-    $outputPath = "CollectLogs\$service.log"
-    $archivePath = "$logDir\$service.log"
+    $outputPath = Join-Path -Path $logDirPath -ChildPath "$service.log"
+    $archivePath = Join-Path -Path $logArchiveDir -ChildPath "$service.log"
     
     # Create the file with headers
     Set-Content -Path $outputPath -Value @"
@@ -129,4 +134,4 @@ Collection completed at: $(Get-Date)
 }
 
 Write-Host "Log collection complete with UUID: $logUuid"
-Write-Host "Logs saved to CollectLogs\ and archived in $logDir"
+Write-Host "Logs saved to $logDirPath and archived in $logArchiveDir"
