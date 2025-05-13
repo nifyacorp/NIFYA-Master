@@ -1,0 +1,25 @@
+---
+description:
+globs:
+alwaysApply: false
+---
+# NIFYA Subscription Worker
+
+This document describes the structure of the NIFYA subscription worker service.
+
+## Overview
+
+The [subscription-worker](mdc:subscription-worker/) service manages subscription processing for the NIFYA platform.
+Deployed at: https://subscription-worker-415554190254.us-central1.run.app
+
+## Key Functionality
+
+- Processes subscription events (creation, updates, cancellation)
+- Manages billing integration with payment providers
+- Handles subscription lifecycle management
+- Updates user entitlements based on subscription status
+- Generates subscription-related notifications
+
+## Enhancement Planning
+
+See [subscription-worker-enhancement-mvp.md](mdc:subscription-worker-enhancement-mvp.md) for planned improvements to this service.

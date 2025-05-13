@@ -1,0 +1,27 @@
+---
+description:
+globs:
+alwaysApply: false
+---
+# NIFYA Authentication Service
+
+This document describes the structure of the NIFYA authentication service.
+
+## Key Files
+
+- [package.json](mdc:Authentication-Service/package.json) - Package dependencies and scripts
+- [Dockerfile](mdc:Authentication-Service/Dockerfile) - Docker configuration for containerization
+- [README.md](mdc:Authentication-Service/README.md) - Service documentation
+- [FIREBASE_INTEGRATION_PLAN.md](mdc:Authentication-Service/FIREBASE_INTEGRATION_PLAN.md) - Firebase integration documentation
+
+## Source Code
+
+The authentication service source code is organized in the [src](mdc:Authentication-Service/src/) directory.
+
+## Database
+
+The database schema and migrations are managed in the [supabase](mdc:Authentication-Service/supabase/) directory.
+
+## Deployment
+
+The authentication service is deployed to Google Cloud Run at https://authentication-service-415554190254.us-central1.run.app.

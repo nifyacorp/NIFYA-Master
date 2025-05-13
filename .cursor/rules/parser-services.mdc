@@ -1,0 +1,32 @@
+---
+description:
+globs:
+alwaysApply: false
+---
+# NIFYA Parser Services
+
+This document describes the structure of the NIFYA parser services, which include:
+- BOE Parser (Spanish Official Bulletin)
+- DOGA Parser (Galician Official Bulletin)
+- EU Parser (European Union content)
+
+## BOE Parser
+
+The [boe-parser](mdc:boe-parser/) service analyzes the Spanish Official Bulletin using AI techniques.
+Deployed at: https://boe-parser-415554190254.us-central1.run.app
+
+## DOGA Parser
+
+The [doga-parser](mdc:doga-parser/) service analyzes the Galician Official Bulletin using AI techniques.
+Deployed at: https://doga-parser-415554190254.us-central1.run.app
+
+## EU Parser
+
+The [eu-parser](mdc:eu-parser/) service analyzes European Union content.
+
+## Common Structure
+
+Each parser service typically includes:
+- Source code for parsing and analyzing documents
+- API endpoints to query and retrieve analysis results
+- Integration with the main NIFYA backend for data storage and retrieval

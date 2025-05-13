@@ -1,0 +1,26 @@
+---
+description:
+globs:
+alwaysApply: false
+---
+# NIFYA Notification Services
+
+This document describes the structure of the NIFYA notification services.
+
+## Notification Worker
+
+The [notification-worker](mdc:notification-worker/) service processes notification messages and stores them in the database.
+Deployed at: https://notification-worker-415554190254.us-central1.run.app
+
+## Email Notification Service
+
+The [email-notification](mdc:email-notification/) service sends email summaries of notifications to users.
+Deployed at: https://email-notification-415554190254.us-central1.run.app
+
+## Common Functionality
+
+These services work together to:
+- Process events from the NIFYA system that require user notifications
+- Format notifications for different delivery channels
+- Deliver notifications through appropriate channels (email, in-app, etc.)
+- Track delivery status and user interaction with notifications

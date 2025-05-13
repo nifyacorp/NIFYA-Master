@@ -1,0 +1,28 @@
+---
+description:
+globs:
+alwaysApply: false
+---
+# NIFYA Backend
+
+This document describes the structure of the NIFYA backend service.
+
+## Key Files
+
+- [package.json](mdc:backend/package.json) - Backend package dependencies and scripts
+- [Dockerfile](mdc:backend/Dockerfile) - Docker configuration for containerization
+- [cloudbuild.yaml](mdc:backend/cloudbuild.yaml) - Google Cloud Build configuration
+- [README.md](mdc:backend/README.md) - Backend documentation
+- [API-DOCS.md](mdc:backend/API-DOCS.md) - API documentation
+
+## Source Code
+
+The backend source code is organized in the [src](mdc:backend/src/) directory.
+
+## Database
+
+The database schema and migrations are managed in the [supabase](mdc:backend/supabase/) directory.
+
+## Deployment
+
+The backend is deployed to Google Cloud Run at https://backend-415554190254.us-central1.run.app.

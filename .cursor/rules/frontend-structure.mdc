@@ -1,0 +1,30 @@
+---
+description:
+globs:
+alwaysApply: false
+---
+# NIFYA Frontend
+
+This document describes the structure of the NIFYA frontend application.
+
+## Key Files
+
+- [package.json](mdc:frontend/package.json) - Frontend package dependencies and scripts
+- [vite.config.ts](mdc:frontend/vite.config.ts) - Vite build configuration
+- [index.html](mdc:frontend/index.html) - Main HTML entry point
+- [tailwind.config.js](mdc:frontend/tailwind.config.js) - Tailwind CSS configuration
+
+## Source Code
+
+The frontend source code is organized in the [src](mdc:frontend/src/) directory:
+- Components
+- Pages
+- Services
+- Utils
+- Styles
+
+## Deployment
+
+The frontend is deployed to Netlify at https://clever-kelpie-60c3a6.netlify.app.
+
+The [Dockerfile](mdc:frontend/Dockerfile) and [cloudbuild.yaml](mdc:frontend/cloudbuild.yaml) define the build and deployment process.
