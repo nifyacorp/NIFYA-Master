@@ -1,0 +1,14 @@
+CSS Analysis Summary
+-------------------
+Date: 6/5/2025, 13:08:01
+CSS Files Analyzed: 17
+Content Files Analyzed: 178
+Total CSS Classes Found: 372
+Media Query Classes (Protected): 118
+Unused Selectors Found: 62
+Missing CSS Classes Found: 48
+Tailwind Classes Found: ~482
+
+Reports:
+- Unused CSS: css-unused-report.txt
+- Missing CSS: css-missing-report.txt

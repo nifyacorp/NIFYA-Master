@@ -97,3 +97,200 @@ Implement proper error handling at all layers of the application:
 ## Testing
 
 Automated tests, potentially using tools like Puppeteer for end-to-end testing of the `Frontend`, should be maintained within each relevant submodule. Consistent use of testing scripts helps identify regressions and bugs introduced during development.
+
+# NIFYA Repository Compendium
+
+This project is a compendium of interconnected repositories that work together to provide the NIFYA service. Each subservice has its own build and deployment pipeline.
+
+## Development Workflow
+
+1. Make changes to the relevant subservice code
+2. Commit your changes to the repository
+3. Push/sync your changes to trigger the build process
+4. Monitor the build process in the deployment platform
+
+## Subservices and Deployment URLs
+
+| Service | Description | Deployment URL |
+|---|----|----|
+| Frontend | User interface and client-side application | https://clever-kelpie-60c3a6.netlify.app |
+| Backend | Core API and business logic | https://backend-415554190254.us-central1.run.app |
+| Subscription Worker | Manages subscription processing | https://subscription-worker-415554190254.us-central1.run.app |
+| BOE Parser | AI-powered analysis of Spanish Official Bulletin (BOE) | https://boe-parser-415554190254.us-central1.run.app |
+| DOGA Parser | AI-powered analysis of Galician Official Bulletin (DOGA) | https://doga-parser-415554190254.us-central1.run.app |
+| EU Parser | AI-powered analysis of European Union Official Journal | https://eu-parser-415554190254.us-central1.run.app |
+| Notification Worker | Processes notification messages and stores them in the database | https://notification-worker-415554190254.us-central1.run.app |
+| Email Notification | Sends email summaries of notifications to users | https://email-notification-415554190254.us-central1.run.app |
+
+## Frontend Architecture
+
+### Layout Structure
+
+The frontend application follows a strict single scrollbar design pattern with the following component hierarchy:
+
+- **MainLayout**: The root layout component used for all pages.
+  - Contains the Header and main content area
+  - No scrollbars at this level
+
+- **DashboardLayout**: Extends MainLayout by adding a sidebar.
+  - Uses `layout-container` to organize the sidebar and content
+  - Only the `dashboard-content` should have a scrollbar
+  - The sidebar should have no scrollbar
+
+- **Pages**: Individual page components nested inside these layouts
+  - Page content should avoid adding additional scrollbars
+  - Content should flow within the parent's scrollable area
+
+### Responsive Page Design
+
+Each main page in the application has responsive designs with distinct experiences for different screen sizes:
+
+- **Mobile View**: Optimized for small screens
+  - Compact layouts with stacked elements
+  - Simplified UI with fewer visual enhancements
+  - Touch-friendly button sizes and spacing
+  - Full-width containers for maximum content area
+
+- **Tablet View**: Transitional layouts
+  - Adapted spacing and component sizing
+  - Improved information density
+  - Enhanced UI with better visual hierarchy
+
+- **Desktop View**: Rich, enhanced experiences
+  - Sophisticated layouts with grid structures
+  - Visual enhancements like shadows, gradients, and animations
+  - Better use of horizontal space
+  - More advanced interactions and hover effects
+  - Optimized information density and readability
+
+- **Large Desktop View**: Further refinements for large screens
+  - Maximum use of screen real estate
+  - Optimized layout for high-resolution displays
+  - Increased padding and element spacing
+
+Each page implements this responsive approach using both:
+1. CSS media queries for basic responsiveness
+2. Dynamic React component adaptation based on detected screen size
+
+### Component Screen Size Detection
+
+Components that need distinct desktop/mobile variants use a standard approach:
+
+```tsx
+const [screenSize, setScreenSize] = useState<'mobile' | 'tablet' | 'desktop' | 'large'>('mobile');
+
+// Detect screen size for responsive styling
+const updateScreenSize = useCallback(() => {
+  const width = window.innerWidth;
+  if (width >= 1440) {
+    setScreenSize('large');
+  } else if (width >= 1024) {
+    setScreenSize('desktop');
+  } else if (width >= 768) {
+    setScreenSize('tablet');
+  } else {
+    setScreenSize('mobile');
+  }
+}, []);
+
+// Usage in components
+const isDesktop = screenSize === 'desktop' || screenSize === 'large';
+// Apply different classes/styles based on screen size
+```
+
+### Header Styling
+
+The application implements a responsive header with distinct styling for mobile and desktop experiences:
+
+- **Mobile Header**: Simplified, compact design
+  - Smaller height (56px)
+  - Minimal spacing and shadows
+  - Basic styling for better performance on mobile devices
+
+- **Tablet Header**: Intermediate styling (768px+)
+  - Medium height (64px)
+  - Increased spacing and element sizes
+  - Subtle enhancements for better visual hierarchy
+
+- **Desktop Header**: Enhanced, sophisticated design (1024px+)
+  - Taller height (72px)
+  - Premium visual effects including gradients and drop shadows
+  - Hover animations and interactive elements
+  - Visual depth through layering and subtle effects
+  - Gradient text for brand name and enhanced iconography
+
+- **Large Desktop Header**: Further refinements (1440px+)
+  - Maximum height (80px)
+  - Increased spacing and padding
+  - Larger interactive elements for better UX on large displays
+
+The header styling uses a combination of screen-size specific classes that are dynamically applied based on viewport width, ensuring a tailored experience at each breakpoint.
+
+### Example: Notifications Page
+
+The Notifications page demonstrates the responsive design approach:
+
+- **Mobile**: Simple list view with stacked elements
+  - Compact notification cards
+  - Minimal visual styling
+  - Full-width layout maximizing limited screen space
+  - Bottom navigation button visible only on mobile
+
+- **Desktop**: Enhanced experience with visual depth
+  - Two-column grid layout for notification items
+  - Gradient page title and enhanced visual styling
+  - Hover animations on interactive elements
+  - Left border indicator for unread notifications
+  - Sophisticated card styling with subtle shadows and borders
+  - Enhanced action buttons with hover effects
+
+### Layout CSS Structure
+
+Key CSS classes in `layout.css`:
+
+- `main-layout`: Root layout with `overflow: hidden`
+- `layout-container`: Flex container with `overflow: hidden`
+- `dashboard-content`: The only component with `overflow-y: auto`
+- `sidebar-container`: Container for sidebar with `overflow: hidden`
+- `sidebar`: Navigation sidebar with no scroll
+- `no-sidebar-overflow`: Utility class to ensure sidebar has no scroll
+
+### Component Structure
+
+The main components involved in the layout system are:
+
+- `MainLayout.tsx`: Base layout for all pages
+- `DashboardLayout.tsx`: Layout with sidebar for authenticated pages
+- `Sidebar.tsx`: Navigation sidebar component
+- `Header.tsx`: Responsive application header with distinct mobile/desktop styling
+- Page components (e.g., `Notifications.tsx`): Page-specific content
+
+### Single Scrollbar Pattern
+
+To maintain the single scrollbar pattern:
+
+1. Only the `dashboard-content` div should have `overflow-y: auto`
+2. All other containers should have `overflow: hidden` or no overflow property
+3. Page components should avoid setting `overflow` properties
+4. Content should be structured to flow within the scrollable area
+
+### Best Practices
+
+- Never add `overflow-y: auto` to components inside `dashboard-content`
+- Use `overflow-x: hidden` only when needed for horizontal content 
+- Ensure sidebar content fits within its container without scrolling
+- Test layout on different screen sizes to ensure scrollbar behavior is consistent
+- Maintain visual differentiation between mobile and desktop header styles
+- Follow the styling patterns in header.css for consistent responsive design
+- Create dedicated CSS files for major page components (e.g., notifications.css)
+- Implement responsive styling that enhances the desktop experience
+- Avoid reusing mobile styling for desktop without proper enhancements
+
+## Code Standards
+
+1. Always use the standardized UI components from the component library
+2. Follow the single source of truth concept for styles, configurations, and data
+3. Make minimal necessary changes to fix issues without introducing new features unless specifically requested
+4. Ensure all buttons using the Button component from our UI library with appropriate props
+5. Keep functionality consistent across all services
+6. Maintain the single scrollbar pattern in all layouts

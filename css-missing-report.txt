@@ -1,0 +1,300 @@
+MISSING CSS CLASSES REPORT
+=========================
+
+Date: 6/5/2025, 13:08:01
+
+Total Missing Classes: 48
+Tailwind Classes Found: ~482
+Media Query Classes (Protected): 118
+Responsive Named Classes: 17
+
+Missing Class: "overflow-hidden"
+-------------------------------
+Referenced in:
+ - frontend\src\pages\Testimonials.tsx
+ - frontend\src\pages\SubscriptionTypes.tsx
+ - frontend\src\pages\Subscriptions.tsx
+ - frontend\src\pages\SubscriptionDetail.tsx
+ - frontend\src\pages\Home.tsx
+ - frontend\src\pages\EditSubscription.tsx
+ - frontend\src\pages\CreateSubscription.tsx
+ - frontend\src\pages\Compliance.tsx
+ - frontend\src\pages\admin\SubscriptionTypeEditor.tsx
+ - frontend\src\components\Sidebar.tsx
+ - frontend\src\components\subscriptions\SubscriptionForm.tsx
+ - frontend\src\components\settings\ProfileSection.tsx
+ - frontend\src\components\dashboard\panels\SourcesPanel.tsx
+ - frontend\src\components\dashboard\panels\ActivityPanel.tsx
+ - frontend\src\components\admin\EmailLogTable.tsx
+
+Missing Class: "italic"
+----------------------
+Referenced in:
+ - frontend\src\pages\Testimonials.tsx
+
+Missing Class: "inline-flex"
+---------------------------
+Referenced in:
+ - frontend\src\pages\Testimonials.tsx
+ - frontend\src\pages\Help.tsx
+ - frontend\src\pages\Guides.tsx
+ - frontend\src\pages\Api.tsx
+ - frontend\src\components\ui\delete-button.tsx
+ - frontend\src\components\subscriptions\SubscriptionErrorState.tsx
+ - frontend\src\components\subscriptions\SubscriptionEmptyState.tsx
+
+Missing Class: "prose"
+---------------------
+Referenced in:
+ - frontend\src\pages\Terms.tsx
+ - frontend\src\pages\Privacy.tsx
+ - frontend\src\pages\Help.tsx
+ - frontend\src\pages\Cookies.tsx
+ - frontend\src\pages\Compliance.tsx
+
+Missing Class: "ring-offset-background"
+--------------------------------------
+Referenced in:
+ - frontend\src\pages\SubscriptionDetail.tsx
+
+Missing Class: "file:border-0"
+-----------------------------
+Referenced in:
+ - frontend\src\pages\SubscriptionDetail.tsx
+
+Missing Class: "file:bg-transparent"
+-----------------------------------
+Referenced in:
+ - frontend\src\pages\SubscriptionDetail.tsx
+
+Missing Class: "file:font-medium"
+--------------------------------
+Referenced in:
+ - frontend\src\pages\SubscriptionDetail.tsx
+
+Missing Class: "placeholder:text-muted-foreground/70"
+----------------------------------------------------
+Referenced in:
+ - frontend\src\pages\SubscriptionDetail.tsx
+
+Missing Class: "overflow-auto"
+-----------------------------
+Referenced in:
+ - frontend\src\pages\SubscriptionDetail.tsx
+ - frontend\src\pages\Debug.tsx
+ - frontend\src\components\SubscriptionApiDebug.tsx
+ - frontend\src\components\ErrorBoundary.tsx
+ - frontend\src\components\ui\alert-dialog.tsx
+ - frontend\src\components\subscriptions\ProcessingStatusTracker.tsx
+
+Missing Class: "capitalize"
+--------------------------
+Referenced in:
+ - frontend\src\pages\SubscriptionDetail.tsx
+ - frontend\src\components\subscriptions\ProcessingStatusTracker.tsx
+
+Missing Class: "blur-3xl"
+------------------------
+Referenced in:
+ - frontend\src\pages\Home.tsx
+
+Missing Class: "-top-24"
+-----------------------
+Referenced in:
+ - frontend\src\pages\Home.tsx
+
+Missing Class: "-right-24"
+-------------------------
+Referenced in:
+ - frontend\src\pages\Home.tsx
+
+Missing Class: "-bottom-24"
+--------------------------
+Referenced in:
+ - frontend\src\pages\Home.tsx
+
+Missing Class: "-left-24"
+------------------------
+Referenced in:
+ - frontend\src\pages\Home.tsx
+
+Missing Class: "transform"
+-------------------------
+Referenced in:
+ - frontend\src\pages\Home.tsx
+ - frontend\src\pages\admin\UserManagement.tsx
+ - frontend\src\pages\admin\SubscriptionTypes.tsx
+ - frontend\src\pages\admin\SubscriptionList.tsx
+ - frontend\src\pages\admin\NotificationList.tsx
+
+Missing Class: "-rotate-1"
+-------------------------
+Referenced in:
+ - frontend\src\pages\Home.tsx
+
+Missing Class: "from-background"
+-------------------------------
+Referenced in:
+ - frontend\src\pages\Home.tsx
+
+Missing Class: "to-muted/20"
+---------------------------
+Referenced in:
+ - frontend\src\pages\Home.tsx
+
+Missing Class: "overflow-y-auto"
+-------------------------------
+Referenced in:
+ - frontend\src\pages\Help.tsx
+ - frontend\src\components\PublicLayout.tsx
+
+Missing Class: "transition"
+--------------------------
+Referenced in:
+ - frontend\src\pages\Help.tsx
+
+Missing Class: "form-radio"
+--------------------------
+Referenced in:
+ - frontend\src\pages\EditSubscription.tsx
+
+Missing Class: "dashboard-welcome-content"
+-----------------------------------------
+Referenced in:
+ - frontend\src\pages\Dashboard.tsx
+
+Missing Class: "dashboard-welcome-actions"
+-----------------------------------------
+Referenced in:
+ - frontend\src\pages\Dashboard.tsx
+
+Missing Class: "-translate-y-1/2"
+--------------------------------
+Referenced in:
+ - frontend\src\pages\admin\UserManagement.tsx
+ - frontend\src\pages\admin\SubscriptionTypes.tsx
+ - frontend\src\pages\admin\SubscriptionList.tsx
+ - frontend\src\pages\admin\NotificationList.tsx
+
+Missing Class: "pointer-events-none"
+-----------------------------------
+Referenced in:
+ - frontend\src\components\SplashCursor.tsx
+
+Missing Class: "max-sm:order-1"
+------------------------------
+Referenced in:
+ - frontend\src\components\OnboardingDialog.tsx
+
+Missing Class: "group"
+---------------------
+Referenced in:
+ - frontend\src\components\OnboardingDialog.tsx
+ - frontend\src\components\ui\dialog.tsx
+ - frontend\src\components\subscriptions\SubscriptionForm.tsx
+
+Missing Class: "-me-1"
+---------------------
+Referenced in:
+ - frontend\src\components\OnboardingDialog.tsx
+
+Missing Class: "ms-2"
+--------------------
+Referenced in:
+ - frontend\src\components\OnboardingDialog.tsx
+
+Missing Class: "align-[-0.125em]"
+--------------------------------
+Referenced in:
+ - frontend\src\components\LoadingPage.tsx
+
+Missing Class: "motion-reduce:animate-[spin_1.5s_linear_infinite]"
+-----------------------------------------------------------------
+Referenced in:
+ - frontend\src\components\LoadingPage.tsx
+
+Missing Class: "header-action-item"
+----------------------------------
+Referenced in:
+ - frontend\src\components\Header.tsx
+
+Missing Class: "size-7"
+----------------------
+Referenced in:
+ - frontend\src\components\ui\dialog.tsx
+
+Missing Class: "outline-offset-2"
+--------------------------------
+Referenced in:
+ - frontend\src\components\ui\dialog.tsx
+
+Missing Class: "btn-icon-wrapper"
+--------------------------------
+Referenced in:
+ - frontend\src\components\ui\button.tsx
+
+Missing Class: "peer-disabled:cursor-not-allowed"
+------------------------------------------------
+Referenced in:
+ - frontend\src\components\subscriptions\SubscriptionForm.tsx
+
+Missing Class: "peer-disabled:opacity-70"
+----------------------------------------
+Referenced in:
+ - frontend\src\components\subscriptions\SubscriptionForm.tsx
+
+Missing Class: "underline"
+-------------------------
+Referenced in:
+ - frontend\src\components\subscriptions\SubscriptionErrorState.tsx
+
+Missing Class: "data-[state=checked]:bg-yellow-500"
+--------------------------------------------------
+Referenced in:
+ - frontend\src\components\settings\NotificationsSection.tsx
+
+Missing Class: "-top-1.5"
+------------------------
+Referenced in:
+ - frontend\src\components\notifications\NotificationBadge.tsx
+
+Missing Class: "-right-1.5"
+--------------------------
+Referenced in:
+ - frontend\src\components\notifications\NotificationBadge.tsx
+
+Missing Class: "uppercase"
+-------------------------
+Referenced in:
+ - frontend\src\components\auth\RegisterForm.tsx
+ - frontend\src\components\auth\LoginForm.tsx
+ - frontend\src\components\admin\UserTable.tsx
+ - frontend\src\components\admin\SubscriptionTypeTable.tsx
+ - frontend\src\components\admin\SubscriptionTable.tsx
+ - frontend\src\components\admin\NotificationTable.tsx
+ - frontend\src\components\admin\EmailLogTable.tsx
+
+Missing Class: "overflow-x-auto"
+-------------------------------
+Referenced in:
+ - frontend\src\components\admin\UserTable.tsx
+ - frontend\src\components\admin\SubscriptionTypeTable.tsx
+ - frontend\src\components\admin\SubscriptionTable.tsx
+ - frontend\src\components\admin\NotificationTable.tsx
+ - frontend\src\components\admin\EmailLogTable.tsx
+
+Missing Class: "self-end"
+------------------------
+Referenced in:
+ - frontend\src\components\admin\EmailLogTable.tsx
+
+Missing Class: "divide-y"
+------------------------
+Referenced in:
+ - frontend\src\components\admin\EmailLogTable.tsx
+
+Missing Class: "divide-gray-200"
+-------------------------------
+Referenced in:
+ - frontend\src\components\admin\EmailLogTable.tsx
+

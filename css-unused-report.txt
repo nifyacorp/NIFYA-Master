@@ -1,0 +1,173 @@
+CSS ANALYSIS REPORT
+=================
+
+Date: 6/5/2025, 13:08:00
+
+✅ This report now properly handles classes in media queries.
+📱 Found 118 classes in media queries (these are protected from false positives).
+
+File: subscription-detail-cards.css
+-----------------------------------
+No unused selectors found.
+
+
+File: subscription-cards.css
+----------------------------
+No unused selectors found.
+
+
+File: page-header.css
+---------------------
+No unused selectors found.
+
+
+File: notifications.css
+-----------------------
+Unused selectors (8):
+
+ - .notifications-list
+ - .notification-badge-default
+ - .notification-badge-boe
+ -  .notification-badge-notification\:boe
+ - .notification-badge-doga
+ -  .notification-badge-notification\:doga
+ - .notification-badge-real-estate
+ - .notification-badge-system
+
+
+File: neo-brutalism.css
+-----------------------
+Unused selectors (1):
+
+ - .neo-badge
+
+
+File: mobile-menu.css
+---------------------
+No unused selectors found.
+
+
+File: layout.css
+----------------
+Unused selectors (3):
+
+ - .scrollable
+ - .card-grid
+ - .flex-column
+
+
+File: index.css
+---------------
+No unused selectors found.
+
+
+File: home.css
+--------------
+Unused selectors (5):
+
+ - .solution-number
+ - .step-number
+ - .step-number:hover
+ - .step-title
+ - .step-description
+
+
+File: header.css
+----------------
+Unused selectors (10):
+
+ - .header-large
+ - 
+.header-large .header-content
+ - 
+.header-large .site-logo
+ - 
+.header-large .site-logo img
+ - 
+.header-large .site-name
+ - 
+.header-large .header-actions
+ - 
+.header-large .header-icon-button
+ - 
+.header-large .header-icon-button:hover
+ - 
+.header-large .user-profile-avatar
+ - .notification-indicator
+
+
+File: floating-elements.css
+---------------------------
+Unused selectors (3):
+
+ - .floating-button-container
+ - .floating-button
+ - .floating-action-padding
+
+
+File: deep-styles.css
+---------------------
+No unused selectors found.
+
+
+File: dashboard.css
+-------------------
+Unused selectors (17):
+
+ - .activity-chart-container
+ - .pie-chart-legend
+ - .legend-color
+ - .activity-chart-bar
+ - .activity-chart-bar:hover
+ - .activity-chart-empty
+ - .dashboard-notification-source
+ - .dashboard-chart-container
+ - .dashboard-bar-item
+ - .dashboard-bar
+ - .dashboard-bar:hover
+ - .dashboard-bar-label
+ - .dashboard-pie-container
+ - .dashboard-pie-chart
+ - .dashboard-pie-bubble
+ - .dashboard-pie-bubble:hover
+ - .dashboard-pie-label
+
+
+File: dashboard-panels.css
+--------------------------
+Unused selectors (1):
+
+ - .debug-panel
+
+
+File: buttons.css
+-----------------
+Unused selectors (9):
+
+ - .btn-secondary
+ - .btn-secondary:hover
+ - .btn-destructive-solid
+ - .btn-destructive-solid:hover
+ - .btn-link
+ - .btn-link:hover
+ - .btn-icon-only
+ - .btn-icon-only.btn-sm ⚠️ (Might be a responsive style)
+ - .btn-icon-only.btn-lg ⚠️ (Might be a responsive style)
+
+
+File: app-loading.css
+---------------------
+No unused selectors found.
+
+
+File: admin.css
+---------------
+Unused selectors (5):
+
+ - .admin-sidebar
+ - .admin-menu-item
+ - .admin-menu-item:hover
+ - .admin-menu-item.active
+ - .admin-badge
+
+
